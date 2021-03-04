@@ -100,7 +100,8 @@
 
 .input-hidden {
     border: none;
-    width: 50%;
+    /* width: 50%; */
+    text-transform: uppercase;
 }
 
 .space-top {
