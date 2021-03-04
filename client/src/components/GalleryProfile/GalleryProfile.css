@@ -81,6 +81,9 @@
     flex-shrink:0;
     margin-bottom: 16px;
     background-color: #FEFEFE;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
 }
 
 /* DRY */
@@ -95,13 +98,26 @@
 .input-label {
     font-size: 14px;
     font-weight: bold;
-    /* width: 50%; */
+    max-width: 50%;
+}
+
+.input-lable-left {
+    text-align: left;
+}
+
+.input-lable-right {
+    text-align: right;
+}
+
+.input-no-border {
+    border: none;
+    width: 50%;
+    text-transform: uppercase;
+    /* max-width: 50%; */
 }
 
 .input-hidden {
-    border: none;
-    /* width: 50%; */
-    text-transform: uppercase;
+    display: none;
 }
 
 .space-top {
@@ -119,13 +135,11 @@
 #biography {
     width: 100%;
     padding: 0;
-    margin: 0;
+    margin: 16px 0 0 0;
     border: none;
+    resize: none;
 }
 
-.input-lable-left {
-    text-align: left;
-}
 
 .image-container {
     display: flex;
@@ -142,14 +156,16 @@
 .gallery-image {
     width: 311px;
     height: auto;
+    min-height: 200px;
+    max-height: 435px;
 }
 
 .btn-image {
     width: 172px;
     height: 46px;
     font-size: 12px;
-    font-weight: 500;
-    line-height: 15px;
+    font-weight: 700;
+    line-height: 46px;
     background-color: white;
     border: 0.25px solid black;
     box-sizing: border-box;

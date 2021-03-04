@@ -55,20 +55,20 @@ class GalleryProfile extends React.Component {
               <div className="input-block">
                 {/* replace input by real information later */}
                 <div className="input-container-half">
-                    <span className="input-label">USER NAME/ </span>
-                    <input type="text" name="username" onChange={this.onChangeHandler} value={this.state.username} className="input-hidden" placeholder="THOMAS BALLOT"></input>
+                    <span className="input-label input-lable-right">USER NAME/ </span>
+                    <input type="text" name="username" onChange={this.onChangeHandler} value={this.state.username} className="input-hidden" placeholder="THOMAS BALLOT" role="textbox"></input>
                 </div>
                 <div className="input-container-half">
-                    <span className="input-label">EMAIL/ </span>
+                    <span className="input-label input-lable-right">EMAIL/ </span>
                     <input type="email" name="email" onChange={this.onChangeHandler} value={this.state.email} className="input-hidden" placeholder="THIBAULT.HENRIET@ORA-ARTS.COM"></input>
                 </div>
                 <div className="input-container-half">
                     {/* should not display even in edit */}
-                    <span className="input-label">PASSWORD/ </span>
+                    <span className="input-label input-lable-right">PASSWORD/ </span>
                     <input type="password" name="password" onChange={this.onChangeHandler} value={this.state.password} className="input-hidden" placeholder="Password"></input>
                 </div>
                 <div className="input-container-half">
-                    <span className="input-label">GALLERY POSITION/ </span>
+                    <span className="input-label input-lable-right">GALLERY POSITION/ </span>
                     <input type="text" name="position" onChange={this.onChangeHandler} value={this.state.position} className="input-hidden" placeholder="Director"></input>
                 </div>
               </div>
@@ -93,7 +93,7 @@ class GalleryProfile extends React.Component {
                     <div className="biography-box">
                         <div className="input-label input-lable-left">GALLERY BIOGRAPHY</div>
                         <div>
-                            <textarea name="biography" onChange={this.onChangeHandler} value={this.state.biography} id="biography" rows="25"></textarea>
+                            <textarea name="biography" onChange={this.onChangeHandler} value={this.state.biography} id="biography" className="input-hidden" rows="24" placeholder="your gallery biography"></textarea>
                         </div>
                     </div>
                 </div>
@@ -121,11 +121,11 @@ class GalleryProfile extends React.Component {
               </div>
               <div className="shipping-info">
                 <span className="shipping-title">CONVELIO</span>
-                <div id="selectTopic" onChange={this.onChangeHandler}>
+                <div id="selectTopic">
                 {/* checked={this.state.convelio === true} */}
-                    <input type="radio" id="yes" name="convelio" value="YES" checked={this.state.convelio} />
+                    <input type="radio" id="yes" name="convelio" onChange={this.onChangeHandler} value="YES" checked={this.state.convelio} />
                     <label htmlFor="yes">YES</label>
-                    <input type="radio" id="no" name="convelio" value="NO" checked={!this.state.convelio}/>
+                    <input type="radio" id="no" name="convelio" onChange={this.onChangeHandler} value="NO" checked={!this.state.convelio}/>
                     <label htmlFor="no">NO</label>
                 </div>
               </div>
