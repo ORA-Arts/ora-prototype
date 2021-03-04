@@ -12,7 +12,7 @@ const signup = (username, password) => {
 }
 
 const login = (username, password) => {
-  return axios.
+    return axios.
     post('/api/auth/login', { username, password })
     .then(response => {
       return response.data

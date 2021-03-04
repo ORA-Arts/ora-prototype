@@ -23,7 +23,8 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <Navbar user={this.state.user} setUser={this.setUser} />
+        {/* <Navbar user={this.state.user} setUser={this.setUser} /> */}
+        <Navbar />
         <Route
           exact path='/what-is-ora'
           component={WhatIsOra}
@@ -32,10 +33,10 @@ export default class App extends Component {
           exact path='/signup'
           render={props => <SignUp setUser={this.setUser} {...props} />}
           />
-       <Route
+       {/* <Route
           exact path='/login'
           render={props => <LogIn setUser={this.setUser} {...props} />}
-          />
+          /> */}
       </div>
     );
   }

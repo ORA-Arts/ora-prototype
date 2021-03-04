@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Modal } from 'react'
 import { login } from '../../services/auth';
 
 export default class Login extends Component {
@@ -6,7 +6,7 @@ export default class Login extends Component {
   state = {
     username: '',
     password: '',
-    message: ''
+    message: '',
   }
 
   handleChange = event => {
