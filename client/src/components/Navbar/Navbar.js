@@ -4,6 +4,8 @@ import { logout } from "../../services/auth";
 import "./NavBar.css";
 import logo from "../../images/LOGO_1.png"
 
+ 
+
 const handleLogout = (props) => {
   logout().then(() => {
     props.setUser(null);
@@ -34,14 +36,14 @@ export default function Navbar(props) {
           <>
           <li>
           <Link className ="link" to='/myprofile'>MY PROFILE</Link>
-          <Link className ="link" to='/logout'>/ LOG OUT</Link>
+          <Link className ="link" to='/' onClick={() => handleLogout(props)}>/ LOG OUT</Link>
           </li>
           </>
         ) : (
           <>
           <li>
-          <Link to='/signup'>SIGN UP</Link>
-          <Link to='/login'>/ LOG IN</Link>
+          <Link className ="link" to='/signup'>SIGN UP</Link>
+          <Link className ="link" to='/login'>/ LOG IN</Link>
           </li>
           </>
         )}
