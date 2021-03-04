@@ -12,7 +12,7 @@ class GalleryProfile extends React.Component {
           <button className="btn-edit">Edit</button>
         </div>
         <div className="container-profile-content">
-          <ProfileSideBar />
+          <ProfileSideBar content="my-gallery-profile"/>
           <div className="gallery-profile">
             <div className="gallery-content">
               <div className="profile-title">
@@ -24,17 +24,21 @@ class GalleryProfile extends React.Component {
               <div className="input-block">
                 {/* replace input by real information later */}
                 <div className="input-container-half">
-                    <span className="input-label">USER NAME/ </span><input type="text" className="input-hidden" placeholder="THOMAS BALLOT"></input>
+                    <span className="input-label">USER NAME/ </span>
+                    <input type="text" className="input-hidden" placeholder="THOMAS BALLOT"></input>
                 </div>
                 <div className="input-container-half">
-                    <span className="input-label">EMAIL/ </span><input type="email" className="input-hidden" placeholder="THIBAULT.HENRIET@ORA-ARTS.COM"></input>
+                    <span className="input-label">EMAIL/ </span>
+                    <input type="email" className="input-hidden" placeholder="THIBAULT.HENRIET@ORA-ARTS.COM"></input>
                 </div>
                 <div className="input-container-half">
                     {/* should not display even in edit */}
-                    <span className="input-label">PASSWORD/ </span><input type="password" className="input-hidden" placeholder="Password"></input>
+                    <span className="input-label">PASSWORD/ </span>
+                    <input type="password" className="input-hidden" placeholder="Password"></input>
                 </div>
                 <div className="input-container-half">
-                    <span className="input-label">GALLERY POSITION/ </span><input type="text" className="input-hidden" placeholder="Director"></input>
+                    <span className="input-label">GALLERY POSITION/ </span>
+                    <input type="text" className="input-hidden" placeholder="Director"></input>
                 </div>
               </div>
               <div className="profile-title space-top">
@@ -45,10 +49,12 @@ class GalleryProfile extends React.Component {
               </div>
               <div className="input-block">
                 <div className="input-container-full">
-                    <span className="input-label">NAME OF THE GALLERY/ </span><input type="text" className="input-hidden" placeholder="GALLERY NEU"></input>
+                    <span className="input-label">NAME OF THE GALLERY/ </span>
+                    <input type="text" className="input-hidden" placeholder="GALLERY NEU"></input>
                 </div>
                 <div className="input-container-full">
-                    <span className="input-label">ADDRESS/ </span><input type="text" className="input-hidden" placeholder="435 Broadway New York 10013 Manhattan"></input>
+                    <span className="input-label">ADDRESS/ </span>
+                    <input type="text" className="input-hidden" placeholder="435 Broadway New York 10013 Manhattan"></input>
                 </div>
               </div>
               <div className="input-block large-box">
@@ -68,7 +74,9 @@ class GalleryProfile extends React.Component {
                     <div className="input-container-half">
                         <div className="website-box">
                             <div className="input-label input-lable-left">WEBSITE </div>
-                            <div className="input-lable-left">www.gallerieneu.com</div>
+                            <div className="input-lable-left">
+                                <input type="text" className="input-hidden" placeholder="www.gallerieneu.com"></input>
+                            </div>
                         </div>
                     </div>
                 </div>

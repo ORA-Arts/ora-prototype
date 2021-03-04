@@ -1,3 +1,22 @@
-.gallegy-side-bar {
-    width: 300px;
+.gallegy-sidebar {
+    width: 308px;
+}
+
+.sidebar-box {
+    width: 240px;
+    border-right: 0.5px solid black;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.sidebar-text {
+    font-size: 14px;
+    padding-bottom: 62px;
+}
+
+.sidebar-text-bold {
+    font-weight: 700;
+    line-height: 18px;
 }
