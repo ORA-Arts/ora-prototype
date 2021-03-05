@@ -5,12 +5,15 @@ const passport = require('passport')
 
 
 router.post('/signup', (req, res, next) => { // "/" = "/api/auth"
-  const { username, password } = req.body;
+  const { username, password, userType } = req.body;
   if (password.length < 8) {
     return res.status(400).json({ message: 'Your password must be 8 chars minimum' });
   }
   if (username === '') {
     return res.status(400).json({ message: 'Your username cannot be empty' });
+  }
+  if (userType === '') {
+    return res.status(400).json({message: 'Please enter your user type'})
   }
   // check if username exists in database -> show message
   User.findOne({ username: username })
@@ -21,10 +24,11 @@ router.post('/signup', (req, res, next) => { // "/" = "/api/auth"
         // hash the password, create the user and send the user to the client
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
-
+        console.log(userType)
         User.create({
           username: username,
-          password: hash
+          password: hash,
+          userType: userType
         })
           .then(dbUser => {
             // login with passport:
