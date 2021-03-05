@@ -42,8 +42,14 @@ export default class LogInModal extends Component {
     const showHideClassName = this.props.showLogin ? "modal display-block" : "modal display-none";
     return (
       <div className={showHideClassName}>
-      <section className="modal-main">
+      <section id="modal-login">
+      <div id='buttonContainer'>
+      <button id="buttonClose" type="button" onClick={this.props.handleClose}>
+          X
+        </button>
+        </div>
       <form onSubmit={this.handleSubmit}>
+      <div id="logInContainer">
           <label htmlFor="username"></label>
           <input
             type="text"
@@ -66,10 +72,8 @@ export default class LogInModal extends Component {
           {this.state.message && (
             <h3>{this.state.message}</h3>
           )}
+          </div>
         </form>
-        <button type="button" onClick={this.props.handleClose}>
-          Close
-        </button>
       </section>
     </div>
     )

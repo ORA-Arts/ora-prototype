@@ -80,10 +80,10 @@ showLoginModal = () => {
          ) : (
            <>
            <li>
-           <button onClick={this.showSignupModal}>SIGN UP</button>
+           <button className="btnAuth" onClick={this.showSignupModal}>SIGN UP</button>
            <SignUpModal show={this.state.showSignup} handleClose={this.hideModal} setUser={this.setUser}/>
            {/* <Link className ="link" to='/signup'>SIGN UP</Link> */}
-           <button className ="link" onClick ={this.showLoginModal}>/ LOG IN</button>
+           <button className="btnAuth" onClick ={this.showLoginModal}>/ LOG IN</button>
            <LogInModal showLogin={this.state.showLogin} handleClose={this.hideModal} setUser={this.setUser}/>
            </li>
            </>

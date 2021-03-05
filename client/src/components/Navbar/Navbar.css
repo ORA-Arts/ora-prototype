@@ -15,6 +15,32 @@ body {
     z-index: 9999;
 }
 
+.btnAuth {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0px;
+}
+
+.btnAuth:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  background:black;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+  margin-top: 0px;
+}
+
+.btnAuth:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+
 #navtitles { 
   padding: 0; 
   list-style: none; 
