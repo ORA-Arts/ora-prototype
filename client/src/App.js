@@ -3,7 +3,8 @@ import "./App.css";
 import "./webfontkit/stylesheet.css"
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-import Navbar from "./components/NavBar/NavBar";
+import Navbar from "./components/NavBar/Navbar";
+import Footer from "./components/Footer/Footer";
 import SignUp from "./components/SignUp/SignUp";
 import LogIn from "./components/LogIn/LogIn";
 import WhatIsOra from "./components/LandingPages/WhatIsOra/WhatIsOra";
@@ -25,6 +26,7 @@ export default class App extends Component {
       <div className="App">
         {/* <Navbar user={this.state.user} setUser={this.setUser} /> */}
         <Navbar />
+        <Footer />
         <Route
           exact path='/what-is-ora'
           component={WhatIsOra}
