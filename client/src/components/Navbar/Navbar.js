@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../../services/auth";
-import "./NavBar.css";
+import "./Navbar.css";
 import logo from "../../images/LOGO_1.png"
 import LogInModal from "../LogInModal/LogInModal"
 
