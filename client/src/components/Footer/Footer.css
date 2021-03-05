@@ -2,18 +2,16 @@
 footer{
   background-color: white;
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   display: flex;
   margin-top: 1rem;
   align-items: top;
-  justify-content: space-around;
-  width: 90vw;
-  margin-right: 5vw;
-  margin-left: 5vw;
-  height: auto;
+  justify-content: space-between;
+  width: 100vw;
+  margin-right: 1.5%;
+  margin-left: 1.5%;
+  height: 2.5rem;
 }
-
-
 
 .hide {
   display: none;
