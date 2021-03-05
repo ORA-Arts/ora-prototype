@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import "./webfontkit/stylesheet.css"
 import React, { Component } from "react";
@@ -9,6 +8,8 @@ import SignUp from "./components/SignUp/SignUp";
 import LogIn from "./components/LogIn/LogIn";
 import WhatIsOra from "./components/LandingPages/WhatIsOra/WhatIsOra";
 import { Loggedin } from './services/auth';
+import GalleryProfile from './components/GalleryProfile/GalleryProfile';
+import GalleryProfileHooks from './components/GalleryProfile/GalleryProfileHooks';
 
 export default class App extends Component {
   constructor(props) {
@@ -36,7 +37,6 @@ export default class App extends Component {
   }
 
   render() {
-
     return (
       <div className="App">
         {/* <Navbar user={this.state.user} setUser={this.setUser} /> */}
@@ -50,6 +50,7 @@ export default class App extends Component {
           exact path='/signup'
           render={props => <SignUp setUser={this.setUser} {...props} />}
           />
+        <Route exact path='/gallery/new' render={props => <GalleryProfileHooks user={this.state.user} {...props} />} />
        {/* <Route
           exact path='/login'
           render={props => <LogIn setUser={this.setUser} {...props} />}
