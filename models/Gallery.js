@@ -16,7 +16,7 @@ const gallerySchema = new Schema({
   imgPublicId: String,
   website: String,
   convelio: Boolean
-});
+}, { timestamps: true });
 
 const Gallery = model("Gallery", gallerySchema);
 
