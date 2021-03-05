@@ -4,7 +4,7 @@ const Loggedin = async () => {
   try {
     const response = await axios.get('/api/auth/loggedin');
     // console.log("user", response.data);
-    return response.data
+    return response.data;
   } catch (err) {
     console.log(err);
     return null;
