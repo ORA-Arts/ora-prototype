@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../../services/auth";
-import "./NavBar.css";
+import "./Navbar.css";
 import logo from "../../images/LOGO_1.png"
 import LogInModal from "../LogInModal/LogInModal"
 
@@ -13,12 +13,12 @@ import LogInModal from "../LogInModal/LogInModal"
 // };
 
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   constructor(props) {
     super(props);
       this.state = {
       show: false,
-      user: this.props.user
+      user: props.user
     };
     this.setUser = this.setUser.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -45,7 +45,6 @@ handleLogout = () => {
   };
 
   render() {
-    console.log(this.state.user);
     return (
       <div id="navbar" >
       <a href='/'>
@@ -68,7 +67,7 @@ handleLogout = () => {
            <>
            <li>
            <Link className ="link" to='/myprofile'>MY PROFILE</Link>
-           <Link className ="link" to='/' onClick={() => logout()}>/ LOG OUT</Link>
+           <Link className ="link" to='/' onClick={() => this.handleLogout()}>/ LOG OUT</Link>
            </li>
            </>
          ) : (
@@ -87,3 +86,4 @@ handleLogout = () => {
   }
 }
 
+export default NavBar;

@@ -21,7 +21,6 @@ export default class LogInModal extends Component {
     const { username, password } = this.state;
     login(username, password)
       .then(user => {
-        console.log(user)
         if (user.message) {
           this.setState({
             message: user.message,
@@ -31,19 +30,16 @@ export default class LogInModal extends Component {
         } else {
           // the response from the server is a user object -> signup was successful
           // we want to put the user object in the state of NavBar.js
-          console.log(user)
           this.props.setUser(user);
           this.props.handleClose();
-          this.props.history.push('/');
+          // this.props.history.push('/'); // this need to be passed in the router app.js
         }
       })
   }
 
 
   render() {
-
     const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
-    console.log(showHideClassName)
     return (
       <div className={showHideClassName}>
       <section className="modal-main">

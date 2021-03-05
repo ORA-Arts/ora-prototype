@@ -3,16 +3,20 @@ import "./App.css";
 import "./webfontkit/stylesheet.css"
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-import Navbar from "./components/NavBar/NavBar";
+import NavBar from "./components/Navbar/Navbar";
 import SignUp from "./components/SignUp/SignUp";
 import LogIn from "./components/LogIn/LogIn";
 import WhatIsOra from "./components/LandingPages/WhatIsOra/WhatIsOra";
 import { Loggedin } from './services/auth';
 
 export default class App extends Component {
-  state = {
-    user: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+    };
+    this.Loggedin = Loggedin.bind(this);
+  }
 
   setUser = (user) => {
     this.setState({
@@ -20,9 +24,14 @@ export default class App extends Component {
     });
   };
 
-  async componentDidMount() {
-    const currentUser = await Loggedin()
-    this.setState({user: currentUser});
+  componentDidMount() {
+    this.Loggedin()
+      .then(user => {
+        // console.log(user);
+        this.setState({user: user});
+      })
+    // console.log(currentUser);
+    // this.setState({user: currentUser});
   }
 
   render() {
@@ -30,7 +39,7 @@ export default class App extends Component {
     return (
       <div className="App">
         {/* <Navbar user={this.state.user} setUser={this.setUser} /> */}
-        <Navbar user={this.props.user}/>
+        <NavBar user={this.state.user}/>
         <Route
           exact path='/what-is-ora'
           component={WhatIsOra}

@@ -1,17 +1,14 @@
 import axios from 'axios';
 
-const Loggedin = () => {
-  axios.get('/api/auth/loggedin')
-  .then(response => {
-    console.log(response);
-    const user = response.data;
-    console.log("user", user);
-    return user;
-  })
-  .catch(err => {
+const Loggedin = async () => {
+  try {
+    const response = await axios.get('/api/auth/loggedin');
+    // console.log("user", response.data);
+    return response.data
+  } catch (err) {
     console.log(err);
     return null;
-  })
+  }
 }
 const signup = (username, password) => {
   return axios.
