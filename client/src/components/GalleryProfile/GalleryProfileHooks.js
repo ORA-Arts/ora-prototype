@@ -3,6 +3,7 @@ import "./GalleryProfile.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import house from './house-test.jpg';
 import axios from 'axios';
+import { fetchGallery }
 
 const GalleryProfile = (props) => {
   const initialState = {
@@ -33,19 +34,24 @@ const GalleryProfile = (props) => {
 
   const submitHandler = () => {
     console.log(data.username, data.email, data.password, data.position, data.name, data.address, data.biography, data.website, convelio, image);
-    // const { username, email, password, position, name, address, biography, website } = data;
     const uploadData = new FormData();
     uploadData.append("image", image, image.name);
-    console.log(uploadData.getAll('image'));
     const config = {
       headers: {
           'content-type': 'multipart/form-data'
       }
-    }
+    };
     axios.post('/api/gallery/new',
       uploadData, config
     );
   };
+
+  useEffect(async () => {
+    const gallery = await axios(
+      '/'
+    );
+  });
+
 
   const startEditing = () => {
     setIsEditMode(true);
