@@ -1,12 +1,14 @@
-import React, { Component, Modal } from 'react'
-import { login } from '../../services/auth';
+import React, { Component } from 'react'
+import './SignUpModal.css'
+import { signup } from '../../services/auth'
 
-export default class Login extends Component {
+export default class SignUpModal extends Component {
 
   state = {
     username: '',
     password: '',
-    message: '',
+    userType: '',
+    message: ''
   }
 
   handleChange = event => {
@@ -19,7 +21,7 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { username, password } = this.state;
-    login(username, password)
+    signup(username, password)
       .then(user => {
         if (user.message) {
           this.setState({
@@ -32,37 +34,47 @@ export default class Login extends Component {
           // we want to put the user object in the state of App.js
           console.log(user)
           this.props.setUser(user);
-          this.props.history.push('/myprofile');
+          this.props.handleClose();
+          // this.props.history.push('/'); // this need to be passed in the router app.js
+
         }
       })
   }
+
   render() {
+    const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
     return (
-      <div>
-        <h2>Login</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username: </label>
+      <div className={showHideClassName}>
+      <section className="modal-main">
+      <form onSubmit={this.handleSubmit}>
+          <label htmlFor="username"></label>
           <input
             type="text"
             name="username"
+            placeholder="USERNAME"
             value={this.state.username}
             onChange={this.handleChange}
             id="username"
           />
-          <label htmlFor="password">Password: </label>
+          <label htmlFor="password"></label>
           <input
             type="password"
             name="password"
+            placeholder="PASSWORD"
             value={this.state.password}
             onChange={this.handleChange}
             id="password"
           />
-          <button type="submit">Log in</button>
+          <button type="submit">SIGN UP</button>
           {this.state.message && (
             <h3>{this.state.message}</h3>
           )}
         </form>
-      </div>
+        <button type="button" onClick={this.props.handleClose}>
+          Close
+        </button>
+      </section>
+    </div>
     )
   }
 }

@@ -4,6 +4,7 @@ import { logout } from "../../services/auth";
 import "./Navbar.css";
 import logo from "../../images/LOGO_1.png"
 import LogInModal from "../LogInModal/LogInModal"
+import SignUpModal from '../SignUpModal/SignUpModal'
 
 
 // const handleLogout = (props) => {
@@ -73,10 +74,11 @@ handleLogout = () => {
          ) : (
            <>
            <li>
-           <Link className ="link" to='/signup'>SIGN UP</Link>
+           <button onClick={this.showModal}>SIGN UP</button>
+           <SignUpModal show={this.state.show} handleClose={this.handleClose} setUser={this.setUser}/>
+           {/* <Link className ="link" to='/signup'>SIGN UP</Link> */}
            <button className ="link" onClick ={this.showModal}>/ LOG IN</button>
            <LogInModal show={this.state.show} handleClose={this.hideModal} setUser={this.setUser}/>
-           {/* <Link className ="link" to='/login'>/ LOG IN</Link> */}
            </li>
            </>
          )}

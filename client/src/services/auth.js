@@ -14,9 +14,11 @@ const signup = (username, password) => {
   return axios.
     post('/api/auth/signup', { username, password })
     .then(response => {
+      console.log("respond", response)
       return response.data
     })
     .catch(err => {
+      console.log("err", err)
       return err.response.data
     })
 }
