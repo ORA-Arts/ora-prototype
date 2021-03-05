@@ -44,12 +44,13 @@ router.post('/signup', (req, res, next) => { // "/" = "/api/auth"
 });
 
 router.post('/login', (req, res, next) => { // "/" = "/api/auth"
+  console.log(req.body);
   passport.authenticate('local', (err, user) => {
     if (err) {
       return res.status(500).json({ message: 'Error while attempting to login' })
     }
     if (!user) {
-      return res.status(400).json({ message: 'Wrong credentials' })
+      return res.status(401).json({ message: 'Wrong credentials' })
     }
     req.login(user, err => {
       if (err) {
@@ -57,7 +58,7 @@ router.post('/login', (req, res, next) => { // "/" = "/api/auth"
       }
       return res.status(200).json(user);
     })
-  })
+  })(req, res, next);
 });
  
 router.delete('/logout', (req, res) => { // "/" = "/api/auth"
@@ -68,7 +69,10 @@ router.delete('/logout', (req, res) => { // "/" = "/api/auth"
 
 router.get('/loggedin', (req, res, next) => { // "/" = "/api/auth"
   // this is where passport stores the logged in user
-  res.json(req.user);
+  if (req.isAuthenticated()) {
+    res.status(200).json(req.user);
+  }
+  res.status(403).json({message: "Unauthorized"});
 });
 
 

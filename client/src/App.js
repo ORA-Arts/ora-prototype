@@ -3,22 +3,37 @@ import "./App.css";
 import "./webfontkit/stylesheet.css"
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-import Navbar from "./components/NavBar/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import SignUp from "./components/SignUp/SignUp";
 import LogIn from "./components/LogIn/LogIn";
 import WhatIsOra from "./components/LandingPages/WhatIsOra/WhatIsOra";
+import { Loggedin } from './services/auth';
 
 export default class App extends Component {
-  state = {
-    user: this.props.user,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+    };
+    this.Loggedin = Loggedin.bind(this);
+  }
 
   setUser = (user) => {
     this.setState({
       user: user,
     });
   };
+
+  componentDidMount() {
+    this.Loggedin()
+      .then(user => {
+        // console.log(user);
+        this.setState({user: user});
+      })
+    // console.log(currentUser);
+    // this.setState({user: currentUser});
+  }
 
   render() {
 

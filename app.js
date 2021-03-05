@@ -36,7 +36,7 @@ app.use(
     // even if the session was never modified during the request.
     resave: true,
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI
+      mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/prototype"
     })
   })
 )
