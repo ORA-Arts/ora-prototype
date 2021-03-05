@@ -76,6 +76,10 @@ const GalleryProfile = (props) => {
   return (
   <div className="app-container">
       <div className="container-profile">
+      <div className="gallery-name">
+        {data.name}
+      </div>
+      <hr/>
       <div className="edit-button">
         <button className="btn-edit" onClick={startEditing}>Edit</button>
       </div>

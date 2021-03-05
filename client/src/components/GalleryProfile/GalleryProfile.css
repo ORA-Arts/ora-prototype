@@ -9,7 +9,13 @@
     width: 1374px;
     height: 1795px;
     padding: 0;
-    margin: 32px;
+    margin: 16px 32px;
+}
+
+.container-profile .gallery-name {
+    font-size: 34px;
+    line-height: 50px;
+    text-align: left;
 }
 
 .container-profile .edit-button {
