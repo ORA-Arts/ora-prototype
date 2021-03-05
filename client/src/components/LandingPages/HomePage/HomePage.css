@@ -1,0 +1,133 @@
+/* HOMEPAGE */
+/* Main container for images */
+
+
+
+#allImagesContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+
+/* Style the buttons and place it in the middle of the container/image */
+.imageContainer .btnBlack {
+  color: black;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: solid 1px black;
+  cursor: pointer;
+  background-color: transparent;
+  width: 160px;
+  text-decoration: none;
+}
+
+.imageContainer .btnBlack:hover {
+  background-color: black;
+  color: white
+}
+
+.imageContainer .btnWhite {
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: solid 1px white;
+  cursor: pointer;
+  background-color: transparent;
+  width: 160px;
+}
+
+.imageContainer .btnWhite:hover {
+  background-color: white;
+  color: black
+}
+
+
+  /* Position the text */
+  .imageContainer h2 {
+    padding-top: 25px;
+    font-size: 16px;
+    text-decoration: none;
+    margin-left: 15px;
+    
+  }
+  .blurEffectHP:hover h3{
+    display: block;
+    font-family: 'editorial_newregular';
+    font-size: 20px;
+    text-align: right;
+    margin-right: 15px;
+    margin-left:5px;
+  }
+
+  .imageContainer h3{
+    display: none;
+  }
+
+.btnHP{
+  align-self: flex-end;
+  margin-bottom: 15px;
+  margin-right: 15px;
+}
+    
+  .textBlack {
+    color: black;
+    text-decoration: none;
+  }
+  .textWhite {
+    color: white;
+    text-decoration: none;
+  }
+
+
+  /* Handle the images */
+
+  .imageContainer{
+    display: block;
+    height: 85vh;
+    width: 32vw;
+    margin: 0 5px;;
+  }
+
+  .blurEffectHP {
+    display: block;
+    height: 85vh;
+    width: 32vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .blurEffectHP:hover{
+    backdrop-filter: blur(3px);
+  }
+
+  .imageContainer h2{
+    visibility: visible;
+  }
+
+
+#imageLeft {
+  background-image: url('../../../images/HOMEPAGE\ 1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  background-position: center;
+}
+
+#imageMiddle{
+  background-image: url("../../../images/HOMEPAGE\ 2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+} 
+
+#imageRight{
+  background-image: url("../../../images/HOMEPAGE\ 3.png");
+  background-position: center;
+  background-size: cover;
+} 
