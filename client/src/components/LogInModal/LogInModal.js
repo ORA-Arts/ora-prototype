@@ -21,6 +21,7 @@ export default class LogInModal extends Component {
     const { username, password } = this.state;
     login(username, password)
       .then(user => {
+        console.log(user)
         if (user.message) {
           this.setState({
             message: user.message,
@@ -32,6 +33,7 @@ export default class LogInModal extends Component {
           // we want to put the user object in the state of NavBar.js
           console.log(user)
           this.props.setUser(user);
+          this.props.handleClose();
           this.props.history.push('/');
         }
       })

@@ -7,10 +7,11 @@ import Navbar from "./components/NavBar/NavBar";
 import SignUp from "./components/SignUp/SignUp";
 import LogIn from "./components/LogIn/LogIn";
 import WhatIsOra from "./components/LandingPages/WhatIsOra/WhatIsOra";
+import { Loggedin } from './services/auth';
 
 export default class App extends Component {
   state = {
-    user: this.props.user,
+    user: null,
   };
 
   setUser = (user) => {
@@ -19,12 +20,17 @@ export default class App extends Component {
     });
   };
 
+  async componentDidMount() {
+    const currentUser = await Loggedin()
+    this.setState({user: currentUser});
+  }
+
   render() {
 
     return (
       <div className="App">
         {/* <Navbar user={this.state.user} setUser={this.setUser} /> */}
-        <Navbar />
+        <Navbar user={this.props.user}/>
         <Route
           exact path='/what-is-ora'
           component={WhatIsOra}

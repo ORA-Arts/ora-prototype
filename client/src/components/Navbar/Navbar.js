@@ -6,20 +6,29 @@ import logo from "../../images/LOGO_1.png"
 import LogInModal from "../LogInModal/LogInModal"
 
 
-const handleLogout = (props) => {
-  logout().then(() => {
-    props.setUser(null);
-  });
-};
+// const handleLogout = (props) => {
+//   logout().then(() => {
+//     props.setUser(null);
+//   });
+// };
 
 
 export default class NavBar extends Component {
-
-  state = {
-    show: false,
-    user: this.props.user
+  constructor(props) {
+    super(props);
+      this.state = {
+      show: false,
+      user: this.props.user
+    };
+    this.setUser = this.setUser.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
-
+  
+handleLogout = () => {
+  logout().then(() => {
+    this.setState({user: null});
+  });
+};
 
   showModal = () => {
     this.setState({ show: true });
@@ -36,7 +45,7 @@ export default class NavBar extends Component {
   };
 
   render() {
-    console.log(this.props.user);
+    console.log(this.state.user);
     return (
       <div id="navbar" >
       <a href='/'>
@@ -55,11 +64,11 @@ export default class NavBar extends Component {
          <li>
            <Link className ="link"to='/support-an-artist-project'>SUPPORT AN ARTIST PROJECT</Link>
          </li>
-         {this.props.user ? (
+         {this.state.user ? (
            <>
            <li>
            <Link className ="link" to='/myprofile'>MY PROFILE</Link>
-           <Link className ="link" to='/' onClick={() => handleLogout(this.props)}>/ LOG OUT</Link>
+           <Link className ="link" to='/' onClick={() => logout()}>/ LOG OUT</Link>
            </li>
            </>
          ) : (

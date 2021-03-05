@@ -1,5 +1,18 @@
 import axios from 'axios';
 
+const Loggedin = () => {
+  axios.get('/api/auth/loggedin')
+  .then(response => {
+    console.log(response);
+    const user = response.data;
+    console.log("user", user);
+    return user;
+  })
+  .catch(err => {
+    console.log(err);
+    return null;
+  })
+}
 const signup = (username, password) => {
   return axios.
     post('/api/auth/signup', { username, password })
@@ -12,12 +25,15 @@ const signup = (username, password) => {
 }
 
 const login = (username, password) => {
+  console.log(username, password);
     return axios.
     post('/api/auth/login', { username, password })
     .then(response => {
+      console.log("respond", response)
       return response.data
     })
     .catch(err => {
+      console.log("err", err)
       return err.response.data
     })
 }
@@ -33,4 +49,4 @@ const logout = () => {
     })
 }
 
-export { signup, login, logout };
+export { signup, login, logout, Loggedin };
