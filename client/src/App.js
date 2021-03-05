@@ -10,6 +10,7 @@ import WhatIsOra from "./components/LandingPages/WhatIsOra/WhatIsOra";
 import { Loggedin } from './services/auth';
 import GalleryProfile from './components/GalleryProfile/GalleryProfile';
 import GalleryProfileHooks from './components/GalleryProfile/GalleryProfileHooks';
+import ArtistsList from "./components/ArtistsList/ArtistsList";
 
 export default class App extends Component {
   constructor(props) {
@@ -51,6 +52,7 @@ export default class App extends Component {
           render={props => <SignUp setUser={this.setUser} {...props} />}
           />
         <Route exact path='/gallery/new' render={props => <GalleryProfileHooks user={this.state.user} {...props} />} />
+        <Route exact path='/gallery/artists' render={props => <ArtistsList user={this.state.user} {...props} />} />
        {/* <Route
           exact path='/login'
           render={props => <LogIn setUser={this.setUser} {...props} />}
