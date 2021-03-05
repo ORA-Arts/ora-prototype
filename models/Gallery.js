@@ -11,7 +11,8 @@ const gallerySchema = new Schema({
   address: String,
   biography: String,
   position: String,
-  image: String,
+  imageUrl: String,
+  imgPublicId: String,
   website: String,
   convelio: Boolean
 });

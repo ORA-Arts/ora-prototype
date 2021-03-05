@@ -1,4 +1,5 @@
 // ℹ️ Gets access to environment variables/settings
+const cors = require('cors');
 // https://www.npmjs.com/package/dotenv
 require("dotenv/config");
 
@@ -14,6 +15,13 @@ const express = require("express");
 const hbs = require("hbs");
 
 const app = express();
+
+app.use(
+  cors({
+    // this could be multiple domains/origins, but we will allow just our React app
+    origin: ['http://localhost:3000']
+  })
+);
 
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
 require("./config")(app);

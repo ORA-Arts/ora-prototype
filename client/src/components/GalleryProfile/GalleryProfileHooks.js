@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./GalleryProfile.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import house from './house-test.jpg';
+import axios from 'axios';
 
 const GalleryProfile = (props) => {
   const initialState = {
@@ -12,6 +13,7 @@ const GalleryProfile = (props) => {
     name: "",
     address: "",
     website: "",
+    biography: ""
   };
 
   const [data, setData] = useState(initialState);
@@ -30,7 +32,19 @@ const GalleryProfile = (props) => {
   };
 
   const submitHandler = () => {
-    // console.log(username, email, password, position, name, address, biography, website, convelio, image);
+    console.log(data.username, data.email, data.password, data.position, data.name, data.address, data.biography, data.website, convelio, image);
+    // const { username, email, password, position, name, address, biography, website } = data;
+    const uploadData = new FormData();
+    uploadData.append("image", image, image.name);
+    console.log(uploadData.getAll('image'));
+    const config = {
+      headers: {
+          'content-type': 'multipart/form-data'
+      }
+    }
+    axios.post('/api/gallery/new',
+      uploadData, config
+    );
   };
 
   const startEditing = () => {

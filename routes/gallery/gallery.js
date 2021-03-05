@@ -1,15 +1,22 @@
 const router = require('express').Router();
 const Gallery = require('../../models/Gallery');
+const { uploader, cloudinary } = require('../../config/cloudinary');
 
 
 router.get("/", (req, res, next) => {
   res.json("GET '/': All good in here");
 });
 
-router.post("/new", async (req, res, next) => { // loginCheck() middleware
+// uploader.single('image'),
+
+router.post("/new", uploader.single('image'), async (req, res, next) => { // loginCheck() middleware
+  console.log(req.file);
   // const user =  req.session.user;
   const { name, address, biography, position, image, website, convelio } = req.body; //user: user._id, 
   // validation later
+  const imageUrl = req.file.path;
+  const imgPublicId = req.file.filename;
+  // console.log(imageUrl);
   try {
     const gallery = await Gallery.create({name, address, biography, position, image, website, convelio});
     res.json({gallery, success: true });
