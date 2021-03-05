@@ -39,7 +39,7 @@ export default class LogInModal extends Component {
 
 
   render() {
-    const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
+    const showHideClassName = this.props.showLogin ? "modal display-block" : "modal display-none";
     return (
       <div className={showHideClassName}>
       <section className="modal-main">

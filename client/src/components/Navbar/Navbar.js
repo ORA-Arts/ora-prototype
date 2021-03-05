@@ -18,7 +18,8 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
       this.state = {
-      show: false,
+      showLogin: false,
+      showSignup : false, 
       user: props.user
     };
     this.setUser = this.setUser.bind(this);
@@ -31,12 +32,17 @@ handleLogout = () => {
   });
 };
 
-  showModal = () => {
-    this.setState({ show: true });
+showLoginModal = () => {
+    this.setState({ showLogin: true });
+  };
+
+  showSignupModal = () => {
+    this.setState({ showSignup: true });
   };
 
   hideModal = () => {
-    this.setState({ show: false });
+    this.setState({ showLogin: false });
+    this.setState({ showSignup: false });
   };
 
   setUser = (user) => {
@@ -74,11 +80,11 @@ handleLogout = () => {
          ) : (
            <>
            <li>
-           <button onClick={this.showModal}>SIGN UP</button>
-           <SignUpModal show={this.state.show} handleClose={this.handleClose} setUser={this.setUser}/>
+           <button onClick={this.showSignupModal}>SIGN UP</button>
+           <SignUpModal show={this.state.showSignup} handleClose={this.hideModal} setUser={this.setUser}/>
            {/* <Link className ="link" to='/signup'>SIGN UP</Link> */}
-           <button className ="link" onClick ={this.showModal}>/ LOG IN</button>
-           <LogInModal show={this.state.show} handleClose={this.hideModal} setUser={this.setUser}/>
+           <button className ="link" onClick ={this.showLoginModal}>/ LOG IN</button>
+           <LogInModal showLogin={this.state.showLogin} handleClose={this.hideModal} setUser={this.setUser}/>
            </li>
            </>
          )}

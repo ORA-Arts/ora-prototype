@@ -10,9 +10,9 @@ const Loggedin = async () => {
     return null;
   }
 }
-const signup = (username, password) => {
+const signup = (username, password, userType) => {
   return axios.
-    post('/api/auth/signup', { username, password })
+    post('/api/auth/signup', { username, password, userType })
     .then(response => {
       console.log("respond", response)
       return response.data

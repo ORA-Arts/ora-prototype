@@ -16,18 +16,20 @@ export default class SignUpModal extends Component {
     this.setState({
       [name]: value
     })
+    console.log(this.state.userType)
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    const { username, password } = this.state;
-    signup(username, password)
+    const { username, password, userType } = this.state;
+    signup(username, password, userType)
       .then(user => {
         if (user.message) {
           this.setState({
             message: user.message,
             username: '',
-            password: ''
+            password: '',
+            userType: ''
           })
         } else {
           // the response from the server is a user object -> signup was successful
@@ -65,6 +67,23 @@ export default class SignUpModal extends Component {
             onChange={this.handleChange}
             id="password"
           />
+          <input 
+            type="radio"
+            name="userType"
+            id="collector"
+            value="collector"
+            onChange={this.handleChange}
+            />
+          <label htmlFor='collector'>A COLLECTOR</label>
+          <input 
+            type="radio"
+            name="userType"
+            id="gallery"
+            value="gallery"
+            onChange={this.handleChange}
+            />
+          <label htmlFor='gallery'>A GALLERY</label>
+          
           <button type="submit">SIGN UP</button>
           {this.state.message && (
             <h3>{this.state.message}</h3>
