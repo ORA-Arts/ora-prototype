@@ -51,6 +51,11 @@ export default class App extends Component {
               <GalleryProfileHooks user={this.state.user} {...props} />
             )}
           />
+        <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} user={this.state.user} {...props} />} />
+       {/* <Route
+          exact path='/login'
+          render={props => <LogIn setUser={this.setUser} {...props} />}
+          /> */}
         </Switch>
       </div>
     );

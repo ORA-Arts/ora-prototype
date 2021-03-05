@@ -74,9 +74,9 @@ router.delete('/logout', (req, res) => { // "/" = "/api/auth"
 router.get('/loggedin', (req, res, next) => { // "/" = "/api/auth"
   // this is where passport stores the logged in user
   if (req.isAuthenticated()) {
-    res.status(200).json(req.user);
+    return res.status(200).json(req.user);
   }
-  res.status(403).json({message: "Unauthorized"});
+  return res.status(403).json({message: "Unauthorized"});
 });
 
 

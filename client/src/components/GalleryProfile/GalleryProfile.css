@@ -1,9 +1,13 @@
 .app-container {
-    width: 1440px;
-    height: 1795px;
+    display: flex;
+    justify-content: center;
+    margin-top: 63px;
+    text-align: center;
 }
 
 .container-profile {
+    width: 1374px;
+    height: 1795px;
     padding: 0;
     margin: 32px;
 }
@@ -171,6 +175,11 @@
     box-sizing: border-box;
 }
 
+.btn-image:hover {
+    color:white;
+    background-color: black;
+}
+
 .website-box {
     margin: 19px 13px;
 }
@@ -228,4 +237,9 @@ input:-webkit-autofill:active {
 .save-change {
     width: 100% !important;
     height: 60px;
+}
+
+.biography-text {
+    text-align: left;
+    margin-top: 12px;
 }
