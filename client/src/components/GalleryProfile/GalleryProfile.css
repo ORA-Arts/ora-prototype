@@ -1,9 +1,13 @@
 .app-container {
-    width: 1440px;
-    height: 1795px;
+    display: flex;
+    justify-content: center;
+    margin-top: 63px;
+    text-align: center;
 }
 
 .container-profile {
+    width: 1374px;
+    height: 1795px;
     padding: 0;
     margin: 32px;
 }
@@ -169,6 +173,11 @@
     background-color: white;
     border: 0.25px solid black;
     box-sizing: border-box;
+}
+
+.btn-image:hover {
+    color:white;
+    background-color: black;
 }
 
 .website-box {

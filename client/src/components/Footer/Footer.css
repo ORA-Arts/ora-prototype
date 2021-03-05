@@ -2,7 +2,7 @@
 footer{
   background-color: white;
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   display: flex;
   margin-top: 1rem;
   align-items: top;
