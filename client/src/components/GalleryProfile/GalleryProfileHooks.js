@@ -27,7 +27,7 @@ const GalleryProfile = (props) => {
   // const [password, setPassword] = useState("")
 
 
-  console.log(data);
+  console.log("data",data);
 
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -44,13 +44,12 @@ const GalleryProfile = (props) => {
     const uploadData = new FormData();
     const dataCopy = data;
     dataCopy.convelio = convelio;
-    console.log(dataCopy);
     uploadData.append("image", image);
     for (let key in dataCopy) {
       uploadData.append(key, dataCopy[key]);
     }
     const resData = await addNewGallery(uploadData);
-    console.log(resData);
+    setData(resData);
   };
 
   useEffect(() => {
@@ -62,6 +61,7 @@ const GalleryProfile = (props) => {
         setIsGalleryExist(false);
       } else {
         setIsGalleryExist(true);
+        setIsEditMode(false);
         setData(resData);
       }
     }
@@ -151,15 +151,15 @@ const GalleryProfile = (props) => {
                       <div>
                         {isEditMode ? 
                           <textarea name="biography" onChange={onChange} value={data.biography} id="biography" className="input-no-border" rows="24" placeholder="your gallery biography"></textarea> :
-                        <span>{data.biography}</span>
+                        <div className="biography-text">{data.biography}</div>
                         } 
                       </div>
                   </div>
               </div>
               <div className="input-container-half remove-border">
                   <div className="image-container">
-                      <img className="gallery-image" src={image ? URL.createObjectURL(image) : house} alt={image ? image.name.split(".")[0] : "house sample"} />
-                      <input type="file" id="file" className="input-hidden" onChange={fileHandler}  />
+                      <img className="gallery-image" src={image ? URL.createObjectURL(image) : data.imageUrl} alt={image ? image.name.split(".")[0] : "house sample"} />
+                      <input type={(isGalleryExist && !isEditMode) ? "hidden" : "file"} id="file" className="input-hidden" onChange={fileHandler}  />
                       <label htmlFor="file" className="btn-image">CHANGE IMAGE</label>
                       {/* <button className="btn-image">CHANGE IMAGE</button> */}
                   </div>

@@ -238,3 +238,8 @@ input:-webkit-autofill:active {
     width: 100% !important;
     height: 60px;
 }
+
+.biography-text {
+    text-align: left;
+    margin-top: 12px;
+}
