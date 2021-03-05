@@ -48,7 +48,13 @@ export default class SignUpModal extends Component {
     return (
       <div className={showHideClassName}>
       <section className="modal-main">
+      <div className='buttonContainer'>
+      <button className="buttonClose" type="button" onClick={this.props.handleClose}>
+          X
+        </button>
+      </div>
       <form onSubmit={this.handleSubmit}>
+      <div id="signUpContainer">
           <label htmlFor="username"></label>
           <input
             type="text"
@@ -67,6 +73,7 @@ export default class SignUpModal extends Component {
             onChange={this.handleChange}
             id="password"
           />
+          <div id='selectUser'>
           <input 
             type="radio"
             name="userType"
@@ -74,7 +81,7 @@ export default class SignUpModal extends Component {
             value="collector"
             onChange={this.handleChange}
             />
-          <label htmlFor='collector'>A COLLECTOR</label>
+          <label htmlFor='collector'>I AM A COLLECTOR</label>
           <input 
             type="radio"
             name="userType"
@@ -82,16 +89,15 @@ export default class SignUpModal extends Component {
             value="gallery"
             onChange={this.handleChange}
             />
-          <label htmlFor='gallery'>A GALLERY</label>
-          
+          <label htmlFor='gallery'>I AM A GALLERY</label>
+          </div>
           <button type="submit">SIGN UP</button>
           {this.state.message && (
             <h3>{this.state.message}</h3>
           )}
+          
+          </div>
         </form>
-        <button type="button" onClick={this.props.handleClose}>
-          Close
-        </button>
       </section>
     </div>
     )

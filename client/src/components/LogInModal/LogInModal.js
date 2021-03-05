@@ -43,8 +43,8 @@ export default class LogInModal extends Component {
     return (
       <div className={showHideClassName}>
       <section id="modal-login">
-      <div id='buttonContainer'>
-      <button id="buttonClose" type="button" onClick={this.props.handleClose}>
+      <div className='buttonContainer'>
+      <button className="buttonClose" type="button" onClick={this.props.handleClose}>
           X
         </button>
         </div>

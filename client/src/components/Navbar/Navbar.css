@@ -22,7 +22,12 @@ body {
   padding: 0px;
 }
 
-.btnAuth:after {    
+.btnAuth:active {
+  outline: none;
+  border: none;
+}
+
+/* .btnAuth:after {    
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
   content: "";
@@ -39,7 +44,7 @@ body {
 .btnAuth:hover:after { 
   width: 100%; 
   left: 0; 
-}
+} */
 
 #navtitles { 
   padding: 0; 
@@ -97,3 +102,4 @@ body {
   width: 0%; 
   left: 0; 
 }
+

@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import SignUp from "./components/SignUp/SignUp";
 import WhatIsOra from "./components/LandingPages/WhatIsOra/WhatIsOra";
 import { Loggedin } from './services/auth';
 import GalleryProfile from './components/GalleryProfile/GalleryProfile';
@@ -44,10 +43,6 @@ export default class App extends Component {
         <Route
           exact path='/what-is-ora'
           component={WhatIsOra}
-          />
-        <Route
-          exact path='/signup'
-          render={props => <SignUp setUser={this.setUser} {...props} />}
           />
         <Route exact path='/gallery/new' render={props => <GalleryProfileHooks user={this.state.user} {...props} />} />
       </div>
