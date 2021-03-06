@@ -7,7 +7,7 @@ import Footer from "./components/Footer/Footer";
 import WhatIsOra from "./components/LandingPages/WhatIsOra/WhatIsOra";
 import { Loggedin } from "./services/auth";
 import HomePage from "./components/LandingPages/HomePage/HomePage";
-import GalleryProfile from "./components/GalleryProfile/GalleryProfile";
+import InventoryList from "./components/Inventory/InventoryList";
 import GalleryProfileHooks from "./components/GalleryProfile/GalleryProfileHooks";
 
 export default class App extends Component {
@@ -52,6 +52,7 @@ export default class App extends Component {
             )}
           />
         <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} user={this.state.user} {...props} />} />
+        <Route exact path='/gallery/inventory' render={props => <InventoryList setUser={this.setUser} user={this.state.user} {...props} />} />
        {/* <Route
           exact path='/login'
           render={props => <LogIn setUser={this.setUser} {...props} />}
