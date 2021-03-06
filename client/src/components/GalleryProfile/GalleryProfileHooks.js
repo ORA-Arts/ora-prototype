@@ -3,24 +3,31 @@ import "./GalleryProfile.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import house from './house-test.jpg';
 import axios from 'axios';
-// import { fetchGallery }
+import { fetchGallery, addNewGallery } from '../../api/service';
 
 const GalleryProfile = (props) => {
   const initialState = {
-    username: "",
-    email: "",
-    password: "",
-    position: "",
     name: "",
+    ownerName: "",
+    email: "",
+    position: "",
     address: "",
     website: "",
-    biography: ""
+    biography: "",
+    imageUrl: "",
+    imgPublicId: "",
+    convelio: ""
   };
 
   const [data, setData] = useState(initialState);
   const [isEditMode, setIsEditMode] = useState(true);
+  const [isGalleryExist, setIsGalleryExist] = useState(false);
   const [convelio, setConvelio] = useState(true);
   const [image, setImage] = useState(null);
+  // const [password, setPassword] = useState("")
+
+
+  console.log("data",data);
 
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -32,25 +39,34 @@ const GalleryProfile = (props) => {
     setImage(e.target.files[0]);
   };
 
-  const submitHandler = () => {
-    console.log(data.username, data.email, data.password, data.position, data.name, data.address, data.biography, data.website, convelio, image);
+  const submitHandler = async () => {
+    // console.log(data.ownerName, data.email, data.password, data.position, data.name, data.address, data.biography, data.website, convelio, image);
     const uploadData = new FormData();
-    uploadData.append("image", image, image.name);
-    const config = {
-      headers: {
-          'content-type': 'multipart/form-data'
-      }
-    };
-    axios.post('/api/gallery/new',
-      uploadData, config
-    );
+    const dataCopy = data;
+    dataCopy.convelio = convelio;
+    uploadData.append("image", image);
+    for (let key in dataCopy) {
+      uploadData.append(key, dataCopy[key]);
+    }
+    const resData = await addNewGallery(uploadData);
+    setData(resData);
   };
 
-  useEffect(async () => {
-    const gallery = await axios(
-      '/'
-    );
-  });
+  useEffect(() => {
+    async function fetchData() {
+      await props.setUser(props.user);
+      const resData = await fetchGallery();
+      console.log("fetch the gallery", resData);
+      if (!resData) {
+        setIsGalleryExist(false);
+      } else {
+        setIsGalleryExist(true);
+        setIsEditMode(false);
+        setData(resData);
+      }
+    }
+    fetchData();
+  }, []);
 
 
   const startEditing = () => {
@@ -60,6 +76,10 @@ const GalleryProfile = (props) => {
   return (
   <div className="app-container">
       <div className="container-profile">
+      <div className="gallery-name">
+        {data.name}
+      </div>
+      <hr/>
       <div className="edit-button">
         <button className="btn-edit" onClick={startEditing}>Edit</button>
       </div>
@@ -79,8 +99,8 @@ const GalleryProfile = (props) => {
                   <span className="input-label input-lable-right">USER NAME/ </span>
                   {/* <input type="text" name="username" onChange={e => setUsername(e.target.value.toUpperCase())} value={username} className="input-no-border" placeholder="THOMAS BALLOT" role="textbox"></input> */}
                   {isEditMode ? 
-                    <input type="text" name="username" onChange={onChange} value={data.username} className="input-no-border" placeholder="THOMAS BALLOT" role="textbox"></input> :
-                    <span>{data.username}</span>
+                    <input type="text" name="ownerName" onChange={onChange} value={data.ownerName} className="input-no-border" placeholder="THOMAS BALLOT" role="textbox"></input> :
+                    <span>{data.ownerName}</span>
                   }
               </div>
               <div className="input-container-half">
@@ -135,15 +155,15 @@ const GalleryProfile = (props) => {
                       <div>
                         {isEditMode ? 
                           <textarea name="biography" onChange={onChange} value={data.biography} id="biography" className="input-no-border" rows="24" placeholder="your gallery biography"></textarea> :
-                        <span>{data.biography}</span>
+                        <div className="biography-text">{data.biography}</div>
                         } 
                       </div>
                   </div>
               </div>
               <div className="input-container-half remove-border">
                   <div className="image-container">
-                      <img className="gallery-image" src={image ? URL.createObjectURL(image) : house} alt={image ? image.name.split(".")[0] : "house sample"} />
-                      <input type="file" id="file" className="input-hidden" onChange={fileHandler}  />
+                      <img className="gallery-image" src={image ? URL.createObjectURL(image) : data.imageUrl} alt={image ? image.name.split(".")[0] : "house sample"} />
+                      <input type={(isGalleryExist && !isEditMode) ? "hidden" : "file"} id="file" className="input-hidden" onChange={fileHandler}  />
                       <label htmlFor="file" className="btn-image">CHANGE IMAGE</label>
                       {/* <button className="btn-image">CHANGE IMAGE</button> */}
                   </div>

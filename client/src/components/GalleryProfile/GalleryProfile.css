@@ -1,11 +1,21 @@
 .app-container {
-    width: 1440px;
-    height: 1795px;
+    display: flex;
+    justify-content: center;
+    margin-top: 63px;
+    text-align: center;
 }
 
 .container-profile {
+    width: 1374px;
+    height: 1795px;
     padding: 0;
-    margin: 32px;
+    margin: 16px 32px;
+}
+
+.container-profile .gallery-name {
+    font-size: 34px;
+    line-height: 50px;
+    text-align: left;
 }
 
 .container-profile .edit-button {
@@ -171,6 +181,11 @@
     box-sizing: border-box;
 }
 
+.btn-image:hover {
+    color:white;
+    background-color: black;
+}
+
 .website-box {
     margin: 19px 13px;
 }
@@ -228,4 +243,9 @@ input:-webkit-autofill:active {
 .save-change {
     width: 100% !important;
     height: 60px;
+}
+
+.biography-text {
+    text-align: left;
+    margin-top: 12px;
 }
