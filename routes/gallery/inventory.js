@@ -57,4 +57,30 @@ router.get('/:id', isAuthenticated, async (req, res, next) => {
   }
 });
 
+router.put('/:id', isAuthenticated, uploader.single('image'), async (req, res, next) => {
+  const artworkId = req.params.id;
+  const userId =  req.session.passport.user;
+
+  // assume there is only one image
+  // implement deleting images in the cloudanary later
+  const data = req.body;
+  if (req.file) {
+    const imageUrl = req.file.path;
+    const imgPublicId = req.file.filename;
+    data.images = [{imageUrl, imgPublicId}];
+  }
+  // for test
+  else {
+    data.images = [{imageUrl: data.imageUrl, imgPublicId: data.imgPublicId}];
+  }
+
+  try {
+    const updatedArtwork = await Artwork.findOneAndUpdate({user: userId, _id: artworkId}, {...data}, {new: true});
+    res.status(200).json(updatedArtwork);
+  } catch(error) {
+    console.log(error);
+    res.status(500).json({message: "Something is wrong with the backend", success: false});
+  }
+});
+
 module.exports = router;
