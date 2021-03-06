@@ -1,0 +1,43 @@
+.artistsInfo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+}
+.artist-input {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: space-around;
+    align-items: center;
+    width: 40%;
+    border: 1px solid black;
+    padding: 6px 0;
+    margin-bottom: 16px;
+    background-color: #FEFEFE;
+    height: 60px;
+}
+.inputLabel {
+    font-weight: 700;
+}
+
+.inputClear {
+    border: none;
+    width: auto;
+    text-transform: uppercase;
+}
+.inputClear.name {
+    width: 8rem;
+}
+.inputClear.year {
+    width: 3rem;
+}
+.inputClear.city {
+    width: 4rem;
+}
+.inputClear.medium {
+    width: 4rem;
+}
