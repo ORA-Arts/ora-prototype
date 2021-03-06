@@ -45,4 +45,16 @@ router.post('/new', isAuthenticated, uploader.single('image'), async (req, res, 
   }
 });
 
+router.get('/:id', isAuthenticated, async (req, res, next) => {
+  const artworkId = req.params.id;
+  const userId =  req.session.passport.user;
+  try {
+    const artwork = await Artwork.findOne({user: userId, _id: artworkId});
+    res.status(200).json(artwork);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Error while attempting to access database' });
+  }
+});
+
 module.exports = router;
