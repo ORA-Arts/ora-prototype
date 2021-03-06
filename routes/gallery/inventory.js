@@ -14,6 +14,14 @@ function isAuthenticated(req, res, next) {
   }
 }
 
+// helper for medium filter
+function mediumFilter(list, regex) {
+  for (let el of list) {
+    if (el.match(regex)) return true;
+  }
+  return false;
+}
+
 router.get('/', isAuthenticated, async (req, res, next) => {
   const userId =  req.session.passport.user;
   try {
@@ -33,7 +41,7 @@ router.post('/', isAuthenticated, async (req, res, next) => {
   let regex = new RegExp(query, 'i');
   let galleryArtworks = await Artwork.find({user: userId}).populate('artist');
   galleryArtworks = galleryArtworks.filter(artwork => {
-    return artwork.title.match(regex) || artwork.medium.match(regex) || artwork.artist.name.match(regex);
+    return artwork.title.match(regex) || mediumFilter(artwork.medium, regex) || artwork.artist.name.match(regex);
   });
   // galleryArtworks = galleryArtworks.filter(ar)
   // const result = await Artwork.aggregate([

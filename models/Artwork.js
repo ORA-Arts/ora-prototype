@@ -20,10 +20,10 @@ const artworkSchema = new Schema({
     enum: ["Unique", "Editions"]
   },
   signed: Boolean,
-  medium: {
+  medium: [{
     type: String,
     enum: [ "Painting", "Sculpture", "Photography", "Video Art", "Performance", "Drawing", "Mixed Media"]
-  },
+  }],
   materialsAndTechnique: String,
   height: Number,
   length: Number,
