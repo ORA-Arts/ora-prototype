@@ -9,6 +9,10 @@ const artworkSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Gallery'
   },
+  artist: {
+    type: Schema.Types.ObjectId,
+    ref: "Artist"
+  },
   title: String,
   realisationYear: Number, // perhaps date
   type: {

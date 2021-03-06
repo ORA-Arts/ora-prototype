@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const Artwork = require('../../models/Artwork');
+const Artist = require('../../models/Artist');
 const { uploader } = require('../../config/cloudinary');
 const passport = require('passport');
+const mongoose = require("mongoose");
 
 // middleware
 function isAuthenticated(req, res, next) {
@@ -23,11 +25,35 @@ router.get('/', isAuthenticated, async (req, res, next) => {
   }
 });
 
+router.post('/', isAuthenticated, async (req, res, next) => {
+  const userId =  req.session.passport.user;
+  // add gallery id into find later
+  const query = req.body.query;
+  console.log(query);
+  let regex = new RegExp(query, 'i');
+  let galleryArtworks = await Artwork.find({user: userId}).populate('artist');
+  galleryArtworks = galleryArtworks.filter(artwork => {
+    return artwork.title.match(regex) || artwork.medium.match(regex) || artwork.artist.name.match(regex);
+  });
+  // galleryArtworks = galleryArtworks.filter(ar)
+  // const result = await Artwork.aggregate([
+  //   { $match: {user: mongoose.Types.ObjectId(userId)}},
+  //   { $lookup: {
+  //     from: ''
+  //   }}
+  // ]);
+  // console.log(galleryArtworks);
+
+  res.json(galleryArtworks);
+
+});
+
 // single image first
 router.post('/new', isAuthenticated, uploader.single('image'), async (req, res, next) => {
   console.log("herhe")
   const userId =  req.session.passport.user;
   // later for gallery_id by as a param or in the request body
+  // add artist Id when Patrick done!
 
   // latter for multiple image
   if (!req.file) return res.status(500).json({message: "Invalid uploaded images", success: false });
@@ -36,8 +62,11 @@ router.post('/new', isAuthenticated, uploader.single('image'), async (req, res, 
   const data = req.body;
   data.images = [{imageUrl, imgPublicId}];
   console.log(data);
+  // delete later, this is just a fake artist
+  // const fakeArtist = await Artist.create({name: "Konad Mayer"});
+  
   try {
-    const artwork = await Artwork.create({...data, user: userId});
+    const artwork = await Artwork.create({...data, user: userId, artist: mongoose.Types.ObjectId("60438b4f73af866d50b8bbde")});
     res.status(200).json(artwork);
   } catch (err) {
     console.log(err);
