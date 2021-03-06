@@ -1,0 +1,154 @@
+/* Generic Section */
+
+#wrapWIO{
+  padding-bottom: 60px;
+  padding-top:60px;
+}
+
+#wrapWIO hr{
+ width: 90vw;
+ text-align: center;
+}
+
+/* Top Text */
+
+#zero {
+  background-color: #BE0E1D;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 13px;
+  padding-right: 20px;
+}
+
+#zero .btnBlack {
+  color: white;
+  font-size: 14px;
+  padding: 12px 24px;
+  border: solid 1px white;
+  cursor: pointer;
+  background-color: transparent;
+  width: 300px;
+  text-decoration: none;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#zero .btnBlack:hover {
+  background-color: black;
+  color: white
+}
+
+
+#textTopAbout {
+  color: white;
+  font-family: 'editorial_newultralight';
+  text-transform: uppercase;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+
+#textTopAbout h1 {
+  font-size: 26px;
+  margin:0;
+}
+#textTopAbout h2 {
+  font-size: 12px;
+  font-family: 'akzidenz-grotesk_proregular';
+  margin: 0;
+}
+
+/* Sections */
+
+.aboutSection{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding:20px 0;
+  width: 100%;
+}
+
+
+
+.sideClass {
+  display: flex;
+  justify-content: space-between;
+  width: 40vw;
+  padding-left: 3vw;
+}
+
+.sideClass img{
+  max-height: 380px;
+  width: 253px;
+  align-self: center;
+  padding-right: 5vw;
+}
+
+.textSection {
+  width: 60vw;
+  padding-left: 3vw;
+}
+
+
+.textSection h1{
+  text-transform: uppercase;
+}
+
+.textSection a{
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+  font-style: bold;
+}
+
+.sideSelector {
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  max-height: 380px;
+  max-width: 150px;
+  margin: 0px;
+}
+
+.numberActivated{
+  font-size:70px;
+  margin: 0px;
+
+}
+.textActivated{
+  font-size: 13px;
+  font-family: "akzidenz-grotesk_proregular";
+  margin: 0px;
+  padding-left: 15px;
+  margin-top: -15px;
+}
+
+.numberAndText {
+  display: flex;
+  flex-direction: column;
+}
+
+.lastElement {
+  margin-bottom: 20px;
+}
+
+.numberNotActivated{
+  font-size:70px;
+  margin: 0px;
+ color: #E2E2E2;
+}
+
+.numberNotActivated > a{
+  text-decoration: none;
+}
+
+.textNotActivated{
+  color: #E2E2E2;
+  font-size: 13px;
+  font-family: "akzidenz-grotesk_proregular";
+  margin: 0px;
+  padding-left: 15px;
+  margin-top: -15px;
+}
