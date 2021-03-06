@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-// import "./GalleryProfile.css";
+import "./Inventory.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 // import house from './house-test.jpg';
 import axios from 'axios';
@@ -75,18 +75,35 @@ const InventoryList = (props) => {
 
   return (
   <div className="app-container">
-      <div className="container-profile">
+      <div className="container-inventory">
       <div className="gallery-name">
         {data.name}
       </div>
       <hr/>
-      <div className="edit-button">
-        <button className="btn-edit" onClick={startEditing}>Edit</button>
-      </div>
-      <div className="container-profile-content">
+      <div className="container-inventory-content">
         <ProfileSideBar content="my-inventory"/>
         <div className="gallery-profile">
           <div className="gallery-content">
+            <div className="flex-inventory-between">
+                <div className="filter-box">
+                    {/* implement later */}
+                    Unique artworks / Edition and multiples / Products / Artist books & Publications
+                </div>
+                <button className="btn-add-artwork">ADD A NEW ARTWORK</button>
+            </div>
+            <div className="flex-inventory-between ">
+                <input type="text" className="inventory-search" placeholder="SEARCH" />
+                <div className="inventory-sort">
+                    <input type="checkbox" id="sort-by-value"/>
+                    <label className="label-button-like" htmlFor="sort-by-value">SORT BY VALUE</label>
+                </div>
+            </div>
+            <hr/>
+            <div className="artwork-list"></div>
+
+
+
+
             <div className="profile-title">
               <hr />
               <span className="title-text">
