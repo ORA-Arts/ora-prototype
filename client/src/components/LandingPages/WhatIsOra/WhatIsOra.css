@@ -65,12 +65,9 @@
 .aboutSection{
   display: flex;
   flex-direction: row;
-  justify-content: center;
   padding:20px 0;
-  width: 100%;
+  width: 100vw;
 }
-
-
 
 .sideClass {
   display: flex;
@@ -84,23 +81,6 @@
   width: 253px;
   align-self: center;
   padding-right: 5vw;
-}
-
-.textSection {
-  width: 60vw;
-  padding-left: 3vw;
-}
-
-
-.textSection h1{
-  text-transform: uppercase;
-}
-
-.textSection a{
-  text-decoration: none;
-  text-transform: uppercase;
-  color: black;
-  font-style: bold;
 }
 
 .sideSelector {
@@ -152,3 +132,19 @@
   padding-left: 15px;
   margin-top: -15px;
 }
+
+.textSection {
+  width: 40vw;
+}
+
+.textSection h1{
+  text-transform: uppercase;
+}
+
+.textSection a{
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+  font-style: bold;
+}
+
