@@ -6,96 +6,82 @@ import axios from 'axios';
 import { fetchArtworks, addNewGallery } from '../../api/service';
 
 const AddNewArtWork = (props) => {
-//   const initialState = {
-//     title: ,
-//     realisationYear: ,
-//     type: ,
-//     signed: ,
-//     medium: ,
-//     materialsAndTechnique: ,
-//     height: ,
-//     length: ,
-//     width: ,
-//     stockNumber: ,
-//     status: ,
-//     market: ,
-//     seller: ,
-//     price: ,
-//     seeInPerson: ,
-//     location: ,
-//     description: ,
-//     imageUrl: ,
-//     imgPublicId: ,
-//   };
-
-  const [data, setData] = useState(null);
-  const [fetchedData, setFetchedData] =  useState(null);
-  // refactor later
-  const [dataBeforeSorted, setDataBeforeSorted] = useState(null);
-  const [sortByPrice, setSortByPrice] = useState(false);
-  const [query, setQuery] = useState("");
-
-
-
-  useEffect(() => {
-    async function fetchData() {
-      await props.setUser(props.user);
-      const resData = await fetchArtworks();
-      console.log("fetch the artworks", resData);
-      if (!resData) {
-          console.log("No availabe artworks")
-      } else {
-        // find the way to refactor/reduce state momory later (still better than fetch new ones from database)
-        setData(resData);
-        setFetchedData(resData);
-        setDataBeforeSorted(resData);
-      }
-    }
-    fetchData();
-  }, []);
-
-  // for search
-  useEffect(() => {
-    if (!data) return;
-    let regex = new RegExp(query, 'i');
-    const matchedArtworks = fetchedData.filter(artwork => {
-        return artwork.title.match(regex) || mediumFilter(artwork.medium, regex) || artwork.artist.name.match(regex);
-    });
-    setData(matchedArtworks);
-    setDataBeforeSorted(matchedArtworks);
-  }, [query]);
-
-  // for price filter
-  useEffect(() => {
-    if (!data) return;
-    let dataCopy = data.slice();
-    if (sortByPrice) {
-        dataCopy.sort((a, b) => a.price - b.price);
-        setData(dataCopy);
-    } else {
-        setData(dataBeforeSorted);
-    }
-  }, [sortByPrice]);
-
-  const mediumFilter = (list, regex) => {
-    for (let el of list) {
-      if (el.match(regex)) return true;
-    }
-    return false;
+  const initialState = {
+    artist: null,
+    title: "",
+    realisationYear: null,
+    type: "Unique",
+    signed: true,
+    medium: "Painting",
+    materialsAndTechnique: "",
+    height: null,
+    length: null,
+    width: null,
+    stockNumber: null,
+    status: "Available",
+    market: "Primary",
+    seller: "",
+    price: null,
+    seeInPerson: false,
+    location: "",
+    description: "",
+    images: [],
   };
 
-  const toggleSortPrice = () => {
-    setSortByPrice(!sortByPrice);
-  };
+  const [data, setData] = useState(initialState);
+  const [uploadedImages, setUploadedImages] = useState([]);
+  const [activeImage, setActiveImage] = useState(house);
+  const [isAddedImage, setIsAddedImage] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
-  const searchHandler = (event) => {
-    const query = event.target.value;
-    setSortByPrice(false);
-    if (query === "") {
-        setData(fetchedData);
-    }
-    setQuery(query);
-  };
+    const onChange = (event) => {
+        const { name, value } = event.target;
+        setData({...data, [name]: value});
+    };
+    
+    const fileHandler = e => {
+        let imagesCopy = uploadedImages.slice();
+        imagesCopy.push(e.target.files[0]);
+        setUploadedImages(imagesCopy);
+    };
+
+    
+    const currentActiveImage = () => {
+        console.log("called");
+        console.log(data.images);
+        console.log(uploadedImages);
+        if (data.images.length !==0 && uploadedImages.length===0) {
+            console.log("only data.images");
+            if (!selectedImageIndex) {
+                setActiveImage(data.images[0].imageUrl);
+            } else {
+                setActiveImage(data.images[selectedImageIndex].imageUrl);
+            }
+        // here selectedImageIndex is the place in the range from 0 to (data.images.length + uploadedImages.length - 1)
+        // this need to be treated like that because the data.images hold only urls while the uploadedImages hold real images
+        } else if (uploadedImages.length !== 0) {
+            console.log(!uploadedImages);
+            console.log("perhaps both");
+            if (!selectedImageIndex) {
+                setActiveImage(uploadedImages[uploadedImages.length-1]);
+            } else {
+                if (selectedImageIndex > data.images.length-1) {
+                    setActiveImage(uploadedImages[selectedImageIndex - data.images.length]);
+                } else {
+                    setActiveImage(data.images[selectedImageIndex].imageUrl);
+                }
+            }
+        } else {
+            console.log("no image");
+            setActiveImage(house);
+        }
+    };
+
+    console.log(uploadedImages);
+    
+    useEffect(() => {
+        currentActiveImage();
+    }, [uploadedImages, data.images]);
 
   const startEditing = () => {
     // setIsEditMode(true);
@@ -133,7 +119,9 @@ const AddNewArtWork = (props) => {
                 {/* if data exist generate all data, if not form ready    */}
                 <div className="artwork-detail-images">
                     {/* dynamic later, if having time, add a remove button for image*/}
-                    <img src={house} alt="artwork image" className="artwork-detail-image" />
+                    <div className="artwork-detail-image-container">
+                        <img src={activeImage} alt="artwork image" className="artwork-detail-image" />
+                    </div>
                     <div className="artwork-detail-footer">
                         <div className="artwork-detail-thumbnails">
                             <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
@@ -142,7 +130,7 @@ const AddNewArtWork = (props) => {
                             <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
                         </div>
                         <div className="inventory-upload-container">
-                            <input id="inventory-file" type="file" className="inventory-input-hidden" />
+                            <input onChange={fileHandler} id="inventory-file" type="file" className="inventory-input-hidden" />
                             <label htmlFor="inventory-file" className="inventory-btn-image">ADD IMAGE</label>
                         </div>
                     </div>
@@ -152,7 +140,7 @@ const AddNewArtWork = (props) => {
                         <div className="detail-info-label inventory-artist">ARTIST </div>
                         {/* add a select for artist field here width value = artist ID */}
                         <div className="detail-info-field">
-                            <select name="cars" id="cars">
+                            <select name="artist" onChange={onChange}>
                                 <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
                                 <option value="opel">Opel</option>
@@ -163,19 +151,19 @@ const AddNewArtWork = (props) => {
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">TITLE </div>
                         <div className="detail-info-field">
-                            <input type="text" placeholder="Untitled"/>
+                            <input onChange={onChange} value={data.title} name="title" type="text" placeholder="Untitled"/>
                         </div>
                     </div>
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Year of realization </div>
                         <div className="detail-info-field">
-                            <input type="number" placeholder="1937"/>
+                            <input onChange={onChange} value={data.realisationYear} name="realisationYear" type="number" placeholder="1937"/>
                         </div>
                     </div>
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Artwork type </div>
                         <div className="detail-info-field">
-                            <select name="cars" id="cars">
+                            <select onChange={onChange} name="type">
                                 <option value="Unique">Unique</option>
                                 <option value="Editions">Editions</option>
                             </select>
@@ -185,16 +173,16 @@ const AddNewArtWork = (props) => {
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Signed & Dated </div>
                         <div className="detail-info-field">
-                            <select name="cars" id="cars">
-                                <option value="volvo">Yes</option>
-                                <option value="saab">No</option>
+                            <select onChange={onChange} name="signed">
+                                <option value={true}>Yes</option>
+                                <option value={false}>No</option>
                             </select>
                         </div>
                     </div>
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Medium </div>
                         <div className="detail-info-field">
-                            <select name="cars" id="cars">
+                            <select onChange={onChange} name="medium">
                                 {mediumOption()}
                             </select>
                         </div>
@@ -202,27 +190,27 @@ const AddNewArtWork = (props) => {
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Materials and technique </div>
                         <div className="detail-info-field">
-                            <input type="text" placeholder="Chalk, Charcoal, Underpainting"/>
+                            <input onChange={onChange} value={data.materialsAndTechnique} name="materialsAndTechnique" type="text" placeholder="Chalk, Charcoal, Underpainting"/>
                         </div>
                     </div>
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Dimensions </div>
                         <div className="detail-info-field detail-info-space-between">
-                            <input type="number" className="detail-info-field-small" placeholder="Height"/>
-                            <input type="number" className="detail-info-field-small" placeholder="Length"/>
-                            <input type="number" className="detail-info-field-small" placeholder="Width"/>
+                            <input onChange={onChange} value={data.height} name="height" type="number" className="detail-info-field-small" placeholder="Height"/>
+                            <input onChange={onChange} value={data.length} name="length" type="number" className="detail-info-field-small" placeholder="Length"/>
+                            <input onChange={onChange} value={data.width} name="width" type="number" className="detail-info-field-small" placeholder="Width"/>
                         </div>
                     </div>
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Stock number </div>
                         <div className="detail-info-field">
-                            <input type="number" placeholder="Stock number"/>
+                            <input onChange={onChange} value={data.stockNumber} name="stockNumber" type="number" placeholder="Stock number"/>
                         </div>
                     </div>
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Availability status </div>
                         <div className="detail-info-field">
-                            <select name="cars" id="cars">
+                            <select onChange={onChange} name="status">
                                 <option value="Available">Available</option>
                                 <option value="Offered">Offered</option>
                                 <option value="Sold">Sold</option>
@@ -232,7 +220,7 @@ const AddNewArtWork = (props) => {
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Market </div>
                         <div className="detail-info-field">
-                            <select name="cars" id="cars">
+                            <select onChange={onChange} name="market">
                                 <option value="Primary">Primary</option>
                                 <option value="Secondary">Secondary</option>
                             </select>
@@ -242,21 +230,21 @@ const AddNewArtWork = (props) => {
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Seller </div>
                         <div className="detail-info-field">
-                            <input type="text" placeholder="Name of the gallery"/>
+                            <input onChange={onChange} value={data.seller} name="seller" type="text" placeholder="Name of the gallery"/>
                         </div>
                     </div>
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Price (excl. taxes) </div>
                         <div className="detail-info-field">
-                            <input type="text" placeholder="In Eur"/>
+                            <input onChange={onChange} value={data.price} name="price" type="number" placeholder="In Eur"/>
                         </div>
                     </div>
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">See in person </div>
                         <div className="detail-info-field">
-                            <select name="cars" id="cars">
-                                <option value="false">No</option>
-                                <option value="true">Yes</option>
+                            <select onChange={onChange} name="seeInPerson">
+                                <option value={false}>No</option>
+                                <option value={true}>Yes</option>
                             </select>
                         </div>
                     </div>
@@ -264,7 +252,7 @@ const AddNewArtWork = (props) => {
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Storage location </div>
                         <div className="detail-info-field">
-                            <input type="text" placeholder="Address"/>
+                            <input onChange={onChange} value={data.location} name="location" type="text" placeholder="Address"/>
                         </div>
                     </div>
                     {/* what is this */}
@@ -287,7 +275,7 @@ const AddNewArtWork = (props) => {
                     <div className="artwork-detail-info-field">
                         <div className="detail-info-label">Description </div>
                         <div className="detail-info-field">
-                            <textarea name="" id="" rows="4" placeholder="Short description about the artwork"></textarea>
+                            <textarea onChange={onChange} value={data.description} name="description" rows="4" placeholder="Short description about the artwork"></textarea>
                         </div>
                     </div>
                 </div>

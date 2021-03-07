@@ -66,23 +66,27 @@ router.post('/', isAuthenticated, async (req, res, next) => {
 
 });
 
+router.post('/test', isAuthenticated, uploader.array('images'), async (req, res, next) => {
+  console.log(req.files);
+  res.json({message: "empty"});
+});
+
 // single image first
-router.post('/new', isAuthenticated, uploader.single('image'), async (req, res, next) => {
-  console.log("herhe")
+router.post('/new', isAuthenticated, uploader.array('images'), async (req, res, next) => {
   const userId =  req.session.passport.user;
   // later for gallery_id by as a param or in the request body
   // add artist Id when Patrick done!
 
   // latter for multiple image
-  if (!req.file) return res.status(500).json({message: "Invalid uploaded images", success: false });
-  const imageUrl = req.file.path;
-  const imgPublicId = req.file.filename;
+  if (!req.files) return res.status(500).json({message: "Invalid uploaded images", success: false });
+  const images = req.files.map(image => ({imageUrl: image.path, imgPublicId: image.filename}));
   const data = req.body;
-  data.images = [{imageUrl, imgPublicId}];
+  data.images = images;
   console.log(data);
-  // delete later, this is just a fake artist
+
+
+  // delete later, this is just a fake artist - add the real artist
   // const fakeArtist = await Artist.create({name: "Konad Mayer"});
-  
   try {
     const artwork = await Artwork.create({...data, user: userId, artist: mongoose.Types.ObjectId("60438b4f73af866d50b8bbde")});
     res.status(200).json(artwork);
@@ -91,6 +95,12 @@ router.post('/new', isAuthenticated, uploader.single('image'), async (req, res, 
     res.status(500).json({message: "Error while attempting to access database", success: false});
   }
 });
+
+// for editing
+// if (!req.files) return res.status(500).json({message: "Invalid uploaded images", success: false });
+// req.files.forEach(image => {
+//   data.images.push({imageUrl: image.path, imgPublicId: image.filename});
+// });
 
 router.get('/:id', isAuthenticated, async (req, res, next) => {
   const artworkId = req.params.id;
