@@ -33,6 +33,7 @@ router.get('/', isAuthenticated, async (req, res, next) => {
   }
 });
 
+// Not need, better to perform in the frontend since all artworks are loaded at the first rendering
 router.post('/', isAuthenticated, async (req, res, next) => {
   const userId =  req.session.passport.user;
   // add gallery id into find later

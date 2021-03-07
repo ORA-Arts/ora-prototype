@@ -121,6 +121,7 @@ const InventoryList = (props) => {
       <div className="gallery-name">
         {/* later move the fetch to to root of gallery components */}
         {/* {data.name} */}
+        GALLERY NEU
       </div>
       <hr/>
       <div className="container-inventory-content">

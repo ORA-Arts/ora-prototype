@@ -7,8 +7,9 @@ import Footer from "./components/Footer/Footer";
 import WhatIsOra from "./components/LandingPages/WhatIsOra/WhatIsOra";
 import { Loggedin } from "./services/auth";
 import HomePage from "./components/LandingPages/HomePage/HomePage";
-import InventoryList from "./components/Inventory/InventoryList";
 import GalleryProfileHooks from "./components/GalleryProfile/GalleryProfileHooks";
+import InventoryList from "./components/Inventory/InventoryList";
+import AddNewArtWork from "./components/Inventory/AddNewArtWork";
 
 export default class App extends Component {
   constructor(props) {
@@ -53,6 +54,8 @@ export default class App extends Component {
           />
         <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} user={this.state.user} {...props} />} />
         <Route exact path='/gallery/inventory' render={props => <InventoryList setUser={this.setUser} user={this.state.user} {...props} />} />
+        <Route exact path='/gallery/inventory/new' render={props => <AddNewArtWork setUser={this.setUser} user={this.state.user} {...props} />} />
+        
        {/* <Route
           exact path='/login'
           render={props => <LogIn setUser={this.setUser} {...props} />}
