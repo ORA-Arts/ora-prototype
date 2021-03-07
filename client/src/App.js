@@ -12,6 +12,7 @@ import AddEditArtist from "./components/AddEditArtist/AddEditArtist";
 import { Loggedin } from "./services/auth";
 import HomePage from "./components/LandingPages/HomePage/HomePage";
 
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -57,10 +58,12 @@ export default class App extends Component {
         <Route exact path='/gallery/artists' render={props => <ArtistsList user={this.state.user} {...props} />} />
         <Route exact path='/gallery/add-artist' render={props => <AddEditArtist user={this.state.user} {...props} />} />
         <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} user={this.state.user} {...props} />} />
+
        {/* <Route
           exact path='/login'
           render={props => <LogIn setUser={this.setUser} {...props} />}
           /> */}
+
         </Switch>
         <Footer />
       </div>
