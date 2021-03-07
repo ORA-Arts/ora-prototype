@@ -60,22 +60,22 @@ handleLogout = () => {
      </a>
        <ul id="navtitles">
          <li>
-           <Link className ="link" to="/what-is-ora">WHAT IS ORA?</Link>
+           <Link className="link" to="/what-is-ora">WHAT IS ORA?</Link>
          </li>
          <li>
-           <Link className ="link" to='/artist-open-call'>ARTIST OPEN CALL</Link>
+           <Link className="link" to='/artist-open-call'>ARTIST OPEN CALL</Link>
          </li>
          <li> 
-           <Link className ="link" to='/collector-space'>COLLECTOR SPACE</Link>
+           <Link className="link" to='/collector-space'>COLLECTOR SPACE</Link>
          </li>
          <li>
-           <Link className ="link"to='/support-an-artist-project'>SUPPORT AN ARTIST PROJECT</Link>
+           <Link className="link"to='/support-an-artist-project'>SUPPORT AN ARTIST PROJECT</Link>
          </li>
          {this.state.user ? (
            <>
            <li>
-           <Link className ="link" to='/myprofile'>MY PROFILE</Link>
-           <Link className ="link" to='/' onClick={() => this.handleLogout()}>/ LOG OUT</Link>
+           <Link className="link" to='/myprofile'>MY PROFILE</Link>
+           <Link className="link" to='/' onClick={() => this.handleLogout()}>/ LOG OUT</Link>
            </li>
            </>
          ) : (
