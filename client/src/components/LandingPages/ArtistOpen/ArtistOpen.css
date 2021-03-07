@@ -12,6 +12,7 @@ h1{
   margin: 0px;
       }
 
+      @media (min-width: 480px) {
 #artistHeader{
   background-color: #E75D82;
   display: flex;
@@ -22,6 +23,32 @@ h1{
   padding-bottom: 20px;
   max-height: 10vh;
 }
+      }
+
+
+@media (max-width: 481px) {
+  #artistHeader {
+    background-color: #E75D82;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 13px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  }
+
+@media (max-width: 481px) {
+  #artistHeader h1{
+    color: white;
+    font-family: 'editorial_newultralight';
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 10px;
+  }
+  }
 
 #artistHeader h1 {
   color: white;
