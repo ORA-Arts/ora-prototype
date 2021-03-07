@@ -5,10 +5,16 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import WhatIsOra from "./components/LandingPages/WhatIsOra/WhatIsOra";
-import { Loggedin } from "./services/auth";
+import { Loggedin } from './services/auth';
+import GalleryProfile from './components/GalleryProfile/GalleryProfile';
+import GalleryProfileHooks from './components/GalleryProfile/GalleryProfileHooks';
+import ArtistsList from "./components/ArtistsList/ArtistsList";
+import AddEditArtist from "./components/AddEditArtist/AddEditArtist";
 import HomePage from "./components/LandingPages/HomePage/HomePage";
-import GalleryProfile from "./components/GalleryProfile/GalleryProfile";
-import GalleryProfileHooks from "./components/GalleryProfile/GalleryProfileHooks";
+
+
+
+
 
 export default class App extends Component {
   constructor(props) {
@@ -51,7 +57,12 @@ export default class App extends Component {
               <GalleryProfileHooks user={this.state.user} {...props} />
             )}
           />
+
+        <Route exact path='/gallery/new' render={props => <GalleryProfileHooks user={this.state.user} {...props} />} />
+        <Route exact path='/gallery/artists' render={props => <ArtistsList user={this.state.user} {...props} />} />
+        <Route exact path='/gallery/add-artist' render={props => <AddEditArtist user={this.state.user} {...props} />} />
         <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} user={this.state.user} {...props} />} />
+
         </Switch>
       </div>
     );

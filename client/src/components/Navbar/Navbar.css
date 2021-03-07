@@ -14,7 +14,7 @@ a:-webkit-any-link {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: relative;
   width: 100%;
   height: 60px;
   top: 0;
