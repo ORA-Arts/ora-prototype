@@ -11,9 +11,7 @@ import GalleryProfileHooks from './components/GalleryProfile/GalleryProfileHooks
 import ArtistsList from "./components/ArtistsList/ArtistsList";
 import AddEditArtist from "./components/AddEditArtist/AddEditArtist";
 import HomePage from "./components/LandingPages/HomePage/HomePage";
-
-
-
+import ArtistOpen from "./components/LandingPages/ArtistOpen/ArtistOpen";
 
 
 export default class App extends Component {
@@ -57,6 +55,7 @@ export default class App extends Component {
               <GalleryProfileHooks user={this.state.user} {...props} />
             )}
           />
+          <Route exact path='/artist-open-call' component={ArtistOpen} />
 
         <Route exact path='/gallery/new' render={props => <GalleryProfileHooks user={this.state.user} {...props} />} />
         <Route exact path='/gallery/artists' render={props => <ArtistsList user={this.state.user} {...props} />} />

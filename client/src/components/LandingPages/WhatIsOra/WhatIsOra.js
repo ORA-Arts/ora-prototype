@@ -8,7 +8,7 @@ import "../../../App.css";
 export default function WhatIsOra() {
   return (
     <div>
-      <div id="wrapWIO">
+      <div>
         <div id="zero">
           <div id="textTopAbout">
             <h1>

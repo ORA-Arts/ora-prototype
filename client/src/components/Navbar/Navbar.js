@@ -6,6 +6,7 @@ import logo from "../../images/LOGO_1.png"
 import LogInModal from "../LogInModal/LogInModal"
 import SignUpModal from '../SignUpModal/SignUpModal'
 import MenuMobile from '../MenuMobile/MenuMobile'
+import ArtistOpen from '../LandingPages/ArtistOpen/ArtistOpen'
 
 
 class Navbar extends Component {
