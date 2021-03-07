@@ -5,7 +5,7 @@
     justify-content: flex-start;
     align-content: stretch;
     align-items: stretch;
-    padding: 2rem;
+    margin: 2rem;
 }
 .topInfo {
     display: flex;
@@ -15,8 +15,12 @@
     align-content:space-between;
     align-items: center;
 }
+.middleInfo {
+    
+}
 .left {
     width: 45%;
+    
 }
 .right {
     width: 45%;
@@ -27,6 +31,12 @@
     align-content: center;
     align-items: flex-start;
 }
+.artist-image {
+    width: 250px;
+    height: auto;
+    min-height: 200px;
+    max-height: 435px;
+}
 .artist-input {
     display: flex;
     flex-direction: row;
@@ -34,8 +44,8 @@
     justify-content: flex-start;
     align-content: space-around;
     align-items: center;
-    width: 90%;
-    border: 1px solid black;
+    width: 100%;
+    border: 0.25px solid #242429;
     padding: 6px 0;
     margin-bottom: 16px;
     background-color: #FEFEFE;
@@ -49,8 +59,8 @@
     justify-content: flex-start;
     align-content: space-around;
     align-items: center;
-    width: 100%;
-    border: 1px solid black;
+    width: 100%-2rem;
+    border: 0.25px solid #242429;
     padding: 6px 0;
     margin-bottom: 16px;
     background-color: #FEFEFE;
@@ -81,4 +91,19 @@
 .inputClear.min {
     text-align: center;
     width: 1.5rem;
+}
+.btn-change {
+    width: 185px;
+    height: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 46px;
+    background-color: white;
+    border: 0.25px solid black;
+    box-sizing: border-box;
+    
+}
+.btn-change:hover {
+    color:white;
+    background-color: black;
 }

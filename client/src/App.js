@@ -40,7 +40,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <Footer />
+        
         <Switch>
           <Route exact path="/">
             <HomePage />
@@ -62,6 +62,7 @@ export default class App extends Component {
           render={props => <LogIn setUser={this.setUser} {...props} />}
           /> */}
         </Switch>
+        <Footer />
       </div>
     );
   }

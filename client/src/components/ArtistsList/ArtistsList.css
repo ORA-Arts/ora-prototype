@@ -7,6 +7,7 @@
   align-items: stretch;
   margin: 32px;
   font-family: "akzidenz-grotesk_proregular";
+  padding-bottom: 5rem;
 }
 .artistsContainer {
   display: flex;
@@ -58,7 +59,7 @@
   align-items: flex-start;
   margin: 32px;
   padding: 32px;
-  border: 0.25px solid black;
+  border: 0.25px solid #242429;
   text-transform: uppercase;
   
 

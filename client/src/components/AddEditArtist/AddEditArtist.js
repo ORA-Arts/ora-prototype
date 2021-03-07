@@ -96,15 +96,12 @@ export default class AddEditArtist extends Component {
                 </div>
               </div>
               <div className='right'>
-                <button className="btn-image">CHANGE IMAGE</button>
+                <button className="btn-change">CHANGE IMAGE</button>
                 <div className="image-container">
-                  <img className="gallery-image" src={this.state.image} alt="gallery house" />
+                  <img className="artist-image" src={this.state.image} alt="gallery house" />
                   {/* Upload image here */}
                 </div>
               </div>
-            </div>
-            <div>
-
             </div>
             <div className='middleInfo'>
               <div className="medium-input">
@@ -125,14 +122,14 @@ export default class AddEditArtist extends Component {
                 <div className="artist-input">
                   <span className="inputLabel">UNIQUE ARTWORKS PRICE RANGE/ </span>
                   <input type="text" name="artwork_min" onChange={this.onChangeHandler} value={this.state.artwork_min + 'K'} className="inputClear min" placeholder="3"></input> -
-              <input type="text" name="artwork_max" onChange={this.onChangeHandler} value={this.state.artwork_max + 'K'} className="inputClear min" placeholder="3"></input>
+                  <input type="text" name="artwork_max" onChange={this.onChangeHandler} value={this.state.artwork_max + 'K'} className="inputClear min" placeholder="3"></input>
                 </div>
               </div>
               <div className='right'>
                 <div className="artist-input">
                   <span className="inputLabel">UNIQUE ARTWORKS PRICE RANGE/ </span>
                   <input type="text" name="editions_min" onChange={this.onChangeHandler} value={this.state.editions_min + 'K'} className="inputClear min" placeholder="3"></input> -
-              <input type="text" name="editions_max" onChange={this.onChangeHandler} value={this.state.editions_max + 'K'} className="inputClear min" placeholder="3"></input>
+                  <input type="text" name="editions_max" onChange={this.onChangeHandler} value={this.state.editions_max + 'K'} className="inputClear min" placeholder="3"></input>
                 </div>
               </div>
             </div>
@@ -152,7 +149,7 @@ export default class AddEditArtist extends Component {
             <h4>MAIN QUOTE</h4>
             <textarea name="mainQuote" onChange={this.onChangeHandler} value={this.state.mainQuote} id="biography" className="biography-text" rows="5" placeholder="your gallery biography"></textarea>
           </div>
-          <button className='btnBlack'> ADD AN ARTIST + </button>
+          <button className='btnBlack'> SAVE ARTIST </button>
         </div>
       </div>
     )
