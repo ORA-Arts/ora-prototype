@@ -134,7 +134,7 @@ export default function WhatIsOra() {
                         <p className="numberNotActivated"><a href="#two">2</a></p>
                         <h1 className="textNotActivated">GALLERIES & COLLECTORS</h1>
                     </div>
-                    <div className="numberAndText" className="lastElement">
+                    <div className="numberAndText lastElement">
                         <p className="numberActivated"><a href="#three">3</a></p>
                         <h1 className="textActivated">A CIRCULAR ECONOMY</h1>
                     </div>
