@@ -292,6 +292,10 @@ const AddNewArtWork = (props) => {
                     </div>
                 </div>
             </div>
+            <div className="inventory-btn-bottom">
+                <button className="btn-back-inventory">BACK TO MY INVENTORY</button>
+                <button className="btn-edit save-change">SAVE CHANGES</button>
+            </div>
           </div>
         </div>
       </div>

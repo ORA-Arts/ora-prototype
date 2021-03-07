@@ -12,9 +12,9 @@
     margin: 16px 32px;
 }
 
-.container-inventory-detail {
+/* .container-inventory-detail {
     height: 1050px !important;
-}
+} */
 
 .container-inventory .gallery-name {
     font-size: 34px;
@@ -305,4 +305,39 @@
 /* Firefox */
 .detail-info-field input[type=number] {
   -moz-appearance: textfield;
+}
+
+.inventory-btn-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-back-inventory {
+    width: 321px;
+    height: 60px;
+    margin-top: 46px;
+}
+
+.btn-back-inventory {
+    width: 321px;
+    height: 60px;
+    margin-top: 46px;
+    color: black;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 12px;
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.btn-back-inventory:hover {
+    color: white;
+    background-color: black;
+}
+
+.container-inventory .save-change {
+    width: 321px !important;
+    height: 60px;
+    margin-top: 46px;
 }
