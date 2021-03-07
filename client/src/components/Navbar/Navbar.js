@@ -5,13 +5,7 @@ import "./Navbar.css";
 import logo from "../../images/LOGO_1.png"
 import LogInModal from "../LogInModal/LogInModal"
 import SignUpModal from '../SignUpModal/SignUpModal'
-
-
-// const handleLogout = (props) => {
-//   logout().then(() => {
-//     props.setUser(null);
-//   });
-// };
+import MenuMobile from '../MenuMobile/MenuMobile'
 
 
 class Navbar extends Component {
@@ -20,7 +14,8 @@ class Navbar extends Component {
       this.state = {
       showLogin: false,
       showSignup : false, 
-      user: props.user
+      user: props.user,
+      showMenu: false
     };
     this.setUser = this.setUser.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -32,7 +27,7 @@ handleLogout = () => {
   });
 };
 
-showLoginModal = () => {
+  showLoginModal = () => {
     this.setState({ showLogin: true });
   };
 
@@ -40,9 +35,14 @@ showLoginModal = () => {
     this.setState({ showSignup: true });
   };
 
+  showMenuMobile = () => {
+    this.state.showMenu ? this.setState({ showMenu:false}) : this.setState({ showMenu:true})
+  };
+
   hideModal = () => {
     this.setState({ showLogin: false });
     this.setState({ showSignup: false });
+    this.setState({showMenu: false})
   };
 
   setUser = (user) => {
@@ -53,6 +53,7 @@ showLoginModal = () => {
 
   render() {
     return (
+      <div>
       <div id="navbar" >
       <a href='/'>
         <img src={logo} alt="ORA" width="auto" height="50" />
@@ -89,7 +90,10 @@ showLoginModal = () => {
            </>
          )}
        </ul>
+       <button onClick={this.showMenuMobile} id="btnMenuMobile">{this.state.showMenu ? 'CLOSE' : 'MENU'} </button>
      </div>
+     <MenuMobile showMenu={this.state.showMenu} handleClose={this.hideModal}></MenuMobile>
+</div>
     )
   }
 }

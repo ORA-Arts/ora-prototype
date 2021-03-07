@@ -1,0 +1,30 @@
+.menuModal{
+  position:fixed;
+  background: #BDBDBD;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+a:-webkit-any-link {
+  color: black;
+  cursor: pointer;
+}
+
+#menu{
+  padding-top: 60px;
+}
+
+#menu > ul {
+  margin-top: 60px;
+}
+
+#menu > ul > li{
+  list-style: none; 
+  font-size: 20px;
+  margin:20px 0;
+  font-family: 'akzidenz-grotesk_probold';
+}
+
+
