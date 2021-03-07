@@ -31,7 +31,10 @@ const InventoryList = (props) => {
 
   const [data, setData] = useState(null);
   const [fetchedData, setFetchedData] =  useState(null);
+  // refactor later
+  const [dataBeforeSorted, setDataBeforeSorted] = useState(null);
   const [sortByPrice, setSortByPrice] = useState(false);
+  const [query, setQuery] = useState("");
 
 
 
@@ -43,13 +46,27 @@ const InventoryList = (props) => {
       if (!resData) {
           console.log("No availabe artworks")
       } else {
+        // find the way to refactor/reduce state momory later (still better than fetch new ones from database)
         setData(resData);
         setFetchedData(resData);
+        setDataBeforeSorted(resData);
       }
     }
     fetchData();
   }, []);
 
+  // for search
+  useEffect(() => {
+    if (!data) return;
+    let regex = new RegExp(query, 'i');
+    const matchedArtworks = fetchedData.filter(artwork => {
+        return artwork.title.match(regex) || mediumFilter(artwork.medium, regex) || artwork.artist.name.match(regex);
+    });
+    setData(matchedArtworks);
+    setDataBeforeSorted(matchedArtworks);
+  }, [query]);
+
+  // for price filter
   useEffect(() => {
     if (!data) return;
     let dataCopy = data.slice();
@@ -57,14 +74,28 @@ const InventoryList = (props) => {
         dataCopy.sort((a, b) => a.price - b.price);
         setData(dataCopy);
     } else {
-        setData(fetchedData);
+        setData(dataBeforeSorted);
     }
   }, [sortByPrice]);
 
-
+  const mediumFilter = (list, regex) => {
+    for (let el of list) {
+      if (el.match(regex)) return true;
+    }
+    return false;
+  };
 
   const toggleSortPrice = () => {
     setSortByPrice(!sortByPrice);
+  };
+
+  const searchHandler = (event) => {
+    const query = event.target.value;
+    setSortByPrice(false);
+    if (query === "") {
+        setData(fetchedData);
+    }
+    setQuery(query);
   };
 
   const renderItems = (resData) => {
@@ -82,6 +113,7 @@ const InventoryList = (props) => {
           )
       })
   }
+
 
   return (
   <div className="app-container">
@@ -103,7 +135,7 @@ const InventoryList = (props) => {
                 <button className="btn-add-artwork">ADD A NEW ARTWORK</button>
             </div>
             <div className="flex-inventory-between ">
-                <input type="text" className="inventory-search" placeholder="SEARCH" />
+                <input type="text" className="inventory-search" placeholder="SEARCH" name="query" onChange={searchHandler} />
                 <div className="inventory-sort">
                     <input type="checkbox" id="sort-by-value" onChange={toggleSortPrice} checked={sortByPrice}/>
                     <label className="label-button-like" htmlFor="sort-by-value">SORT BY VALUE</label>
