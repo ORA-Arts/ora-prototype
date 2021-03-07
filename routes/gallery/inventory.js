@@ -37,12 +37,21 @@ router.post('/', isAuthenticated, async (req, res, next) => {
   const userId =  req.session.passport.user;
   // add gallery id into find later
   const query = req.body.query;
-  console.log(query);
-  let regex = new RegExp(query, 'i');
+  const sortByPrice = req.body.sortByPrice;
+  console.log(sortByPrice);
+  
   let galleryArtworks = await Artwork.find({user: userId}).populate('artist');
-  galleryArtworks = galleryArtworks.filter(artwork => {
-    return artwork.title.match(regex) || mediumFilter(artwork.medium, regex) || artwork.artist.name.match(regex);
-  });
+
+  if (query) {
+    let regex = new RegExp(query, 'i');
+    galleryArtworks = galleryArtworks.filter(artwork => {
+      return artwork.title.match(regex) || mediumFilter(artwork.medium, regex) || artwork.artist.name.match(regex);
+    });
+  }
+  if (sortByPrice === "true") {
+    galleryArtworks.sort((a, b) => a.price - b.price);
+  }
+  
   // galleryArtworks = galleryArtworks.filter(ar)
   // const result = await Artwork.aggregate([
   //   { $match: {user: mongoose.Types.ObjectId(userId)}},

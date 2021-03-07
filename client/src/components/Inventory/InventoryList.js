@@ -30,36 +30,10 @@ const InventoryList = (props) => {
 //   };
 
   const [data, setData] = useState(null);
-  console.log("checkdata: ", data);
-//   const [isEditMode, setIsEditMode] = useState(true);
-//   const [isGalleryExist, setIsGalleryExist] = useState(false);
-//   const [convelio, setConvelio] = useState(true);
-//   const [image, setImage] = useState(null);
-  // const [password, setPassword] = useState("")
+  const [fetchedData, setFetchedData] =  useState(null);
+  const [sortByPrice, setSortByPrice] = useState(false);
 
 
-//   const onChange = (event) => {
-//     const { name, value } = event.target;
-//     setData({...data, [name]: value.toUpperCase()});
-//   };
-
-
-//   const fileHandler = e => {
-//     setImage(e.target.files[0]);
-//   };
-
-//   const submitHandler = async () => {
-//     // console.log(data.ownerName, data.email, data.password, data.position, data.name, data.address, data.biography, data.website, convelio, image);
-//     const uploadData = new FormData();
-//     const dataCopy = data;
-//     dataCopy.convelio = convelio;
-//     uploadData.append("image", image);
-//     for (let key in dataCopy) {
-//       uploadData.append(key, dataCopy[key]);
-//     }
-//     const resData = await addNewGallery(uploadData);
-//     setData(resData);
-//   };
 
   useEffect(() => {
     async function fetchData() {
@@ -68,27 +42,35 @@ const InventoryList = (props) => {
       console.log("fetch the artworks", resData);
       if (!resData) {
           console.log("No availabe artworks")
-        // setIsGalleryExist(false);
       } else {
-        // setIsGalleryExist(true);
-        // setIsEditMode(false);
-        // setData(resData);
         setData(resData);
-        // console.log(resData);
+        setFetchedData(resData);
       }
     }
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (!data) return;
+    let dataCopy = data.slice();
+    if (sortByPrice) {
+        dataCopy.sort((a, b) => a.price - b.price);
+        setData(dataCopy);
+    } else {
+        setData(fetchedData);
+    }
+  }, [sortByPrice]);
 
 
-//   const startEditing = () => {
-//     setIsEditMode(true);
-//   };
+
+  const toggleSortPrice = () => {
+    setSortByPrice(!sortByPrice);
+  };
+
   const renderItems = (resData) => {
     return resData.map(artwork => {
           return(
-            <div className="artwork-list-item">
+            <div className="artwork-list-item" key={artwork._id}>
                 <img src={artwork.imageUrl} alt={artwork.imgPublicId} className="artwork-list-item-thumbnail" />
                 <div className="artwork-list-item-info">
                     <span className="artwork-list-item-name">{artwork.artist.name}</span>
@@ -123,7 +105,7 @@ const InventoryList = (props) => {
             <div className="flex-inventory-between ">
                 <input type="text" className="inventory-search" placeholder="SEARCH" />
                 <div className="inventory-sort">
-                    <input type="checkbox" id="sort-by-value"/>
+                    <input type="checkbox" id="sort-by-value" onChange={toggleSortPrice} checked={sortByPrice}/>
                     <label className="label-button-like" htmlFor="sort-by-value">SORT BY VALUE</label>
                 </div>
             </div>
