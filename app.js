@@ -110,6 +110,9 @@ app.use("/api/auth", auth);
 const gallery = require('./routes/gallery/gallery');
 app.use("/api/gallery", gallery);
 
+const artists = require('./routes/artists/artists');
+app.use("/api/artists", artists);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
