@@ -1,13 +1,14 @@
 /* Generic Section */
 
 #wrapWIO{
-  padding-bottom: 60px;
+  padding-bottom: 80px;
   padding-top:60px;
 }
 
 #wrapWIO hr{
  width: 90vw;
  text-align: center;
+ margin-top:60px;
 }
 
 /* Top Text */
@@ -62,12 +63,25 @@
 
 /* Sections */
 
+#section123{
+  margin-top: 15px;
+}
+
 .aboutSection{
   display: flex;
   flex-direction: row;
-  padding:20px 0;
+  padding:60px 20px 0px 20px;
   width: 100vw;
 }
+
+.animate-from-bottom {
+  transition: transform 4000ms cubic-bezier(.18, 1, .21, 1), opacity 2500ms cubic-bezier(.18, 1, .21, 1);
+  transition-property: transform, opacity;
+  transition-duration: 4000ms, 2500ms;
+  transition-timing-function: cubic-bezier(0.18, 1, 0.21, 1), cubic-bezier(0.18, 1, 0.21, 1);
+  transition-delay: 0s, 0s;
+}
+
 
 .sideClass {
   display: flex;
@@ -78,9 +92,10 @@
 
 .sideClass img{
   max-height: 380px;
-  width: 253px;
+  max-width: 253px;
+  width: 20vw;
   align-self: center;
-  padding-right: 5vw;
+  padding-right: 0vw;
 }
 
 .sideSelector {
@@ -95,8 +110,14 @@
 .numberActivated{
   font-size:70px;
   margin: 0px;
-
+  font-family: "akzidenz-grotesk_probold";
+  text-decoration: none;
 }
+
+.numberActivated a{
+color:black;
+}
+
 .textActivated{
   font-size: 13px;
   font-family: "akzidenz-grotesk_proregular";
@@ -116,12 +137,15 @@
 
 .numberNotActivated{
   font-size:70px;
+  font-family: "akzidenz-grotesk_probold";
   margin: 0px;
  color: #E2E2E2;
+ text-decoration: none;
 }
 
 .numberNotActivated > a{
   text-decoration: none;
+  color: #E2E2E2;
 }
 
 .textNotActivated{
@@ -134,11 +158,18 @@
 }
 
 .textSection {
-  width: 40vw;
+  width: 50vw;
+  margin-left: 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .textSection h1{
   text-transform: uppercase;
+  font-family: 'editorial_newultralight';
+  font-size:30px;
+  margin: 0px;
 }
 
 .textSection a{
