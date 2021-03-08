@@ -1,7 +1,7 @@
 import './ArtistProfile.css'
 import React, { useState, useEffect } from 'react'
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
-import { fetchArtist, addNewArtist } from '../../api/service';
+import { fetchArtist, addNewArtist, fetchArtistById } from '../../api/service';
 import artistImage from './artist.jpg'
 
 const ArtistProfileHooks = (props) => {
@@ -26,10 +26,14 @@ const ArtistProfileHooks = (props) => {
     const [isArtistExist, setIsArtistExist] = useState(false);
     const [isEditMode, setIsEditMode] = useState(true);
     const [image, setImage] = useState(null);
+    const [checkedItems, setCheckedItems] = useState({})
+    const [checkedRel, setCheckedRel] = useState({})
+    const [artistId, setArtistId] = useState(null);
 
     console.log("data", data);
 
     const mediums = ['Painting', 'Sculpture', 'Photography', 'Video Art', 'Performance', 'Drawing', 'Mixed Media']
+    const relationships = ['represented', 'works available']
 
     const Checkbox = ({ type = "checkbox", name, checked = false, onChange }) => {
         console.log("Checkbox: ", name, checked);
@@ -37,10 +41,21 @@ const ArtistProfileHooks = (props) => {
             <input type={type} name={name} checked={checked} onChange={onChange} />
         );
     };
-    const [checkedItems, setCheckedItems] = useState({})
-    const [checkedRel, setCheckedRel] = useState({})
+    
 
-    const handleCheckboxRelationship = event => {
+    const handleCheckboxChange = event => {
+
+        //medium
+        let selMediums = []
+        setCheckedItems({
+            ...checkedItems,
+            [event.target.name]: event.target.checked
+        });
+        console.log("checkedItems: ", checkedItems);
+        selMediums = Object.keys(checkedItems)
+        setData({ ...data, 'medium': selMediums })
+
+        //relationship
         let selRelationships = []
         setCheckedRel({
             ...checkedRel,
@@ -51,16 +66,6 @@ const ArtistProfileHooks = (props) => {
         setData({ ...data, 'relationship': selRelationships })
     }
 
-    const handleCheckboxChange = event => {
-        let selMediums = []
-        setCheckedItems({
-            ...checkedItems,
-            [event.target.name]: event.target.checked
-        });
-        console.log("checkedItems: ", checkedItems);
-        selMediums = Object.keys(checkedItems)
-        setData({ ...data, 'medium': selMediums })
-    }
     const checkboxes = mediums.map(medium => {
         return {
             name: medium,
@@ -69,6 +74,15 @@ const ArtistProfileHooks = (props) => {
         }
     })
     console.log(checkboxes)
+
+    const relCheckboxes = relationships.map(rel => {
+        return {
+            name: rel,
+            key: rel,
+            label: rel.toUpperCase
+        }
+    })
+    console.log(relCheckboxes)
 
     const onChange = (event) => {
         const { name, value } = event.target;
@@ -110,6 +124,17 @@ const ArtistProfileHooks = (props) => {
         }
         fetchData()
     }, [])
+
+    useEffect(() => {
+        async function fetchData() {
+            if (artistId) {
+                const artist = await fetchArtistById(artistId);
+                setData(artist);
+                setIsEditMode(false);
+            }
+        }
+        fetchData();
+    }, [artistId]);
 
 
     return (
@@ -182,27 +207,18 @@ const ArtistProfileHooks = (props) => {
                             <div className="medium-input">
                                 <span className="inputLabel">RELATIONSHIP WITH THE GALLERY/ </span>
                                 {isEditMode ?
-                                    (<>
+                                    relCheckboxes.map(item => (
                                         <div id="ck-button" className="inputClear">
-                                            <label key='represented'>
+                                            <label key={item.key} >
                                                 <Checkbox
-                                                    name='represented'
-                                                    checked={checkedRel['represented']}
-                                                    onChange={handleCheckboxRelationship}
+                                                    name={item.name}
+                                                    checked={checkedRel[item.name]}
+                                                    onChange={handleCheckboxChange}
                                                 />
-                                                <span>REPRESENTED</span>
+                                                <span>{item.name}</span>
                                             </label>
                                         </div>
-                                        <div id="ck-button" className="inputClear">
-                                            <label key='works available'>
-                                                <Checkbox
-                                                    name='works available'
-                                                    checked={checkedRel['works available']}
-                                                    onChange={handleCheckboxRelationship} />
-                                                <span>WORKS AVAILABLE</span>
-                                            </label>
-                                        </div>
-                                    </>)
+                                    ))
                                     : <span> {data.relationship} </span>}
                             </div>
                             <div className="medium-input">

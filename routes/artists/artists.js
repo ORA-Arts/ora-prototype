@@ -27,7 +27,7 @@ router.get('/:id', isAuthenticated, async (req, res, next) => {
   const artistId = req.params.id;
   const userId =  req.session.passport.user;
   try {
-    const artist = await Artist.findOne({galleryId: userId, _id: artistId});
+    const artist = await Artist.findOne({_id: artistId});
     res.status(200).json(artist);
   } catch (error) {
     console.log(error);
