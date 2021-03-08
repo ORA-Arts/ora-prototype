@@ -302,7 +302,7 @@ const AddNewArtWork = (props) => {
                 </div>
             </div>
             <div className="inventory-btn-bottom">
-                <button className="btn-back-inventory">BACK TO MY INVENTORY</button>
+                <button onClick={() => props.history.push('/gallery/inventory')} className="btn-back-inventory">BACK TO MY INVENTORY</button>
                 <button onClick={submitHandler} className="btn-edit save-change">SAVE CHANGES</button>
             </div>
           </div>
