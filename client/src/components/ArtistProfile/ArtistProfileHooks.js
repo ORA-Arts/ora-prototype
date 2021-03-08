@@ -27,7 +27,7 @@ const ArtistProfileHooks = (props) => {
     const [isEditMode, setIsEditMode] = useState(true);
     const [image, setImage] = useState(null);
     const [checkedItems, setCheckedItems] = useState({})
-    const [checkedRel, setCheckedRel] = useState({})
+    const [checkedRel, setCheckedRel] = useState("")
     const [artistId, setArtistId] = useState(null);
 
     console.log("data", data);
@@ -54,17 +54,20 @@ const ArtistProfileHooks = (props) => {
         console.log("checkedItems: ", checkedItems);
         selMediums = Object.keys(checkedItems)
         setData({ ...data, 'medium': selMediums })
-
-        //relationship
-        let selRelationships = []
-        setCheckedRel({
-            ...checkedRel,
-            [event.target.name]: event.target.checked
-        });
-        console.log("checked Relationships: ", checkedRel);
-        selRelationships = Object.keys(checkedRel)
-        setData({ ...data, 'relationship': selRelationships })
+    
     }
+
+    const handleCheckboxRel = event => {
+    //relationship
+    
+    let selRelationships = ''
+    setCheckedRel(event.target.name);
+    console.log("checked Relationships: ", checkedRel);
+    
+    setData({ ...data, 'relationship': event.target.name })
+    }
+
+    console.log(checkedRel)
 
     const checkboxes = mediums.map(medium => {
         return {
@@ -212,8 +215,8 @@ const ArtistProfileHooks = (props) => {
                                             <label key={item.key} >
                                                 <Checkbox
                                                     name={item.name}
-                                                    checked={checkedRel[item.name]}
-                                                    onChange={handleCheckboxChange}
+                                                    checked={checkedRel === item.name}
+                                                    onChange={handleCheckboxRel}
                                                 />
                                                 <span>{item.name}</span>
                                             </label>
