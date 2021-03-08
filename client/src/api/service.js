@@ -11,8 +11,21 @@ export const fetchGallery = async () => {
     return res.data;
 };
 
+export const fetchGalleryName = async () => {
+    const res = await axios.get('/api/gallery/profile/name');
+    return res.data;
+};
+
 export const addNewGallery = async (dataForm) => {
     const res = await axios.post('/api/gallery/profile',
+        dataForm, config
+    );
+
+    return res.data;
+};
+
+export const editGallery = async (dataForm) => {
+    const res = await axios.put('/api/gallery/profile',
         dataForm, config
     );
 
@@ -31,16 +44,23 @@ export const fetchArtworks = async () => {
 };
 
 export const addNewArtWork = async (dataForm) => {
-    const res = await axios.post('/api/gallery/inventory/test',
+    const res = await axios.post('/api/gallery/inventory/new',
         dataForm, config
     );
     return res.data;
 };
 
 
-// export const addNewsletter = async (dataForm) => {
-//   const res = await axios.post('http://localhost:5005/api/newsletter',
-//       dataForm, config
-//   );
-//   return res.data;
-// };
+export const editArtWork = async (artworkId, dataForm) => {
+    const res = await axios.put(`/api/gallery/inventory/${artworkId}`,
+        dataForm, config
+    );
+    return res.data;
+};
+
+
+export const fetchArtworkById = async (artworkId) => {
+    const res = await axios.get(`/api/gallery/inventory/${artworkId}`);
+    return res.data;
+};
+
