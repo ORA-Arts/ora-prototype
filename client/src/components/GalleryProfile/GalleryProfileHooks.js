@@ -25,8 +25,6 @@ const GalleryProfile = (props) => {
   // const [password, setPassword] = useState("")
 
 
-  console.log("data",data);
-
   const onChange = (event) => {
     const { name, value } = event.target;
     setData({...data, [name]: value.toUpperCase()});
@@ -46,15 +44,15 @@ const GalleryProfile = (props) => {
     for (let key in dataCopy) {
       uploadData.append(key, dataCopy[key]);
     }
+    let resData;
     if (isEditMode && isGalleryExist) {
-      const resData = await editGallery(uploadData);
-      setData(resData);
-      setIsEditMode(false);
+      resData = await editGallery(uploadData);
     } else {
-      const resData = await addNewGallery(uploadData);
-      setData(resData);
-      setIsEditMode(false);
+      resData = await addNewGallery(uploadData);
     }
+    setData(resData);
+    setIsEditMode(false);
+    props.changeGalleryName(resData.name);
     // const resData = await addNewGallery(uploadData);
     // setData(resData);
   };
@@ -63,7 +61,6 @@ const GalleryProfile = (props) => {
     async function fetchData() {
       await props.setUser(props.user);
       const resData = await fetchGallery();
-      console.log("fetch the gallery", resData);
       if (!resData) {
         setIsGalleryExist(false);
       } else {

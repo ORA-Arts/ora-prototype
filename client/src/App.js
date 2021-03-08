@@ -26,6 +26,7 @@ export default class App extends Component {
     };
     this.Loggedin = Loggedin.bind(this);
     this.fetchGalleryName = fetchGalleryName.bind(this);
+    // this.changeGalleryName = this.changeGalleryName(this);
   }
 
   setUser = (user) => {
@@ -33,6 +34,11 @@ export default class App extends Component {
       user: user,
     });
   };
+
+  changeGalleryName = (newName) => {
+    console.log(newName);
+    this.setState({ galleryName: newName });
+  }
 
   componentDidMount() {
     this.Loggedin().then((user) => {
@@ -66,7 +72,7 @@ export default class App extends Component {
           <Route exact path='/artist-open-call' component={ArtistOpen} />
           <Route exact path='/gallery/artists' render={props => <ArtistsList user={this.state.user} galleryName={this.state.galleryName} {...props} />} />
           <Route exact path='/gallery/add-artist' render={props => <AddEditArtist user={this.state.user} galleryName={this.state.galleryName} {...props} />} />
-          <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} user={this.state.user} {...props} />} />
+          <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} changeGalleryName={this.changeGalleryName} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/inventory' render={props => <InventoryList setUser={this.setUser} user={this.state.user} galleryName={this.state.galleryName} {...props} />} />
           <Route exact path='/gallery/inventory/new' render={props => <AddNewArtWork isViewMode={false} setUser={this.setUser} galleryName={this.state.galleryName} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/inventory/:id' render={props => <AddNewArtWork isViewMode={true} setUser={this.setUser} galleryName={this.state.galleryName} user={this.state.user} {...props} />} />
