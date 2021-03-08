@@ -3,7 +3,7 @@ import "./Inventory.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import house from './house-test.jpg';
 import axios from 'axios';
-import { fetchArtworks, addNewGallery } from '../../api/service';
+import { addNewArtWork } from '../../api/service';
 
 const AddNewArtWork = (props) => {
   const initialState = {
@@ -50,6 +50,7 @@ const AddNewArtWork = (props) => {
         console.log("called");
         console.log(data.images);
         console.log(uploadedImages);
+        console.log("active image", activeImage);
         if (data.images.length !==0 && uploadedImages.length===0) {
             console.log("only data.images");
             if (!selectedImageIndex) {
@@ -63,10 +64,10 @@ const AddNewArtWork = (props) => {
             console.log(!uploadedImages);
             console.log("perhaps both");
             if (!selectedImageIndex) {
-                setActiveImage(uploadedImages[uploadedImages.length-1]);
+                setActiveImage(URL.createObjectURL(uploadedImages[uploadedImages.length-1]));
             } else {
                 if (selectedImageIndex > data.images.length-1) {
-                    setActiveImage(uploadedImages[selectedImageIndex - data.images.length]);
+                    setActiveImage(URL.createObjectURL(uploadedImages[selectedImageIndex - data.images.length]));
                 } else {
                     setActiveImage(data.images[selectedImageIndex].imageUrl);
                 }
@@ -77,14 +78,31 @@ const AddNewArtWork = (props) => {
         }
     };
 
-    console.log(uploadedImages);
+    useEffect(() => {
+        setData(initialState);
+        currentActiveImage();
+    }, []);
     
     useEffect(() => {
+        console.log("run here");
         currentActiveImage();
-    }, [uploadedImages, data.images]);
+    }, [uploadedImages]);
 
   const startEditing = () => {
     // setIsEditMode(true);
+  };
+
+  const submitHandler = async () => {
+    const uploadData = new FormData();
+    const dataCopy = data;
+    uploadData.append("uploadedImages", uploadedImages);
+    for (let key in dataCopy) {
+      uploadData.append(key, dataCopy[key]);
+    }
+    console.log()
+    const resData = await addNewArtWork(uploadData);
+    // setData(resData);
+    // setUploadedImages([]);
   };
 
   const mediumOption = () => {
@@ -282,7 +300,7 @@ const AddNewArtWork = (props) => {
             </div>
             <div className="inventory-btn-bottom">
                 <button className="btn-back-inventory">BACK TO MY INVENTORY</button>
-                <button className="btn-edit save-change">SAVE CHANGES</button>
+                <button onClick={submitHandler} className="btn-edit save-change">SAVE CHANGES</button>
             </div>
           </div>
         </div>

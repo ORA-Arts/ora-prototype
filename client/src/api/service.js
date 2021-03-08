@@ -1,16 +1,17 @@
 import axios from "axios";
 
+const config = {
+    headers: {
+        'content-type': 'multipart/form-data'
+    }
+};
+
 export const fetchGallery = async () => {
     const res = await axios.get('/api/gallery/profile');
     return res.data;
 };
 
 export const addNewGallery = async (dataForm) => {
-    const config = {
-        headers: {
-            'content-type': 'multipart/form-data'
-        }
-    };
     const res = await axios.post('/api/gallery/profile',
         dataForm, config
     );
@@ -27,4 +28,11 @@ export const fetchArtworks = async () => {
         return artwork;
     });
     return data;
-}
+};
+
+export const addNewArtWork = async (dataForm) => {
+    const res = await axios.post('/api/gallery/inventory/test',
+        dataForm, config
+    );
+    return res.data;
+};
