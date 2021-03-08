@@ -45,8 +45,10 @@ export default class Footer extends Component {
 
   render() {
     return (
-      <div>
+      <div id='footerDiv'>
+
       <footer id="footer">
+ 
          <div className="footerElement" id="footerAbout">
             <h2>ABOUT</h2>
             <Link to="/what-is-ora">WHAT IS ORA</Link>
@@ -78,7 +80,7 @@ export default class Footer extends Component {
          <div className="footerElement" id="footerORA">
             <h2>ORA</h2>
             <p>ORA is the only platform connecting artists, curators, institutions, galleries and collectors around a
-               <span>cooperative system.</span></p>
+               <span style={{fontFamily:'akzidenz-grotesk_probold'}}> cooperative system.</span></p>
          </div>
          <div className="footerElement" id="legal">
             <h2>LEGAL</h2>

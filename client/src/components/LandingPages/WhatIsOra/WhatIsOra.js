@@ -156,7 +156,7 @@ export default function WhatIsOra() {
         </section> 
         </div>
       </div>
-      //{" "}
+      {" "}
     </div>
   );
 }
