@@ -14,6 +14,12 @@ footer{
   height: 2.5rem;
 }
 
+footer h3{
+  margin: 0;
+  font-size: 14px;
+  text-decoration: none;
+}
+
 .hide {
   display: none;
 }
@@ -53,7 +59,18 @@ footer a {
   background-color: black;
   color: white;
   border: 1px solid black;
+  margin-left: 20px;
 }
+
+#newsletter {
+  min-width: 15vw;
+}
+
+#newsletter form{
+  display: flex;
+}
+
+
 
 #followUs{
   display: flex;

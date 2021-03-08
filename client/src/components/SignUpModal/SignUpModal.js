@@ -91,7 +91,7 @@ class SignUpModal extends Component {
             value="collector"
             onChange={this.handleChange}
             />
-          <label htmlFor='collector'>I AM A COLLECTOR</label>
+          <label htmlFor='collgitector'>I AM A COLLECTOR</label>
           <input 
             type="radio"
             name="userType"

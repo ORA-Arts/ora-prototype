@@ -1,5 +1,11 @@
 import axios from 'axios';
 
+const config = {
+  headers: {
+      'content-type': 'multipart/form-data'
+  }
+};
+
 const Loggedin = async () => {
   try {
     const response = await axios.get('/api/auth/loggedin');
@@ -14,7 +20,7 @@ const signup = (username, password, userType) => {
   return axios.
     post('/api/auth/signup', { username, password, userType })
     .then(response => {
-      console.log("respond", response)
+      console.log("response", response)
       return response.data
     })
     .catch(err => {
@@ -48,4 +54,23 @@ const logout = () => {
     })
 }
 
-export { signup, login, logout, Loggedin };
+
+
+const addNewsletter = (email) => {
+  console.log(email)
+  return axios.
+  post('http://localhost:5005/api/newsletter', {email})
+  .then(response => {
+    console.log("response", response)
+    return response.data;
+  })
+  .catch(err => {
+    console.log("err", err)
+    return err.response.data
+  })
+}
+
+
+
+
+export { signup, login, logout, Loggedin, addNewsletter };

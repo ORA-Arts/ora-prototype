@@ -29,9 +29,8 @@
     justify-content: space-between;
     padding-left: 13px;
     padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    max-height: 10vh;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
   }
 
@@ -107,7 +106,7 @@
 .aboutSection{
   display: flex;
   flex-direction: row;
-  padding:60px 20px 0px 20px;
+  padding:60px 20px;
   width: 100vw;
 }
 

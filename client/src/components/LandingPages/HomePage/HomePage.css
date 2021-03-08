@@ -22,6 +22,7 @@
   cursor: pointer;
   background-color: transparent;
   width: 160px;
+  height: auto;
   text-decoration: none;
 }
 

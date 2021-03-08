@@ -1,8 +1,48 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import './Footer.css'
+import { addNewsletter } from '../../services/auth'
 
 export default class Footer extends Component {
+
+   constructor(props) {
+      super(props);
+      this.state = {
+        newsletter: '',
+        message: ''
+    }
+    }
+
+    handleChange = event => {
+      const { name, value } = event.target;
+      this.setState({
+        [name]: value
+      })
+    }
+    
+    handleSubmit = event => {
+      event.preventDefault();
+      const { newsletter } = this.state;
+      addNewsletter(newsletter)
+        .then(email => {
+          if (email.message) {
+            this.setState({
+              message: email.message,
+              newsletter: ''
+            })
+          } else {
+            // the response from the server is a user object -> signup was successful
+            // we want to put the user object in the state of NavBar.js
+            console.log('OK')
+            this.setState({
+               message: 'EMAIL ADDED TO THE NEWSLETTER'
+               });
+            // this.props.history.push('/'); // this need to be passed in the router app.js
+          }
+          console.log(this.state.message)
+        })
+    }
+
   render() {
     return (
       <div>
@@ -19,6 +59,21 @@ export default class Footer extends Component {
          </div>
          <div className="footerElement" id="newsletter">
             <h2>NEWSLETTER</h2>
+         <form onSubmit={this.handleSubmit}>
+         <label htmlFor="newsletter"></label>
+          <input
+            type="email"
+            name="newsletter"
+            placeholder="EMAIL"
+            value={this.state.newsletter}
+            onChange={this.handleChange}
+            id="newsletter"
+          />
+          <button id="submitBtn" type="submit">SUBMIT</button>
+          </form>
+          {this.state.message && (
+            <h3>{this.state.message}</h3>
+          )}
          </div>
          <div className="footerElement" id="footerORA">
             <h2>ORA</h2>
@@ -35,12 +90,3 @@ export default class Footer extends Component {
     )
   }
 }
-
-{/* 
-            <form id="newsletterForm" action="/" method="POST">
-            <input type="email" name="email" id="email" value="{{email}}" placeholder="ENTER YOUR EMAIL" required onblur="this.style.borderColor= this.checkValidity() ? 'green' : 'red'" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-            <button id="submitBtn" type="submit">SUBMIT</button>
-            {{#if message}}
-            <p>{{message}}</p>
-            {{/if}}
-            </form> */}
