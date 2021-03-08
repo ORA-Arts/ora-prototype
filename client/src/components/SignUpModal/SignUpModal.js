@@ -36,6 +36,7 @@ export default class SignUpModal extends Component {
           // we want to put the user object in the state of App.js
           console.log(user)
           this.props.setUser(user);
+          localStorage.setItem('user',user)
           this.props.handleClose();
           // this.props.history.push('/'); // this need to be passed in the router app.js
 
