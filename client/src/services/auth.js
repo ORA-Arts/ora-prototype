@@ -20,7 +20,7 @@ const signup = (username, password, userType) => {
   return axios.
     post('/api/auth/signup', { username, password, userType })
     .then(response => {
-      console.log("respond", response)
+      console.log("response", response)
       return response.data
     })
     .catch(err => {
@@ -56,18 +56,21 @@ const logout = () => {
 
 
 
-// const addNewsletter =() => {
-//   return axios.
-//   post('/api/newsletter')
-//   .then(response => {
-//     return response.data;
-//   })
-//   .catch(err => {
-//     return err.response.data
-//   })
-// }
+const addNewsletter = (email) => {
+  console.log(email)
+  return axios.
+  post('http://localhost:5005/api/newsletter', {email})
+  .then(response => {
+    console.log("response", response)
+    return response.data;
+  })
+  .catch(err => {
+    console.log("err", err)
+    return err.response.data
+  })
+}
 
 
 
 
-export { signup, login, logout, Loggedin };
+export { signup, login, logout, Loggedin, addNewsletter };

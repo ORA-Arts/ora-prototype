@@ -38,9 +38,9 @@ export const addNewArtWork = async (dataForm) => {
 };
 
 
-export const addNewsletter = async (dataForm) => {
-  const res = await axios.post('/api/newsletter',
-      dataForm, config
-  );
-  return res.data;
-};
+// export const addNewsletter = async (dataForm) => {
+//   const res = await axios.post('http://localhost:5005/api/newsletter',
+//       dataForm, config
+//   );
+//   return res.data;
+// };
