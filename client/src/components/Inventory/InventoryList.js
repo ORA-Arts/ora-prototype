@@ -4,30 +4,9 @@ import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import house from './house-test.jpg';
 import axios from 'axios';
 import { fetchArtworks, addNewGallery } from '../../api/service';
+import { Link } from 'react-router-dom';
 
 const InventoryList = (props) => {
-//   const initialState = {
-//     title: ,
-//     realisationYear: ,
-//     type: ,
-//     signed: ,
-//     medium: ,
-//     materialsAndTechnique: ,
-//     height: ,
-//     length: ,
-//     width: ,
-//     stockNumber: ,
-//     status: ,
-//     market: ,
-//     seller: ,
-//     price: ,
-//     seeInPerson: ,
-//     location: ,
-//     description: ,
-//     imageUrl: ,
-//     imgPublicId: ,
-
-//   };
 
   const [data, setData] = useState(null);
   const [fetchedData, setFetchedData] =  useState(null);
@@ -35,8 +14,6 @@ const InventoryList = (props) => {
   const [dataBeforeSorted, setDataBeforeSorted] = useState(null);
   const [sortByPrice, setSortByPrice] = useState(false);
   const [query, setQuery] = useState("");
-
-
 
   useEffect(() => {
     async function fetchData() {
@@ -102,6 +79,7 @@ const InventoryList = (props) => {
     return resData.map(artwork => {
           return(
             <div className="artwork-list-item" key={artwork._id}>
+                <Link className="link-artwork" to={`/gallery/inventory/${artwork._id}`}></Link>
                 <img src={artwork.imageUrl} alt={artwork.imgPublicId} className="artwork-list-item-thumbnail" />
                 <div className="artwork-list-item-info">
                     <span className="artwork-list-item-name">{artwork.artist.name}</span>

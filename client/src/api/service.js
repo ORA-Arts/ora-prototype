@@ -44,3 +44,9 @@ export const addNewArtWork = async (dataForm) => {
     );
     return res.data;
 };
+
+
+export const fetchArtworkById = async (artworkId) => {
+    const res = await axios.get(`/api/gallery/inventory/${artworkId}`);
+    return res.data;
+};

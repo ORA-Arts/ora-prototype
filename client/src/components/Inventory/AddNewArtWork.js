@@ -3,7 +3,7 @@ import "./Inventory.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import house from './house-test.jpg';
 import axios from 'axios';
-import { addNewArtWork } from '../../api/service';
+import { addNewArtWork, fetchArtworkById } from '../../api/service';
 import {withRouter} from 'react-router-dom';
 
 const AddNewArtWork = (props) => {
@@ -29,11 +29,14 @@ const AddNewArtWork = (props) => {
     images: [],
   };
 
+  const [isViewMode, setIsViewMode] = useState(false);
+  const [artworkId, setArtworkId] = useState(null);
   const [data, setData] = useState(initialState);
   const [uploadedImages, setUploadedImages] = useState([]);
   const [activeImage, setActiveImage] = useState(house);
   const [isAddedImage, setIsAddedImage] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+
 
     const onChange = (event) => {
         const { name, value } = event.target;
@@ -48,10 +51,10 @@ const AddNewArtWork = (props) => {
 
     
     const currentActiveImage = () => {
-        console.log("called");
-        console.log(data.images);
-        console.log(uploadedImages);
-        console.log("active image", activeImage);
+        // console.log("called");
+        // console.log(data.images);
+        // console.log(uploadedImages);
+        // console.log("active image", activeImage);
         if (data.images.length !==0 && uploadedImages.length===0) {
             console.log("only data.images");
             if (!selectedImageIndex) {
@@ -80,9 +83,26 @@ const AddNewArtWork = (props) => {
     };
 
     useEffect(() => {
-        setData(initialState);
-        currentActiveImage();
+        if (!props.isViewMode) {
+            setData(initialState);
+            currentActiveImage();
+        } else {
+            setArtworkId(props.match.params.id);
+        }
     }, []);
+
+    useEffect(() => {
+        async function fetchData() {
+            if (artworkId) {
+                const artwork = await fetchArtworkById(artworkId);
+                setData(artwork);
+                currentActiveImage();
+            }
+        }
+        fetchData();
+    }, [artworkId]);
+
+    console.log("data after fetched", data);
     
     useEffect(() => {
         console.log("run here");
@@ -105,6 +125,20 @@ const AddNewArtWork = (props) => {
     setData(resData);
     setUploadedImages([]);
     props.history.push('/gallery/inventory');
+  };
+
+  const generateThumbnails = () => {
+    if (!data.images.length && !uploadedImages.length) {
+        return <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />;
+    }
+    let images = [];
+    if (data.images.length) {
+        data.images.forEach(image => images.push(image.imageUrl));
+    }
+    if (uploadedImages.length) {
+        uploadedImages.forEach(image => images.push(URL.createObjectURL(image)));
+    }
+    return images.map(image => <img src={image} alt="artwork image" className="artwork-detail-thumbnail" />);
   };
 
   const mediumOption = () => {
@@ -144,11 +178,11 @@ const AddNewArtWork = (props) => {
                     </div>
                     <div className="artwork-detail-footer">
                         <div className="artwork-detail-thumbnails">
-                            {/* {} */}
+                            {generateThumbnails()}
+                            {/* <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
                             <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
                             <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
-                            <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
-                            <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
+                            <img src={house} alt="artwork image" className="artwork-detail-thumbnail" /> */}
                         </div>
                         <div className="inventory-upload-container">
                             <input onChange={fileHandler} id="inventory-file" type="file" className="inventory-input-hidden" />
