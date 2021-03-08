@@ -12,6 +12,9 @@ import AddEditArtist from "./components/AddEditArtist/AddEditArtist";
 import { Loggedin } from "./services/auth";
 import HomePage from "./components/LandingPages/HomePage/HomePage";
 
+import ArtistOpen from "./components/LandingPages/ArtistOpen/ArtistOpen";
+
+
 
 export default class App extends Component {
   constructor(props) {
@@ -54,6 +57,10 @@ export default class App extends Component {
               <GalleryProfileHooks user={this.state.user} {...props} />
             )}
           />
+
+          <Route exact path='/artist-open-call' component={ArtistOpen} />
+
+
         <Route exact path='/gallery/new' render={props => <GalleryProfileHooks user={this.state.user} {...props} />} />
         <Route exact path='/gallery/artists' render={props => <ArtistsList user={this.state.user} {...props} />} />
         <Route exact path='/gallery/add-artist' render={props => <AddEditArtist user={this.state.user} {...props} />} />
