@@ -143,9 +143,7 @@ const AddNewArtWork = (props) => {
   <div className="app-container">
       <div className="container-inventory container-inventory-detail">
       <div className="gallery-name">
-        {/* later move the fetch to to root of gallery components */}
-        {/* {data.name} */}
-        GALLERY NEU
+        {props.galleryName}
       </div>
       <hr/>
       {isViewMode ?

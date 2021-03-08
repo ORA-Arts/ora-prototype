@@ -47,7 +47,7 @@
 .container-inventory-content {
     width: 100%;
     display: flex;
-    /* margin-top: 12px; */
+    margin-top: 24px;
     min-width: 560px;
     border-bottom: 1px solid black;
     padding-bottom: 40px;

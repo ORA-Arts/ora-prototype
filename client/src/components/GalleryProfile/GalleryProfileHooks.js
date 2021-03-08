@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "./GalleryProfile.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
-import house from './house-test.jpg';
-import axios from 'axios';
 import { fetchGallery, addNewGallery, editGallery } from '../../api/service';
 
 const GalleryProfile = (props) => {
@@ -75,7 +73,7 @@ const GalleryProfile = (props) => {
       }
     }
     fetchData();
-  }, [props]);
+  }, []);
 
 
   const startEditing = () => {

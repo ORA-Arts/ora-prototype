@@ -11,6 +11,11 @@ export const fetchGallery = async () => {
     return res.data;
 };
 
+export const fetchGalleryName = async () => {
+    const res = await axios.get('/api/gallery/profile/name');
+    return res.data;
+};
+
 export const addNewGallery = async (dataForm) => {
     const res = await axios.post('/api/gallery/profile',
         dataForm, config
