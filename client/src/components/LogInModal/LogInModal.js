@@ -31,6 +31,7 @@ export default class LogInModal extends Component {
           // the response from the server is a user object -> signup was successful
           // we want to put the user object in the state of NavBar.js
           this.props.setUser(user);
+          localStorage.setItem('user',user)
           this.props.handleClose();
           // this.props.history.push('/'); // this need to be passed in the router app.js
         }

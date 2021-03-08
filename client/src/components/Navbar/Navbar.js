@@ -52,6 +52,13 @@ handleLogout = () => {
     });
   };
 
+  componentDidMount() {
+    const user = localStorage.getItem('user')
+    this.setState({
+      user: user
+    })
+  }
+
   render() {
     return (
       <div>
