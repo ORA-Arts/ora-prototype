@@ -1,27 +1,31 @@
 import React, { Component } from 'react'
 import './SignUpModal.css'
 import { signup } from '../../services/auth'
+import { withRouter } from 'react-router-dom'
 
-export default class SignUpModal extends Component {
-
-  state = {
-    username: '',
-    password: '',
-    userType: '',
-    message: ''
+class SignUpModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      userType: '',
+      message: '',
   }
+  }
+  
 
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     })
-    console.log(this.state.userType)
   }
 
   handleSubmit = event => {
     event.preventDefault();
     const { username, password, userType } = this.state;
+    const { history } = this.props
     signup(username, password, userType)
       .then(user => {
         if (user.message) {
@@ -29,17 +33,22 @@ export default class SignUpModal extends Component {
             message: user.message,
             username: '',
             password: '',
-            userType: ''
+            userType: '',
           })
         } else {
           // the response from the server is a user object -> signup was successful
           // we want to put the user object in the state of App.js
           console.log(user)
+          console.log(history)
           this.props.setUser(user);
           localStorage.setItem('user',user)
           this.props.handleClose();
-          // this.props.history.push('/'); // this need to be passed in the router app.js
-
+          if (this.state.userType == 'gallery') {
+            console.log(this.state.userType);
+            this.props.history.push('/gallery/profile');
+            // //browserHistory.push('/gallery/profile')
+          } 
+          // : this.props.history.push('/collector/profile')// this need to be passed in the router app.js
         }
       })
   }
@@ -47,7 +56,7 @@ export default class SignUpModal extends Component {
   render() {
     const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
     return (
-      <div className={showHideClassName}>
+            <div className={showHideClassName}>
       <section className="modal-main">
       <div className='buttonContainer'>
       <button className="buttonClose" type="button" onClick={this.props.handleClose}>
@@ -104,3 +113,5 @@ export default class SignUpModal extends Component {
     )
   }
 }
+
+export default withRouter(SignUpModal)
