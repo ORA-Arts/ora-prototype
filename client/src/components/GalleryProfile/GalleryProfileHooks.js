@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./GalleryProfile.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
-import house from './house-test.jpg';
-import axios from 'axios';
-import { fetchGallery, addNewGallery } from '../../api/service';
+import { fetchGallery, addNewGallery, editGallery } from '../../api/service';
 
 const GalleryProfile = (props) => {
   const initialState = {
@@ -27,8 +25,6 @@ const GalleryProfile = (props) => {
   // const [password, setPassword] = useState("")
 
 
-  console.log("data",data);
-
   const onChange = (event) => {
     const { name, value } = event.target;
     setData({...data, [name]: value.toUpperCase()});
@@ -48,15 +44,23 @@ const GalleryProfile = (props) => {
     for (let key in dataCopy) {
       uploadData.append(key, dataCopy[key]);
     }
-    const resData = await addNewGallery(uploadData);
+    let resData;
+    if (isEditMode && isGalleryExist) {
+      resData = await editGallery(uploadData);
+    } else {
+      resData = await addNewGallery(uploadData);
+    }
     setData(resData);
+    setIsEditMode(false);
+    props.changeGalleryName(resData.name);
+    // const resData = await addNewGallery(uploadData);
+    // setData(resData);
   };
 
   useEffect(() => {
     async function fetchData() {
       await props.setUser(props.user);
       const resData = await fetchGallery();
-      console.log("fetch the gallery", resData);
       if (!resData) {
         setIsGalleryExist(false);
       } else {
@@ -70,7 +74,7 @@ const GalleryProfile = (props) => {
 
 
   const startEditing = () => {
-    setIsEditMode(true);
+    setIsEditMode(!isEditMode);
   };
 
   return (
@@ -196,7 +200,9 @@ const GalleryProfile = (props) => {
                   <label htmlFor="no">NO</label>
               </div>
             </div>
+            {isEditMode && isGalleryExist ? 
             <button className="btn-edit save-change space-top" onClick={submitHandler}>SAVE CHANGES</button>
+            : null}
           </div>
         </div>
       </div>

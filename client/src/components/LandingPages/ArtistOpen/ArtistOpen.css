@@ -1,34 +1,39 @@
 /* Artist open call */
 
-#artistOpenCallWrap{
-  padding-top:130px;
+#artistOpenCallWrap {
+  padding-top: 130px;
   padding-bottom: 60px;
 }
 
-
-h1{
-  font-family: 'editorial_newultralight';
+h1 {
+  font-family: "editorial_newultralight";
   font-size: 30px;
   margin: 0px;
-      }
-
-      @media (min-width: 480px) {
-#artistHeader{
-  background-color: #E75D82;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 13px;
-  padding-right: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  max-height: 10vh;
 }
-      }
+@media (max-width: 481px) {
+  h1 {
+    font-family: "editorial_newultralight";
+    font-size: 20px;
+    margin: 0px;
+  }
+}
 
+@media (min-width: 480px) {
+  #artistHeader {
+    background-color: #e75d82;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 13px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    max-height: 10vh;
+  }
+}
 
 @media (max-width: 481px) {
   #artistHeader {
-    background-color: #E75D82;
+    background-color: #e75d82;
     display: flex;
     justify-content: space-between;
     padding-left: 13px;
@@ -36,23 +41,24 @@ h1{
     padding-top: 20px;
     padding-bottom: 20px;
   }
-  }
+}
 
 @media (max-width: 481px) {
-  #artistHeader h1{
+  #artistHeader h1 {
     color: white;
-    font-family: 'editorial_newultralight';
+    font-family: "editorial_newultralight";
+    font-size: 26px;
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     padding-bottom: 10px;
   }
-  }
+}
 
 #artistHeader h1 {
   color: white;
-  font-family: 'editorial_newultralight';
+  font-family: "editorial_newultralight";
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -75,23 +81,24 @@ h1{
     margin-top: 2%;
     margin-bottom: 2%;
   }
-    }
-  
-    @media (max-width: 481px) {
-      #getInTouch .btnBlack {
-      display: none;
-      }
-    }
-  
-  #getInTouch .btnBlack:hover {
-    background-color: black;
-    color: white
+}
+
+@media (max-width: 481px) {
+  #getInTouch .btnBlack {
+    display: none;
   }
+}
+
+#getInTouch .btnBlack:hover {
+  background-color: black;
+  color: white;
+}
 
 #artistAllSections {
   padding-top: 10px;
   padding-right: 5vw;
   padding-left: 5vw;
+
 }
 
 #artistSection1 {
@@ -102,89 +109,183 @@ h1{
   width: inherit;
 }
 
-#artistSection1 img{
+@media (max-width: 481px) {
+  #artistSection1 {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    display: flex;
+    flex-direction: column-reverse;
+    width: inherit;
+  }
+}
+
+#artistSection1 img {
   width: 40vw;
   height: auto;
   max-height: 450px;
 }
 
-#textHeaderArtist {
-display: flex;
-flex-direction: column;
-padding-right: 100px;
+@media (max-width: 481px) {
+  #artistSection1 img {
+    width: 90vw;
+    height: auto;
+    max-height: 450px;
+    margin: 0;
+  }
 }
 
+#textHeaderArtist {
+  display: flex;
+  flex-direction: column;
+  padding-right: 100px;
+}
 
-
- #selectionHeader h1{
-font-family: 'editorial_newultralight';
-font-size: 30px;
-    }
-
-#textHeaderArtist p{
-text-align: justify;
-text-justify: inter-word;
-line-height: 25px;
-  }
-
-
-  #selectionHeader{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  #textSelection  {
-   width: 65%;
-  margin: auto;
-  }
-
-  #textSelection  p{
-    text-transform: uppercase;
-    text-align: center;
-  }
-
-  .lineComity {
-    display: flex;
-    justify-content: space-around;
-    margin: 5vh 3vw;
-  }
-
-  .memberComity {
-    width: 15vw;
+@media (max-width: 481px) {
+  #textHeaderArtist {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding-right: 0px;
   }
+}
 
-  .memberComity h1 {
-    font-size: 16px;
-    font-family: "akzidenz-grotesk_proregular";
-    margin: 0px;
-  }
+#textHeaderArtist p {
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 25px;
+}
 
-  .memberComity p {
+#selectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#textSelection {
+  width: 65%;
+  margin: auto;
+}
+
+@media (max-width: 481px) {
+#textSelection {
+  width: 90vw;
+  margin: auto;
+}
+}
+
+#textSelection p {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media (max-width: 481px) {
+#textSelection p {
+  text-transform: uppercase;
+  text-align:justify;
+}
+}
+
+.lineComity {
+  display: flex;
+  justify-content: space-around;
+  margin: 5vh 3vw;
+}
+@media (max-width: 481px) {
+.lineComity  {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0vh 0vw;
+}
+}
+
+@media (min-width: 480px) {
+.even {
+  text-align: center;
+}
+}
+
+@media (max-width: 481px) {
+  .even {
+    align-self: flex-end;
     text-align: center;
-    text-transform: uppercase;
-    font-size: 12px;
+  }
   }
 
-  #postSelection {
-    display: flex;
-    height: 40vh;
-    width: inherit;
-    margin-bottom: 120px;
-    align-items: flex-start; 
-  }
+  @media (min-width: 480px) {
+    .odd {
+      text-align: center;
+    }
+    }
+    
+    @media (max-width: 481px) {
+      .odd {
+        align-self: flex-start;
+        text-align: center;
+      }
+      }
 
+.memberComity {
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
 
-  #postSelection > img{
-    display: block;
-    height: 40vh;
-    margin-top: 7px;
-  }
+@media (max-width: 481px) {
+.memberComity {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+}
 
-  #postSelText {
+.memberComity h1 {
+  font-size: 16px;
+  font-family: "akzidenz-grotesk_proregular";
+  margin: 0px;
+}
+
+.memberComity p {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+#postSelection {
+  display: flex;
+  height: 40vh;
+  width: inherit;
+  margin-bottom: 120px;
+  align-items: flex-start;
+}
+@media (max-width: 481px) {
+#postSelection {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  width: inherit;
+  margin-bottom: 120px;
+  align-items: flex-start;
+}
+}
+
+#postSelection > img {
+  display: block;
+  height: 40vh;
+  margin-top: 7px;
+}
+
+@media (max-width: 481px) {
+#postSelection > img {
+  display: block;
+  width: 90vw;
+  height: auto;
+  margin-top: 7px;
+}
+}
+
+#postSelText {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -192,20 +293,32 @@ line-height: 25px;
   margin-top: 0;
   padding-top: 0;
   padding: 0;
-
   width: 100%;
   height: 100%;
-  }
+}
 
-  #postSelection p{
-    text-align: justify;
-text-justify: inter-word;
-line-height: 25px;
-margin: 0;
-  }
+@media (max-width: 481px) {
+#postSelText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 0vw;
+  margin-top: 0;
+  padding-top: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+}
+}
 
-  #getInTouch > button {
-    width: 270px;
-    align-self: flex-start;
-  }
+#postSelection p {
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 25px;
+  margin: 0;
+}
 
+#getInTouch > button {
+  width: 270px;
+  align-self: flex-start;
+}

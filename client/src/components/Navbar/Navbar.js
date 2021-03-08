@@ -52,6 +52,13 @@ handleLogout = () => {
     });
   };
 
+  componentDidMount() {
+    const user = localStorage.getItem('user')
+    this.setState({
+      user: user
+    })
+  }
+
   render() {
     return (
       <div>
@@ -75,7 +82,7 @@ handleLogout = () => {
          {this.state.user ? (
            <>
            <li>
-           <Link className="link" to='/myprofile'>MY PROFILE</Link>
+           {this.state.user.userType == 'gallery' ? <Link className="link" to='/gallery/profile'>MY PROFILE</Link> : <Link className="link" to='/collector/profile'>MY PROFILE</Link> }
            <Link className="link" to='/' onClick={() => this.handleLogout()}>/ LOG OUT</Link>
            </li>
            </>

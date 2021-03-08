@@ -44,28 +44,28 @@ export default function ArtistOpen() {
                     personalities from the Art World and reunited in ORA’s not-for-profit</p>
             </div>
             <div className="lineComity">
-                <div className="memberComity">
+                <div className="memberComity odd">
                     <h2 className="numberActivated">1</h2>
                     <h1>MYRIAM BEN SALAH</h1>
                     <p>Editor-at-large of Kaleidoscope Magazine and Executive Director of the Renaissance Society at the
                         University of Chicago</p>
                 </div>
-                <div className="memberComity">
+                <div className="memberComity even">
                     <h2 className="numberActivated">2</h2>
                     <h1>CAROLINE BOURGEOIS</h1>
                     <p>Head Curator of the Pinault Collection, Paris</p>
                 </div>
-                <div className="memberComity">
+                <div className="memberComity odd">
                     <h2 className="numberActivated">3</h2>
                     <h1>SIMON CASTETS</h1>
                     <p>Director of the Swiss Institute, New York</p>
                 </div>
-                <div className="memberComity">
+                <div className="memberComity even">
                     <h2 className="numberActivated">4</h2>
                     <h1>CATHERINE DAVID</h1>
                     <p>Deputy Director of the Musée national d'art moderne - Centre Pompidou, Paris</p>
                 </div>
-                <div className="memberComity">
+                <div className="memberComity odd">
                     <h2 className="numberActivated">5</h2>
                     <h1>RONAN GROSSIAT</h1>
                     <p>Collector, Head of the « Emergence » programme at the ADIAF (Association of the International
@@ -73,49 +73,49 @@ export default function ArtistOpen() {
                 </div>
             </div>
             <div className="lineComity">
-                <div className="memberComity">
+                <div className="memberComity even">
                     <h2 className="numberActivated">6</h2>
                     <h1>YUKO HASEGAWA</h1>
                     <p>Artistic Director of the Museum of Contemporary Art, Tokyo</p>
                 </div>
-                <div className="memberComity">
+                <div className="memberComity odd">
                     <h2 className="numberActivated">7</h2>
                     <h1>MARTHA KIRSZENBAUM</h1>
                     <p>Curator of the French Pavilion of the 58th Venice Biennale</p>
                 </div>
-                <div className="memberComity">
+                <div className="memberComity even">
                     <h2 className="numberActivated">8</h2>
                     <h1>LAURENT LE BON</h1>
                     <p>Director of the Musée Picasso, Paris</p>
                 </div>
-                <div className="memberComity">
+                <div className="memberComity odd">
                     <h2 className="numberActivated">9</h2>
                     <h1>RUTH MACKENZIE</h1>
                     <p>Cultural advisor, CHAIR OF THE LONDON ARTS COUNCIL</p>
                 </div>
-                <div className="memberComity">
+                <div className="memberComity even">
                     <h2 className="numberActivated">10</h2>
                     <h1>HANS ULRICH OBRIST</h1>
                     <p>Artistic Director at the Serpentine Galleries, London</p>
                 </div>
             </div>
             <div className="lineComity">
-                <div className="memberComity">
+                <div className="memberComity odd">
                     <h2 className="numberActivated">11</h2>
                     <h1>CHIARA PARISI</h1>
                     <p>DIRECTOR OF THE CENTRE POMPIDOU, METZ</p>
                 </div>
-                <div className="memberComity">
+                <div className="memberComity even">
                     <h2 className="numberActivated">12</h2>
                     <h1>RENAUD SABARI</h1>
                     <p>FOUNDER AND CEO OF ARTER, PARIS</p>
                 </div>
-                <div className="memberComity">
+                <div className="memberComity odd">
                     <h2 className="numberActivated">13</h2>
                     <h1>NICOLAS TREMBLEY</h1>
                     <p>Director of the Syz Collection, Geneva</p>
                 </div>
-                <div className="memberComity">
+                <div className="memberComity even">
                     <h2 className="numberActivated">14</h2>
                     <h1>MARIE-ANN YEMSI</h1>
                     <p>INDEPENDANT CURATOR AND CONTEMPORARY ART CONSULTANT, PARIS </p>

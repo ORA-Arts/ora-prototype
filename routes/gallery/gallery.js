@@ -12,6 +12,16 @@ function isAuthenticated(req, res, next) {
   }
 }
 
+router.get("/name", isAuthenticated, async (req, res, next) => {
+  const userId =  req.session.passport.user;
+  try {
+    const existedGallery = await Gallery.findOne({user: userId});
+    res.status(200).json(existedGallery.name);
+  } catch (error) {
+    res.status(500).json({ message: 'Error while attempting to access database' });
+  }
+});
+
 router.get("/", isAuthenticated, async (req, res, next) => {
   const userId =  req.session.passport.user;
   try {

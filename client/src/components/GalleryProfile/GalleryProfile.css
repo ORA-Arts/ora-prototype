@@ -7,7 +7,7 @@
 
 .container-profile {
     width: 1374px;
-    height: 1795px;
+    height: 1250px;
     padding: 0;
     margin: 16px 32px;
 }
@@ -43,6 +43,8 @@
 .container-profile-content {
     width: 100%;
     display: flex;
+    padding-bottom: 40px;
+    border-bottom: 1px solid black;
 }
 
 

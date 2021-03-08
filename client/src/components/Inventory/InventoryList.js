@@ -4,30 +4,9 @@ import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import house from './house-test.jpg';
 import axios from 'axios';
 import { fetchArtworks, addNewGallery } from '../../api/service';
+import { Link, withRouter } from 'react-router-dom';
 
 const InventoryList = (props) => {
-//   const initialState = {
-//     title: ,
-//     realisationYear: ,
-//     type: ,
-//     signed: ,
-//     medium: ,
-//     materialsAndTechnique: ,
-//     height: ,
-//     length: ,
-//     width: ,
-//     stockNumber: ,
-//     status: ,
-//     market: ,
-//     seller: ,
-//     price: ,
-//     seeInPerson: ,
-//     location: ,
-//     description: ,
-//     imageUrl: ,
-//     imgPublicId: ,
-
-//   };
 
   const [data, setData] = useState(null);
   const [fetchedData, setFetchedData] =  useState(null);
@@ -35,8 +14,6 @@ const InventoryList = (props) => {
   const [dataBeforeSorted, setDataBeforeSorted] = useState(null);
   const [sortByPrice, setSortByPrice] = useState(false);
   const [query, setQuery] = useState("");
-
-
 
   useEffect(() => {
     async function fetchData() {
@@ -102,6 +79,7 @@ const InventoryList = (props) => {
     return resData.map(artwork => {
           return(
             <div className="artwork-list-item" key={artwork._id}>
+                <Link className="link-artwork" to={`/gallery/inventory/${artwork._id}`}></Link>
                 <img src={artwork.imageUrl} alt={artwork.imgPublicId} className="artwork-list-item-thumbnail" />
                 <div className="artwork-list-item-info">
                     <span className="artwork-list-item-name">{artwork.artist.name}</span>
@@ -120,8 +98,7 @@ const InventoryList = (props) => {
       <div className="container-inventory">
       <div className="gallery-name">
         {/* later move the fetch to to root of gallery components */}
-        {/* {data.name} */}
-        GALLERY NEU
+        {props.galleryName}
       </div>
       <hr/>
       <div className="container-inventory-content">
@@ -133,7 +110,7 @@ const InventoryList = (props) => {
                     {/* implement later */}
                     Unique artworks / Edition and multiples / Products / Artist books & Publications
                 </div>
-                <button className="btn-add-artwork">ADD A NEW ARTWORK</button>
+                <button onClick={() => props.history.push('/gallery/inventory/new')} className="btn-add-artwork">ADD A NEW ARTWORK</button>
             </div>
             <div className="flex-inventory-between ">
                 <input type="text" className="inventory-search" placeholder="SEARCH" name="query" onChange={searchHandler} />
@@ -145,59 +122,6 @@ const InventoryList = (props) => {
             {/* <hr/> */}
             <div className="artwork-list">
                 {!data ? null : renderItems(data)}
-                {/* <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div> */}
-
             </div>
           </div>
         </div>
@@ -207,4 +131,4 @@ const InventoryList = (props) => {
   );
 };
 
-export default InventoryList;
+export default withRouter(InventoryList);
