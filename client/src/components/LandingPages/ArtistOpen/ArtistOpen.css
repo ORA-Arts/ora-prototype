@@ -47,6 +47,7 @@ h1 {
   #artistHeader h1 {
     color: white;
     font-family: "editorial_newultralight";
+    font-size: 26px;
     text-transform: uppercase;
     display: flex;
     flex-direction: column;

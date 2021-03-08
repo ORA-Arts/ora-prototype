@@ -15,14 +15,14 @@ router.post('/', (req,res,next) => {
     else if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email) == false) {
       return res.status(400).json({ message: 'PLEASE ENTER A VALID EMAIL' });
       }
-      
+
     else {
       Newsletter.create({
         email: email
       })
       .then(email => {
         console.log('this email was added to the DB', email)
-        res.render('index', {message:'ADDED TO THE NEWSLETTER'});
+        return res.status(200).json(email);
       })
     }
   })
