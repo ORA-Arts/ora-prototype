@@ -287,6 +287,11 @@
     width: 50%;
 }
 
+.detail-info-field span {
+    font-size: 14px;
+    font-weight: normal;
+}
+
 .detail-info-field select {
     width: 100%;
     text-transform: uppercase;

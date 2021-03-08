@@ -75,7 +75,7 @@ const GalleryProfile = (props) => {
       }
     }
     fetchData();
-  }, []);
+  }, [props]);
 
 
   const startEditing = () => {
