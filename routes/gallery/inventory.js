@@ -115,25 +115,24 @@ router.get('/:id', isAuthenticated, async (req, res, next) => {
   }
 });
 
-router.put('/:id', isAuthenticated, uploader.single('image'), async (req, res, next) => {
+router.put('/:id', isAuthenticated, uploader.array('images[]'), async (req, res, next) => {
   const artworkId = req.params.id;
   const userId =  req.session.passport.user;
 
   // assume there is only one image
   // implement deleting images in the cloudanary later
   const data = req.body;
-  if (req.file) {
-    const imageUrl = req.file.path;
-    const imgPublicId = req.file.filename;
-    data.images = [{imageUrl, imgPublicId}];
-  }
-  // for test
-  else {
-    data.images = [{imageUrl: data.imageUrl, imgPublicId: data.imgPublicId}];
+  delete data.images;
+  delete data.artist;
+  let uploadedImages = [];
+  if (req.files) {
+    uploadedImages = req.files.map(file => ({imageUrl: file.path, imgPublicId: file.filename}));
+    console.log(uploadedImages);
   }
 
   try {
-    const updatedArtwork = await Artwork.findOneAndUpdate({user: userId, _id: artworkId}, {...data}, {new: true});
+    const updatedArtwork = await Artwork.findOneAndUpdate(
+      {user: userId, _id: artworkId}, {...data, $push: {images: {$each: uploadedImages}}}, {new: true});
     res.status(200).json(updatedArtwork);
   } catch(error) {
     console.log(error);

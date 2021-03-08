@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./Inventory.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import house from './house-test.jpg';
-import { addNewArtWork, fetchArtworkById } from '../../api/service';
+import { addNewArtWork, fetchArtworkById, editArtWork } from '../../api/service';
 import {withRouter} from 'react-router-dom';
 
 const AddNewArtWork = (props) => {
@@ -34,9 +34,7 @@ const AddNewArtWork = (props) => {
   const [data, setData] = useState(initialState);
   const [uploadedImages, setUploadedImages] = useState([]);
   const [activeImage, setActiveImage] = useState(house);
-  const [isAddedImage, setIsAddedImage] = useState(false);
 
-    console.log(activeImage);
     
     useEffect(() => {
         if (!props.isViewMode) {
@@ -46,7 +44,7 @@ const AddNewArtWork = (props) => {
         } else {
             setArtworkId(props.match.params.id);
         }
-    }, [initialState, props]);
+    }, []);
 
     useEffect(() => {
         async function fetchData() {
@@ -63,7 +61,8 @@ const AddNewArtWork = (props) => {
     useEffect(() => {
         console.log("run here");
         currentActiveImage();
-    }, [uploadedImages]);
+    }, [uploadedImages, data.images]);
+
 
     const onChange = (event) => {
         const { name, value } = event.target;
@@ -99,10 +98,17 @@ const AddNewArtWork = (props) => {
       uploadData.append(key, dataCopy[key]);
     }
     uploadedImages.forEach(file => uploadData.append('images[]', file));
-    const resData = await addNewArtWork(uploadData);
+    let resData;
+    if (isEditMode && isViewMode) {
+        resData = await editArtWork(artworkId, uploadData);
+    } else {
+        resData = await addNewArtWork(uploadData);
+    }
+    if (resData) props.history.push(`/gallery/inventory/${resData._id}`);
     setData(resData);
     setUploadedImages([]);
-    props.history.push('/gallery/inventory');
+    setIsEditMode(false);
+    setIsViewMode(true);
   };
 
   const clickedImageHandler = (index) => {
