@@ -200,7 +200,7 @@ const GalleryProfile = (props) => {
                   <label htmlFor="no">NO</label>
               </div>
             </div>
-            {isEditMode && isGalleryExist ? 
+            {isEditMode ? 
             <button className="btn-edit save-change space-top" onClick={submitHandler}>SAVE CHANGES</button>
             : null}
           </div>
