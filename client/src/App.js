@@ -14,7 +14,7 @@ import InventoryList from "./components/Inventory/InventoryList";
 import AddNewArtWork from "./components/Inventory/AddNewArtWork";
 import ArtistOpen from "./components/LandingPages/ArtistOpen/ArtistOpen";
 import { fetchGalleryName } from './api/service';
-
+import CollectorSpace from './components/LandingPages/CollectorSpace/CollectorSpace'
 
 
 export default class App extends Component {
@@ -70,6 +70,7 @@ export default class App extends Component {
             )}
           />
           <Route exact path='/artist-open-call' component={ArtistOpen} />
+          <Route exact path='/collector-space' component={CollectorSpace} />
           <Route exact path='/gallery/artists' render={props => <ArtistsList user={this.state.user} galleryName={this.state.galleryName} {...props} />} />
           <Route exact path='/gallery/add-artist' render={props => <AddEditArtist user={this.state.user} galleryName={this.state.galleryName} {...props} />} />
           <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} changeGalleryName={this.changeGalleryName} user={this.state.user} {...props} />} />

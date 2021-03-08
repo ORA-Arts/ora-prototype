@@ -96,8 +96,10 @@ footer a {
   display: flex;
 }
 
+@media (max-width: 481px) {
 .footerElement > a{
   color: white;
+}
 }
 
 #followUs{
