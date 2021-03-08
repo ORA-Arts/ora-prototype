@@ -66,14 +66,14 @@ router.post('/', isAuthenticated, async (req, res, next) => {
 
 });
 
-router.post('/test', isAuthenticated, uploader.array('uploadedImages'), async (req, res, next) => {
+router.post('/test', isAuthenticated, uploader.array('images[]'), async (req, res, next) => {
   console.log(req.body);
   console.log(req.files);
   res.json({message: "empty"});
 });
 
 // single image first
-router.post('/new', isAuthenticated, uploader.array('uploadedImages'), async (req, res, next) => {
+router.post('/new', isAuthenticated, uploader.array('images[]'), async (req, res, next) => {
   const userId =  req.session.passport.user;
   // later for gallery_id by as a param or in the request body
   // add artist Id when Patrick done!

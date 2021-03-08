@@ -79,7 +79,7 @@ const GalleryProfile = (props) => {
 
 
   const startEditing = () => {
-    setIsEditMode(true);
+    setIsEditMode(!isEditMode);
   };
 
   return (

@@ -4,24 +4,25 @@ import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import house from './house-test.jpg';
 import axios from 'axios';
 import { addNewArtWork } from '../../api/service';
+import {withRouter} from 'react-router-dom';
 
 const AddNewArtWork = (props) => {
   const initialState = {
     artist: null,
     title: "",
-    realisationYear: null,
+    realisationYear: 1990,
     type: "Unique",
     signed: true,
     medium: "Painting",
     materialsAndTechnique: "",
-    height: null,
-    length: null,
-    width: null,
-    stockNumber: null,
+    height: 0,
+    length: 0,
+    width: 0,
+    stockNumber: 0,
     status: "Available",
     market: "Primary",
     seller: "",
-    price: null,
+    price: 0,
     seeInPerson: false,
     location: "",
     description: "",
@@ -99,10 +100,11 @@ const AddNewArtWork = (props) => {
     for (let key in dataCopy) {
       uploadData.append(key, dataCopy[key]);
     }
-    console.log()
+    uploadedImages.forEach(file => uploadData.append('images[]', file));
     const resData = await addNewArtWork(uploadData);
-    // setData(resData);
-    // setUploadedImages([]);
+    setData(resData);
+    setUploadedImages([]);
+    props.history.push('/gallery/inventory');
   };
 
   const mediumOption = () => {
@@ -142,6 +144,7 @@ const AddNewArtWork = (props) => {
                     </div>
                     <div className="artwork-detail-footer">
                         <div className="artwork-detail-thumbnails">
+                            {/* {} */}
                             <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
                             <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
                             <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
@@ -310,4 +313,4 @@ const AddNewArtWork = (props) => {
   );
 };
 
-export default AddNewArtWork;
+export default withRouter(AddNewArtWork);

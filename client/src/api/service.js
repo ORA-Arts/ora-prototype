@@ -39,7 +39,7 @@ export const fetchArtworks = async () => {
 };
 
 export const addNewArtWork = async (dataForm) => {
-    const res = await axios.post('/api/gallery/inventory/test',
+    const res = await axios.post('/api/gallery/inventory/new',
         dataForm, config
     );
     return res.data;
