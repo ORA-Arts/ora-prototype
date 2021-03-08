@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose")
 const artistSchema = new Schema({
   galleryId: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'Gallery'
   },
   name: String, 
   birthYear: Date,
@@ -12,7 +12,9 @@ const artistSchema = new Schema({
   caption: String,
   medium: {
     type: String,
-    enum: [ 'Painting', 'Sculpture', 'Photography', 'Video Art', 'Performance', 'Drawing', 'Mixed Media']
+    enum: [ 'Painting', 'Sculpture', 'Photography', 'Video Art', 'Performance', 'Drawing', 'Mixed Media'],
+    default: 'Painting'
+
   },  
   relationship: {
     type: String,
