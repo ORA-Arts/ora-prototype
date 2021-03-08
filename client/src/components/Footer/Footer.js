@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './Footer.css'
 import { addNewsletter } from '../../api/service'
 
+
 export default class Footer extends Component {
 
    constructor(props) {
