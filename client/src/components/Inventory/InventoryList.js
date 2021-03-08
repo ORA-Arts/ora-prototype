@@ -4,7 +4,7 @@ import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import house from './house-test.jpg';
 import axios from 'axios';
 import { fetchArtworks, addNewGallery } from '../../api/service';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 const InventoryList = (props) => {
 
@@ -111,7 +111,7 @@ const InventoryList = (props) => {
                     {/* implement later */}
                     Unique artworks / Edition and multiples / Products / Artist books & Publications
                 </div>
-                <button className="btn-add-artwork">ADD A NEW ARTWORK</button>
+                <button onClick={() => props.history.push('/gallery/inventory/new')} className="btn-add-artwork">ADD A NEW ARTWORK</button>
             </div>
             <div className="flex-inventory-between ">
                 <input type="text" className="inventory-search" placeholder="SEARCH" name="query" onChange={searchHandler} />
@@ -123,59 +123,6 @@ const InventoryList = (props) => {
             {/* <hr/> */}
             <div className="artwork-list">
                 {!data ? null : renderItems(data)}
-                {/* <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div>
-                <div className="artwork-list-item">
-                    <img src={house} alt="test-image" className="artwork-list-item-thumbnail" />
-                    <div className="artwork-list-item-info"><span className="artwork-list-item-name">Brigit Megerle</span>, Title & Year, Signed, dated and numbered, Material, Dimension, Stock number, Price, Location</div>
-                </div> */}
-
             </div>
           </div>
         </div>
@@ -185,4 +132,4 @@ const InventoryList = (props) => {
   );
 };
 
-export default InventoryList;
+export default withRouter(InventoryList);
