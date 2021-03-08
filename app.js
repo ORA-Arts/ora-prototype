@@ -108,7 +108,10 @@ const auth = require('./routes/auth/auth');
 app.use("/api/auth", auth);
 
 const gallery = require('./routes/gallery/gallery');
-app.use("/api/gallery", gallery);
+app.use("/api/gallery/profile", gallery);
+
+const inventory = require('./routes/gallery/inventory');
+app.use("/api/gallery/inventory", inventory);
 
 const artists = require('./routes/artists/artists');
 app.use("/api/artists", artists);

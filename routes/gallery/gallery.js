@@ -38,7 +38,7 @@ router.post('/', isAuthenticated, uploader.single('image'), async (req, res, nex
   data.imgPublicId = imgPublicId;
 
   try {
-    const gallery = await Gallery.create({...data, imageUrl, imgPublicId, user: userId});
+    const gallery = await Gallery.create({...data, user: userId});
     res.status(200).json(gallery);
   } catch (err) {
     console.log(err);

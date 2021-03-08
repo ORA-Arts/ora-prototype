@@ -1,0 +1,348 @@
+.app-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 63px;
+    text-align: center;
+}
+
+.container-inventory {
+    width: 1374px;
+    height: 1190px;
+    padding: 0;
+    margin: 16px 32px;
+}
+
+/* .container-inventory-detail {
+    height: 1050px !important;
+} */
+
+.container-inventory .gallery-name {
+    font-size: 34px;
+    line-height: 50px;
+    text-align: left;
+}
+
+.container-inventory .edit-button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.container-inventory .btn-edit {
+    width: 117px;
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 12px;
+    cursor: pointer;
+    background-color: black;
+    border: 2px solid black;
+}
+
+.container-inventory .btn-edit:hover {
+    color: black;
+    background-color: white;
+}
+
+.container-inventory-content {
+    width: 100%;
+    display: flex;
+    /* margin-top: 12px; */
+    min-width: 560px;
+    border-bottom: 1px solid black;
+    padding-bottom: 40px;
+}
+
+
+.gallery-profile {
+    width: 1066px;
+}
+
+.gallery-content {
+    width: 100%;
+}
+
+.flex-inventory-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inventory-text-center {
+    text-align: center;
+}
+
+
+.filter-box {
+    width: 620px;
+    height: 52px;
+    background-color: #C4C4C4;
+    border: 0.25px solid #000000;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-add-artwork {
+    width: 422px;
+    height: 52px;
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 12px;
+    cursor: pointer;
+    background-color: black;
+    border: 2px solid black;
+}
+
+.btn-add-artwork:hover {
+    color: black;
+    background-color: white;
+}
+
+.inventory-search {
+    width: 820px;
+    height: 52px;
+    margin: 24px 0;
+    font-size: 13px;
+    padding-left: 20px;
+    text-transform: uppercase;
+}
+
+.inventory-sort {
+    margin: 24px 0 0 0;
+}
+
+.inventory-sort input[type="checkbox"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.inventory-sort label {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    background-color:white;
+    /* padding: 5px 10px; */
+    font-size: 13px;
+    border: 1px solid #444; 
+    width: 200px;
+    height: 55px;
+}
+  
+.inventory-sort input:-webkit-autofill,
+.inventory-sort input:-webkit-autofill:hover,
+.inventory-sort input:-webkit-autofill:focus,
+.inventory-sort input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+  
+.inventory-sort input[type="checkbox"]:checked + label {
+    background-color:black;
+    color: white;
+}
+  
+.inventory-sort input[type="checkbox"]:focus + label {
+    border: 1px solid black;
+}
+  
+.inventory-sort label:hover {
+    background-color:black;
+    color: white;
+}
+
+.artwork-list {
+    width: 100%;
+    height: 800px;
+    overflow-y: auto;
+}
+
+.artwork-list-item {
+    width: 100%;
+    height: 86px;
+    display: flex;
+    align-items: center;
+    border-top: 0.5px solid #000000;
+}
+
+.artwork-list-item-thumbnail {
+    width: 90px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.artwork-list-item-info {
+    margin-left: 27px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: left;
+}
+
+.artwork-list-item-name {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.artwork-detail {
+    display: flex;
+}
+
+.artwork-detail-images {
+    width: 360px
+}
+
+.artwork-detail-image-container {
+    width: 100%;
+    height: 490px;
+}
+
+.artwork-detail-image {
+    width: 100%;
+    height: 490px;
+    object-fit: cover;
+}
+
+.artwork-detail-footer {
+    display: flex;
+}
+
+.artwork-detail-thumbnails {
+    width: 276px;
+    height: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.artwork-detail-thumbnail {
+    width: 76px;
+    height: 97px;
+    object-fit: cover;
+    margin-right: 16px;
+}
+
+
+.inventory-upload-container {
+    width: 76px;
+    height: 97px;
+}
+
+.inventory-input-hidden {
+    display: none;
+}
+
+.inventory-btn-image {
+    width: 76px;
+    height: 97px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 46px;
+    background-color: white;
+    border: 0.25px solid black;
+    box-sizing: border-box;
+}
+
+.inventory-btn-image:hover {
+    color:white;
+    background-color: black;
+}
+
+.artwork-detail-info {
+    margin-left: 45px;
+    text-transform: uppercase;
+}
+
+.artwork-detail-info-field {
+    display: flex;
+    width: 664px;
+    text-align: left;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.detail-info-label {
+    width: 50%;
+}
+
+.artwork-detail-info-field .inventory-artist {
+    font-size: 20px;
+}
+
+.detail-info-field {
+    width: 50%;
+}
+
+.detail-info-field select {
+    width: 100%;
+    text-transform: uppercase;
+}
+
+
+.detail-info-field input {
+    width: calc(100% - 8px);
+    text-transform: uppercase;
+}
+
+.detail-info-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-info-field-small {
+    width: 25% !important;
+}
+
+.detail-info-field textarea {
+    width: calc(100% - 6px);
+    text-transform: uppercase;
+    resize: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.detail-info-field input::-webkit-outer-spin-button,
+.detail-info-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.detail-info-field input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.inventory-btn-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-back-inventory {
+    width: 321px;
+    height: 60px;
+    margin-top: 46px;
+}
+
+.btn-back-inventory {
+    width: 321px;
+    height: 60px;
+    margin-top: 46px;
+    color: black;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 12px;
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.btn-back-inventory:hover {
+    color: white;
+    background-color: black;
+}
+
+.container-inventory .save-change {
+    width: 321px !important;
+    height: 60px;
+    margin-top: 46px;
+}
