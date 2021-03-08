@@ -107,6 +107,9 @@ app.use("/api", allRoutes);
 const auth = require('./routes/auth/auth');
 app.use("/api/auth", auth);
 
+const newsletter = require('./routes/newsletter/newsletter');
+app.use("/api/newsletter", newsletter);
+
 const gallery = require('./routes/gallery/gallery');
 app.use("/api/gallery/profile", gallery);
 
