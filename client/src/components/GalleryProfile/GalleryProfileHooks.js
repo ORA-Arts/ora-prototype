@@ -3,7 +3,7 @@ import "./GalleryProfile.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import house from './house-test.jpg';
 import axios from 'axios';
-import { fetchGallery, addNewGallery } from '../../api/service';
+import { fetchGallery, addNewGallery, editGallery } from '../../api/service';
 
 const GalleryProfile = (props) => {
   const initialState = {
@@ -48,8 +48,17 @@ const GalleryProfile = (props) => {
     for (let key in dataCopy) {
       uploadData.append(key, dataCopy[key]);
     }
-    const resData = await addNewGallery(uploadData);
-    setData(resData);
+    if (isEditMode && isGalleryExist) {
+      const resData = await editGallery(uploadData);
+      setData(resData);
+      setIsEditMode(false);
+    } else {
+      const resData = await addNewGallery(uploadData);
+      setData(resData);
+      setIsEditMode(false);
+    }
+    // const resData = await addNewGallery(uploadData);
+    // setData(resData);
   };
 
   useEffect(() => {
@@ -196,7 +205,9 @@ const GalleryProfile = (props) => {
                   <label htmlFor="no">NO</label>
               </div>
             </div>
+            {isEditMode && isGalleryExist ? 
             <button className="btn-edit save-change space-top" onClick={submitHandler}>SAVE CHANGES</button>
+            : null}
           </div>
         </div>
       </div>

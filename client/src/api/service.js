@@ -19,6 +19,14 @@ export const addNewGallery = async (dataForm) => {
     return res.data;
 };
 
+export const editGallery = async (dataForm) => {
+    const res = await axios.put('/api/gallery/profile',
+        dataForm, config
+    );
+
+    return res.data;
+};
+
 export const fetchArtworks = async () => {
     const res = await axios.get('/api/gallery/inventory');
     const data = res.data.map(artwork => {
