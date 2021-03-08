@@ -225,6 +225,10 @@
     white-space: nowrap;
 }
 
+.existing-image {
+    cursor: pointer;
+}
+
 .artwork-detail-thumbnail {
     width: 76px;
     height: 97px;

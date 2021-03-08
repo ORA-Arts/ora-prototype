@@ -45,6 +45,13 @@ export const addNewArtWork = async (dataForm) => {
     return res.data;
 };
 
+export const editArtWork = async (artworkId, dataForm) => {
+    const res = await axios.put(`/api/gallery/inventory/${artworkId}`,
+        dataForm, config
+    );
+    return res.data;
+};
+
 
 export const fetchArtworkById = async (artworkId) => {
     const res = await axios.get(`/api/gallery/inventory/${artworkId}`);

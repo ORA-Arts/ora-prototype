@@ -35,57 +35,12 @@ const AddNewArtWork = (props) => {
   const [uploadedImages, setUploadedImages] = useState([]);
   const [activeImage, setActiveImage] = useState(house);
   const [isAddedImage, setIsAddedImage] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
-
-    const onChange = (event) => {
-        const { name, value } = event.target;
-        setData({...data, [name]: value});
-    };
+    console.log(activeImage);
     
-    const fileHandler = e => {
-        let imagesCopy = uploadedImages.slice();
-        imagesCopy.push(e.target.files[0]);
-        setUploadedImages(imagesCopy);
-    };
-
-    
-    const currentActiveImage = () => {
-        // console.log("called");
-        // console.log(data.images);
-        // console.log(uploadedImages);
-        // console.log("active image", activeImage);
-        if (data.images.length !==0 && uploadedImages.length===0) {
-            console.log("only data.images");
-            if (!selectedImageIndex) {
-                setActiveImage(data.images[0].imageUrl);
-            } else {
-                setActiveImage(data.images[selectedImageIndex].imageUrl);
-            }
-        // here selectedImageIndex is the place in the range from 0 to (data.images.length + uploadedImages.length - 1)
-        // this need to be treated like that because the data.images hold only urls while the uploadedImages hold real images
-        } else if (uploadedImages.length !== 0) {
-            console.log(!uploadedImages);
-            console.log("perhaps both");
-            if (!selectedImageIndex) {
-                setActiveImage(URL.createObjectURL(uploadedImages[uploadedImages.length-1]));
-            } else {
-                if (selectedImageIndex > data.images.length-1) {
-                    setActiveImage(URL.createObjectURL(uploadedImages[selectedImageIndex - data.images.length]));
-                } else {
-                    setActiveImage(data.images[selectedImageIndex].imageUrl);
-                }
-            }
-        } else {
-            console.log("no image");
-            setActiveImage(house);
-        }
-    };
-
     useEffect(() => {
         if (!props.isViewMode) {
             setData(initialState);
-            currentActiveImage();
         } else {
             setArtworkId(props.match.params.id);
         }
@@ -96,22 +51,41 @@ const AddNewArtWork = (props) => {
             if (artworkId) {
                 const artwork = await fetchArtworkById(artworkId);
                 setData(artwork);
-                currentActiveImage();
             }
         }
         fetchData();
     }, [artworkId]);
-
-    console.log("data after fetched", data);
     
     useEffect(() => {
         console.log("run here");
         currentActiveImage();
     }, [uploadedImages]);
 
-  const startEditing = () => {
-    // setIsEditMode(true);
-  };
+    const onChange = (event) => {
+        const { name, value } = event.target;
+        setData({...data, [name]: value});
+    };
+
+    const fileHandler = e => {
+        let imagesCopy = uploadedImages.slice();
+        imagesCopy.push(e.target.files[0]);
+        setUploadedImages(imagesCopy);
+    };
+
+
+    const startEditing = () => {
+        // setIsEditMode(true);
+    };
+
+  const currentActiveImage = () => {
+    if (data.images.length !==0 && uploadedImages.length===0) {
+        setActiveImage(data.images[0].imageUrl);
+    } else if (uploadedImages.length !== 0) {
+        setActiveImage(URL.createObjectURL(uploadedImages[uploadedImages.length-1]));
+    } else {
+        setActiveImage(house);
+    }
+};
 
   const submitHandler = async () => {
     const uploadData = new FormData();
@@ -127,9 +101,17 @@ const AddNewArtWork = (props) => {
     props.history.push('/gallery/inventory');
   };
 
+  const clickedImageHandler = (index) => {
+    if (index > data.images.length-1) {
+        setActiveImage(URL.createObjectURL(uploadedImages[index - data.images.length]));
+    } else {
+        setActiveImage(data.images[index].imageUrl);
+    }
+  };
+
   const generateThumbnails = () => {
     if (!data.images.length && !uploadedImages.length) {
-        return <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />;
+        return <img src={house} alt="artwork" className="artwork-detail-thumbnail" />;
     }
     let images = [];
     if (data.images.length) {
@@ -138,7 +120,7 @@ const AddNewArtWork = (props) => {
     if (uploadedImages.length) {
         uploadedImages.forEach(image => images.push(URL.createObjectURL(image)));
     }
-    return images.map(image => <img src={image} alt="artwork image" className="artwork-detail-thumbnail" />);
+    return images.map((image, index) => <img key={index} src={image} onClick={() => clickedImageHandler(index)} alt="artwork" className="artwork-detail-thumbnail existing-image" />);
   };
 
   const mediumOption = () => {
@@ -179,10 +161,6 @@ const AddNewArtWork = (props) => {
                     <div className="artwork-detail-footer">
                         <div className="artwork-detail-thumbnails">
                             {generateThumbnails()}
-                            {/* <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
-                            <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
-                            <img src={house} alt="artwork image" className="artwork-detail-thumbnail" />
-                            <img src={house} alt="artwork image" className="artwork-detail-thumbnail" /> */}
                         </div>
                         <div className="inventory-upload-container">
                             <input onChange={fileHandler} id="inventory-file" type="file" className="inventory-input-hidden" />
