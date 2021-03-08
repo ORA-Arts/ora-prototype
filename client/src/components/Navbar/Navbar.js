@@ -5,13 +5,8 @@ import "./Navbar.css";
 import logo from "../../images/LOGO_1.png"
 import LogInModal from "../LogInModal/LogInModal"
 import SignUpModal from '../SignUpModal/SignUpModal'
-
-
-// const handleLogout = (props) => {
-//   logout().then(() => {
-//     props.setUser(null);
-//   });
-// };
+import MenuMobile from '../MenuMobile/MenuMobile'
+import ArtistOpen from '../LandingPages/ArtistOpen/ArtistOpen'
 
 
 class Navbar extends Component {
@@ -20,7 +15,8 @@ class Navbar extends Component {
       this.state = {
       showLogin: false,
       showSignup : false, 
-      user: props.user
+      user: props.user,
+      showMenu: false
     };
     this.setUser = this.setUser.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -32,7 +28,7 @@ handleLogout = () => {
   });
 };
 
-showLoginModal = () => {
+  showLoginModal = () => {
     this.setState({ showLogin: true });
   };
 
@@ -40,9 +36,14 @@ showLoginModal = () => {
     this.setState({ showSignup: true });
   };
 
+  showMenuMobile = () => {
+    this.state.showMenu ? this.setState({ showMenu:false}) : this.setState({ showMenu:true})
+  };
+
   hideModal = () => {
     this.setState({ showLogin: false });
     this.setState({ showSignup: false });
+    this.setState({showMenu: false})
   };
 
   setUser = (user) => {
@@ -53,28 +54,29 @@ showLoginModal = () => {
 
   render() {
     return (
+      <div>
       <div id="navbar" >
       <a href='/'>
         <img src={logo} alt="ORA" width="auto" height="50" />
      </a>
        <ul id="navtitles">
          <li>
-           <Link className ="link" to="/what-is-ora">WHAT IS ORA?</Link>
+           <Link className="link" to="/what-is-ora">WHAT IS ORA?</Link>
          </li>
          <li>
-           <Link className ="link" to='/artist-open-call'>ARTIST OPEN CALL</Link>
+           <Link className="link" to='/artist-open-call'>ARTIST OPEN CALL</Link>
          </li>
          <li> 
-           <Link className ="link" to='/collector-space'>COLLECTOR SPACE</Link>
+           <Link className="link" to='/collector-space'>COLLECTOR SPACE</Link>
          </li>
          <li>
-           <Link className ="link"to='/support-an-artist-project'>SUPPORT AN ARTIST PROJECT</Link>
+           <Link className="link"to='/support-an-artist-project'>SUPPORT AN ARTIST PROJECT</Link>
          </li>
          {this.state.user ? (
            <>
            <li>
-           <Link className ="link" to='/myprofile'>MY PROFILE</Link>
-           <Link className ="link" to='/' onClick={() => this.handleLogout()}>/ LOG OUT</Link>
+           <Link className="link" to='/myprofile'>MY PROFILE</Link>
+           <Link className="link" to='/' onClick={() => this.handleLogout()}>/ LOG OUT</Link>
            </li>
            </>
          ) : (
@@ -89,7 +91,10 @@ showLoginModal = () => {
            </>
          )}
        </ul>
+       <button onClick={this.showMenuMobile} id="btnMenuMobile">{this.state.showMenu ? 'CLOSE' : 'MENU'} </button>
      </div>
+     <MenuMobile showMenu={this.state.showMenu} handleClose={this.hideModal}></MenuMobile>
+</div>
     )
   }
 }

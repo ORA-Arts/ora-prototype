@@ -1,0 +1,211 @@
+/* Artist open call */
+
+#artistOpenCallWrap{
+  padding-top:130px;
+  padding-bottom: 60px;
+}
+
+
+h1{
+  font-family: 'editorial_newultralight';
+  font-size: 30px;
+  margin: 0px;
+      }
+
+      @media (min-width: 480px) {
+#artistHeader{
+  background-color: #E75D82;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 13px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  max-height: 10vh;
+}
+      }
+
+
+@media (max-width: 481px) {
+  #artistHeader {
+    background-color: #E75D82;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 13px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  }
+
+@media (max-width: 481px) {
+  #artistHeader h1{
+    color: white;
+    font-family: 'editorial_newultralight';
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 10px;
+  }
+  }
+
+#artistHeader h1 {
+  color: white;
+  font-family: 'editorial_newultralight';
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-bottom: 10px;
+  margin: 0;
+  margin-right: 20px;
+}
+
+@media (min-width: 480px) {
+  #getInTouch .btnBlack {
+    color: white;
+    font-size: 14px;
+    padding: 12px 24px;
+    border: solid 1px white;
+    cursor: pointer;
+    background-color: transparent;
+    width: 300px;
+    text-decoration: none;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+    }
+  
+    @media (max-width: 481px) {
+      #getInTouch .btnBlack {
+      display: none;
+      }
+    }
+  
+  #getInTouch .btnBlack:hover {
+    background-color: black;
+    color: white
+  }
+
+#artistAllSections {
+  padding-top: 10px;
+  padding-right: 5vw;
+  padding-left: 5vw;
+}
+
+#artistSection1 {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  display: flex;
+  align-items: flex-start;
+  width: inherit;
+}
+
+#artistSection1 img{
+  width: 40vw;
+  height: auto;
+  max-height: 450px;
+}
+
+#textHeaderArtist {
+display: flex;
+flex-direction: column;
+padding-right: 100px;
+}
+
+
+
+ #selectionHeader h1{
+font-family: 'editorial_newultralight';
+font-size: 30px;
+    }
+
+#textHeaderArtist p{
+text-align: justify;
+text-justify: inter-word;
+line-height: 25px;
+  }
+
+
+  #selectionHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #textSelection  {
+   width: 65%;
+  margin: auto;
+  }
+
+  #textSelection  p{
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .lineComity {
+    display: flex;
+    justify-content: space-around;
+    margin: 5vh 3vw;
+  }
+
+  .memberComity {
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .memberComity h1 {
+    font-size: 16px;
+    font-family: "akzidenz-grotesk_proregular";
+    margin: 0px;
+  }
+
+  .memberComity p {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  #postSelection {
+    display: flex;
+    height: 40vh;
+    width: inherit;
+    margin-bottom: 120px;
+    align-items: flex-start; 
+  }
+
+
+  #postSelection > img{
+    display: block;
+    height: 40vh;
+    margin-top: 7px;
+  }
+
+  #postSelText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 3vw;
+  margin-top: 0;
+  padding-top: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+  }
+
+  #postSelection p{
+    text-align: justify;
+text-justify: inter-word;
+line-height: 25px;
+margin: 0;
+  }
+
+  #getInTouch > button {
+    width: 270px;
+    align-self: flex-start;
+  }
+

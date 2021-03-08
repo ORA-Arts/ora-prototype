@@ -4,16 +4,31 @@ body {
   padding: 0;
 }
 
+a:-webkit-any-link {
+  color: black;
+  cursor: pointer;
+}
+
 #navbar {
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: relative;
   width: 100%;
   height: 60px;
   top: 0;
     z-index: 9999;
+}
+
+@media (max-width: 481px) { 
+  #navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+
+  }
 }
 
 .btnAuth {
@@ -21,6 +36,12 @@ body {
   background: none;
   cursor: pointer;
   padding: 0px;
+}
+
+@media (max-width: 481px) { 
+  .btnAuth {
+    display: none;
+  }
 }
 
 .btnAuth:active {
@@ -47,6 +68,7 @@ body {
   left: 0; 
 } */
 
+@media (min-width: 481px) {
 #navtitles { 
   padding: 0; 
   list-style: none; 
@@ -57,13 +79,24 @@ body {
   padding-right: 1.5%;
   text-align: center;
   height: 35px;
+  color: black;
 }
+}
+@media (min-width: 481px) {
 #navtitles > li { 
   display: table-cell; 
   position: relative; 
   padding: 15px 0;
   text-decoration: none;
+  color: black ;
 }
+}
+
+@media (max-width: 481px) { 
+  #navtitles { 
+  display: none;
+  }
+} 
 
 
 .link {
@@ -105,3 +138,18 @@ body {
   left: 0; 
 }
 
+
+#btnMenuMobile{
+  display: none;
+}
+
+@media (max-width: 481px) { 
+  #btnMenuMobile{
+    display: block;
+  margin-right: 20px ;
+    border: 1px solid black;
+    background: none;
+    cursor: pointer;
+    padding: 5px 10px
+  }
+}

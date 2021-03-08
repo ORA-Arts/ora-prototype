@@ -1,7 +1,7 @@
 /* FOOTER */
 footer{
   background-color: white;
-  position: absolute;
+  position: relative;
   bottom: 40px;
   display: flex;
   margin-top: 1rem;
