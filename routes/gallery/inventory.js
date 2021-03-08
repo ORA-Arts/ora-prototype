@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Artwork = require('../../models/Artwork');
-const Artist = require('../../models/Artist');
+const Artist = require('../../models/Artist.model');
 const { uploader } = require('../../config/cloudinary');
 const passport = require('passport');
 const mongoose = require("mongoose");

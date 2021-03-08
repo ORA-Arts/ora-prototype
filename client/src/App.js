@@ -7,8 +7,8 @@ import Footer from "./components/Footer/Footer";
 import WhatIsOra from "./components/LandingPages/WhatIsOra/WhatIsOra";
 import { Loggedin } from './services/auth';
 import GalleryProfileHooks from './components/GalleryProfile/GalleryProfileHooks';
-import ArtistsList from "./components/ArtistsList/ArtistsList";
-import AddEditArtist from "./components/AddEditArtist/AddEditArtist";
+import ArtistsListHooks from "./components/ArtistsList/ArtistsListHooks"; 
+import ArtistProfileHooks from "./components/ArtistProfile/ArtistProfileHooks";
 import HomePage from "./components/LandingPages/HomePage/HomePage";
 import InventoryList from "./components/Inventory/InventoryList";
 import AddNewArtWork from "./components/Inventory/AddNewArtWork";
@@ -59,8 +59,8 @@ export default class App extends Component {
           />
           <Route exact path='/artist-open-call' component={ArtistOpen} />
           <Route exact path='/gallery/new' render={props => <GalleryProfileHooks user={this.state.user} {...props} />} />
-          <Route exact path='/gallery/artists' render={props => <ArtistsList user={this.state.user} {...props} />} />
-          <Route exact path='/gallery/add-artist' render={props => <AddEditArtist user={this.state.user} {...props} />} />
+          <Route exact path='/gallery/artists' render={props => <ArtistsListHooks setUser={this.setUser} user={this.state.user} {...props} />} />
+          <Route exact path='/gallery/artist-profile' render={props => <ArtistProfileHooks setUser={this.setUser} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/inventory' render={props => <InventoryList setUser={this.setUser} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/inventory/new' render={props => <AddNewArtWork setUser={this.setUser} user={this.state.user} {...props} />} />

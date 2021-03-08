@@ -1,0 +1,178 @@
+.artistsInfo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+    margin: 2rem;
+}
+.artist-name {
+    width: 80%;
+    font-size: 2rem;
+    font-weight: bold;
+    height: 2.2rem;
+    text-transform: uppercase;
+    padding-left: 2rem;
+}
+.artistsInfo .edit-button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.artistsInfo .btn-edit {
+    width: 117px;
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 12px;
+    cursor: pointer;
+    background-color: black;
+    border: 2px solid black;
+    text-transform: uppercase;
+}
+.topInfo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content:space-between;
+    align-items: center;
+}
+.middleInfo {
+    
+}
+.left {
+    width: 45%;
+    
+}
+.right {
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: flex-start;
+}
+.artist-image {
+    width: 250px;
+    height: auto;
+    min-height: 200px;
+    max-height: 435px;
+}
+.artist-input {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: space-around;
+    align-items: center;
+    width: 100%;
+    border: 0.25px solid #242429;
+    padding: 6px 0;
+    margin-bottom: 16px;
+    background-color: #FEFEFE;
+    height: 60px;
+    padding-left: 2rem;
+}
+.medium-input {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: space-around;
+    align-items: center;
+    width: 100%-2rem;
+    border: 0.25px solid #242429;
+    padding: 6px 0;
+    margin-bottom: 16px;
+    background-color: #FEFEFE;
+    height: 60px;
+    padding-left: 2rem;
+}
+.inputLabel {
+    font-weight: 700;
+}
+
+.inputClear {
+    border: none;
+    width: auto;
+    text-transform: uppercase;
+}
+.inputClear.name {
+    width: 8rem;
+}
+.inputClear.year {
+    width: 3rem;
+}
+.inputClear.city {
+    width: 4rem;
+}
+.inputClear.medium {
+    width: 30rem;
+}
+.inputClear.min {
+    text-align: center;
+    width: 1.5rem;
+}
+.btn-change {
+    width: 185px;
+    height: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 46px;
+    background-color: white;
+    border: 0.25px solid black;
+    box-sizing: border-box;
+    
+}
+.btn-change:hover {
+    color:white;
+    background-color: black;
+}
+
+.artist-image {
+    border: 1px solid black;
+}
+
+
+
+ #ck-button {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: stretch;
+     border:1px solid black;
+     text-align: center;
+     margin: .3rem;
+ }
+ 
+ 
+ #ck-button:hover {
+     background-color:#EFEFEF;
+     border:1px solid black;
+     color:black;
+ }
+ 
+ #ck-button label {
+  text-align: center;
+  padding: .3rem;
+  
+ }
+ 
+ #ck-button label span {
+     text-align:center;
+ }
+ 
+ #ck-button label input {
+     display: none;
+ }
+ 
+ #ck-button input:checked + span {
+     background-color:black;
+     color:#fff;
+     
+ }

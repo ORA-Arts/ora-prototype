@@ -36,3 +36,18 @@ export const addNewArtWork = async (dataForm) => {
     );
     return res.data;
 };
+
+
+// handle artists api
+export const fetchArtist = async () => {
+    const res = await axios.get('/api/gallery/artists');
+    return res.data;
+};
+
+export const addNewArtist = async (dataForm) => {
+    const res = await axios.post('/api/gallery/artists',
+        dataForm, config
+    );
+
+    return res.data;
+};

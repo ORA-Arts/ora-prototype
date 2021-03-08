@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './ArtistsList.css'
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
-import Link from 'react-dom'
+import Link from 'react-router-dom'
 
 export default class ArtistsList extends Component {
   constructor(props) {

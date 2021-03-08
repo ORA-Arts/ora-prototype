@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const Gallery = require('../../models/Gallery');
-const { uploader } = require('../../config/cloudinary');
+const Artist = require('../../models/Artist.model.js');
+const { artistUploader } = require('../../config/cloudinary');
 const passport = require('passport')
 
 // middleware
@@ -15,38 +15,46 @@ function isAuthenticated(req, res, next) {
 router.get("/", isAuthenticated, async (req, res, next) => {
   const userId =  req.session.passport.user;
   try {
-    const existedGallery = await Gallery.findOne({user: userId});
-    res.status(200).json(existedGallery);
+    // const existingArtists = await Artist.findOne({user: userId}); TODO: change it to fetch gallery specific artists
+    const existingArtists = await Artist.find();
+    res.status(200).json(existingArtists);
   } catch(err) {
     res.status(500).json({ message: 'Error while attempting to access database' });
   }
 });
 
-router.post('/', isAuthenticated, uploader.single('image'), async (req, res, next) => {
+router.get('/:id', isAuthenticated, async (req, res, next) => {
+  const artistId = req.params.id;
   const userId =  req.session.passport.user;
   try {
-    const existedGallery = await Gallery.findOne({user: userId});
-    if (existedGallery) return res.status(500).json({message: "Please don't change the http method"});
+    const artist = await Artist.findOne({galleryId: userId, _id: artistId});
+    res.status(200).json(artist);
   } catch (error) {
-    return res.status(500).json({ message: 'One Gallery for one user only' });
+    console.log(error);
+    res.status(500).json({ message: 'Error while attempting to access database' });
   }
+});
 
+router.post('/', isAuthenticated, artistUploader.single('image'), async (req, res, next) => {
+  const userId =  req.session.passport.user;
+  const data = req.body;
+  if (req.file) {
   const imageUrl = req.file.path;
   const imgPublicId = req.file.filename;
-  const data = req.body;
   data.imageUrl = imageUrl;
   data.imgPublicId = imgPublicId;
-
+  }
+  
   try {
-    const gallery = await Gallery.create({...data, imageUrl, imgPublicId, user: userId});
-    res.status(200).json(gallery);
+    const artist = await Artist.create({...data, galleryId: userId});
+    res.status(200).json(artist);
   } catch (err) {
     console.log(err);
     res.status(500).json({message: "Error while attempting to access database", success: false});
   }
 });
 
-router.put("/", isAuthenticated, uploader.single('image'), async (req, res, next) => {
+router.put("/", isAuthenticated, artistUploader.single('image'), async (req, res, next) => {
   const userId =  req.session.passport.user;
   // const data = {...req.body.data};
   const data = {...req.body};

@@ -1,11 +1,9 @@
 const { Schema, model } = require("mongoose")
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
 const artistSchema = new Schema({
-  _id: Schema.Types.ObjectId,
   galleryId: {
     type: Schema.Types.ObjectId,
-    ref: 'Gallery'
+    ref: 'User'
   },
   name: String, 
   birthYear: Date,
@@ -18,7 +16,8 @@ const artistSchema = new Schema({
   },  
   relationship: {
     type: String,
-    enum: ['represented', 'works available']
+    enum: ['represented', 'works available'],
+    default: 'represented'
   },
   meta_data: String,
   artwork_min: Number,

@@ -18,12 +18,25 @@ const storage = new CloudinaryStorage({
         //     cb(null, file.originalname); // The file on cloudinary would have the same name as the original file name
         // }
     }
-});
+})
+const artistStorage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'artists', // The name of the folder in cloudinary
+        allowedFormats: ['jpg', 'png'],
+        // params: { resource_type: 'raw' }, => this is in case you want to upload other type of files, not just images
+        // filename: function(req, file, cb) {
+        //     cb(null, file.originalname); // The file on cloudinary would have the same name as the original file name
+        // }
+    }
+})
 
 //  storage: storage
 const uploader = multer({ storage });
+const artistUploader = multer({ artistStorage });
 
 module.exports = {
     uploader,
-    cloudinary,
+    artistUploader,
+    cloudinary
 };

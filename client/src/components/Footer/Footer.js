@@ -12,7 +12,7 @@ export default class Footer extends Component {
             <Link to="/what-is-ora">WHAT IS ORA</Link>
             <Link to="/contact-us">CONTACT</Link>
          </div>
-         <div class="footerElement" id="followUs">
+         <div className="footerElement" id="followUs">
             <h2>FOLLOW US</h2>
             <p>INSTAGRAM</p>
             <p>FACEBOOK</p>
