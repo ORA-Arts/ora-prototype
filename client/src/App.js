@@ -63,6 +63,9 @@ export default class App extends Component {
     this.fetchGalleryName().then(galleryName => {
       this.setState({ galleryName: galleryName });
     });
+    this.fetchCollectorName().then(collectorName => {
+      this.setState({ collectorName: collectorName });
+    });
     // console.log(currentUser);
     // this.setState({user: currentUser});
   }

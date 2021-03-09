@@ -12,6 +12,10 @@ html a{
   text-decoration: none;
 }
 
+::placeholder {
+  color: #C4C4C4;
+}
+
 /* .App {
   text-align: center;
 }

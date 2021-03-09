@@ -109,8 +109,10 @@
 
 .input-label {
     font-size: 14px;
-    font-weight: bold;
+
     max-width: 50%;
+    padding-left: 3px;
+    font-family: 'akzidenz-grotesk_probold';
 }
 
 .input-lable-left {
@@ -125,6 +127,7 @@
     border: none;
     width: 50%;
     text-transform: uppercase;
+    font-family: 'akzidenz-grotesk_proregular';
     /* max-width: 50%; */
 }
 
@@ -201,46 +204,46 @@
     margin: 0 12px;
 }
   
+
 #selectTopic input[type="radio"] {
     opacity: 0;
     position: fixed;
     width: 0;
-}
+  }
   
-#selectTopic label {
+  #selectTopic label {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     text-align:center;
     background-color:white;
-    /* padding: 5px 10px; */
-    margin: 0 10px;
+    padding: 5px 10px;
     font-size: 12px;
     border: 2px solid #444; 
     width: 120px;
-    height: 60px;
-}
+    height: 30px;
+  }
   
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
-}
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+  }
   
-#selectTopic input[type="radio"]:checked + label {
+  #selectTopic input[type="radio"]:checked + label {
     background-color:black;
     color: white;
-}
+  }
   
-#selectTopic input[type="radio"]:focus + label {
+  #selectTopic input[type="radio"]:focus + label {
     border: 2px solid black;
-}
+  }
   
-#selectTopic label:hover {
+  #selectTopic label:hover {
     background-color:black;
     color: white;
-}
+  }
 
 .save-change {
     width: 100% !important;

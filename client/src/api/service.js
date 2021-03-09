@@ -90,6 +90,8 @@ export const fetchArtworkById = async (artworkId) => {
     return res.data;
 };
 
+
+//collector profile
 export const fetchCollector = async () => {
     const res = await axios.get('/api/collector/profile');
     return res.data;

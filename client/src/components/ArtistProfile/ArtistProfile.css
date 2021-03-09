@@ -180,8 +180,7 @@
  #ck-button input:checked + span {
      background-color:black;
      color:#fff;
-     
- }
+}
 
  .myArtists .btn-image {
      margin-left: 16px;

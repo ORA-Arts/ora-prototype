@@ -1,0 +1,114 @@
+
+#collectorProfile {
+  margin-left:13px;
+  margin-right: 20px;
+}
+
+.collectorHeader .btnPrivate {
+  width: 250px;
+  color: white;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 12px;
+  cursor: pointer;
+  background-color: black;
+  border: 2px solid black;
+  text-transform: uppercase;
+}
+
+.collectorHeader .btnPrivate:hover {
+  color: black;
+  background-color: white;
+}
+
+.collector-name {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+
+.personalInformation h1{
+  margin: 0;
+  font-family: 'akzidenz-grotesk_proregular';
+  font-size: 20px;
+}
+
+
+.personalInformation .btn-edit {
+  width: 117px;
+  color: white;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 12px;
+  cursor: pointer;
+  background-color: black;
+  border: 2px solid black;
+  text-transform: uppercase;
+}
+
+.personalInformation .btn-edit:hover {
+  color: black;
+  background-color: white;
+}
+
+.personalInformation {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collectorType{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.budget {
+  display: flex;
+  justify-content: space-between;
+  width: 45vw;
+}
+
+.budget input {
+  text-align: end;
+  width: 5vw;
+}
+ 
+
+
+.behaviourCheck  label {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  background-color:white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 2px solid #444; 
+  width: 120px;
+  height: 30px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.behaviourCheck input[type="radio"]:checked {
+  background-color:black;
+  color: white;
+}
+
+.behaviourCheck  input[type="radio"]:focus {
+  border: 2px solid black;
+}
+
+.behaviourCheck  label:hover {
+  background-color:black;
+  color: white;
+}
