@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0db438d7.chunk.css",
+    "main.js": "/static/js/main.aca1dbbc.chunk.js",
+    "main.js.map": "/static/js/main.aca1dbbc.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5be97d1e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5be97d1e.js.map",
+    "static/js/2.2e12dde5.chunk.js": "/static/js/2.2e12dde5.chunk.js",
+    "static/js/2.2e12dde5.chunk.js.map": "/static/js/2.2e12dde5.chunk.js.map",
+    "static/js/3.692b38e1.chunk.js": "/static/js/3.692b38e1.chunk.js",
+    "static/js/3.692b38e1.chunk.js.map": "/static/js/3.692b38e1.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.0db438d7.chunk.css.map": "/static/css/main.0db438d7.chunk.css.map",
+    "static/js/2.2e12dde5.chunk.js.LICENSE.txt": "/static/js/2.2e12dde5.chunk.js.LICENSE.txt",
+    "static/media/ARTIST OPEN CALL 2.da038b0e.jpg": "/static/media/ARTIST OPEN CALL 2.da038b0e.jpg",
+    "static/media/ARTIST OPEN CALL.571ae1c5.jpg": "/static/media/ARTIST OPEN CALL.571ae1c5.jpg",
+    "static/media/CollectorSpace.css": "/static/media/CONNECTOR SPACE 5.9786d9d5.jpg",
+    "static/media/HomePage.css": "/static/media/HOMEPAGE 3.70ccd94f.png",
+    "static/media/LOGO_1.3d235900.png": "/static/media/LOGO_1.3d235900.png",
+    "static/media/WHAT IS ORA .1dcfb54f.png": "/static/media/WHAT IS ORA .1dcfb54f.png",
+    "static/media/WHAT IS ORA 2.b67eecb3.jpg": "/static/media/WHAT IS ORA 2.b67eecb3.jpg",
+    "static/media/WHAT IS ORA.7f67e64e.jpg": "/static/media/WHAT IS ORA.7f67e64e.jpg",
+    "static/media/stylesheet.css": "/static/media/editorial_new_ultralight_200-webfont.fcbb38a7.woff",
+    "static/media/image-default.bfa644ef.png": "/static/media/image-default.bfa644ef.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5be97d1e.js",
+    "static/js/2.2e12dde5.chunk.js",
+    "static/css/main.0db438d7.chunk.css",
+    "static/js/main.aca1dbbc.chunk.js"
+  ]
+}
