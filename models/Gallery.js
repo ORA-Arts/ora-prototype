@@ -7,8 +7,10 @@ const gallerySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  ownerName: String,
+  firstName: String,
+  lastName: String,
   name: String,
+  email: String,
   address: String,
   biography: String,
   position: String,

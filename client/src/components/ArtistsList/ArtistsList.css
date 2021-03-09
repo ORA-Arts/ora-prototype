@@ -9,6 +9,14 @@
   font-family: "akzidenz-grotesk_proregular";
   padding-bottom: 5rem;
 }
+
+.gallery-name-artists {
+  font-size: 34px;
+  line-height: 50px;
+  text-align: left;
+  margin: 10px 32px 0 32px ;
+}
+
 .artistsContainer {
   display: flex;
   flex-direction: column;
@@ -57,7 +65,7 @@
   justify-content: flex-start;
   align-content: flex-start;
   align-items: flex-start;
-  margin: 32px;
+  margin: 12px 32px;
   padding: 32px;
   border: 0.25px solid #242429;
   text-transform: uppercase;
@@ -105,4 +113,10 @@
   background-color: white;
   color: black;
   
+}
+
+.btn-add-artist {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
