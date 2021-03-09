@@ -1,20 +1,24 @@
 /* Contact Form */
-#contactContainer {
+.contactContainer {
     display: flex;
-    height: 77vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
     align-items: center;
-    justify-content: center;
+    width: 90%-2rem;
+    padding: 2rem;
+    padding-bottom: 160px;
 }
 
-#contactImage {
+.contactImage {
     background-image: url('../../images/CONTACT FORM 1.jpg');
     background-position: center;
-    max-height: 750px;
-    display: block;
-    height: inherit;
-    width: 45vw;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 45%;
+    height: 659px;
+    /* min-width: 360px; */
 }
 
 #h1Wrapper a {
@@ -33,24 +37,22 @@
     padding-bottom: 0;
 }
 
-#formContainer h2 {
+.formContainer h2 {
     font-family: 'editorial_newregular', sans-serif;
     font-size: 14px;
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
     text-align: justify;
     text-justify: inter-word;
     padding-top: 0;
     margin-top: 0;
+    line-height: 1.5rem;
 }
 
-#formContainer {
+.formContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 2vw;
-    height: inherit;
-    width: 45vw;
-    max-height: 750px;
+    width: 45%;
 }
 
 #emailAndName {
@@ -78,11 +80,10 @@
 #inquireAndButton {
     display: flex;
     flex-direction: column;
+    padding-top: 1rem;
 }
 
 #body {
-    margin-top: 1vh;
-    margin-bottom: 1vh;
     border: none;
     border-top: 0.5px solid grey;
     border-bottom: 0.5px solid grey;
@@ -205,12 +206,12 @@
     align-content: center;
     align-items: stretch;
     border-top: 1px solid black;
-    height: 100%;
 }
 .teamMember {
     font-weight: 300;
     height: 70px;
     border-bottom: 0.25px solid rgba(0, 0, 0, 0.521);
+    
 }
 .teamMember h3 {
     font-weight: 700;
@@ -223,6 +224,7 @@
 }
 .radio-toolbar {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     justify-content: space-between;
 }
@@ -243,9 +245,9 @@
     align-items: center;
     text-align: center;
     background-color: white;
-    padding: 5px 10px;
+    padding: 6px 12px;
     font-size: 12px;
-    border: 2px solid #444;
+    border: 0.25px solid rgba(0, 0, 0, 0.521);
     width: 120px;
     height: 30px;
 }
@@ -273,7 +275,64 @@
     font-size: 16px;
 }
 .sentMessage {
-    width: 100%;
+    width: 90%;
     text-align: center;
     font-size: 20px;
+}
+.radio-toolbar div {
+    margin: 0.2rem;
+ }
+@media (max-width: 481px) {
+    .contactImage {
+        display: none;
+        width: 360vw;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .formContainer {
+        width: 100%;
+        margin-bottom: 190px;
+    }
+    .formContainer h2 {
+        font-size: 25px;
+        font-weight: 200;
+        line-height: 50px;
+    }
+    .radio-toolbar div {
+        padding: .1rem;
+    }
+    #inquireAndButton .btnWhite {
+        width: 95%;
+    }
+    .teamMember {
+        text-align: center;
+        font-size: 11px;
+        padding: 2rem 0;
+        font-size: 14px;
+    }
+    .teamMember h3 {
+        font-family: 'editorial_newregular', sans-serif;
+        font-size: 20px;
+    }
+    .teamMember span {
+        font-size: 11px;
+    }
+    .teamMember .contact-email{
+        text-transform: uppercase;
+        font-family: "akzidenz-grotesk_proregular";
+        font-size: 10px;
+        border-bottom: none;
+    }
+    .teamMember .contact-email:before {
+        content: "General Information: ";
+        
+    }
+    .contactHeader {
+        text-align: center;
+    }
+    .radio-toolbar label {
+        width: 100px;
+        font-size: 14px;
+        padding: 1rem;
+    }
 }
