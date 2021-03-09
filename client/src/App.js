@@ -1,11 +1,13 @@
 import "./App.css";
 import "./webfontkit/stylesheet.css";
+
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
+
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import WhatIsOra from "./components/LandingPages/WhatIsOra/WhatIsOra";
-import { Loggedin } from './services/auth';
+
 import GalleryProfileHooks from './components/GalleryProfile/GalleryProfileHooks';
 import ArtistsListHooks from "./components/ArtistsList/ArtistsListHooks"; 
 import ArtistProfileHooks from "./components/ArtistProfile/ArtistProfileHooks";
@@ -13,8 +15,12 @@ import HomePage from "./components/LandingPages/HomePage/HomePage";
 import InventoryList from "./components/Inventory/InventoryList";
 import AddNewArtWork from "./components/Inventory/AddNewArtWork";
 import ArtistOpen from "./components/LandingPages/ArtistOpen/ArtistOpen";
+import CollectorSpace from './components/LandingPages/CollectorSpace/CollectorSpace';
+import CollectorProfile from './components/CollectorProfile/CollectorProfile';
+
+import { Loggedin } from './services/auth';
 import { fetchGalleryName } from './api/service';
-import CollectorSpace from './components/LandingPages/CollectorSpace/CollectorSpace'
+import { fetchCollectorName } from './api/service'
 
 
 export default class App extends Component {
@@ -22,11 +28,14 @@ export default class App extends Component {
     super(props);
     this.state = {
       user: null,
-      galleryName: ""
+      galleryName: "",
+      collectorName: ''
     };
     this.Loggedin = Loggedin.bind(this);
     this.fetchGalleryName = fetchGalleryName.bind(this);
+    this.fetchCollectorName = fetchCollectorName.bind(this);
     this.changeGalleryName = this.changeGalleryName.bind(this);
+    this.changeCollectorName = this.changeCollectorName.bind(this);
   }
 
   setUser = (user) => {
@@ -38,6 +47,12 @@ export default class App extends Component {
   changeGalleryName = (newName) => {
     console.log(newName);
     this.setState({ galleryName: newName });
+  }
+
+
+  changeCollectorName = (newName) => {
+    console.log(newName);
+    this.setState({ collectorName: newName });
   }
 
   componentDidMount() {
@@ -78,6 +93,7 @@ export default class App extends Component {
           <Route exact path='/gallery/inventory' render={props => <InventoryList setUser={this.setUser} user={this.state.user} galleryName={this.state.galleryName} {...props} />} />
           <Route exact path='/gallery/inventory/new' render={props => <AddNewArtWork isViewMode={false} setUser={this.setUser} galleryName={this.state.galleryName} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/inventory/:id' render={props => <AddNewArtWork isViewMode={true} setUser={this.setUser} galleryName={this.state.galleryName} user={this.state.user} {...props} />} />
+          <Route exact path='/collector/profile' render={props => <CollectorProfile setUser={this.setUser} changeCollectorName={this.changeCollectorName} user={this.state.user} {...props} />} />
         </Switch>
         <Footer />
       </div>

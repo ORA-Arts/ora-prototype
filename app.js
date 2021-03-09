@@ -119,6 +119,9 @@ app.use("/api/gallery/inventory", inventory);
 const artists = require('./routes/artists/artists');
 app.use("/api/gallery/artists", artists);
 
+const collector = require('./routes/collector/collector');
+app.use("/api/collector/profile", collector);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
