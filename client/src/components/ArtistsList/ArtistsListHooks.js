@@ -55,7 +55,7 @@ const ArtistListHooks = (props) => {
                             <p>If you have any questions, please contact our support team. </p>
                         </article>
                         <div className="btn-add-artist">
-                            <Link to={{ pathname: '/gallery/artist-profile'}}>
+                            <Link to={{ pathname: '/gallery/artists/new'}}>
                                 <span className='btnBlack space-top'> ADD AN ARTIST + </span>
                             </Link>
                         </div>

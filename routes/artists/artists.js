@@ -57,10 +57,10 @@ router.post('/', isAuthenticated, uploader.single('image'), async (req, res, nex
 
 
 // artistUploader does not work probally
-router.put("/", isAuthenticated, artistUploader.single('image'), async (req, res, next) => {
+router.put("/:id", isAuthenticated, artistUploader.single('image'), async (req, res, next) => {
   const userId =  req.session.passport.user;
-  // const data = {...req.body.data};
-  const data = {...req.body};
+  const artistId = req.params.id;
+  const data = req.body;
   if (req.file) {
     const imageUrl = req.file.path;
     const imgPublicId = req.file.filename;
@@ -69,7 +69,7 @@ router.put("/", isAuthenticated, artistUploader.single('image'), async (req, res
   }
 
   try {
-    const updatedGallery = await Gallery.findOneAndUpdate({user: userId}, {...data}, {new: true});
+    const updatedGallery = await Artist.findOneAndUpdate({user: userId, _id: artistId}, {...data}, {new: true});
     res.status(200).json(updatedGallery);
   } catch(error) {
     console.log(error);

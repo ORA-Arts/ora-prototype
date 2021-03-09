@@ -73,6 +73,14 @@ export const addNewArtist = async (dataForm) => {
 
     return res.data;
 };
+
+export const editArtist = async (artistId, dataForm) => {
+    const res = await axios.put(`/api/gallery/artists/${artistId}`,
+        dataForm, config
+    );
+    return res.data;
+};
+
 export const fetchArtistById = async (artistId) => {
     const res = await axios.get(`/api/gallery/artists/${artistId}`);
     return res.data;

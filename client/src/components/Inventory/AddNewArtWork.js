@@ -2,12 +2,12 @@ import React, {useState, useEffect} from "react";
 import "./Inventory.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import image from './image-default.png';
-import { addNewArtWork, fetchArtworkById, editArtWork } from '../../api/service';
+import { addNewArtWork, fetchArtworkById, editArtWork, fetchArtist, fetchGallery } from '../../api/service';
 import {withRouter} from 'react-router-dom';
 
 const AddNewArtWork = (props) => {
   const initialState = {
-    artist: null,
+    artist: "",
     title: "",
     realisationYear: 1990,
     type: "Unique",
@@ -34,9 +34,21 @@ const AddNewArtWork = (props) => {
   const [data, setData] = useState(initialState);
   const [uploadedImages, setUploadedImages] = useState([]);
   const [activeImage, setActiveImage] = useState(image);
+  const [artists, setArtists] = useState([]);
+  const [gallery, setGallery] = useState(null);
 
-    
     useEffect(() => {
+        async function fetchData() {
+            await props.setUser(props.user);
+            const gallery = await fetchGallery();
+            if (!gallery) {
+                alert("You need to create the gallery profile first");
+                return props.history.push(`/gallery/profile`);
+            }
+            setGallery(gallery);
+            const resArtists = await fetchArtist();
+            setArtists(resArtists);
+        }
         if (!props.isViewMode) {
             setData(initialState);
             setIsViewMode(false);
@@ -44,7 +56,10 @@ const AddNewArtWork = (props) => {
         } else {
             setArtworkId(props.match.params.id);
         }
+        fetchData();
     }, []);
+
+    console.log(artists);
 
     useEffect(() => {
         async function fetchData() {
@@ -189,10 +204,11 @@ const AddNewArtWork = (props) => {
                         <div className="detail-info-field">
                             {isEditMode ? 
                             <select name="artist" onChange={onChange}>
-                                <option value="volvo">Volvo</option>
+                                {artists.map(artist => <option value={artist._id}>{artist.name}</option>)}
+                                {/* <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
                                 <option value="opel">Opel</option>
-                                <option value="audi">Audi</option>
+                                <option value="audi">Audi</option> */}
                             </select> :
                             <span><b>{data.artist.name}</b></span>
                             }
