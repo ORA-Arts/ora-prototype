@@ -1,5 +1,7 @@
 const { Schema, model } = require("mongoose")
 
+
+
 const artistSchema = new Schema({
   galleryId: {
     type: Schema.Types.ObjectId,
@@ -10,17 +12,19 @@ const artistSchema = new Schema({
   birthPlace: String,
   image: String,
   caption: String,
+
   medium: {
-    type: String,
+    type: [String],
     enum: [ 'Painting', 'Sculpture', 'Photography', 'Video Art', 'Performance', 'Drawing', 'Mixed Media'],
     default: 'Painting'
+  }, 
 
-  },  
   relationship: {
     type: String,
     enum: ['represented', 'works available'],
     default: 'represented'
   },
+
   meta_data: String,
   artwork_min: Number,
   artwork_max: Number,

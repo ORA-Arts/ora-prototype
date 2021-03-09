@@ -43,8 +43,9 @@ router.post('/', isAuthenticated, artistUploader.single('image'), async (req, re
   const imgPublicId = req.file.filename;
   data.imageUrl = imageUrl;
   data.imgPublicId = imgPublicId;
-  }
   
+  }
+  console.log(data)
   try {
     const artist = await Artist.create({...data, galleryId: userId});
     res.status(200).json(artist);
