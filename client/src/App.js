@@ -17,13 +17,9 @@ import AddNewArtWork from "./components/Inventory/AddNewArtWork";
 import ArtistOpen from "./components/LandingPages/ArtistOpen/ArtistOpen";
 import CollectorSpace from './components/LandingPages/CollectorSpace/CollectorSpace';
 import CollectorProfile from './components/CollectorProfile/CollectorProfile';
-
 import { Loggedin } from './services/auth';
 import { fetchGalleryName } from './api/service';
-
-import CollectorSpace from './components/LandingPages/CollectorSpace/CollectorSpace'
 import ContactFormHooks from './components/ContactForm/ContactFormHooks'
-
 import { fetchCollectorName } from './api/service'
 
 
