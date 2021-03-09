@@ -3,14 +3,19 @@ const { Schema, model } = require("mongoose")
 
 
 const artistSchema = new Schema({
-  galleryId: {
+  gallery: {
     type: Schema.Types.ObjectId,
     ref: 'Gallery'
   },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   name: String, 
-  birthYear: Date,
+  birthYear: Number,
   birthPlace: String,
-  image: String,
+  imageUrl: String,
+  imgPublicId: String,
   caption: String,
 
   medium: {
@@ -32,7 +37,7 @@ const artistSchema = new Schema({
   editions_max: Number,  
   artistBiography: String,  
   mainQuote: String,
-})
+}, { timestamps: true })
 
 const Artist = model("Artist", artistSchema)
 

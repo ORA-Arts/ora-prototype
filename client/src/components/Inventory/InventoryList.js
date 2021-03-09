@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./Inventory.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
-import house from './house-test.jpg';
-import axios from 'axios';
-import { fetchArtworks, addNewGallery } from '../../api/service';
+import { fetchArtworks, fetchGallery } from '../../api/service';
 import { Link, withRouter } from 'react-router-dom';
 
 const InventoryList = (props) => {
@@ -18,8 +16,12 @@ const InventoryList = (props) => {
   useEffect(() => {
     async function fetchData() {
       await props.setUser(props.user);
+      const gallery = await fetchGallery();
+        if (!gallery) {
+            alert("You need to create the gallery profile first");
+            return props.history.push(`/gallery/profile`);
+        }
       const resData = await fetchArtworks();
-      console.log("fetch the artworks", resData);
       if (!resData) {
           console.log("No availabe artworks")
       } else {
@@ -29,6 +31,7 @@ const InventoryList = (props) => {
         setDataBeforeSorted(resData);
       }
     }
+    
     fetchData();
   }, []);
 

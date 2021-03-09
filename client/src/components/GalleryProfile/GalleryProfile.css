@@ -251,3 +251,7 @@ input:-webkit-autofill:active {
     text-align: left;
     margin-top: 12px;
 }
+
+#website {
+    width: 100% !important;
+}

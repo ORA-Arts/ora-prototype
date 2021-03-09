@@ -7,8 +7,6 @@ export default class MenuMobile extends Component {
   
   render() {
     const showHideClassName = this.props.showMenu ? "menuModal display-block" : "menuModal display-none";
-    console.log(this.props.showMenu)
-    console.log(showHideClassName)
     return (
       <div className={showHideClassName} id='menu'>
       <ul>
