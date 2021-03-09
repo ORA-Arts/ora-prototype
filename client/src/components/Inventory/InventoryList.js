@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "./Inventory.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
-import house from './house-test.jpg';
-import axios from 'axios';
 import { fetchArtworks, addNewGallery } from '../../api/service';
 import { Link, withRouter } from 'react-router-dom';
 

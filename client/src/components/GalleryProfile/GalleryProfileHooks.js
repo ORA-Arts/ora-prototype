@@ -2,11 +2,13 @@ import React, {useState, useEffect} from "react";
 import "./GalleryProfile.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import { fetchGallery, addNewGallery, editGallery } from '../../api/service';
+import imageDefault from './image-default.png';
 
 const GalleryProfile = (props) => {
   const initialState = {
     name: "",
-    ownerName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     position: "",
     address: "",
@@ -57,6 +59,8 @@ const GalleryProfile = (props) => {
     // setData(resData);
   };
 
+  console.log(props);
+
   useEffect(() => {
     async function fetchData() {
       await props.setUser(props.user);
@@ -84,9 +88,11 @@ const GalleryProfile = (props) => {
         {data.name}
       </div>
       <hr/>
+      {isGalleryExist ?
       <div className="edit-button">
         <button className="btn-edit" onClick={startEditing}>Edit</button>
       </div>
+      : null }
       <div className="container-profile-content">
         <ProfileSideBar content="my-gallery-profile"/>
         <div className="gallery-profile">
@@ -100,32 +106,33 @@ const GalleryProfile = (props) => {
             <div className="input-block">
               {/* replace input by real information later */}
               <div className="input-container-half">
-                  <span className="input-label input-lable-right">USER NAME/ </span>
+                  <span className="input-label input-lable-right">First Name/ </span>
                   {/* <input type="text" name="username" onChange={e => setUsername(e.target.value.toUpperCase())} value={username} className="input-no-border" placeholder="THOMAS BALLOT" role="textbox"></input> */}
                   {isEditMode ? 
-                    <input type="text" name="ownerName" onChange={onChange} value={data.ownerName} className="input-no-border" placeholder="THOMAS BALLOT" role="textbox"></input> :
-                    <span>{data.ownerName}</span>
+                    <input type="text" name="firstName" onChange={onChange} value={data.firstName} className="input-no-border" placeholder="Your First Name" role="textbox"></input> :
+                    <span>{data.firstName}</span>
                   }
               </div>
               <div className="input-container-half">
-                  <span className="input-label input-lable-right">EMAIL/ </span>
+                  <span className="input-label input-lable-right">Last Name/ </span>
                   {isEditMode ? 
-                    <input type="email" name="email" onChange={onChange} value={data.email} className="input-no-border" placeholder="THIBAULT.HENRIET@ORA-ARTS.COM"></input> :
-                    <span>{data.email}</span>
+                    <input type="text" name="lastName" onChange={onChange} value={data.lastName} className="input-no-border" placeholder="Your Last Name"></input> :
+                    <span>{data.lastName}</span>
+                    
                   }
               </div>
               <div className="input-container-half">
                   {/* should not display even in edit */}
-                  <span className="input-label input-lable-right">PASSWORD/ </span>
+                  <span className="input-label input-lable-right">EMAIL/ </span>
                   {isEditMode ? 
-                    <input type="password" name="password" onChange={onChange} value={data.password} className="input-no-border" placeholder="Password"></input> :
-                    <span>{data.password}</span>
+                    <input type="email" name="email" onChange={onChange} value={data.email} className="input-no-border" placeholder="youremail@mail.com"></input> :
+                    <span>{data.email}</span>
                   }
               </div>
               <div className="input-container-half">
                   <span className="input-label input-lable-right">GALLERY POSITION/ </span>
                   {isEditMode ? 
-                    <input type="text" name="position" onChange={onChange} value={data.position} className="input-no-border" placeholder="Director"></input> :
+                    <input type="text" name="position" onChange={onChange} value={data.position} className="input-no-border" placeholder="Position at the gallery (ie. Director)"></input> :
                     <span>{data.position}</span>
                   }
               </div>
@@ -140,14 +147,14 @@ const GalleryProfile = (props) => {
               <div className="input-container-full">
                   <span className="input-label">NAME OF THE GALLERY/ </span>
                   {isEditMode ? 
-                    <input type="text" name="name" onChange={onChange} value={data.name} className="input-no-border" placeholder="GALLERY NEU"></input> :
+                    <input type="text" name="name" onChange={onChange} value={data.name} className="input-no-border" placeholder="name of the gallery"></input> :
                     <span>{data.name}</span>
                   }
               </div>
               <div className="input-container-full">
                   <span className="input-label">ADDRESS/ </span>
                   {isEditMode ? 
-                    <input type="text" name="address" onChange={onChange} value={data.address} className="input-no-border" placeholder="435 Broadway New York 10013 Manhattan"></input> :
+                    <input type="text" name="address" onChange={onChange} value={data.address} className="input-no-border" placeholder="address of the gallery"></input> :
                     <span>{data.address}</span>
                   } 
               </div>
@@ -166,7 +173,7 @@ const GalleryProfile = (props) => {
               </div>
               <div className="input-container-half remove-border">
                   <div className="image-container">
-                      <img className="gallery-image" src={image ? URL.createObjectURL(image) : data.imageUrl} alt={image ? image.name.split(".")[0] : "house sample"} />
+                      <img className="gallery-image" src={image ? URL.createObjectURL(image) : data.imageUrl ? data.imageUrl : imageDefault} alt={image ? image.name.split(".")[0] : "default-image"} />
                       <input type={(isGalleryExist && !isEditMode) ? "hidden" : "file"} id="file" className="input-hidden" onChange={fileHandler}  />
                       <label htmlFor="file" className="btn-image">CHANGE IMAGE</label>
                       {/* <button className="btn-image">CHANGE IMAGE</button> */}
@@ -176,7 +183,7 @@ const GalleryProfile = (props) => {
                           <div className="input-label input-lable-left">WEBSITE </div>
                           <div className="input-lable-left">
                               {isEditMode ? 
-                                <input type="text" name="website" onChange={onChange} value={data.website} className="input-no-border" placeholder="www.gallerieneu.com"></input> :
+                                <input type="text" name="website" id="website" onChange={onChange} value={data.website} className="input-no-border" placeholder="yourgallerywebsite@website.com"></input> :
                                 <span>{data.website}</span>
                               } 
                           </div>
@@ -200,7 +207,7 @@ const GalleryProfile = (props) => {
                   <label htmlFor="no">NO</label>
               </div>
             </div>
-            {isEditMode && isGalleryExist ? 
+            {isEditMode ? 
             <button className="btn-edit save-change space-top" onClick={submitHandler}>SAVE CHANGES</button>
             : null}
           </div>

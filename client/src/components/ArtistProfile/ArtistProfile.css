@@ -5,7 +5,7 @@
     justify-content: flex-start;
     align-content: stretch;
     align-items: stretch;
-    margin: 2rem;
+    margin: 1rem 2rem;
 }
 .artist-name {
     width: 80%;
@@ -15,12 +15,12 @@
     text-transform: uppercase;
     padding-left: 2rem;
 }
-.artistsInfo .edit-button {
+.artistsContainer .edit-button {
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
-.artistsInfo .btn-edit {
+.artistsContainer .btn-edit {
     width: 117px;
     color: white;
     font-size: 12px;
@@ -31,6 +31,12 @@
     border: 2px solid black;
     text-transform: uppercase;
 }
+
+.artistsContainer .btn-edit:hover {
+    color: black;
+    background-color: white;
+}
+
 .topInfo {
     display: flex;
     flex-direction: row;
@@ -160,7 +166,7 @@
  #ck-button label {
   text-align: center;
   padding: .3rem;
-  
+  line-height: 26px;
  }
  
  #ck-button label span {
@@ -175,4 +181,13 @@
      background-color:black;
      color:#fff;
      
+ }
+
+ .myArtists .btn-image {
+     margin-left: 16px;
+     text-align: center;
+ }
+
+ .myArtistsHeader {
+     margin: 0 32px;
  }

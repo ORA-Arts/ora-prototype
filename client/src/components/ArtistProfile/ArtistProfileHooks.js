@@ -2,12 +2,12 @@ import './ArtistProfile.css'
 import React, { useState, useEffect } from 'react'
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import { fetchArtist, addNewArtist, fetchArtistById } from '../../api/service';
-import artistImage from './artist.jpg'
+import imageDefault from './image-default.png';
 
 const ArtistProfileHooks = (props) => {
     const initialState = {
         name: '',
-        birthYear: 0,
+        birthYear: 1980,
         birthPlace: '',
         imageUrl: '',
         imgPublicId: '',
@@ -106,24 +106,25 @@ const ArtistProfileHooks = (props) => {
         setData(resData);
     }
     const startEditing = () => {
-        setIsEditMode(true)
+        setIsEditMode(!isEditMode);
     }
 
     useEffect(() => {
         async function fetchData() {
             await props.setUser(props.user);
-            const resData = await fetchArtist();
-            console.log("fetch the artist", resData);
-            if (!resData) {
-                setIsArtistExist(false);
-            } else {
-                setIsArtistExist(true);
-                setIsEditMode(false);
-                setData(resData);
-            }
+            // const resData = await fetchArtist();
+            // console.log("fetch the artist", resData);
+            // if (!resData) {
+            //     setIsArtistExist(false);
+            //     setIsEditMode(true);
+            // } else {
+            //     setIsArtistExist(true);
+            //     setIsEditMode(false);
+            //     setData(resData);
+            // }
         }
-        fetchData()
-    }, [])
+        fetchData();
+    }, []);
 
     useEffect(() => {
         async function fetchData() {
@@ -131,6 +132,7 @@ const ArtistProfileHooks = (props) => {
                 const artist = await fetchArtistById(artistId);
                 setData(artist);
                 setIsEditMode(false);
+                setIsArtistExist(true);
             }
         }
         fetchData();
@@ -139,9 +141,18 @@ const ArtistProfileHooks = (props) => {
 
     return (
         <>
+            <div className="gallery-name-artists">
+                {props.galleryName}
+            </div>
+            <hr/>
             <div className='myArtists'>
                 <ProfileSideBar content="my-artists" />
                 <div className='artistsContainer'>
+                        {isArtistExist ?
+                        <div className="edit-button">
+                            <button className="btn-edit" onClick={startEditing}>Edit</button>
+                        </div>
+                        : null }
                     <div className='myArtistsHeader'>
                         <hr />
                         <span className='subtitle'>ARTIST INFORMATION</span>
@@ -150,35 +161,32 @@ const ArtistProfileHooks = (props) => {
                         {data.name}
                     </div>
                     <div className='artistsInfo'>
-                        <div className="edit-button">
-                            <button className="btn-edit" onClick={startEditing}>Edit</button>
-                        </div>
                         <div className='topInfo'>
                             <div className='left'>
                                 <div className="artist-input">
-                                    <span className="inputLabel">NAME/ </span>
+                                    <span className="inputLabel">FULL NAME/ </span>
                                     {isEditMode ?
-                                        <input type="text" name="name" onChange={onChange} value={data.name} className="inputClear name" placeholder="THOMAS BALLOT" ></input> :
+                                        <input type="text" name="name" onChange={onChange} value={data.name} className="inputClear name" placeholder="artist full name" ></input> :
                                         <span> {data.name} </span>
                                     }
                                 </div>
                                 <div className="artist-input">
                                     <span className="inputLabel">BIRTH YEAR/ </span>
                                     {isEditMode ?
-                                        <input type="text" name="birthYear" onChange={onChange} value={data.birthYear} className="inputClear year" placeholder="1989"></input> :
+                                        <input type="text" name="birthYear" onChange={onChange} value={data.birthYear} className="inputClear year" placeholder="number"></input> :
                                         <span> {data.birthYear} </span>}
                                 </div>.
                 <div className="artist-input">
                                     <span className="inputLabel">BIRTH PLACE/ </span>
                                     {isEditMode ?
-                                        <input type="text" name="birthPlace" onChange={onChange} value={data.birthPlace} className="inputClear city" placeholder="Berlin"></input> :
+                                        <input type="text" name="birthPlace" onChange={onChange} value={data.birthPlace} className="inputClear city" placeholder="Place of birth"></input> :
                                         <span> {data.birthPlace} </span>}
                                 </div>
                             </div>
                             <div className='right'>
 
                                 <div className="image-container">
-                                    <img className="artist-image" src={image ? URL.createObjectURL(image) : data.imageUrl} alt={image ? data.name.split(".")[0] : 'artistImage'} />
+                                    <img className="artist-image" src={image ? URL.createObjectURL(image) : data.imageUrl ? data.imageUrl : imageDefault} alt={image ? data.name.split(".")[0] : 'artistImage'} />
                                     <input type={(isArtistExist && !isEditMode) ? "hidden" : "file"} id="file" className="input-hidden" onChange={fileHandler} />
                                     <label htmlFor="file" className="btn-image">CHANGE IMAGE</label>
                                     {/* <button className="btn-image">CHANGE IMAGE</button> */}
@@ -266,10 +274,10 @@ const ArtistProfileHooks = (props) => {
                     <div className='addArtist'>
                         <h4>MAIN QUOTE</h4>
                         {isEditMode ?
-                            <textarea name="mainQuote" onChange={onChange} value={data.mainQuote} id="biography" className="biography-text" rows="5" placeholder="your gallery biography"></textarea> :
+                            <textarea name="mainQuote" onChange={onChange} value={data.mainQuote} id="biography" className="biography-text" rows="5" placeholder="Your quote"></textarea> :
                             <span className="biography-text"> {data.mainQuote} </span>}
                     </div>
-                    <button className='btnBlack' onClick={submitHandler}> SAVE ARTIST </button>
+                    {isEditMode ? <button className='btnBlack' onClick={submitHandler}> SAVE ARTIST </button> : null }
                 </div>
             </div>
         </>

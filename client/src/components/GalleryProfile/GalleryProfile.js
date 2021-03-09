@@ -1,16 +1,16 @@
 import React from "react";
 import "./GalleryProfile.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
-import house from './house-test.jpg';
+import image from './image-default.png';
 
 class GalleryProfile extends React.Component {
   constructor(props) {
     super(props);
     // replace by props. if the gallery information exist
     this.state = {
-      username: "",
+      firstName: "",
+      lastName: "",
       email: "",
-      password: "",
       position: "",
       name: "",
       address: "",
@@ -55,21 +55,21 @@ class GalleryProfile extends React.Component {
                 <div className="input-block">
                   {/* replace input by real information later */}
                   <div className="input-container-half">
-                    <span className="input-label input-lable-right">USER NAME/ </span>
-                    <input type="text" name="username" onChange={this.onChangeHandler} value={this.state.username} className="input-hidden" placeholder="THOMAS BALLOT" role="textbox"></input>
+                    <span className="input-label input-lable-right">First Name/ </span>
+                    <input type="text" name="firstName" onChange={this.onChangeHandler} value={this.state.firstName} className="input-hidden" placeholder="Your First Name" role="textbox"></input>
                   </div>
                   <div className="input-container-half">
-                    <span className="input-label input-lable-right">EMAIL/ </span>
-                    <input type="email" name="email" onChange={this.onChangeHandler} value={this.state.email} className="input-hidden" placeholder="THIBAULT.HENRIET@ORA-ARTS.COM"></input>
+                    <span className="input-label input-lable-right">Last Name/ </span>
+                    <input type="password" name="lastName" onChange={this.onChangeHandler} value={this.state.lastName} className="input-hidden" placeholder="Your Last Name"></input>
                   </div>
                   <div className="input-container-half">
                     {/* should not display even in edit */}
-                    <span className="input-label input-lable-right">PASSWORD/ </span>
-                    <input type="password" name="password" onChange={this.onChangeHandler} value={this.state.password} className="input-hidden" placeholder="Password"></input>
+                    <span className="input-label input-lable-right">EMAIL/ </span>
+                    <input type="email" name="email" onChange={this.onChangeHandler} value={this.state.email} className="input-hidden" placeholder="youremail@mail.com"></input>
                   </div>
                   <div className="input-container-half">
                     <span className="input-label input-lable-right">GALLERY POSITION/ </span>
-                    <input type="text" name="position" onChange={this.onChangeHandler} value={this.state.position} className="input-hidden" placeholder="Director"></input>
+                    <input type="text" name="position" onChange={this.onChangeHandler} value={this.state.position} className="input-hidden" placeholder="Your position at the gallery"></input>
                   </div>
                 </div>
                 <div className="profile-title space-top">
@@ -81,11 +81,11 @@ class GalleryProfile extends React.Component {
                 <div className="input-block">
                   <div className="input-container-full">
                     <span className="input-label">NAME OF THE GALLERY/ </span>
-                    <input type="text" name="name" onChange={this.onChangeHandler} value={this.state.name} className="input-hidden" placeholder="GALLERY NEU"></input>
+                    <input type="text" name="name" onChange={this.onChangeHandler} value={this.state.name} className="input-hidden" placeholder="Enter the name of the gallery"></input>
                   </div>
                   <div className="input-container-full">
                     <span className="input-label">ADDRESS/ </span>
-                    <input type="text" name="address" onChange={this.onChangeHandler} value={this.state.address} className="input-hidden" placeholder="435 Broadway New York 10013 Manhattan"></input>
+                    <input type="text" name="address" onChange={this.onChangeHandler} value={this.state.address} className="input-hidden" placeholder="Enter the address of the gallery"></input>
                   </div>
                 </div>
                 <div className="input-block large-box">
@@ -99,7 +99,7 @@ class GalleryProfile extends React.Component {
                   </div>
                   <div className="input-container-half remove-border">
                     <div className="image-container">
-                      <img className="gallery-image" src={house} alt="gallery house" />
+                      <img className="gallery-image" src={image} alt="gallery house" />
                       {/* Upload image here */}
                       <button className="btn-image">CHANGE IMAGE</button>
                     </div>

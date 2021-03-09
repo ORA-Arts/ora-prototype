@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./Inventory.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
-import house from './house-test.jpg';
+import image from './image-default.png';
 import { addNewArtWork, fetchArtworkById, editArtWork } from '../../api/service';
 import {withRouter} from 'react-router-dom';
 
@@ -33,7 +33,7 @@ const AddNewArtWork = (props) => {
   const [artworkId, setArtworkId] = useState(null);
   const [data, setData] = useState(initialState);
   const [uploadedImages, setUploadedImages] = useState([]);
-  const [activeImage, setActiveImage] = useState(house);
+  const [activeImage, setActiveImage] = useState(image);
 
     
     useEffect(() => {
@@ -86,7 +86,7 @@ const AddNewArtWork = (props) => {
     } else if (uploadedImages.length !== 0) {
         setActiveImage(URL.createObjectURL(uploadedImages[uploadedImages.length-1]));
     } else {
-        setActiveImage(house);
+        setActiveImage(image);
     }
 };
 
@@ -121,7 +121,7 @@ const AddNewArtWork = (props) => {
 
   const generateThumbnails = () => {
     if (!data.images.length && !uploadedImages.length) {
-        return <img src={house} alt="artwork" className="artwork-detail-thumbnail" />;
+        return <img src={image} alt="artwork" className="artwork-detail-thumbnail" />;
     }
     let images = [];
     if (data.images.length) {
