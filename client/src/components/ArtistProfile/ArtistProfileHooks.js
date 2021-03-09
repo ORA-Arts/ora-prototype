@@ -48,7 +48,6 @@ const ArtistProfileHooks = (props) => {
     
 
     const handleCheckboxChange = event => {
-
         //medium
         let selMediums = []
         setCheckedItems({
