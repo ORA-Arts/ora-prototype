@@ -168,7 +168,7 @@ const AddNewArtWork = (props) => {
 
 
   return (
-  <div className="app-container">
+  <div className="app-container-inventory-list">
       <div className="container-inventory container-inventory-detail">
       <div className="gallery-name">
         {props.galleryName}

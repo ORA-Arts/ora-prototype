@@ -81,7 +81,7 @@ const GalleryProfile = (props) => {
   };
 
   return (
-  <div className="app-container">
+  <div className="app-container-gallery-profile">
       <div className="container-profile">
       <div className="gallery-name">
         {data.name}

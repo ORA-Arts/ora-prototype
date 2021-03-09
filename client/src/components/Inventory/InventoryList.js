@@ -97,7 +97,7 @@ const InventoryList = (props) => {
 
 
   return (
-  <div className="app-container">
+  <div className="app-container-inventory-list">
       <div className="container-inventory">
       <div className="gallery-name">
         {/* later move the fetch to to root of gallery components */}

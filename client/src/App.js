@@ -14,7 +14,8 @@ import InventoryList from "./components/Inventory/InventoryList";
 import AddNewArtWork from "./components/Inventory/AddNewArtWork";
 import ArtistOpen from "./components/LandingPages/ArtistOpen/ArtistOpen";
 import { fetchGalleryName } from './api/service';
-import CollectorSpace from './components/LandingPages/CollectorSpace/CollectorSpace'
+import CollectorSpace from './components/LandingPages/CollectorSpace/CollectorSpace';
+import CollectorProfile from './components/Collector/CollectorProfile';
 
 
 export default class App extends Component {
@@ -78,6 +79,10 @@ export default class App extends Component {
           <Route exact path='/gallery/inventory' render={props => <InventoryList setUser={this.setUser} user={this.state.user} galleryName={this.state.galleryName} {...props} />} />
           <Route exact path='/gallery/inventory/new' render={props => <AddNewArtWork isViewMode={false} setUser={this.setUser} galleryName={this.state.galleryName} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/inventory/:id' render={props => <AddNewArtWork isViewMode={true} setUser={this.setUser} galleryName={this.state.galleryName} user={this.state.user} {...props} />} />
+
+          {/* Collector */}
+          
+          <Route exact path='/collector/profile' render={props => <CollectorProfile setUser={this.setUser} user={this.state.user} {...props} />} />
         </Switch>
         <Footer />
       </div>
