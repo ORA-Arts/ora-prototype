@@ -326,6 +326,27 @@ label:hover {
     text-transform: uppercase;
 }
 
+.send-request-btn {
+    color: white;
+    font-size: 14px;
+    margin: 20px;
+    padding: 10px 12px;
+    border: solid  0.25px black;
+    cursor: pointer;
+    background-color: black;
+    text-decoration: none;
+    width: 60%;
+    height: 60px;
+    order: 0;
+    flex: 0 1 auto;
+    align-self: center;
+  }
+  .send-request-btn:hover {
+    background-color: white;
+    color: black;
+    
+  }
+
 
 
 
