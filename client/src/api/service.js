@@ -91,6 +91,8 @@ export const fetchArtworkById = async (artworkId) => {
     return res.data;
 };
 
+
+//collector profile
 export const fetchCollector = async () => {
     const res = await axios.get('/api/collector/profile');
     return res.data;
@@ -105,12 +107,14 @@ export const addNewCollector = async (dataForm) => {
     const res = await axios.post('/api/collector/profile',
         dataForm, config
     );
-
     return res.data;
 };
 
 export const editCollector = async (dataForm) => {
-    const res = await axios.put('/api/collector/profile',
+    for (let value of dataForm.values()) {
+        console.log(value)
+      }
+    const res = await axios.put('http://localhost:5005/api/collector/profile',
         dataForm, config
     );
     return res.data;

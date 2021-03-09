@@ -302,3 +302,9 @@ display: none;
   font-style: bold;
 }
 
+
+@media (max-width: 481px) { 
+  #three {
+  padding-bottom: 400px;
+  }
+}

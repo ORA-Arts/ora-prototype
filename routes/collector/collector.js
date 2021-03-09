@@ -4,6 +4,7 @@ const passport = require('passport')
 
 // middleware
 function isAuthenticated(req, res, next) {
+  console.log(req)
   if (req.isAuthenticated()) {
     next();
   } else {
@@ -35,12 +36,13 @@ router.post('/', isAuthenticated, async(req,res,next) => {
   const userId =  req.session.passport.user;
   try {
     const existedCollector = await Collector.findOne({user: userId});
-    if (existedGallery) return res.status(500).json({message: "Please don't change the http method"});
+    if (existedCollector) return res.status(500).json({message: "Please don't change the http method"});
   } catch (error) {
     return res.status(500).json({ message: 'One User Profile for one user only' });
   }
 
-  const data = req.body;
+  const data = {...req.body};
+  console.log(data)
 
   try {
     const collector = await Collector.create({...data, user: userId})
@@ -53,11 +55,10 @@ router.post('/', isAuthenticated, async(req,res,next) => {
 
 
 
-router.put('/', isAuthenticated, async(req,res,next) => {
+router.put('/', isAuthenticated, async(req, res, next) => {
   const userId =  req.session.passport.user;
-  if (req.file) {
-    const data = req.body;
-  }
+  const data = {...req.body};
+  console.log(data)
 try {
   const updatedCollector = await Collector.findOneAndUpdate({user: userId},{...data}, {new:true});
   res.status(200).json(updatedCollector);

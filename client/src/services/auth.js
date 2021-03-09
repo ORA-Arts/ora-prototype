@@ -59,7 +59,7 @@ const logout = () => {
 const addNewsletter = (email) => {
   console.log(email)
   return axios.
-  post('http://localhost:5005/api/newsletter', {email})
+  post('/api/newsletter', {email})
   .then(response => {
     console.log("response", response)
     return response.data;

@@ -1,7 +1,5 @@
 const { Schema, model } = require("mongoose")
 
-
-
 const artistSchema = new Schema({
   gallery: {
     type: Schema.Types.ObjectId,

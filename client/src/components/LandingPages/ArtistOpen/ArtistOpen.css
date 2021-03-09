@@ -325,11 +325,13 @@ h1 {
 @media (max-width: 481px) {
   #getInTouch > button {
   align-self: center;
+  width: 240px;
   }
 }
 
 @media (max-width: 481px) {
 #postSelection {
-padding-bottom: 300px;
+padding-bottom: 850px;
+
 }
 }
