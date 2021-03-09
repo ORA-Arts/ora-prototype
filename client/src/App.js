@@ -15,6 +15,7 @@ import AddNewArtWork from "./components/Inventory/AddNewArtWork";
 import ArtistOpen from "./components/LandingPages/ArtistOpen/ArtistOpen";
 import { fetchGalleryName } from './api/service';
 import CollectorSpace from './components/LandingPages/CollectorSpace/CollectorSpace'
+import ContactFormHooks from './components/ContactForm/ContactFormHooks'
 
 
 export default class App extends Component {
@@ -70,9 +71,9 @@ export default class App extends Component {
             )}
           />
           <Route exact path='/artist-open-call' component={ArtistOpen} />
-
           <Route exact path='/collector-space' component={CollectorSpace} />
-         <Route exact path='/gallery/new' render={props => <GalleryProfileHooks user={this.state.user} {...props} />} />
+          <Route exact path='/contact-us' component={ContactFormHooks} />
+          <Route exact path='/gallery/new' render={props => <GalleryProfileHooks user={this.state.user} {...props} />} />
           <Route exact path='/gallery/artists' render={props => <ArtistsListHooks setUser={this.setUser} galleryName={this.state.galleryName} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/artist-profile' render={props => <ArtistProfileHooks setUser={this.setUser} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} user={this.state.user} {...props} />} />

@@ -1,0 +1,279 @@
+/* Contact Form */
+#contactContainer {
+    display: flex;
+    height: 77vh;
+    align-items: center;
+    justify-content: center;
+}
+
+#contactImage {
+    background-image: url('../../images/CONTACT FORM 1.jpg');
+    background-position: center;
+    max-height: 750px;
+    display: block;
+    height: inherit;
+    width: 45vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#h1Wrapper a {
+    text-decoration: none;
+    color: black;
+    font-family: 'akzidenz-grotesk_probold';
+    font-size: 16px;
+    margin: 0;
+    padding-top: 0;
+}
+
+#h1Wrapper h1 {
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#formContainer h2 {
+    font-family: 'editorial_newregular', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-align: justify;
+    text-justify: inter-word;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+#formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 2vw;
+    height: inherit;
+    width: 45vw;
+    max-height: 750px;
+}
+
+#emailAndName {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2vh;
+    width: inherit;
+}
+
+#emailAndName input {
+    border: none;
+    border-bottom: 0.5px solid grey;
+    padding: 10px 10px;
+    outline: none;
+}
+
+#emailAndName p {
+    padding-left: 10px;
+}
+
+#topicContainer p {
+    padding-left: 10px;
+}
+
+#inquireAndButton {
+    display: flex;
+    flex-direction: column;
+}
+
+#body {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    border: none;
+    border-top: 0.5px solid grey;
+    border-bottom: 0.5px solid grey;
+    padding: 10px 10px;
+    padding-bottom: 13vh;
+    outline: none;
+    height: 13vh;
+    font-size: 13px;
+    font-family: "akzidenz-grotesk_proregular";
+}
+
+
+
+#inquireAndButton .btnWhite {
+    width: 150px;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    cursor: pointer;
+    background-color: black;
+}
+
+#inquireAndButton .btnWhite:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+
+/* Modal Content */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid black;
+    width: 400px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+.modal-content span {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: flex-end;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    width: auto;
+    height: 300px;
+}
+
+.modal-content form input {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+    width: 340px;
+    height: 35px;
+    border-radius: 0;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: center;
+}
+
+.react-tabs__tab--selected {
+    background: #fff;
+    color: black;
+    border-radius: 5px 5px 0 0;
+    font-weight: 700;
+}
+
+.react-tabs__tab-list {
+    border-bottom: none;
+    margin: 0 0 10px;
+    padding: 0;
+    font-size: 23px;
+    padding-bottom: 1rem;
+    font-weight: 200;
+    color: #E5E5E5;
+}
+.react-tabs__tab-list span {
+    color: black;
+}
+.react-tabs__tab {
+    display: inline-block;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    cursor: pointer;
+}
+
+
+.react-tabs__tab:hover {
+    display: inline-block;
+    font-weight: 700;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    /* padding: 6px 12px; */
+    cursor: pointer;
+}
+.teamTab {
+    font-size: 16px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: stretch;
+    border-top: 1px solid black;
+    height: 100%;
+}
+.teamMember {
+    font-weight: 300;
+    height: 70px;
+    border-bottom: 0.25px solid rgba(0, 0, 0, 0.521);
+}
+.teamMember h3 {
+    font-weight: 700;
+    padding-bottom: 0rem;
+    margin-bottom: .5rem;
+}
+.teamMember .contact-email {
+    font-weight: 300;
+    font-size: 16px;
+}
+.radio-toolbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.radio-toolbar input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+.radio-toolbar input[type="radio"] :hover {
+    background-color: black;
+    color: white;
+}
+
+.radio-toolbar label {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border: 2px solid #444;
+    width: 120px;
+    height: 30px;
+}
+.radio-toolbar input[type="radio"]:checked+label {
+    background-color: black;
+    color: white;
+}
+.radio-toolbar label:hover {
+    background-color: black;
+    color: white;
+}
+.radio-toolbar input[type="radio"]:focus+label {
+    border: 2px solid black;
+}
+.contactFooter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+.contactFooter .contact-email {
+    font-weight: 300;
+    font-size: 16px;
+}
+.sentMessage {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}

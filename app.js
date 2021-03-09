@@ -15,6 +15,7 @@ const express = require("express");
 const hbs = require("hbs");
 
 const app = express();
+//NODEMAILER
 
 app.use(
   cors({
@@ -118,6 +119,9 @@ app.use("/api/gallery/inventory", inventory);
 
 const artists = require('./routes/artists/artists');
 app.use("/api/gallery/artists", artists);
+
+const contact = require('./routes/contact/contact');
+app.use("/api/contact", contact);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

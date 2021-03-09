@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const nodemailer = require("nodemailer");
 
 router.get("/", (req, res, next) => {
   res.json("All good in here");
