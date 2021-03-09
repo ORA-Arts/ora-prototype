@@ -22,7 +22,7 @@ behaviour : {
   enum : Object.values(behaviours)
 },
 budget: Number,
-Newsletter: Boolean
+newsletter: Boolean
 });
 
 Object.assign(collectorSchema.statics, { behaviours });
