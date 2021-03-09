@@ -48,6 +48,10 @@ const AddNewArtWork = (props) => {
             setGallery(gallery);
             const resArtists = await fetchArtist();
             setArtists(resArtists);
+            console.log("data in useeffect", data)
+            // if (!isViewMode) {
+            //     setData({...data, artist: resArtists[0]._id});
+            // }
         }
         if (!props.isViewMode) {
             setData(initialState);
@@ -77,6 +81,12 @@ const AddNewArtWork = (props) => {
         console.log("run here");
         currentActiveImage();
     }, [uploadedImages, data.images]);
+
+    useEffect(() => {
+        if (!isViewMode && artists.length) {
+            setData({...data, artist: artists[0]._id});
+        }
+    }, [artists]);
 
 
     const onChange = (event) => {
@@ -108,6 +118,7 @@ const AddNewArtWork = (props) => {
   const submitHandler = async () => {
     const uploadData = new FormData();
     const dataCopy = data;
+    dataCopy.gallery = gallery._id;
     uploadData.append("uploadedImages", uploadedImages);
     for (let key in dataCopy) {
       uploadData.append(key, dataCopy[key]);
@@ -125,6 +136,8 @@ const AddNewArtWork = (props) => {
     setIsEditMode(false);
     setIsViewMode(true);
   };
+
+  console.log("data", data)
 
   const clickedImageHandler = (index) => {
     if (index > data.images.length-1) {
@@ -203,7 +216,7 @@ const AddNewArtWork = (props) => {
                         {/* add a select for artist field here width value = artist ID */}
                         <div className="detail-info-field">
                             {isEditMode ? 
-                            <select name="artist" onChange={onChange}>
+                            <select name="artist" onChange={onChange} value={data.artist}>
                                 {artists.map(artist => <option value={artist._id}>{artist.name}</option>)}
                                 {/* <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>

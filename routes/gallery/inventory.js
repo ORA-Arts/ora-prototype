@@ -66,11 +66,6 @@ router.post('/', isAuthenticated, async (req, res, next) => {
 
 });
 
-router.post('/test', isAuthenticated, uploader.array('images[]'), async (req, res, next) => {
-  console.log(req.body);
-  console.log(req.files);
-  res.json({message: "empty"});
-});
 
 // single image first
 router.post('/new', isAuthenticated, uploader.array('images[]'), async (req, res, next) => {
@@ -89,7 +84,7 @@ router.post('/new', isAuthenticated, uploader.array('images[]'), async (req, res
   // delete later, this is just a fake artist - add the real artist
   // const fakeArtist = await Artist.create({name: "Konad Mayer"});
   try {
-    const artwork = await Artwork.create({...data, user: userId, artist: mongoose.Types.ObjectId("60438b4f73af866d50b8bbde")});
+    const artwork = await (await Artwork.create({...data, user: userId})).populate("artist");
     res.status(200).json(artwork);
   } catch (err) {
     console.log(err);
@@ -132,7 +127,7 @@ router.put('/:id', isAuthenticated, uploader.array('images[]'), async (req, res,
 
   try {
     const updatedArtwork = await Artwork.findOneAndUpdate(
-      {user: userId, _id: artworkId}, {...data, $push: {images: {$each: uploadedImages}}}, {new: true});
+      {user: userId, _id: artworkId}, {...data, $push: {images: {$each: uploadedImages}}}, {new: true}).populate("artist");
     res.status(200).json(updatedArtwork);
   } catch(error) {
     console.log(error);

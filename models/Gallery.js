@@ -10,6 +10,7 @@ const gallerySchema = new Schema({
   firstName: String,
   lastName: String,
   name: String,
+  email: String,
   address: String,
   biography: String,
   position: String,

@@ -54,12 +54,11 @@ const GalleryProfile = (props) => {
     }
     setData(resData);
     setIsEditMode(false);
+    setIsGalleryExist(true);
     props.changeGalleryName(resData.name);
     // const resData = await addNewGallery(uploadData);
     // setData(resData);
   };
-
-  console.log(props);
 
   useEffect(() => {
     async function fetchData() {
@@ -174,8 +173,12 @@ const GalleryProfile = (props) => {
               <div className="input-container-half remove-border">
                   <div className="image-container">
                       <img className="gallery-image" src={image ? URL.createObjectURL(image) : data.imageUrl ? data.imageUrl : imageDefault} alt={image ? image.name.split(".")[0] : "default-image"} />
+                      {isEditMode ? 
+                      <>
                       <input type={(isGalleryExist && !isEditMode) ? "hidden" : "file"} id="file" className="input-hidden" onChange={fileHandler}  />
                       <label htmlFor="file" className="btn-image">CHANGE IMAGE</label>
+                      </>
+                      : null }
                       {/* <button className="btn-image">CHANGE IMAGE</button> */}
                   </div>
                   <div className="input-container-half">
@@ -199,13 +202,18 @@ const GalleryProfile = (props) => {
             </div>
             <div className="shipping-info">
               <span className="shipping-title">CONVELIO</span>
+              
               <div id="selectTopic">
-              {/* checked={this.state.convelio === true} */}
+                {isEditMode ? 
+                  <>
                   <input type="radio" id="yes" name="convelio" onChange={e => setConvelio(true)} checked={convelio} />
                   <label htmlFor="yes">YES</label>
                   <input type="radio" id="no" name="convelio" onChange={e => setConvelio(false)} checked={!convelio}/>
                   <label htmlFor="no">NO</label>
+                  </>
+                : convelio ? "YES" : "NO" }
               </div>
+              
             </div>
             {isEditMode ? 
             <button className="btn-edit save-change space-top" onClick={submitHandler}>SAVE CHANGES</button>

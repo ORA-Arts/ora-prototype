@@ -122,6 +122,7 @@ const ArtistProfileHooks = (props) => {
         setData(resData);
         setIsEditMode(false);
         setImage(null);
+        setArtistId(resData._id);
         
     }
     const startEditing = () => {
