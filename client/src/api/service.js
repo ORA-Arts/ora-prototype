@@ -28,7 +28,6 @@ export const editGallery = async (dataForm) => {
     const res = await axios.put('/api/gallery/profile',
         dataForm, config
     );
-
     return res.data;
 };
 
@@ -88,6 +87,31 @@ export const fetchArtistById = async (artistId) => {
 
 export const fetchArtworkById = async (artworkId) => {
     const res = await axios.get(`/api/gallery/inventory/${artworkId}`);
+    return res.data;
+};
+
+export const fetchCollector = async () => {
+    const res = await axios.get('/api/collector/profile');
+    return res.data;
+};
+
+export const fetchCollectorName = async () => {
+    const res = await axios.get('/api/collector/profile/name');
+    return res.data;
+};
+
+export const addNewCollector = async (dataForm) => {
+    const res = await axios.post('/api/collector/profile',
+        dataForm, config
+    );
+
+    return res.data;
+};
+
+export const editCollector = async (dataForm) => {
+    const res = await axios.put('/api/collector/profile',
+        dataForm, config
+    );
     return res.data;
 };
 
