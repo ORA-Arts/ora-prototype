@@ -1,0 +1,22 @@
+.my-collector-profile {
+    width: 308px;
+}
+
+.collector-sidebar .sidebar-box {
+    width: 240px;
+    border-right: 0.5px solid black;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.collector-sidebar .sidebar-text {
+    font-size: 14px;
+    padding-bottom: 62px;
+}
+
+.collector-sidebar .sidebar-text-bold {
+    font-weight: 700;
+    line-height: 18px;
+}
