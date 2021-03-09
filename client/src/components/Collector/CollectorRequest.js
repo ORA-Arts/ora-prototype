@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
-import "./CollectorProfile.css";
+import "./CollectorRequest.css";
 import CollectorSideBar from "../CollectorSideBar/CollectorSideBar";
 import { fetchAllGalleries, sendRequestToGallery } from '../../api/service';
 
-const CollectorProfile = (props) => {
+const CollectorRequest = (props) => {
   const initialState = {
     artist: "",
     suggestion: true,
@@ -46,28 +46,33 @@ const CollectorProfile = (props) => {
 
   const submitHandler = async () => {
     const resData = await sendRequestToGallery(data);
-    console.log(resData);
+    if (resData.success) {
+      setData({...initialState, gallery: galleries[0].id});
+      // redirect later
+    } else {
+      alert("Sometime when wrong with our server");
+    }
     // setData(initialState);
-    // redirect later
+    
   };
 
   return (
-  <div className="app-container-collector-profile">
-    <div className="collector-container-profile">
+  <div className="app-container-collector-request">
+    <div className="collector-container-request">
       <div className="collector-header">
         <div className="collector-name">
           LISA ABRAHAM
         </div>
         <button className="btn-request">REQUEST A SPECIAL SOURCING</button>
       </div>
-      <div className="container-profile-content">
-        <CollectorSideBar content="my-collector-profile"/>
-        <div className="collector-profile">
-          <div className="collector-profile-header">
+      <div className="container-request-content">
+        <CollectorSideBar content="create-request"/>
+        <div className="collector-request">
+          <div className="collector-request-header">
             <div className="header-text">Welcome to private sales ! Thanks to this feature, you can directly connect with</div>
             <div className="header-text">each of our partner galleries to find out about their available artworks.</div>
           </div>
-          <div className="collector-profile-title">
+          <div className="collector-request-title">
             <hr />
             <span className="collector-title-text">
               Are you interested in a particular artist represented by one of ORA’s partner galleries ?
@@ -83,7 +88,7 @@ const CollectorProfile = (props) => {
               <label className="label-button-like" htmlFor="receive-suggestion">NO, I WOULD LIKE TO RECEIVE SOME SUGGESTIONS</label>
             </div>
           </div>
-          <div className="collector-profile-title">
+          <div className="collector-request-title">
             <hr />
             <span className="collector-title-text">
               Which of the following are you looking for ?
@@ -105,7 +110,7 @@ const CollectorProfile = (props) => {
               </div>
             </label>
           </div>
-          <div className="collector-profile-title">
+          <div className="collector-request-title">
             <hr />
             <span className="collector-title-text">
               IS THERE A MEDIUM IN WHICH YOU WERE PARTICULARLY INTERESTED IN ?
@@ -123,7 +128,7 @@ const CollectorProfile = (props) => {
             <input type="radio" id="Performance" value="Performance" onChange={onChange} name="medium" />
             <label htmlFor="Performance">Performance</label>
           </div>
-          <div className="collector-profile-title">
+          <div className="collector-request-title">
             <hr />
             <span className="collector-title-text">
               WHAT KIND OF BUDGET DO YOU HAVE IN MIND ?
@@ -136,7 +141,7 @@ const CollectorProfile = (props) => {
             </div>
           </div>
 
-          <div className="collector-profile-title">
+          <div className="collector-request-title">
             <hr />
             <span className="collector-title-text">
               WHICH OF THE FOLLOWING GALLERIES WOULD YOU LIKE TO ADDRESS THIS REQUEST TO ?
@@ -151,7 +156,7 @@ const CollectorProfile = (props) => {
             </div>
           </div>
 
-          <div className="collector-profile-title">
+          <div className="collector-request-title">
             <hr />
             <span className="collector-title-text">
               DO YOU HAVE ANY OTHER INFORMATION YOU WANTED TO SHARE WITH GALERIE NEU ?
@@ -171,4 +176,4 @@ const CollectorProfile = (props) => {
   );
 };
 
-export default CollectorProfile;
+export default CollectorRequest;

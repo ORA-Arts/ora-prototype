@@ -5,10 +5,14 @@ const requestSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  preferredArtists: [{
+  // preferredArtists: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Artist'
+  // }],
+  preferredArtist: {
     type: Schema.Types.ObjectId,
     ref: 'Artist'
-  }],
+  },
   gallery: {
     type: Schema.Types.ObjectId,
     ref: 'Gallery'
@@ -25,7 +29,7 @@ const requestSchema = new Schema({
   suggestion: Boolean,
   type: String,
   medium: String,
-  buget: Number,
+  budget: Number,
 }, { timestamps: true });
 
 const Request = model("Request", requestSchema);

@@ -15,8 +15,8 @@ import AddNewArtWork from "./components/Inventory/AddNewArtWork";
 import ArtistOpen from "./components/LandingPages/ArtistOpen/ArtistOpen";
 import { fetchGalleryName } from './api/service';
 import CollectorSpace from './components/LandingPages/CollectorSpace/CollectorSpace';
-import CollectorProfile from './components/Collector/CollectorProfile';
-
+import CollectorRequest from './components/Collector/CollectorRequest';
+import CollectorAcquisitions from './components/Collector/CollectorAcquisitions';
 
 export default class App extends Component {
   constructor(props) {
@@ -82,7 +82,9 @@ export default class App extends Component {
 
           {/* Collector */}
           
-          <Route exact path='/collector/profile' render={props => <CollectorProfile setUser={this.setUser} user={this.state.user} {...props} />} />
+          <Route exact path='/collector/request' render={props => <CollectorRequest setUser={this.setUser} user={this.state.user} {...props} />} />
+          <Route exact path='/collector/acquisitions' render={props => <CollectorAcquisitions setUser={this.setUser} user={this.state.user} {...props} />} />
+          
         </Switch>
         <Footer />
       </div>

@@ -101,4 +101,9 @@ export const fetchAllGalleries = async () => {
 export const sendRequestToGallery = async (request) => {
     const res = await axios.post("/api/collector/request", request);
     return res.data;
-}
+};
+
+export const fetchAllAcquisitions = async () => {
+    const res = await axios.get("/api/collector/acquisitions");
+    return res.data;
+};
