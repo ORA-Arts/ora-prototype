@@ -25,6 +25,12 @@ const CollectorProfile = (props) => {
   ];
   const [checkedRel, setCheckedRel] = useState("");
 
+
+  const onChange = (event) => {
+    const { name, value } = event.target;
+    setData({ ...data, [name]: value.toUpperCase() });
+  };
+
   const Checkbox = ({ type = "radio", name, checked = false, onChange }) => {
     // console.log("Checkbox: ", name, checked);
     return (
@@ -50,16 +56,21 @@ const CollectorProfile = (props) => {
     setIsEditMode(!isEditMode);
   };
 
-  const onChange = (event) => {
-    const { name, value } = event.target;
-    setData({ ...data, [name]: value.toUpperCase() });
-  };
+
 
 const submitHandler = async () => {
   const uploadData = new FormData();
-  const dataCopy =data;
+  const dataCopy = data;
   dataCopy.newsletter = newsletter;
   dataCopy.budget = Number(dataCopy.budget)
+  for (let key in dataCopy) {
+    uploadData.append(key, dataCopy[key]);
+  }
+  for (let value of uploadData.values()) {
+    console.log(value)
+  }
+
+
   let resData;
   if (isEditMode && isCollectorExist) {
     resData = await editCollector(uploadData);
