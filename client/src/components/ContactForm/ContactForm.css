@@ -5,7 +5,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 90%-2rem;
     padding: 2rem;
     padding-bottom: 160px;
@@ -17,8 +17,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     width: 45%;
-    height: 659px;
-    /* min-width: 360px; */
+    height: 660px;
+    min-width: 600px;
 }
 
 #h1Wrapper a {
@@ -39,13 +39,13 @@
 
 .formContainer h2 {
     font-family: 'editorial_newregular', sans-serif;
-    font-size: 14px;
+    font-size: 23px;
     /* letter-spacing: 1px; */
     text-align: justify;
     text-justify: inter-word;
     padding-top: 0;
     margin-top: 0;
-    line-height: 1.5rem;
+    line-height: 36px;
 }
 
 .formContainer {
@@ -53,6 +53,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 45%;
+    min-width: 600px;
 }
 
 #emailAndName {
@@ -90,7 +91,7 @@
     padding: 10px 10px;
     padding-bottom: 13vh;
     outline: none;
-    height: 13vh;
+    height: 12vh;
     font-size: 13px;
     font-family: "akzidenz-grotesk_proregular";
 }
@@ -98,10 +99,10 @@
 
 
 #inquireAndButton .btnWhite {
-    width: 150px;
+    width: 180px;
     color: white;
-    font-size: 16px;
-    padding: 12px 24px;
+    font-size: 14px;
+    padding: 16px 24px;
     cursor: pointer;
     background-color: black;
 }
@@ -109,7 +110,7 @@
 #inquireAndButton .btnWhite:hover {
     background-color: white;
     color: black;
-    border: 2px solid black;
+    border: 0.25px solid rgba(0, 0, 0, 0.90);
 }
 
 /* Modal Content */
@@ -162,7 +163,6 @@
 .react-tabs__tab--selected {
     background: #fff;
     color: black;
-    border-radius: 5px 5px 0 0;
     font-weight: 700;
 }
 
@@ -174,6 +174,7 @@
     padding-bottom: 1rem;
     font-weight: 200;
     color: #E5E5E5;
+    z-index: -1;
 }
 .react-tabs__tab-list span {
     color: black;
@@ -205,12 +206,12 @@
     justify-content: flex-start;
     align-content: center;
     align-items: stretch;
-    border-top: 1px solid black;
+    border-top: 0.25px solid rgba(0, 0, 0, 0.60);
 }
 .teamMember {
     font-weight: 300;
     height: 70px;
-    border-bottom: 0.25px solid rgba(0, 0, 0, 0.521);
+    border-bottom: 0.25px solid rgba(0, 0, 0, 0.25);
     
 }
 .teamMember h3 {
@@ -245,9 +246,9 @@
     align-items: center;
     text-align: center;
     background-color: white;
-    padding: 6px 12px;
+    padding: 12px 12px;
     font-size: 12px;
-    border: 0.25px solid rgba(0, 0, 0, 0.521);
+    border: 0.25px solid rgba(0, 0, 0, 0.90);
     width: 120px;
     height: 30px;
 }
@@ -260,7 +261,7 @@
     color: white;
 }
 .radio-toolbar input[type="radio"]:focus+label {
-    border: 2px solid black;
+    border: 0.25px solid rgba(0, 0, 0, 0.90);
 }
 .contactFooter {
     display: flex;
@@ -292,6 +293,7 @@
     .formContainer {
         width: 100%;
         margin-bottom: 190px;
+        min-width: auto;
     }
     .formContainer h2 {
         font-size: 25px;
@@ -315,24 +317,46 @@
         font-size: 20px;
     }
     .teamMember span {
+        font-weight: 300;
         font-size: 11px;
     }
-    .teamMember .contact-email{
+    .teamMemberF .contact-email {
         text-transform: uppercase;
         font-family: "akzidenz-grotesk_proregular";
         font-size: 10px;
         border-bottom: none;
+        padding: 2rem 0;
+        text-align: center;
+        
     }
-    .teamMember .contact-email:before {
-        content: "General Information: ";
+    .teamMemberF .contact-email:before {
+        font-weight: 700;
+        content: "General Information / ";
         
     }
     .contactHeader {
         text-align: center;
     }
     .radio-toolbar label {
-        width: 100px;
+        width: 115px;
         font-size: 14px;
-        padding: 1rem;
+        padding: .8rem;
+    }
+    .contactFooter a {
+        width: 100%;
+    }
+    .contactFooter 
+    .contact-email {
+        text-transform: uppercase;
+        font-family: "akzidenz-grotesk_proregular";
+        font-size: 10px;
+        border-bottom: none;
+        padding: 2rem 0;
+        text-align: center;
+        width: 100%;
+    }
+    .contact-email:before {
+        font-weight: 700;
+        content: "General Information / ";
     }
 }

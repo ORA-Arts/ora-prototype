@@ -125,7 +125,7 @@ export default function ContactFormHooks(props) {
                                 <h3>CORENTINE PIETTE</h3>
                                        <span>CTO</span> 
                                     </div>
-                            <div className='teamMember'>
+                            <div className='teamMemberF'>
                                 <Link to='mailto:info@ora-arts.com'><h3 className='contact-email'>INFO@ORA-ARTS.COM</h3></Link>
                             </div>
                         </div>
