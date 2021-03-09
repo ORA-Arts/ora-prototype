@@ -29,12 +29,18 @@ const CollectorProfile =(props) => {
   return (
     <div className="app-container">
     <div className="collectorProfile">
-      <div> 
+      <div className='collector-name'> 
       {data.name}
       </div>
       <hr/>
       <div className="edit-button">
         <button className="btn-edit" onClick={startEditing}>Edit</button>
+      </div>
+    </div>
+    <div className='container-profile-content'>
+      <div className='personalInformation'>
+        <hr />
+        <h1>PERSONAL INFORMATION</h1>
       </div>
     </div>
           
