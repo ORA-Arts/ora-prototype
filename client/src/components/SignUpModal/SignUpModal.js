@@ -20,6 +20,7 @@ class SignUpModal extends Component {
     this.setState({
       [name]: value
     })
+    console.log(this.state.userType)
   }
 
   handleSubmit = event => {
@@ -46,8 +47,12 @@ class SignUpModal extends Component {
           if (this.state.userType == 'gallery') {
             console.log(this.state.userType);
             this.props.history.push('/gallery/profile');
+          }
+          else if(this.state.userType == 'collector') {
+            this.props.history.push('/collector/profile');
+          }
             // //browserHistory.push('/gallery/profile')
-          } 
+      
           // : this.props.history.push('/collector/profile')// this need to be passed in the router app.js
         }
       })
@@ -91,7 +96,7 @@ class SignUpModal extends Component {
             value="collector"
             onChange={this.handleChange}
             />
-          <label htmlFor='collgitector'>I AM A COLLECTOR</label>
+          <label htmlFor='collector'>I AM A COLLECTOR</label>
           <input 
             type="radio"
             name="userType"

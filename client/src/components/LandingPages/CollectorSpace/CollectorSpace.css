@@ -1,16 +1,13 @@
 .colectorContainer{
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   justify-content:flex-start;
   align-content: space-between;
-  align-items: stretch;
 }
 #headerText {
   display: flex;
   color: white;
   flex-direction: column;
-  flex-wrap: nowrap;
   justify-content: flex-start;
   padding-left: 13px;
   padding-right: 20px;
@@ -21,16 +18,12 @@
 #headerText h1{
   font-size: 30px;
   font-family: "editorial_newultralight";
+  margin:0;
 }
 
 #headerText h2 {
   font-family: "akzidenz-grotesk_proregular";
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 30px;
-  letter-spacing: 0em;
-  width: 80vw;
   text-transform: uppercase;
 }
 
@@ -44,11 +37,8 @@
   display: flex;
   background-color: #D2D1CE;
   justify-content: space-between;
-  align-content: center;
   align-items: center;
-  padding-left: 13px;
-  padding-right: 5vw;
-
+  width: 100vw;
 }
 
 @media (min-width: 480px) {
@@ -63,6 +53,7 @@
     text-decoration: none;
     margin-top: 2%;
     margin-bottom: 2%;
+    margin-right: 20px;
   }
     }
   
