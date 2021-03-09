@@ -112,6 +112,7 @@ const ArtistProfileHooks = (props) => {
         }
         const resData = await addNewArtist(uploadData);
         console.log('res data' + resData);
+        setIsArtistExist(true);
         setData(resData);
         setIsEditMode(false);
     }
@@ -193,9 +194,12 @@ const ArtistProfileHooks = (props) => {
 
                                 <div className="image-container">
                                     <img className="artist-image" src={image ? URL.createObjectURL(image) : data.imageUrl ? data.imageUrl : imageDefault} alt={image ? data.name.split(".")[0] : 'artistImage'} />
+                                    {isEditMode ?
+                                    <>
                                     <input type={(isArtistExist && !isEditMode) ? "hidden" : "file"} id="file" className="input-hidden" onChange={fileHandler} />
                                     <label htmlFor="file" className="btn-image">CHANGE IMAGE</label>
-                                    {/* <button className="btn-image">CHANGE IMAGE</button> */}
+                                    </>
+                                    : null }   
                                 </div>
                             </div>
                         </div>
