@@ -30,7 +30,7 @@ const ArtistListHooks = (props) => {
                 <div className='artistsList'>
                     {artists.map(artist => {
                         return (
-                            <Link key={artist._id} to={{pathname:`/gallery/artists/${artist._id}`}}>
+                            <Link key={artist._id} to={{pathname:`/gallery/artist-profile/${artist._id}`}}>
                                 <span className='btnWhite'>
                                     {artist.name}
                                 </span>

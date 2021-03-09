@@ -44,7 +44,6 @@ const ArtistProfileHooks = (props) => {
     
 
     const handleCheckboxChange = event => {
-
         //medium
         let selMediums = []
         setCheckedItems({
@@ -55,6 +54,10 @@ const ArtistProfileHooks = (props) => {
         selMediums = Object.keys(checkedItems)
         setData({ ...data, 'medium': selMediums })
 
+        
+    }
+
+    const handleCheckboxRel = event => {
         //relationship
         let selRelationships = []
         setCheckedRel({
