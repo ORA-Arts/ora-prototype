@@ -62,15 +62,11 @@ export default class App extends Component {
             <HomePage />
           </Route>
           <Route exact path="/what-is-ora" component={WhatIsOra} />
-          <Route
-            exact
-            path="/gallery/new"
-            render={(props) => (
+          <Route exact path="/gallery/new" render={(props) => (
               <GalleryProfileHooks user={this.state.user} {...props} />
             )}
           />
           <Route exact path='/artist-open-call' component={ArtistOpen} />
-
           <Route exact path='/collector-space' component={CollectorSpace} />
          <Route exact path='/gallery/new' render={props => <GalleryProfileHooks user={this.state.user} {...props} />} />
           <Route exact path='/gallery/artists' render={props => <ArtistsListHooks setUser={this.setUser} galleryName={this.state.galleryName} user={this.state.user} {...props} />} />
@@ -78,7 +74,6 @@ export default class App extends Component {
           <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/inventory' render={props => <InventoryList setUser={this.setUser} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/inventory/new' render={props => <AddNewArtWork setUser={this.setUser} user={this.state.user} {...props} />} />
-
           <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} changeGalleryName={this.changeGalleryName} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/inventory' render={props => <InventoryList setUser={this.setUser} user={this.state.user} galleryName={this.state.galleryName} {...props} />} />
           <Route exact path='/gallery/inventory/new' render={props => <AddNewArtWork isViewMode={false} setUser={this.setUser} galleryName={this.state.galleryName} user={this.state.user} {...props} />} />
