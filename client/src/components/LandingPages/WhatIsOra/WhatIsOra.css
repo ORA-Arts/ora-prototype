@@ -65,11 +65,13 @@
   color: white;
   font-family: 'editorial_newultralight';
   text-transform: uppercase;
-  height: 130px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding-bottom: 10px;
+  padding-left: 13px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 }
 

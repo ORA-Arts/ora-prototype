@@ -1,9 +1,12 @@
 import './ArtistProfile.css'
 import React, { useState, useEffect } from 'react'
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
-import { fetchArtist, addNewArtist, fetchArtistById } from '../../api/service';
+import { fetchArtist, addNewArtist, fetchArtistById, fetchGallery } from '../../api/service';
 import imageDefault from './image-default.png';
+import {withRouter} from 'react-router-dom';
 
+
+// only allow when user create the profile, so if the gallery exist, else redirect to profile.
 const ArtistProfileHooks = (props) => {
     const initialState = {
         name: '',
@@ -27,8 +30,9 @@ const ArtistProfileHooks = (props) => {
     const [isEditMode, setIsEditMode] = useState(true);
     const [image, setImage] = useState(null);
     const [checkedItems, setCheckedItems] = useState({})
-    const [checkedRel, setCheckedRel] = useState({})
+    const [checkedRel, setCheckedRel] = useState("")
     const [artistId, setArtistId] = useState(null);
+    const [gallery, setGallery] = useState(null);
 
     console.log("data", data);
 
@@ -54,17 +58,20 @@ const ArtistProfileHooks = (props) => {
         console.log("checkedItems: ", checkedItems);
         selMediums = Object.keys(checkedItems)
         setData({ ...data, 'medium': selMediums })
-
-        //relationship
-        let selRelationships = []
-        setCheckedRel({
-            ...checkedRel,
-            [event.target.name]: event.target.checked
-        });
-        console.log("checked Relationships: ", checkedRel);
-        selRelationships = Object.keys(checkedRel)
-        setData({ ...data, 'relationship': selRelationships })
+    
     }
+
+    const handleCheckboxRel = event => {
+    //relationship
+    
+    let selRelationships = ''
+    setCheckedRel(event.target.name);
+    console.log("checked Relationships: ", checkedRel);
+    
+    setData({ ...data, 'relationship': event.target.name })
+    }
+
+    console.log(checkedRel)
 
     const checkboxes = mediums.map(medium => {
         return {
@@ -97,13 +104,16 @@ const ArtistProfileHooks = (props) => {
     const submitHandler = async () => {
         const uploadData = new FormData();
         const dataCopy = data;
+        dataCopy.gallery = gallery._id;
+        dataCopy.birthYear = Number(dataCopy.birthYear);
         uploadData.append("image", image);
         for (let key in dataCopy) {
             uploadData.append(key, dataCopy[key]);
         }
         const resData = await addNewArtist(uploadData);
-        console.log('res data' + resData)
+        console.log('res data' + resData);
         setData(resData);
+        setIsEditMode(false);
     }
     const startEditing = () => {
         setIsEditMode(!isEditMode);
@@ -112,16 +122,12 @@ const ArtistProfileHooks = (props) => {
     useEffect(() => {
         async function fetchData() {
             await props.setUser(props.user);
-            // const resData = await fetchArtist();
-            // console.log("fetch the artist", resData);
-            // if (!resData) {
-            //     setIsArtistExist(false);
-            //     setIsEditMode(true);
-            // } else {
-            //     setIsArtistExist(true);
-            //     setIsEditMode(false);
-            //     setData(resData);
-            // }
+            const gallery = await fetchGallery();
+            if (!gallery) {
+                alert("You need to create the gallery profile first");
+                return props.history.push(`/gallery/profile`);
+            }
+            setGallery(gallery);
         }
         fetchData();
     }, []);
@@ -220,8 +226,8 @@ const ArtistProfileHooks = (props) => {
                                             <label key={item.key} >
                                                 <Checkbox
                                                     name={item.name}
-                                                    checked={checkedRel[item.name]}
-                                                    onChange={handleCheckboxChange}
+                                                    checked={checkedRel === item.name}
+                                                    onChange={handleCheckboxRel}
                                                 />
                                                 <span>{item.name}</span>
                                             </label>
@@ -249,7 +255,7 @@ const ArtistProfileHooks = (props) => {
                             </div>
                             <div className='right'>
                                 <div className="artist-input">
-                                    <span className="inputLabel">UNIQUE ARTWORKS PRICE RANGE/ </span>
+                                    <span className="inputLabel">EDITIONS AND MULTIPLIES/ </span>
                                     {isEditMode ?
                                         <>
                                             <input type="text" name="editions_min" onChange={onChange} value={data.editions_min} className="inputClear min" placeholder="3"></input>
@@ -284,4 +290,4 @@ const ArtistProfileHooks = (props) => {
     )
 }
 
-export default ArtistProfileHooks
+export default withRouter(ArtistProfileHooks);

@@ -1,26 +1,35 @@
 const { Schema, model } = require("mongoose")
 
+
+
 const artistSchema = new Schema({
-  galleryId: {
+  gallery: {
     type: Schema.Types.ObjectId,
     ref: 'Gallery'
   },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   name: String, 
-  birthYear: Date,
+  birthYear: Number,
   birthPlace: String,
-  image: String,
+  imageUrl: String,
+  imgPublicId: String,
   caption: String,
+
   medium: {
-    type: String,
+    type: [String],
     enum: [ 'Painting', 'Sculpture', 'Photography', 'Video Art', 'Performance', 'Drawing', 'Mixed Media'],
     default: 'Painting'
+  }, 
 
-  },  
   relationship: {
     type: String,
     enum: ['represented', 'works available'],
     default: 'represented'
   },
+
   meta_data: String,
   artwork_min: Number,
   artwork_max: Number,
@@ -28,7 +37,7 @@ const artistSchema = new Schema({
   editions_max: Number,  
   artistBiography: String,  
   mainQuote: String,
-})
+}, { timestamps: true })
 
 const Artist = model("Artist", artistSchema)
 
