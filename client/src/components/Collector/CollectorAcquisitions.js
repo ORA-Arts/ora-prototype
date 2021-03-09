@@ -6,6 +6,7 @@ import { fetchAllAcquisitions } from '../../api/service';
 const CollectorAcquisitions = (props) => {
 
   const [acquisitions, setAcquisitions] = useState([]);
+  const [status, setStatus] = useState("Pending");
 
   useEffect(() => {
     async function fetchData() {
@@ -14,6 +15,20 @@ const CollectorAcquisitions = (props) => {
     }
     fetchData();
   }, []);
+
+    const pendingRequest = acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "Pending").map((acquisition, index) => {
+        return (
+            <div className="acquisitions-pending-item">
+                <span className="status">PENDING</span>
+                <span>{acquisition.gallery.name}</span>
+                <span>{acquisition.preferredArtist ? acquisition.preferredArtist : "No Preferred artist"}</span>
+                <span>{acquisition.medium}</span>
+                <span>{acquisition.budget}K</span>
+                <span>{Math.floor((Date.now() - (new Date(acquisition.createdAt)).getTime())/(100*60*60))} HOUR/S</span>
+                <button>OPEN</button>
+            </div>
+        )
+    }) : null;
 
   return (
   <div className="app-container-collector-acquisitions">
@@ -32,11 +47,16 @@ const CollectorAcquisitions = (props) => {
         <CollectorSideBar content="my-acquisitions"/>
         <div className="collector-acquisitions">
             <div className="acquisitions-status-bar">
-                
-                
+                <input type="radio" value="Pending" id="pending" name="status" checked={status === "Pending"} />
+                <label htmlFor="pending">PENDING REQUESTS</label>
+                <input type="radio" id="inProgress" value="In Progress" name="status" checked={status === "In Progress"} />
+                <label htmlFor="inProgress">IN PROGRESS</label>
+                <input type="radio" id="confirmed" value="Confirmed" name="status" checked={status === "Confirmed"} />
+                <label htmlFor="confirmed">CONFIRMED</label>
             </div>
             <div>
-                { acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "Pending").map((acquisition, index) => {
+                {status === "Pending" ? pendingRequest : null}
+                {/* { acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "Pending").map((acquisition, index) => {
                     return (
                         <div className="acquisitions-pending-item">
                             <span className="status">PENDING</span>
@@ -45,16 +65,11 @@ const CollectorAcquisitions = (props) => {
                             <span>{acquisition.medium}</span>
                             <span>{acquisition.budget}K</span>
                             <span>{Math.floor((Date.now() - (new Date(acquisition.createdAt)).getTime())/(100*60*60))} HOUR/S</span>
-                            <span>OPEN</span>
+                            <button>OPEN</button>
                         </div>
                     )
-                }) : null }
-                
-                <div className="acquisitions-status-bar">
-
-                </div>
+                }) : null } */}
             </div>
-            
       </div>
     </div>
   </div>
