@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./CollectorProfile.css";
 import CollectorSideBar from "../CollectorSideBar/CollectorSideBar";
-import { fetchAllGalleries, addNewGallery, editGallery } from '../../api/service';
+import { fetchAllGalleries, sendRequestToGallery } from '../../api/service';
 
 const CollectorProfile = (props) => {
   const initialState = {
@@ -44,8 +44,11 @@ const CollectorProfile = (props) => {
     setData({...data, [name]: value});
   };
 
-  const submitHandler = () => {
-    console.log(data);
+  const submitHandler = async () => {
+    const resData = await sendRequestToGallery(data);
+    console.log(resData);
+    // setData(initialState);
+    // redirect later
   };
 
   return (

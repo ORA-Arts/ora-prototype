@@ -96,4 +96,9 @@ export const fetchArtworkById = async (artworkId) => {
 export const fetchAllGalleries = async () => {
     const res = await axios.get("/api/collector/galleries");
     return res.data;
+};
+
+export const sendRequestToGallery = async (request) => {
+    const res = await axios.post("/api/collector/request", request);
+    return res.data;
 }

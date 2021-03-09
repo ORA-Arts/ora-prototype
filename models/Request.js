@@ -15,12 +15,14 @@ const requestSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ["Pending", "In Progress", "Confirmed"]
+    enum: ["Pending", "In Progress", "Confirmed"],
+    default: "Pending"
   },
   messages: [{
     type: Schema.Types.ObjectId,
     ref: "Message"
   }],
+  suggestion: Boolean,
   type: String,
   medium: String,
   buget: Number,
