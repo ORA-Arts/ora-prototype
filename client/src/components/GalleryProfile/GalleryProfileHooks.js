@@ -105,7 +105,7 @@ const GalleryProfile = (props) => {
             <div className="input-block">
               {/* replace input by real information later */}
               <div className="input-container-half">
-                  <span className="input-label input-lable-right">First Name/ </span>
+                  <span className="input-label input-lable-right">FIRST NAME/ </span>
                   {/* <input type="text" name="username" onChange={e => setUsername(e.target.value.toUpperCase())} value={username} className="input-no-border" placeholder="THOMAS BALLOT" role="textbox"></input> */}
                   {isEditMode ? 
                     <input type="text" name="firstName" onChange={onChange} value={data.firstName} className="input-no-border" placeholder="Your First Name" role="textbox"></input> :
@@ -113,7 +113,7 @@ const GalleryProfile = (props) => {
                   }
               </div>
               <div className="input-container-half">
-                  <span className="input-label input-lable-right">Last Name/ </span>
+                  <span className="input-label input-lable-right">LAST NAME/ </span>
                   {isEditMode ? 
                     <input type="text" name="lastName" onChange={onChange} value={data.lastName} className="input-no-border" placeholder="Your Last Name"></input> :
                     <span>{data.lastName}</span>

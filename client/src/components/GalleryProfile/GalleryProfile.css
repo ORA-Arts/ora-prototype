@@ -1,11 +1,11 @@
 .app-container-gallery-profile {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
 }
 
 .container-profile {
-    width: 1374px;
+    width: 95vw;
     height: 1250px;
     padding: 0;
     margin: 16px 32px;
@@ -48,7 +48,8 @@
 
 
 .gallery-profile {
-    width: 1066px;
+    width: auto;
+    margin-left: 20px;
 }
 
 .gallery-content {
@@ -85,7 +86,7 @@
 }
 
 .input-container-half {
-    width: 520px;
+    width: 47%;
     border: 1px solid black;
     padding: 6px 0;
     flex-grow: 0;
