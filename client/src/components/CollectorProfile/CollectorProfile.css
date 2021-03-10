@@ -7,15 +7,12 @@
 #formContainer{
   display: flex;
   flex-direction: row;
-
 }
 
 #formContainerField {
+  margin-left: 2vw;
   width: auto;
-  margin-left: 20px;
 }
-
-
 
 .collectorHeader .btnPrivate {
   width: 250px;
@@ -88,6 +85,7 @@
 
 .budget input {
   text-align: end;
+  width: 5vw;
 }
 
 #budgetLabel {
@@ -116,12 +114,12 @@ input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
 }
 
-.behaviourCheck input[type="radio"]:checked::after {
-  background-color:black;
+.behaviourCheck label input[type="radio"]:checked {
+  background-color:green;
   color: white;
 }
 
-.behaviourCheck  input[type="radio"]:focus {
+.behaviourCheck input[type="radio"]:focus {
   border: 2px solid black;
 }
 
@@ -163,8 +161,9 @@ input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+
 #newsBool input[type="radio"]:checked + label {
-  background-color:black;
+  background-color: black;
   color: white;
 }
 
@@ -198,4 +197,9 @@ input:-webkit-autofill:active {
 #saveButton:hover {
   color: white;
   background-color: black;
+}
+
+#bugetLabel{
+  font-family: 'akzidenz-grotesk_probold';
+  padding-left: 3px;
 }
