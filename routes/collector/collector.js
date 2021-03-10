@@ -32,7 +32,6 @@ router.get("/acquisitions", isAuthenticated, async (req, res, next) => {
     // avoid expose all gallery and artist info
     const acquisitions = await Request.find({collector: collector}).populate("gallery").populate("preferredArtist");
     const data = acquisitions.map(acquisition => {
-      console.log(acquisition);
       if (acquisition.preferredArtist) {
         acquisition.preferredArtist = acquisition.preferredArtist.name;
       }

@@ -113,6 +113,9 @@ app.use("/api/newsletter", newsletter);
 const gallery = require('./routes/gallery/gallery');
 app.use("/api/gallery/profile", gallery);
 
+const sales = require('./routes/gallery/sales');
+app.use("/api/gallery/sales", sales);
+
 const inventory = require('./routes/gallery/inventory');
 app.use("/api/gallery/inventory", inventory);
 

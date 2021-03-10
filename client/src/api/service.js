@@ -107,3 +107,9 @@ export const fetchAllAcquisitions = async () => {
     const res = await axios.get("/api/collector/acquisitions");
     return res.data;
 };
+
+// gallery sales
+export const fetchAllRequests = async () => {
+    const res = await axios.get("/api/gallery/sales");
+    return res.data;
+};

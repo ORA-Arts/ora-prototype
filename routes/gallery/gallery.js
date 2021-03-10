@@ -76,5 +76,4 @@ router.put("/", isAuthenticated, uploader.single('image'), async (req, res, next
   }
 });
 
-
 module.exports = router;
