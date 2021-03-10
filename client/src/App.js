@@ -23,6 +23,7 @@ import { fetchGalleryName, fetchCollectorName } from './api/service';
 import CollectorRequest from './components/Collector/CollectorRequest';
 import CollectorAcquisitions from './components/Collector/CollectorAcquisitions';
 import ContactFormHooks from './components/ContactForm/ContactFormHooks';
+import SupportArtist from './components/LandingPages/SupportArtist/SupportArtist'
 
 
 
@@ -92,7 +93,7 @@ export default class App extends Component {
           />
           <Route exact path='/artist-open-call' component={ArtistOpen} />
           <Route exact path='/collector-space' component={CollectorSpace} />
-
+          <Route exact path='/support-an-artist-project' component={SupportArtist}   />
           <Route exact path='/contact-us' component={ContactFormHooks} />
           <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} changeGalleryName={this.changeGalleryName} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/sales' render={props => <GallerySale setUser={this.setUser} galleryName={this.state.galleryName} user={this.state.user} {...props} />} />

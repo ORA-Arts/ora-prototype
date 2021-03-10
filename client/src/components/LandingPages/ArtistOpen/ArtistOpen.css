@@ -34,6 +34,7 @@ h1 {
   #artistHeader {
     background-color: #e75d82;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     padding-left: 13px;
     padding-right: 20px;
@@ -54,6 +55,28 @@ h1 {
     padding-bottom: 10px;
   }
 }
+
+
+@media (max-width: 480px) {
+  #artistHeader h3:before {
+    content: "ARTIST OPEN CALL";
+    font-family: "akzidenz-grotesk_proregular";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    padding-bottom: .5rem;
+    color: white;
+  }
+
+  #artistHeader h1 {
+    border-top: 1.2px solid white;
+    padding: 1.5rem 0;
+  }
+}
+
 
 #artistHeader h1 {
   color: white;
