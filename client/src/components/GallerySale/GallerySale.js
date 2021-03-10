@@ -2,12 +2,14 @@ import React, {useState, useEffect} from "react";
 import "./GallerySale.css";
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import { fetchAllRequests } from '../../api/service';
+import GalleryOffer from './GalleryOffer';
 
 const GallerySale = (props) => {
 
   const [requests, setRequests] = useState([]);
   const [status, setStatus] = useState("Pending");
   const [activeRequest, setActiveRequest] = useState(null);
+  const [isOffering, setIsOffering] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -66,6 +68,8 @@ const GallerySale = (props) => {
         return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
     }
 
+    const messageStyle = isOffering ? {height: "220px", overflowY: "auto"} : null;
+
     const activeRequestContainer = activeRequest ?
         (<>
         <div className="detail-request-container">
@@ -74,23 +78,33 @@ const GallerySale = (props) => {
                 <div>{dateConverter(activeRequest.createdAt)}</div>
             </div>
             <div className="detail-collector-right">
-                {activeRequest.messages[0].message}
+                <div style={messageStyle}>{activeRequest.messages[0].message}</div>
+                {!isOffering ? <>
                 <p></p>
                 <div><b>Artist</b>: {!activeRequest.suggestion ? activeRequest.preferredArtist : "No preferred artist"}</div>
                 <div><b>Type</b>: {activeRequest.type}</div>
                 <div><b>Medium</b>: {activeRequest.medium}</div>
                 <div><b>Budget</b>: {activeRequest.budget}KEUR</div>
+                </> : null}
+                {isOffering ? <GalleryOffer /> : null}
             </div>
         </div>
         <div className="detail-request-footer">
-            <button onClick={() => setActiveRequest(null)}>BACK TO REQUESTS</button>
+            <button onClick={() => (setActiveRequest(null), setIsOffering(false))}>BACK TO REQUESTS</button>
+            {!isOffering ?
             <div>
-                <button onClick={() => setActiveRequest(null)}>MAKE AN OFFER</button>
+                <button onClick={() => setIsOffering(true)}>MAKE AN OFFER</button>
                 <button onClick={() => setActiveRequest(null)}>ASK FOR INFORMATION</button>
             </div>
+            : null}
         </div>
         </>
         ) : null;
+
+
+    
+
+
   return (
   <div className="app-container-gallery-sales">
     <div className="gallery-container-sales">

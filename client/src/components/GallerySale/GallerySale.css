@@ -136,10 +136,11 @@
 
 .detail-request-container {
     width: 100%;
-    height: 500px;
+    height: 600px;
     display: flex;
     text-align: left;
     margin-top: 18px;
+    overflow-y: auto;
 }
 
 .detail-request-name {
@@ -179,4 +180,162 @@
 
 .detail-request-footer div > button {
     margin-left: 36px;
+}
+
+
+
+
+
+
+.offer-container {
+    width: 100%;
+}
+
+.offer-select-inventory {
+    width: 100%;
+    height: 60px;
+    background-color: #FEFEFE;
+    font-size: 13px;
+    line-height: 17px;
+    color: black;
+    border: 1px solid black;
+}
+
+.offer-select-inventory:hover {
+    background-color: black;
+    color: white;
+}
+
+.offer-message-container {
+    margin-top: 24px;
+}
+
+.offer-message {
+    width: 100%;
+    height:142px;
+    border: 1px solid black;
+    margin-top: 12px;
+    /* padding: 12px; */
+}
+
+.offer-message textarea {
+    width: 90%;
+    padding: 0;
+    margin: 16px;
+    border: none;
+    resize: none;
+}
+
+
+.gallery-send-offer  {
+    width: 100%;
+    height: 60px;
+    font-size: 13px;
+    line-height: 17px;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 0;
+    margin-top: 24px;
+}
+
+.gallery-send-offer:hover {
+    color: black;
+    background-color: #FEFEFE;
+    border: 1px solid black;
+}
+
+.offer-my-inventory {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+}
+
+.offer-my-inventory-container {
+    width: 800px;
+    height: 80%;
+    background-color: white;
+    margin-top:5%;
+    margin-bottom: 5%;
+    padding: 24px;
+}
+
+.offer-inventory-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.offer-inventory-header > span {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.offer-my-inventory-container > input {
+    width: calc(100% - 48px);
+    height: 43px;
+    /* line-height: 38px; */
+    background-color: #EAEAEA;
+    font-size: 14px;
+    padding: 0 24px;
+    border: 1px;
+    margin-top: 24px;
+}
+
+.offer-results {
+    width: 100%;
+    margin-top: 24px;
+    height: 85%;
+    overflow-y: auto;
+}
+
+.offer-results button {
+    width: 158px;
+    height: 38px;
+    background-color:  #C4C4C4;
+    color: white;
+    border: none;
+}
+
+.offer-results button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.offer-results-item {
+    width: 100%;
+    /* height: 235px; */
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    align-items: flex-end;
+}
+
+.offer-results-item > div {
+    display: flex;
+}
+
+.offer-results-item > div > div {
+    margin-left: 24px;
+}
+
+.offer-artist-name {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 24 px;
+}
+
+.offer-item-img {
+    width: 135px;
+    height: 180px;
+    object-fit: cover;
 }
