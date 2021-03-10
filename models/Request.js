@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const requestSchema = new Schema({
   collector: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'Collector'
   },
   // preferredArtists: [{
   //   type: Schema.Types.ObjectId,

@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const messageSchema = new Schema({
   collector: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'Collector'
   },
   gallery: {
     type: Schema.Types.ObjectId,

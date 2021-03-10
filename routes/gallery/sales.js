@@ -13,15 +13,34 @@ function isAuthenticated(req, res, next) {
 }
 
 router.get("/", isAuthenticated, async (req, res, next) => {
-  const galleryOwner =  req.session.passport.user;
-  const gallery = await Gallery.findOne({user: galleryOwner});
+  const userId =  req.session.passport.user;
+  let gallery;
+  try {
+    gallery = await Gallery.findOne({user: userId});
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Error while attempting to access database' });
+  }
+  if (!gallery) {
+    console.log("Unauthorized")
+    return res.status(403).json({message: "Unauthorized"});
+  }
+  console.log(gallery);
   if (gallery) {
-    const requests = await Request.find({gallery: gallery._id}).populate("preferredArtist");
-    const data = requests.map(request => {
-      request.collector = {id: request.collector._id, name: request.collector.name};
-      return request;
-    });
-    res.status(200).json(data);
+    try {
+      const requests = await Request.find({gallery: gallery._id}).populate("collector").populate("preferredArtist");
+      console.log(requests);
+      const data = requests.map(request => {
+        request.collector = {id: request.collector._id, name: `${request.collector.firstName} ${request.collector.lastName}`};
+        return request;
+      });
+      console.log(data);
+      res.status(200).json(data);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ message: 'Error while attempting to access database' });
+    }
+    
   } else {
     res.status(500).json({success: false});
   }
