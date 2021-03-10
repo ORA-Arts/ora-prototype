@@ -3,7 +3,6 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './ContactForm.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import ReactModal from 'react-modal'
 export default function ContactFormHooks(props) {
     const initialState = {
         name: '',

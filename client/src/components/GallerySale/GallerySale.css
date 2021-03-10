@@ -1,0 +1,129 @@
+.app-container-gallery-sales {
+    display: flex;
+    justify-content: center;
+    /* margin-top: 63px; */
+    text-align: center;
+    padding-bottom: 63px;
+    border-bottom: 1px solid black;
+    margin-bottom: 24px;
+    border-top: 1px solid black;
+}
+
+.gallery-container-sales {
+    width: 1374px;
+    /* height: 1250px; */
+    padding: 0;
+    margin: 16px 32px;
+}
+
+.gallery-sales-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+
+.gallery-sales-name {
+    font-size: 34px;
+    line-height: 50px;
+    text-align: left;
+}
+
+.gallery-sales-header .btn-request {
+    width: 243px;
+    height: 60px;
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 12px;
+    margin-left: 26px;
+    cursor: pointer;
+    background-color: black;
+    border: 1px solid black;
+}
+
+.gallery-sales-header .btn-request:hover {
+    color: black;
+    background-color: white;
+}
+
+.container-sales-content {
+    width: 100%;
+    display: flex;
+    padding-bottom: 40px;
+    border-bottom: 1px solid black;
+}
+
+.gallery-sales {
+    width: 1066px;
+}
+
+.gallery-status-bar {
+    width: 100%;
+    height: 69px;
+    background-color: #C4C4C4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gallery-status-bar input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.gallery-status-bar input[type="radio"]:checked + label {
+    font-weight: bold;
+    text-decoration: underline;
+    color: black;
+    background-color: #C4C4C4;
+    border: none;
+}
+
+.gallery-status-bar label:hover {
+    color: black;
+    background-color: #C4C4C4;
+}
+
+.gallery-status-bar label {
+    margin: 0 42px;
+    font-size: 16px;
+}
+
+.sales-pending-item {
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid black;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sales-pending-item span {
+    width: 13.5%;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.sales-pending-item .status {
+    font-size: 16px;
+    font-weight: bold;
+    color: #C90000;
+}
+
+.sales-pending-item button {
+    width: 136px;
+    height: 37px;
+    color: white;
+    background-color: #BEBEBE;
+    border: none;
+}
+
+.sales-pending-item button:hover {
+    color: black;
+    background-color: white;
+    border: 1px solid #BEBEBE;
+}

@@ -114,18 +114,25 @@ app.use("/api/newsletter", newsletter);
 const gallery = require('./routes/gallery/gallery');
 app.use("/api/gallery/profile", gallery);
 
+const sales = require('./routes/gallery/sales');
+app.use("/api/gallery/sales", sales);
+
 const inventory = require('./routes/gallery/inventory');
 app.use("/api/gallery/inventory", inventory);
 
 const artists = require('./routes/artists/artists');
 app.use("/api/gallery/artists", artists);
 
+const acquisitions = require('./routes/collector/acquisitions');
+app.use("/api/collector/acquisitions", acquisitions);
 
 const contact = require('./routes/contact/contact');
 app.use("/api/contact", contact);
 
 const collector = require('./routes/collector/collector');
 app.use("/api/collector/profile", collector);
+
+
 
 // app.js
 const path = require('path');

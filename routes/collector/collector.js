@@ -1,6 +1,11 @@
 const router = require('express').Router();
-const Collector = require('../../models/Collector');
-const passport = require('passport')
+const Gallery = require('../../models/Gallery');
+const Artist = require('../../models/Artist.model.js');
+const Message = require('../../models/Message');
+const Request = require('../../models/Request');
+const { uploader } = require('../../config/cloudinary');
+const passport = require('passport');
+
 
 // middleware
 function isAuthenticated(req, res, next) {
@@ -12,15 +17,6 @@ function isAuthenticated(req, res, next) {
   }
 }
 
-router.get("/name", isAuthenticated, async (req, res, next) => {
-  const userId =  req.session.passport.user;
-  try {
-    const existedCollector = await Collector.findOne({user: userId});
-    res.status(200).json(existedCollector.name);
-  } catch (error) {
-    res.status(500).json({ message: 'Error while attempting to access database' });
-  }
-});
 
 router.get("/", isAuthenticated, async (req, res, next) => {
   const userId =  req.session.passport.user;
@@ -66,6 +62,16 @@ try {
   console.log(err);
   res.status(500).json({message:"Something is wrong with the backend", success: false});
 }
+});
+
+router.get("/name", isAuthenticated, async (req, res, next) => {
+  const userId =  req.session.passport.user;
+  try {
+    const existedCollector = await Collector.findOne({user: userId});
+    res.status(200).json(existedCollector.name);
+  } catch (error) {
+    res.status(500).json({ message: 'Error while attempting to access database' });
+  }
 });
 
 module.exports = router;
