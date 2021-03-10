@@ -19,13 +19,15 @@ const GallerySale = (props) => {
     fetchData();
   }, []);
 
+  console.log(requests);
+
 
 
     const pendingRequest = requests.length ? requests.filter(request => request.status === "Pending").map((request, index) => {
         return (
-            <div className="sales-pending-item">
+            <div key={index} className="sales-pending-item">
                 {/* <span className="status">PENDING</span> */}
-                <span className="collector-request-name">{request.collector.name}</span>
+                <span className="collector-request-name">{`${request.collector.firstName} ${request.collector.lastName}`}</span>
                 <span>{request.preferredArtist ? request.preferredArtist : "No Preferred artist"}</span>
                 <span>{request.medium}</span>
                 <span>{request.budget}K</span>
@@ -35,19 +37,19 @@ const GallerySale = (props) => {
         )
     }) : null;
 
-    // const inProgessRequest = requests.length ? acquisitions.filter(acquisition => acquisition.status === "Pending").map((acquisition, index) => {
-    //     return (
-    //         <div className="sales-pending-item">
-    //             <span className="status">PENDING</span>
-    //             <span>{acquisition.gallery.name}</span>
-    //             <span>{acquisition.preferredArtist ? acquisition.preferredArtist : "No Preferred artist"}</span>
-    //             <span>{acquisition.medium}</span>
-    //             <span>{acquisition.budget}K</span>
-    //             <span>{Math.floor((Date.now() - (new Date(acquisition.createdAt)).getTime())/(100*60*60))} HOUR/S</span>
-    //             <button>OPEN</button>
-    //         </div>
-    //     )
-    // }) : null;
+    const inProgessRequest = requests.length ? requests.filter(request => request.status === "In Progress").map((request, index) => {
+        return (
+            <div key={index} className="sales-inProgress-item">
+                <span className={request.offerStatus === "Sent" ? "inProgress-sent" : "inProgress-accepted"}>{request.offerStatus}</span>
+                <span className="collector-request-name">{`${request.collector.firstName} ${request.collector.lastName}`}</span>
+                <span>{request.offeredArtwork.artist.name}</span>
+                <span>{request.medium}</span>
+                <span>{request.offeredArtwork.price}K</span>
+                <span>{Math.floor((Date.now() - (new Date(request.createdAt)).getTime())/(1000*60*60))} HOURS</span>
+                <button onClick={() => setActiveRequest(request)}>OPEN</button>
+            </div>
+        )
+    }) : null;
 
     // const confirmedRequest = acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "Pending").map((acquisition, index) => {
     //     return (
@@ -74,7 +76,7 @@ const GallerySale = (props) => {
         (<>
         <div className="detail-request-container">
             <div className="detail-collector-left">
-                <div className="detail-request-name">{activeRequest.collector.name}</div>
+                <div className="detail-request-name">{`${activeRequest.collector.firstName} ${activeRequest.collector.lastName}`}</div>
                 <div>{dateConverter(activeRequest.createdAt)}</div>
             </div>
             <div className="detail-collector-right">
@@ -119,7 +121,7 @@ const GallerySale = (props) => {
             <div className="gallery-status-bar">
                 <input type="radio" id="pending" name="status" onChange={() => setStatus("Pending")} checked={status === "Pending"} />
                 <label htmlFor="pending">REQUESTS</label>
-                <input type="radio" id="inProgress"name="status" onChange={() => setStatus("In Progress")} checked={status === "In Progress"} />
+                <input type="radio" id="inProgress"name="status" onChange={() => (setStatus("In Progress"), setIsOffering(false), setActiveRequest(null))} checked={status === "In Progress"} />
                 <label htmlFor="inProgress">IN PROGRESS</label>
                 <input type="radio" id="confirmed"name="status" onChange={() => setStatus("Confirmed")}  checked={status === "Confirmed"} />
                 <label htmlFor="confirmed">CONFIRMED</label>
@@ -127,8 +129,8 @@ const GallerySale = (props) => {
             {!activeRequest ?
             <div>
                 {status === "Pending" ? pendingRequest : null}
-                {/* {status === "In Progress" && activeRequest ? inProgessRequest : null}
-                {status === "Confirmed" && activeRequest ? confirmedRequest : null} */}
+                {status === "In Progress" ? inProgessRequest : null}
+                {/* {status === "Confirmed" && activeRequest ? confirmedRequest : null} */}
             </div>
             : activeRequestContainer}
       </div>
