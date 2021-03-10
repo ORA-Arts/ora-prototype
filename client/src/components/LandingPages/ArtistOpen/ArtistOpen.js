@@ -7,6 +7,7 @@ export default function ArtistOpen() {
   return (
 <div className="">
     <div id="artistHeader">
+    <h3>                             </h3>
         <h1>CREATORS OF ALL AGES, CAREER BRACKETS AND GEOGRAPHIES ARE WELCOME TO APPLY TO OUR OPEN CALL</h1>
         <a href="/contact-us" id="getInTouch"><button className="btnBlack">GET IN TOUCH FOR MORE INFOS</button></a>
     </div>

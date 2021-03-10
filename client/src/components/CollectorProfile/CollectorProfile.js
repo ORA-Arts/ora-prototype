@@ -5,7 +5,7 @@ import {
   addNewCollector,
   editCollector,
 } from "../../api/service";
-import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
+import CollectorSideBar from "../CollectorSideBar/CollectorSideBar";
 
 const CollectorProfile = (props) => {
   const initialState = {
@@ -61,22 +61,14 @@ const CollectorProfile = (props) => {
   };
 
   const submitHandler = async () => {
-    const uploadData = new FormData();
     const dataCopy = data;
     dataCopy.newsletter = newsletter;
     dataCopy.budget = Number(dataCopy.budget);
-    for (let key in dataCopy) {
-      uploadData.append(key, dataCopy[key]);
-    }
-    for (let value of uploadData.values()) {
-      console.log(value);
-    }
-
     let resData;
     if (isEditMode && isCollectorExist) {
-      resData = await editCollector(uploadData);
+      resData = await editCollector(dataCopy);
     } else {
-      resData = await addNewCollector(uploadData);
+      resData = await addNewCollector(dataCopy);
     }
     setData(resData);
     setIsEditMode(false);
@@ -100,7 +92,7 @@ const CollectorProfile = (props) => {
   }, []);
 
   return (
-    <div className="indexWrap">
+    <div className="">
       <div id="collectorProfile">
         <div className="collectorHeader">
           <div className="collector-name">
@@ -110,7 +102,7 @@ const CollectorProfile = (props) => {
         </div>
         <hr />
         <div id="formContainer">
-          <ProfileSideBar content="my-collector-profile" />
+          <CollectorSideBar content="my-collector-profile" />
           <div id="formContainerField">
             <div className="personalInformation">
               <h1 className="title-text" >PERSONAL INFORMATION</h1>
@@ -220,7 +212,7 @@ const CollectorProfile = (props) => {
                   {isEditMode ? (
                     relCheckboxes.map((item) => (
                       <div className="inputClear behaviourCheck">
-                        <label key={item.key}> 
+                        <label className = 'behaviourCheck' key={item.key}> 
                           <Checkbox
                             name={item.name}
                             checked={checkedRel === item.name}
@@ -231,7 +223,7 @@ const CollectorProfile = (props) => {
                       </div>
                     ))
                   ) : (
-                    <span style={{alignSelf:"flex-start"}}> {data.behaviour} </span>
+                    <span style={{width:"65vw", textAlign:"start", textTransform:'uppercase'}}> {data.behaviour} </span>
                   )}
                 </div>
                 <div>

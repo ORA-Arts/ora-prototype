@@ -1,0 +1,224 @@
+/* Support An Artist Project */
+
+#wrapSupport {
+  padding-bottom: 80px;
+}
+@media (min-width: 480px) {
+  #supportHeader {
+    background-color: #a89570;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 481px) {
+  #supportHeader {
+    background-color: #a89570;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 13px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  #wrapSupport {
+    padding-bottom: 350px;
+  }
+}
+
+@media (min-width: 480px) {
+  #supportHeaderText h1 {
+    color: white;
+    font-family: "editorial_newultralight";
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 13px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+  }
+}
+
+@media (min-width: 481px) {
+  #supportHeaderText h3 {
+    font-size: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  #supportHeaderText h3:before {
+    content: "SUPPORT AN ARTIST PROJECT";
+    font-family: "akzidenz-grotesk_proregular";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    color: white;
+  }
+
+  #supportHeaderText h1 {
+    color: white;
+    font-family: "editorial_newultralight";
+    text-transform: uppercase;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+    border-top: 1.2px solid white;
+    padding: 1.5rem 0;
+    font-size: 30px;
+  }
+
+  #supportHeaderText p {
+    display: none;
+  }
+
+  #supportHeaderText h2 {
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 12px;
+    font-family: "akzidenz-grotesk_proregular";
+    margin: 0;
+    color: white;
+  }
+}
+
+@media (min-width: 481px) {
+#supportHeaderText h2 {
+  font-size: 12px;
+  font-family: "akzidenz-grotesk_proregular";
+  margin: 0;
+  color: white;
+  padding-left: 13px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+}
+}
+
+#supportHeaderText p {
+  font-size: 12px;
+  font-family: "akzidenz-grotesk_proregular";
+  color: white;
+  padding-left: 13px;
+  padding-right: 20px;
+}
+
+#supportHeader .btnWhite {
+  width: 200px;
+}
+
+#allImages {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+.imageSupport .blurEffect {
+  height: 40vh;
+  width: 44vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.blurEffect {
+  backdrop-filter: blur(3px);
+}
+
+.exhibTitle {
+  font-family: "akzidenz-grotesk_probold";
+  font-size: 50px;
+  color: white;
+  margin-bottom: -20px;
+}
+.imageLine {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 1vh;
+}
+.imageLine p {
+  color: white;
+}
+
+@media (max-width: 480px) {
+.imageLine {
+  display: flex;
+  flex-direction: column;
+}
+.imageSupport .blurEffect {
+  width: 100vw;
+  padding-left: 0;
+  margin-right: 0vw;
+}
+
+.imageSupport {
+  width: 100vw;
+  margin-left: -5vw;
+  padding-left: 0;
+}
+
+.imageSupport h1{
+
+padding-left: 0vw;
+  text-align: center;
+font-size: 30px;
+}
+
+.imageSupport p{
+  padding-left: 0;
+    text-align: center;
+  font-size: 16px;
+  }
+
+#image2{
+  margin-top: 1vh;
+  padding-right: -5vw;
+}
+
+#image4{
+  margin-top: 1vh;
+}
+
+
+}
+
+
+
+#image1 {
+  background-image: url("../../../images/SUPPORT\ AN\ ARTIST\ 6.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#image2 {
+  background-image: url("../../../images/SUPPORT\ AN\ ARTIST\ 2.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#image3 {
+  background-image: url("../../../images/SUPPORT\ AN\ ARTIST\ 4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#image4 {
+  background-image: url("../../../images/SUPPORT\ AN\ ARTIST\ .jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
