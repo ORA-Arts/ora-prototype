@@ -13,6 +13,72 @@
   padding-right: 20vw;
 }
 
+@media (max-width: 481px) {
+  #allImagesContainer {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 250px;
+  }
+  }
+
+  @media (max-width: 481px) {
+    #AOC{
+      background-color:#E75D82;
+      width:100vw;
+    }
+  #AOC h3{
+  display: block;
+    border-top: 1.2px solid white;
+    font-family: 'editorial_newultralight';
+    font-size: 24px;
+    color: white;
+    margin-right: 15px;
+    margin-left: 15px;
+    width: 90vw;
+    margin-top: 0;
+    padding-top: 15px;
+  }
+  
+  .blurEffectHP {
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  #btnAOC {
+    background-color:#E75D82;
+    color: white;
+    border: none;
+    align-self: center;
+    font-size:14px;
+  }
+  .imageContainer h2{
+    display:none;
+  }
+  
+  #AOC p:before{
+    content: "ARTIST OPEN CALL ";
+    font-family: "akzidenz-grotesk_proregular";
+    font-size: 22px;
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+    margin-left: 15px;
+    text-transform: uppercase;
+    padding-bottom: .5rem;
+    }
+  
+  }
+
+.blurEffectHP p{
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+}
 
 /* Style the buttons and place it in the middle of the container/image */
 .imageContainer .btnBlack {
@@ -145,6 +211,16 @@
     height: 85vh;
     width: 31.1vw;
     margin: 0 5px;;
+  }
+
+  @media (max-width: 481px) {
+    .imageContainer{
+      width: 100vw;
+      height: 70vh;
+    margin-bottom: 5vw; 
+    display: block;
+    margin-left: -6px;
+  }
   }
 
   .blurEffectHP {

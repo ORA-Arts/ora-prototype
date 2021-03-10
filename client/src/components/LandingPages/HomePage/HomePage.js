@@ -13,6 +13,7 @@ export default function HomePage() {
                   ARTIST OPEN CALL
                 </h2>
                 <div id='AOC'>
+                <p>               </p>
                   <h3 className="textHover textBlack">
                     CREATORS OF ALL AGES, CAREER BRACKETS AND GEOGRAPHIES ARE
                     WELCOME TO APPLY TO OUR OPEN CALL
@@ -29,6 +30,7 @@ export default function HomePage() {
                   COLLECTOR SPACE
                 </h2>
                 <div id='CS'>
+                <p>               </p>
                 <h3 className="textHover textWhite">
                   YOUR NEW WAY OF COLLECTING AND SUPPORTING CONTEMPORARY ART
                 </h3>
@@ -44,6 +46,7 @@ export default function HomePage() {
                   SUPPORT AN ARTIST PROJECT
                 </h2>
                 <div id='SAAP'>
+                <p>               </p>
                 <h3 className="textHover textWhite">
                   FOUR EXHIBITION PROJECTS SELECTED BY LEADING FIGURES OF THE
                   ART WORLD
