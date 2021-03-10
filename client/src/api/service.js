@@ -126,14 +126,14 @@ export const fetchCollectorName = async () => {
 
 export const addNewCollector = async (dataForm) => {
     const res = await axios.post('/api/collector/profile',
-        dataForm, config
+        dataForm
     );
     return res.data;
 };
 
 export const editCollector = async (dataForm) => {
     const res = await axios.put('/api/collector/profile',
-        dataForm, config
+        dataForm
     );
     return res.data;
 };

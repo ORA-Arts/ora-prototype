@@ -24,7 +24,7 @@ router.post('/signup', (req, res, next) => { // "/" = "/api/auth"
         // hash the password, create the user and send the user to the client
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
-        console.log(userType)
+        // console.log(userType)
         User.create({
           username: username,
           password: hash,
@@ -48,7 +48,7 @@ router.post('/signup', (req, res, next) => { // "/" = "/api/auth"
 });
 
 router.post('/login', (req, res, next) => { // "/" = "/api/auth"
-  console.log(req.body);
+  // console.log(req.body);
   passport.authenticate('local', (err, user) => {
     if (err) {
       return res.status(500).json({ message: 'Error while attempting to login' })
