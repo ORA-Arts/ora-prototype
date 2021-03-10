@@ -86,7 +86,7 @@ const GallerySale = (props) => {
                 <div><b>Medium</b>: {activeRequest.medium}</div>
                 <div><b>Budget</b>: {activeRequest.budget}KEUR</div>
                 </> : null}
-                {isOffering ? <GalleryOffer request={activeRequest}/> : null}
+                {isOffering ? <GalleryOffer request={activeRequest} collector={activeRequest.collector}/> : null}
             </div>
         </div>
         <div className="detail-request-footer">

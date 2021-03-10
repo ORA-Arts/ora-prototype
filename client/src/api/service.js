@@ -115,7 +115,7 @@ export const fetchAllRequests = async () => {
 };
 
 export const sendOffer = async (data) => {
-    const res = await axios.post("/api/gallery/sales/offer");
+    const res = await axios.post("/api/gallery/sales/offer", data);
     return res.data;
 };
 

@@ -22,6 +22,10 @@ const requestSchema = new Schema({
     enum: ["Pending", "In Progress", "Confirmed"],
     default: "Pending"
   },
+  offeredArtwork: {
+    type: Schema.Types.ObjectId,
+    ref: "Artwork"
+  },
   messages: [{
     type: Schema.Types.ObjectId,
     ref: "Message"

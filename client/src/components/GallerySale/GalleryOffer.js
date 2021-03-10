@@ -39,9 +39,9 @@ const GalleryOffer = (props) => {
   };
 
   const submitHandler = () => {
-      const reqData = {artwork: selectedArtwork._id, message, request: props.request._id};
+      const reqData = {artwork: selectedArtwork._id, message, request: props.request._id, collector: props.collector.id};
       console.log(reqData);
-    sendOffer(reqData)
+    sendOffer(reqData);
   };
 
   const mediumFilter = (list, regex) => {
