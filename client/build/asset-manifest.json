@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.a5ca9b19.chunk.css",
-    "main.js": "/static/js/main.8eef26ef.chunk.js",
-    "main.js.map": "/static/js/main.8eef26ef.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.17e64308.js",
-    "runtime-main.js.map": "/static/js/runtime-main.17e64308.js.map",
-    "static/js/2.9006815c.chunk.js": "/static/js/2.9006815c.chunk.js",
-    "static/js/2.9006815c.chunk.js.map": "/static/js/2.9006815c.chunk.js.map",
-    "static/js/3.0c6b4d8a.chunk.js": "/static/js/3.0c6b4d8a.chunk.js",
-    "static/js/3.0c6b4d8a.chunk.js.map": "/static/js/3.0c6b4d8a.chunk.js.map",
+    "main.css": "/static/css/main.db861185.chunk.css",
+    "main.js": "/static/js/main.0a52ce6d.chunk.js",
+    "main.js.map": "/static/js/main.0a52ce6d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.38dc6179.js",
+    "runtime-main.js.map": "/static/js/runtime-main.38dc6179.js.map",
+    "static/js/2.6dd50020.chunk.js": "/static/js/2.6dd50020.chunk.js",
+    "static/js/2.6dd50020.chunk.js.map": "/static/js/2.6dd50020.chunk.js.map",
+    "static/js/3.56ca59e6.chunk.js": "/static/js/3.56ca59e6.chunk.js",
+    "static/js/3.56ca59e6.chunk.js.map": "/static/js/3.56ca59e6.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.a5ca9b19.chunk.css.map": "/static/css/main.a5ca9b19.chunk.css.map",
-    "static/js/2.9006815c.chunk.js.LICENSE.txt": "/static/js/2.9006815c.chunk.js.LICENSE.txt",
+    "static/css/main.db861185.chunk.css.map": "/static/css/main.db861185.chunk.css.map",
+    "static/js/2.6dd50020.chunk.js.LICENSE.txt": "/static/js/2.6dd50020.chunk.js.LICENSE.txt",
     "static/media/ARTIST OPEN CALL 2.da038b0e.jpg": "/static/media/ARTIST OPEN CALL 2.da038b0e.jpg",
     "static/media/ARTIST OPEN CALL.571ae1c5.jpg": "/static/media/ARTIST OPEN CALL.571ae1c5.jpg",
     "static/media/CollectorSpace.css": "/static/media/blank-white-page.b0f51665.jpg",
     "static/media/ContactForm.css": "/static/media/CONTACT FORM 1.da292f80.jpg",
     "static/media/HomePage.css": "/static/media/HOMEPAGE 3.70ccd94f.png",
     "static/media/LOGO_1.3d235900.png": "/static/media/LOGO_1.3d235900.png",
+    "static/media/SupportArtist.css": "/static/media/SUPPORT AN ARTIST 6.b8d51597.jpg",
     "static/media/WHAT IS ORA .1dcfb54f.png": "/static/media/WHAT IS ORA .1dcfb54f.png",
     "static/media/WHAT IS ORA 2.b67eecb3.jpg": "/static/media/WHAT IS ORA 2.b67eecb3.jpg",
     "static/media/WHAT IS ORA.7f67e64e.jpg": "/static/media/WHAT IS ORA.7f67e64e.jpg",
@@ -26,9 +27,9 @@
     "static/media/image-default.bfa644ef.png": "/static/media/image-default.bfa644ef.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.17e64308.js",
-    "static/js/2.9006815c.chunk.js",
-    "static/css/main.a5ca9b19.chunk.css",
-    "static/js/main.8eef26ef.chunk.js"
+    "static/js/runtime-main.38dc6179.js",
+    "static/js/2.6dd50020.chunk.js",
+    "static/css/main.db861185.chunk.css",
+    "static/js/main.0a52ce6d.chunk.js"
   ]
 }
