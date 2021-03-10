@@ -64,7 +64,7 @@ handleLogout = () => {
       <div>
       <div id="navbar" >
       <a href='/'>
-        <img src={logo} alt="ORA" width="auto" height="50" />
+        <img src={logo} alt="ORA" width="auto" height="50px" />
      </a>
        <ul id="navtitles">
          <li>
