@@ -75,7 +75,7 @@ router.post("/offer", isAuthenticated, async (req, res, next) => {
   }
   if (createdMessage) {
     try {
-      const resData = await Request.findByIdAndUpdate(request, {$push: {messages: createdMessage._id}, status: "In Progress", offeredArtwork: artwork}, {new: true});
+      const resData = await Request.findByIdAndUpdate(request, {$push: {messages: createdMessage._id}, status: "In Progress", offeredArtwork: artwork, offerStatus: "Sent"}, {new: true});
       return res.status(200).json(resData);
     } catch (error) {
       console.log(error);

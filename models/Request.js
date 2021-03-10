@@ -26,6 +26,10 @@ const requestSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Artwork"
   },
+  offerStatus: {
+    type: String,
+    enum: ["Sent", "Accepted"]
+  },
   messages: [{
     type: Schema.Types.ObjectId,
     ref: "Message"
