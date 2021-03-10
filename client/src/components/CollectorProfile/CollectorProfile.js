@@ -61,22 +61,14 @@ const CollectorProfile = (props) => {
   };
 
   const submitHandler = async () => {
-    const uploadData = new FormData();
     const dataCopy = data;
     dataCopy.newsletter = newsletter;
     dataCopy.budget = Number(dataCopy.budget);
-    for (let key in dataCopy) {
-      uploadData.append(key, dataCopy[key]);
-    }
-    for (let value of uploadData.values()) {
-      console.log(value);
-    }
-
     let resData;
     if (isEditMode && isCollectorExist) {
-      resData = await editCollector(uploadData);
+      resData = await editCollector(dataCopy);
     } else {
-      resData = await addNewCollector(uploadData);
+      resData = await addNewCollector(dataCopy);
     }
     setData(resData);
     setIsEditMode(false);

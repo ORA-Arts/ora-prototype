@@ -16,10 +16,12 @@ const GallerySale = (props) => {
     fetchData();
   }, []);
 
+  console.log(requests);
+
     const pendingRequest = requests.length ? requests.filter(request => request.status === "Pending").map((request, index) => {
         return (
             <div className="sales-pending-item">
-                <span className="status">PENDING</span>
+                {/* <span className="status">PENDING</span> */}
                 <span>{request.gallery.name}</span>
                 <span>{request.preferredArtist ? request.preferredArtist : "No Preferred artist"}</span>
                 <span>{request.medium}</span>
