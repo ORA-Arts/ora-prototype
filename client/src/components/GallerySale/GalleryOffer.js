@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "./GallerySale.css";
-import { fetchArtworks } from '../../api/service';
+import { fetchArtworks, sendOffer } from '../../api/service';
 
 
 const GalleryOffer = (props) => {
@@ -36,6 +36,12 @@ const GalleryOffer = (props) => {
   const onChange = (event) => {
       console.log(event.target.value);
       setMessage(event.target.value);
+  };
+
+  const submitHandler = () => {
+      const reqData = {artwork: selectedArtwork._id, message, request: props.request._id};
+      console.log(reqData);
+    sendOffer(reqData)
   };
 
   const mediumFilter = (list, regex) => {
@@ -102,7 +108,7 @@ const GalleryOffer = (props) => {
                     <textarea name="message" id="" rows="7" value={message} onChange={onChange}></textarea>
                 </div>
             </div>
-            <button className="gallery-send-offer">SEND THE OFFER</button>
+            <button className="gallery-send-offer" onClick={submitHandler}>SEND THE OFFER</button>
         </div>
     </>
   );

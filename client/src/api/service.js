@@ -113,6 +113,14 @@ export const fetchAllRequests = async () => {
     const res = await axios.get("/api/gallery/sales");
     return res.data;
 };
+
+export const sendOffer = async (data) => {
+    const res = await axios.post("/api/gallery/sales/offer");
+    return res.data;
+};
+
+
+
 //collector profile
 export const fetchCollector = async () => {
     const res = await axios.get('/api/collector/profile');
