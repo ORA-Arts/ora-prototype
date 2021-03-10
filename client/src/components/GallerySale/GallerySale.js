@@ -7,6 +7,7 @@ const GallerySale = (props) => {
 
   const [requests, setRequests] = useState([]);
   const [status, setStatus] = useState("Pending");
+  const [activeRequest, setActiveRequest] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -16,18 +17,18 @@ const GallerySale = (props) => {
     fetchData();
   }, []);
 
-  console.log(requests);
+
 
     const pendingRequest = requests.length ? requests.filter(request => request.status === "Pending").map((request, index) => {
         return (
             <div className="sales-pending-item">
                 {/* <span className="status">PENDING</span> */}
-                <span>{request.gallery.name}</span>
+                <span className="collector-request-name">{request.collector.name}</span>
                 <span>{request.preferredArtist ? request.preferredArtist : "No Preferred artist"}</span>
                 <span>{request.medium}</span>
                 <span>{request.budget}K</span>
                 <span>{Math.floor((Date.now() - (new Date(request.createdAt)).getTime())/(1000*60*60))} HOURS</span>
-                <button>OPEN</button>
+                <button onClick={() => setActiveRequest(request)}>OPEN</button>
             </div>
         )
     }) : null;
@@ -60,6 +61,36 @@ const GallerySale = (props) => {
     //     )
     // }) : null;
 
+    const dateConverter = (mongoDate) => {
+        const date = new Date(mongoDate);
+        return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
+    }
+
+    const activeRequestContainer = activeRequest ?
+        (<>
+        <div className="detail-request-container">
+            <div className="detail-collector-left">
+                <div className="detail-request-name">{activeRequest.collector.name}</div>
+                <div>{dateConverter(activeRequest.createdAt)}</div>
+            </div>
+            <div className="detail-collector-right">
+                {activeRequest.messages[0].message}
+                <p></p>
+                <div><b>Artist</b>: {!activeRequest.suggestion ? activeRequest.preferredArtist : "No preferred artist"}</div>
+                <div><b>Type</b>: {activeRequest.type}</div>
+                <div><b>Medium</b>: {activeRequest.medium}</div>
+                <div><b>Budget</b>: {activeRequest.budget}KEUR</div>
+            </div>
+        </div>
+        <div className="detail-request-footer">
+            <button onClick={() => setActiveRequest(null)}>BACK TO REQUESTS</button>
+            <div>
+                <button onClick={() => setActiveRequest(null)}>MAKE AN OFFER</button>
+                <button onClick={() => setActiveRequest(null)}>ASK FOR INFORMATION</button>
+            </div>
+        </div>
+        </>
+        ) : null;
   return (
   <div className="app-container-gallery-sales">
     <div className="gallery-container-sales">
@@ -79,11 +110,13 @@ const GallerySale = (props) => {
                 <input type="radio" id="confirmed"name="status" onChange={() => setStatus("Confirmed")}  checked={status === "Confirmed"} />
                 <label htmlFor="confirmed">CONFIRMED</label>
             </div>
+            {!activeRequest ?
             <div>
                 {status === "Pending" ? pendingRequest : null}
-                {/* {status === "In Progress" ? inProgessRequest : null}
-                {status === "Confirmed" ? confirmedRequest : null} */}
+                {/* {status === "In Progress" && activeRequest ? inProgessRequest : null}
+                {status === "Confirmed" && activeRequest ? confirmedRequest : null} */}
             </div>
+            : activeRequestContainer}
       </div>
     </div>
   </div>

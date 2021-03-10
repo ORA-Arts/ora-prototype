@@ -25,16 +25,17 @@ router.get("/", isAuthenticated, async (req, res, next) => {
     console.log("Unauthorized")
     return res.status(403).json({message: "Unauthorized"});
   }
-  console.log(gallery);
   if (gallery) {
     try {
-      const requests = await Request.find({gallery: gallery._id}).populate("collector").populate("preferredArtist");
-      console.log(requests);
+      const requests = await Request.find({gallery: gallery._id}).populate("collector").populate("preferredArtist").populate("messages");
       const data = requests.map(request => {
-        request.collector = {id: request.collector._id, name: `${request.collector.firstName} ${request.collector.lastName}`};
-        return request;
+        const name = `${request.collector.firstName} ${request.collector.lastName}`;
+        const requestCopy = {...request.toJSON()};
+        requestCopy.collector = {name, id: request.collector._id};
+        console.log(requestCopy);
+        return requestCopy;
       });
-      console.log(data);
+      // console.log(data);
       res.status(200).json(data);
     } catch (err) {
       console.log(err);

@@ -127,3 +127,56 @@
     background-color: white;
     border: 1px solid #BEBEBE;
 }
+
+.collector-request-name {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.detail-request-container {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    text-align: left;
+    margin-top: 18px;
+}
+
+.detail-request-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.detail-collector-left {
+    width: 30%;
+}
+
+.detail-collector-right {
+    width: 70%;
+    padding-right: 24px;
+
+}
+
+.detail-request-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-request-footer button {
+    width: 200px;
+    height: 37px;
+    color: white;
+    background-color: #BEBEBE;
+    border: none;
+}
+
+.detail-request-footer button:hover {
+    color: black;
+    background-color: white;
+    border: 1px solid #BEBEBE;
+}
+
+.detail-request-footer div > button {
+    margin-left: 36px;
+}
