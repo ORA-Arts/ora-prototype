@@ -9,6 +9,8 @@ const GalleryOffer = (props) => {
   const [isViewInventory, setIsViewInventory] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState("");
+  const [selectedArtwork, setSelectedArtwork] = useState(null);
+  const [message, setMessage] = useState("");
 
 
   useEffect(() => {
@@ -30,6 +32,11 @@ const GalleryOffer = (props) => {
     setSearchResults(matchedArtworks);
   }, [query]);
 
+
+  const onChange = (event) => {
+      console.log(event.target.value);
+      setMessage(event.target.value);
+  };
 
   const mediumFilter = (list, regex) => {
     for (let el of list) {
@@ -73,10 +80,11 @@ const GalleryOffer = (props) => {
                                     <div>Location: {artwork.location}</div>
                                 </div>
                             </div>
-                            <button>ADD TO OFFER</button>
+                            <button onClick={() => (setSelectedArtwork(artwork), setIsViewInventory(false))}>ADD TO OFFER</button>
                         </div>
                     }) : null}
                 </div>
+                <button onClick={() => setIsViewInventory(false)}>BACK TO REQUESTS</button>
             </div>
         </div>
     </> );
@@ -85,11 +93,13 @@ const GalleryOffer = (props) => {
     <>
         {isViewInventory ? myInventory : null}
         <div className="offer-container">
-            <button className="offer-select-inventory" onClick={() => setIsViewInventory(true)}>SELECT FROM INVENTORY + </button>
+            <button className="offer-select-inventory" onClick={() => setIsViewInventory(true)}>
+                {selectedArtwork ? `Selected: "${selectedArtwork.title}" from "${selectedArtwork.artist.name}" - Click to change` : "SELECT FROM INVENTORY +" }
+            </button>
             <div className="offer-message-container">
                 <div>LEAVE A MESSAGE</div>
                 <div className="offer-message">
-                    <textarea name="" id="" rows="7"></textarea>
+                    <textarea name="message" id="" rows="7" value={message} onChange={onChange}></textarea>
                 </div>
             </div>
             <button className="gallery-send-offer">SEND THE OFFER</button>

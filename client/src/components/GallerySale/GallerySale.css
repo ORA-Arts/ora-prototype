@@ -199,6 +199,7 @@
     line-height: 17px;
     color: black;
     border: 1px solid black;
+    text-transform: uppercase;
 }
 
 .offer-select-inventory:hover {
@@ -291,7 +292,7 @@
 .offer-results {
     width: 100%;
     margin-top: 24px;
-    height: 85%;
+    height: 80%;
     overflow-y: auto;
 }
 
@@ -338,4 +339,18 @@
     width: 135px;
     height: 180px;
     object-fit: cover;
+}
+
+.offer-my-inventory-container > button {
+    width: 158px;
+    height: 38px;
+    background-color:  #C4C4C4;
+    color: white;
+    border: none;
+}
+
+.offer-my-inventory-container > button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
 }
