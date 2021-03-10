@@ -61,6 +61,7 @@ router.put("/:id", isAuthenticated, artistUploader.single('image'), async (req, 
   const userId =  req.session.passport.user;
   const artistId = req.params.id;
   const data = req.body;
+
   if (req.file) {
     const imageUrl = req.file.path;
     const imgPublicId = req.file.filename;

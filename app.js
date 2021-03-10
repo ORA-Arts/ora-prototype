@@ -15,11 +15,12 @@ const express = require("express");
 const hbs = require("hbs");
 
 const app = express();
+//NODEMAILER
 
 app.use(
   cors({
     // this could be multiple domains/origins, but we will allow just our React app
-    origin: ['http://localhost:3000']
+    origin: ['http://localhost:3000', 'https://ora-art-prototype.herokuapp.com']
   })
 );
 
@@ -122,8 +123,26 @@ app.use("/api/gallery/inventory", inventory);
 const artists = require('./routes/artists/artists');
 app.use("/api/gallery/artists", artists);
 
+const acquisitions = require('./routes/collector/acquisitions');
+app.use("/api/collector/acquisitions", acquisitions);
+
+const contact = require('./routes/contact/contact');
+app.use("/api/contact", contact);
+
 const collector = require('./routes/collector/collector');
-app.use("/api/collector/", collector);
+app.use("/api/collector/profile", collector);
+
+
+
+// app.js
+const path = require('path');
+app.use(express.static(path.join(__dirname, "/client/build")));
+
+app.use((req, res) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/client/build/index.html");
+});
+
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

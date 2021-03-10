@@ -60,6 +60,7 @@ router.put("/", isAuthenticated, uploader.single('image'), async (req, res, next
   const userId =  req.session.passport.user;
   // const data = {...req.body.data};
   const data = {...req.body};
+  console.log(data)
   if (req.file) {
     const imageUrl = req.file.path;
     const imgPublicId = req.file.filename;

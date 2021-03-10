@@ -1,0 +1,362 @@
+/* Contact Form */
+.contactContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: flex-start;
+    width: 90%-2rem;
+    padding: 2rem;
+    padding-bottom: 160px;
+}
+
+.contactImage {
+    background-image: url('../../images/CONTACT FORM 1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 45%;
+    height: 660px;
+    min-width: 600px;
+}
+
+#h1Wrapper a {
+    text-decoration: none;
+    color: black;
+    font-family: 'akzidenz-grotesk_probold';
+    font-size: 16px;
+    margin: 0;
+    padding-top: 0;
+}
+
+#h1Wrapper h1 {
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.formContainer h2 {
+    font-family: 'editorial_newregular', sans-serif;
+    font-size: 23px;
+    /* letter-spacing: 1px; */
+    text-align: justify;
+    text-justify: inter-word;
+    padding-top: 0;
+    margin-top: 0;
+    line-height: 36px;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 45%;
+    min-width: 600px;
+}
+
+#emailAndName {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2vh;
+    width: inherit;
+}
+
+#emailAndName input {
+    border: none;
+    border-bottom: 0.5px solid grey;
+    padding: 10px 10px;
+    outline: none;
+}
+
+#emailAndName p {
+    padding-left: 10px;
+}
+
+#topicContainer p {
+    padding-left: 10px;
+}
+
+#inquireAndButton {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+#body {
+    border: none;
+    border-top: 0.5px solid grey;
+    border-bottom: 0.5px solid grey;
+    padding: 10px 10px;
+    padding-bottom: 13vh;
+    outline: none;
+    height: 12vh;
+    font-size: 13px;
+    font-family: "akzidenz-grotesk_proregular";
+}
+
+
+
+#inquireAndButton .btnWhite {
+    width: 180px;
+    color: white;
+    font-size: 14px;
+    padding: 16px 24px;
+    cursor: pointer;
+    background-color: black;
+}
+
+#inquireAndButton .btnWhite:hover {
+    background-color: white;
+    color: black;
+    border: 0.25px solid rgba(0, 0, 0, 0.90);
+}
+
+/* Modal Content */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid black;
+    width: 400px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+.modal-content span {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: flex-end;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    width: auto;
+    height: 300px;
+}
+
+.modal-content form input {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+    width: 340px;
+    height: 35px;
+    border-radius: 0;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: center;
+}
+
+.react-tabs__tab--selected {
+    background: #fff;
+    color: black;
+    font-weight: 700;
+}
+
+.react-tabs__tab-list {
+    border-bottom: none;
+    margin: 0 0 10px;
+    padding: 0;
+    font-size: 23px;
+    padding-bottom: 1rem;
+    font-weight: 200;
+    color: #E5E5E5;
+    z-index: -1;
+}
+.react-tabs__tab-list span {
+    color: black;
+}
+.react-tabs__tab {
+    display: inline-block;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    cursor: pointer;
+}
+
+
+.react-tabs__tab:hover {
+    display: inline-block;
+    font-weight: 700;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    /* padding: 6px 12px; */
+    cursor: pointer;
+}
+.teamTab {
+    font-size: 16px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: stretch;
+    border-top: 0.25px solid rgba(0, 0, 0, 0.60);
+}
+.teamMember {
+    font-weight: 300;
+    height: 70px;
+    border-bottom: 0.25px solid rgba(0, 0, 0, 0.25);
+    
+}
+.teamMember h3 {
+    font-weight: 700;
+    padding-bottom: 0rem;
+    margin-bottom: .5rem;
+}
+.teamMember .contact-email {
+    font-weight: 300;
+    font-size: 16px;
+}
+.radio-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.radio-toolbar input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+.radio-toolbar input[type="radio"] :hover {
+    background-color: black;
+    color: white;
+}
+
+.radio-toolbar label {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    padding: 12px 12px;
+    font-size: 12px;
+    border: 0.25px solid rgba(0, 0, 0, 0.90);
+    width: 120px;
+    height: 30px;
+}
+.radio-toolbar input[type="radio"]:checked+label {
+    background-color: black;
+    color: white;
+}
+.radio-toolbar label:hover {
+    background-color: black;
+    color: white;
+}
+.radio-toolbar input[type="radio"]:focus+label {
+    border: 0.25px solid rgba(0, 0, 0, 0.90);
+}
+.contactFooter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+.contactFooter .contact-email {
+    font-weight: 300;
+    font-size: 16px;
+}
+.sentMessage {
+    width: 90%;
+    text-align: center;
+    font-size: 20px;
+}
+.radio-toolbar div {
+    margin: 0.2rem;
+ }
+@media (max-width: 481px) {
+    .contactImage {
+        display: none;
+        width: 360vw;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .formContainer {
+        width: 100%;
+        margin-bottom: 190px;
+        min-width: auto;
+    }
+    .formContainer h2 {
+        font-size: 25px;
+        font-weight: 200;
+        line-height: 50px;
+    }
+    .radio-toolbar div {
+        padding: .1rem;
+    }
+    #inquireAndButton .btnWhite {
+        width: 95%;
+    }
+    .teamMember {
+        text-align: center;
+        font-size: 11px;
+        padding: 2rem 0;
+        font-size: 14px;
+    }
+    .teamMember h3 {
+        font-family: 'editorial_newregular', sans-serif;
+        font-size: 20px;
+    }
+    .teamMember span {
+        font-weight: 300;
+        font-size: 11px;
+    }
+    .teamMemberF .contact-email {
+        text-transform: uppercase;
+        font-family: "akzidenz-grotesk_proregular";
+        font-size: 10px;
+        border-bottom: none;
+        padding: 2rem 0;
+        text-align: center;
+        
+    }
+    .teamMemberF .contact-email:before {
+        font-weight: 700;
+        content: "General Information / ";
+        
+    }
+    .contactHeader {
+        text-align: center;
+    }
+    .radio-toolbar label {
+        width: 115px;
+        font-size: 14px;
+        padding: .8rem;
+    }
+    .contactFooter a {
+        width: 100%;
+    }
+    .contactFooter 
+    .contact-email {
+        text-transform: uppercase;
+        font-family: "akzidenz-grotesk_proregular";
+        font-size: 10px;
+        border-bottom: none;
+        padding: 2rem 0;
+        text-align: center;
+        width: 100%;
+    }
+    .contact-email:before {
+        font-weight: 700;
+        content: "General Information / ";
+    }
+}

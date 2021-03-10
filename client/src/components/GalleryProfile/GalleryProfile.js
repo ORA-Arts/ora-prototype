@@ -55,11 +55,11 @@ class GalleryProfile extends React.Component {
                 <div className="input-block">
                   {/* replace input by real information later */}
                   <div className="input-container-half">
-                    <span className="input-label input-lable-right">First Name/ </span>
+                    <span className="input-label input-lable-right">FIRST NAME/ </span>
                     <input type="text" name="firstName" onChange={this.onChangeHandler} value={this.state.firstName} className="input-hidden" placeholder="Your First Name" role="textbox"></input>
                   </div>
                   <div className="input-container-half">
-                    <span className="input-label input-lable-right">Last Name/ </span>
+                    <span className="input-label input-lable-right">LAST NAME/ </span>
                     <input type="password" name="lastName" onChange={this.onChangeHandler} value={this.state.lastName} className="input-hidden" placeholder="Your Last Name"></input>
                   </div>
                   <div className="input-container-half">

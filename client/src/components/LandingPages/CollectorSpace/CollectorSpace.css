@@ -1,16 +1,18 @@
-.colectorContainer{
+.colectorContainer {
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content:flex-start;
-  align-content: space-between;
-  align-items: stretch;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+  align-items: flex-start;
+  width: 90%-2rem;
+  padding-bottom: 160px;
 }
+
 #headerText {
   display: flex;
   color: white;
   flex-direction: column;
-  flex-wrap: nowrap;
   justify-content: flex-start;
   padding-left: 13px;
   padding-right: 20px;
@@ -18,19 +20,20 @@
   padding-bottom: 20px;
 }
 
-#headerText h1{
+.collectorHeader {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#headerText h1 {
   font-size: 30px;
   font-family: "editorial_newultralight";
+  margin: 0;
 }
 
 #headerText h2 {
   font-family: "akzidenz-grotesk_proregular";
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 30px;
-  letter-spacing: 0em;
-  width: 80vw;
   text-transform: uppercase;
 }
 
@@ -40,15 +43,12 @@
   margin: 0;
 }
 
-.header{
+.header {
   display: flex;
   background-color: #D2D1CE;
   justify-content: space-between;
-  align-content: center;
   align-items: center;
-  padding-left: 13px;
-  padding-right: 5vw;
-
+  width: 100vw;
 }
 
 @media (min-width: 480px) {
@@ -63,65 +63,101 @@
     text-decoration: none;
     margin-top: 2%;
     margin-bottom: 2%;
+    margin-right: 20px;
   }
-    }
-  
-    @media (max-width: 481px) {
-      .header .btnBlack {
-      display: none;
-      }
-    }
-  
-    .header .btnBlack:hover {
-    background-color: black;
-    color: white
-  }
+}
 
-#collectorMain {
+@media (max-width: 481px) {
+  .header .btnBlack {
+    display: none;
+  }
+}
+
+.header .btnBlack:hover {
+  background-color: black;
+  color: white
+}
+
+.mainSection {
+  width: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: center;
-  align-content: center;
+  justify-content: flex-start;
+  align-content: stretch;
   align-items: center;
   padding-bottom: 1rem;
-  animation: fadeEffect 1s; /* Fading effect takes 1 second */
-  
+  height: auto;
 }
+
+.tabContainer {
+  padding-top: 1rem;
+  width: 60%;
+}
+
+.react-tabs__tab--selected {
+  background: #fff;
+  color: black;
+  font-weight: 700;
+}
+
+.react-tabs__tab-list {
+  border-bottom: none;
+  margin: 0 0 10px;
+  padding: 0;
+  font-size: 23px;
+  padding-bottom: 1rem;
+  font-weight: 200;
+  color: #E5E5E5;
+}
+
+.react-tabs__tab-list span {
+  color: black;
+}
+
+.react-tabs__tab {
+  display: inline-block;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+}
+
+.react-tabs__tab:hover {
+  display: inline-block;
+  font-weight: 700;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  /* padding: 6px 12px; */
+  cursor: pointer;
+}
+
 .bg-services {
   background-image: url('../../../images/COLLECTOR\ SPACE\ 2.jpg'), url('../../../images/CONNECTOR\ SPACE\ 5.jpg');
   background-size: 350px auto;
   background-position: center left -10%, center right -10%;
   background-repeat: no-repeat;
-  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+  animation: fadeEffect 1s;
+  /* Fading effect takes 1 second */
 }
+
 .bg-special {
   background-image: url('../../../images/COLLECTOR\ SPACE\ 3.jpg'), url('../../../images/COLLECTOR\ SPACE\ 1.jpg');
   background-size: 350px auto;
   background-position: center left -10%, center right -10%;
   background-repeat: no-repeat;
-  animation: fadeEffect 1s; /* Fading effect takes 1 second */
-}
-
-/* Style the tab */
-.tabs {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: center;
-  align-items: center;
-  width: 60vw;
-  height: 70vh;
-}
-.tab {
-  overflow: hidden;
+  animation: fadeEffect 1s;
+  /* Fading effect takes 1 second */
 }
 
 /* Style the buttons that are used to open the tab content */
+
 .tab button {
-  color:  #C8C8C8;
-  background:inherit;
+  color: #C8C8C8;
+  background: inherit;
   float: center;
   border: none;
   outline: none;
@@ -139,32 +175,18 @@
 }
 
 /* Change background color of buttons on hover */
+
 .tab button:hover {
   text-decoration: underline;
   color: #000;
 }
 
-/* Create an active/current tablink class */
-.tab button.active {
-  color: #000;
-  font-family: "akzidenz-grotesk_proregular";
-  font-size: 23px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 29px;
-  letter-spacing: 0em;
-  text-align: justified;
-  text-decoration: underline;
+.tabcontent {
+  padding: 5px 12px;
+  border-top: none;
+  animation: fadeEffect 1s;
 }
 
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  /* border: 1px solid #ccc; */
-  border-top: none;
-  animation: fadeEffect 1s; /* Fading effect takes 1 second */
-}
 .tabcontent h2 {
   font-family: 'editorial_newregular', sans-serif;
   font-size: 26px;
@@ -175,6 +197,7 @@
   text-align: justified;
   text-transform: uppercase;
 }
+
 .tabcontent ul {
   list-style: none;
   font-family: "akzidenz-grotesk_proregular";
@@ -185,8 +208,8 @@
   letter-spacing: 0em;
   text-align: left;
   text-transform: uppercase;
-
 }
+
 .tabcontent ul li span {
   font-family: Akzidenz-Grotesk Pro;
   font-size: 16px;
@@ -196,6 +219,7 @@
   letter-spacing: 0em;
   text-align: left;
 }
+
 .tabtext {
   font-family: "akzidenz-grotesk_proregular";
   font-size: 16px;
@@ -206,6 +230,7 @@
   text-align: justified;
   text-transform: uppercase;
 }
+
 .tabtext span {
   font-family: "akzidenz-grotesk_probold";
   font-size: 16px;
@@ -217,9 +242,14 @@
 }
 
 /* Go from zero to full opacity */
+
 @keyframes fadeEffect {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .boxes {
@@ -230,30 +260,36 @@
   align-content: stretch;
   align-items: stretch;
 }
+
 .boxes .personal {
   font-weight: 300;
   padding-right: 70px;
   width: 300px;
 }
+
 .personal h3 {
   font-weight: 400;
   font-size: 16px;
   font-family: 'editorial_newregular', sans-serif;
 }
+
 .boxes .special {
   font-weight: 300;
   padding-left: 70px;
   width: 300px;
 }
+
 .special h3 {
   font-weight: 400;
   font-size: 16px;
   font-family: 'editorial_newregular', sans-serif;
 }
+
 .line {
   width: 0px;
   border-left: 0.5px solid black;
 }
+
 .boxes a {
   text-align: center;
   display: flex;
@@ -269,17 +305,17 @@
   font-family: "akzidenz-grotesk_proregular";
   font-style: normal;
   font-weight: 400;
-  line-height: 25px; 
+  line-height: 25px;
   letter-spacing: 0em;
   text-align: center;
   min-height: 52px;
   margin-top: 2rem;
-
 }
-.boxes a:hover{
+
+.boxes a:hover {
   background-color: white;
   color: black;
-  border: 2px solid black;
+  border: 1px solid black;
 }
 
 .partBtn {
@@ -297,15 +333,144 @@
   font-family: "akzidenz-grotesk_proregular";
   font-style: normal;
   font-weight: 400;
-  line-height: 25px; 
+  line-height: 25px;
   letter-spacing: 0em;
   text-align: center;
   text-decoration: none;
   min-height: 52px;
 }
+
 .supportFooter {
-  margin-top: 2rem;
+  margin-top: .2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.supportFooter a {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 260px;
+  color: white;
+  font-size: 14px;
+  padding: 12px 10px;
+  cursor: pointer;
+  background-color: black;
+  text-transform: uppercase;
+  font-family: "akzidenz-grotesk_proregular";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: center;
+  min-height: 52px;
+  margin-top: .5rem;
+}
+
+.mobileImage {
+  display: none;
+  font-family: "akzidenz-grotesk_proregular";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.mobileImage img {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 480px) {
+  #headerText h3:before {
+    content: "Collector Space ";
+    font-family: "akzidenz-grotesk_proregular";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    padding-bottom: .5rem;
+
+  }
+  #headerText h1 {
+    border-bottom: 1.2px solid white;
+    border-top: 1.2px solid white;
+    padding: 1.5rem 0;
+  }
+  #headerText h2 {
+    padding: .8rem 0;
+  }
+  .bg-services {
+    background-image: url('../../../images/blank-white-page.jpg');
+  }
+  .bg-special {
+    background-image: url('../../../images/blank-white-page.jpg');
+  }
+  .react-tabs__tab-list {
+    display: none;
+  }
+  .tabContainer {
+    width: 95%;
+    padding-bottom: 220px;
+  }
+  .tabtext {
+    font-size: 12px;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: justify;
+  }
+  .tabtext span {
+    font-size: 12px;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: justify;
+  }
+  .boxes {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: stretch;
+  }
+  .boxes .personal {
+    font-weight: 300;
+    padding: 0;
+    width: 95%;
+  }
+  .personal h3 {
+    font-weight: 400;
+    font-size: 16px;
+    font-family: 'editorial_newregular', sans-serif;
+  }
+  .boxes .special {
+    font-weight: 300;
+    padding: 0;
+    width: 95%;
+    padding-top: 1rem;
+    
+  }
+  .special h3 {
+    font-weight: 400;
+    font-size: 16px;
+    font-family: 'editorial_newregular', sans-serif;
+  }
+  .btnBlack {
+    margin: 0;
+  }
+  .line {
+    display: none;
+  }
+  .boxes a {
+    width: 100%;
+  }
+  .mobileImage {
+    display: block;
+  }
 }
