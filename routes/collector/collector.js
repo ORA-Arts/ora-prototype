@@ -73,7 +73,7 @@ router.get("/name", isAuthenticated, async (req, res, next) => {
   const userId =  req.session.passport.user;
   try {
     const existedCollector = await Collector.findOne({user: userId});
-    res.status(200).json(existedCollector.name);
+    res.status(200).json(existedCollector.firstName);
   } catch (error) {
     res.status(500).json({ message: 'Error while attempting to access database' });
   }

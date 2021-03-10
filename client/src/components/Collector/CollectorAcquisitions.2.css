@@ -10,7 +10,7 @@
 }
 
 .collector-container-acquisitions {
-    width: 1374px;
+    width: 100%;
     /* height: 1250px; */
     padding: 0;
     margin: 16px 32px;
@@ -57,16 +57,11 @@
 }
 
 .collector-acquisitions {
-    width: 1066px;
+    width: 100%;
 }
 
 .acquisitions-status-bar {
-    width: 100%;
-    height: 69px;
     background-color: #C4C4C4;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .acquisitions-status-bar input[type="radio"] {
@@ -89,45 +84,53 @@
 }
 
 .acquisitions-status-bar label {
-    margin: 0 42px;
+    margin: 0;
     font-size: 16px;
 }
 
-.acquisitions-pending-item {
-    width: 100%;
-    height: 80px;
-    border-bottom: 1px solid black;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.acquisitions-pending-item span {
-    width: 13.5%;
-    font-size: 14px;
-    text-transform: uppercase;
-}
-
-.acquisitions-pending-item .status {
+.status-pending {
     font-size: 16px;
     font-weight: bold;
     color: #C90000;
 }
-
-.acquisitions-pending-item button {
+.status-in-progress {
+    font-size: 16px;
+    font-weight: bold;
+    color: #64B3ED;
+}
+.status-confirmed {
+    font-size: 16px;
+    font-weight: bold;
+    color: #68D390;
+}
+.openRequest {
     width: 136px;
-    height: 37px;
+    padding: 10px 0;
     color: white;
     background-color: #BEBEBE;
     border: none;
 }
 
-.acquisitions-pending-item button:hover {
+.openRequest:hover {
     color: black;
     background-color: white;
     border: 1px solid #BEBEBE;
 }
 
+.btnAccept {
+    width: 136px;
+    height: 37px;
+    color: white;
+    background-color: #228102;
+    border: none;
+}
+
+.btnAccept:hover {
+    color: #228102;
+    background-color: white;
+    border: 1px solid #228102;
+}
 
 
 
@@ -427,5 +430,38 @@ label:hover {
   .send-request-btn:hover {
     background-color: white;
     color: black;
-    
+  }
+  .offerDetails {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-content: center;
+      align-items: stretch;
+  }
+  .offerDetails article {
+      width: 70%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-content: center;
+      align-items: stretch;
+
+  }
+
+  .offerDetails article ul {
+      padding: 1rem;
+    list-style: none;
+
+}
+  .offerDetails .actionButtons {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      align-content: center;
+      align-items: center;
   }
