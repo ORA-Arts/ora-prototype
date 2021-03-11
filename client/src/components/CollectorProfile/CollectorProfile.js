@@ -6,6 +6,7 @@ import {
   editCollector,
 } from "../../api/service";
 import CollectorSideBar from "../CollectorSideBar/CollectorSideBar";
+import { Link } from "react-router-dom";
 
 const CollectorProfile = (props) => {
   const initialState = {
@@ -31,6 +32,7 @@ const CollectorProfile = (props) => {
   const [checkedRel, setCheckedRel] = useState("");
 
   const onChange = (event) => {
+
     const { name, value } = event.target;
     setData({ ...data, [name]: value.toUpperCase() });
   };
@@ -46,6 +48,7 @@ const CollectorProfile = (props) => {
     //behaviour
     setCheckedRel(event.target.name);
     setData({ ...data, behaviour: event.target.name });
+    console.log('button click')
   };
 
   const relCheckboxes = behaviours.map((rel) => {
@@ -97,7 +100,7 @@ const CollectorProfile = (props) => {
         <div className="collectorHeader">
           <div className="collector-name">
             <h1>{data.firstName}</h1>
-            <button className="btnPrivate">MAKE A PRIVATE SALES REQUEST</button>
+            <Link to='/collector/request'><button className="btnPrivate">MAKE A PRIVATE SALES REQUEST</button></Link>
           </div>
         </div>
         <hr />
@@ -106,13 +109,14 @@ const CollectorProfile = (props) => {
           <div id="formContainerField">
             <div className="personalInformation">
               <h1 className="title-text" >PERSONAL INFORMATION</h1>
+              <hr />
               <div className="btnContainer">
                 <button className="btn-edit" onClick={startEditing}>
                   Edit
                 </button>
               </div>
             </div>
-            <hr />
+            
             <div className="input-block">
               <div className="input-container-half">
                 <span className="input-label input-lable-right">
@@ -151,41 +155,42 @@ const CollectorProfile = (props) => {
               </div>
             </div>
             <div className="input-block">
-                <div className="input-container-half">
-                  {/* should not display even in edit */}
-                  <span className="input-label input-lable-right">EMAIL/ </span>
-                  {isEditMode ? (
-                    <input
-                      type="email"
-                      name="email"
-                      onChange={onChange}
-                      value={data.email}
-                      className="input-no-border"
-                      placeholder="youremail@mail.com"
-                    ></input>
-                  ) : (
-                    <span>{data.email}</span>
-                  )}
-                </div>
-                <div className="input-container-half">
-                  {/* should not display even in edit */}
-                  <span className="input-label input-lable-left">
-                    BIRTHDATE/{" "}
-                  </span>
-                  {isEditMode ? (
-                    <input
-                      type="string"
-                      name="birthdate"
-                      onChange={onChange}
-                      value={data.birthdate}
-                      className="input-no-border"
-                      placeholder="YOUR BIRTHDATE"
-                    ></input>
-                  ) : (
-                    <span>{data.email}</span>
-                  )}
-                </div>
+              <div className="input-container-half">
+                <span className="input-label input-lable-right">EMAIL/ </span>
+                {isEditMode ? (
+                  <input
+                    type="email"
+                    name="email"
+                    onChange={onChange}
+                    value={data.email}
+                    className="input-no-border"
+                    placeholder="youremail@mail.com"
+                  ></input>
+                ) : (
+                  <span>{data.email}</span>
+                )}
               </div>
+
+              <div className="input-container-half">
+                {/* should not display even in edit */}
+                <span className="input-label input-lable-left">
+                  BIRTHDATE/{" "}
+                </span>
+                {isEditMode ? (
+                  <input
+                    type="string"
+                    name="birthdate"
+                    onChange={onChange}
+                    value={data.birthdate}
+                    className="input-no-border"
+                    placeholder="YOUR BIRTHDATE"
+                  ></input>
+                ) : (
+                  <span>{data.email}</span>
+                )}
+              </div>
+            </div>
+            <div className="input-block">
               <div className="input-container-full">
                 <span className="input-label">ADDRESS/ </span>
                 {isEditMode ? (
@@ -201,93 +206,103 @@ const CollectorProfile = (props) => {
                   <span>{data.address}</span>
                 )}
               </div>
-              <hr/>
-              <div className="personalInformation">
-                <h1>COLLECTOR DATA</h1>
-              </div>
-              <hr/>
-              <div className="input-block">
-                <div className="collectorType">
-                  <span className="inputLabel">COLLECTOR TYPE/ </span>
-                  {isEditMode ? (
-                    relCheckboxes.map((item) => (
-                      <div className="inputClear behaviourCheck">
-                        <label className = 'behaviourCheck' key={item.key}> 
-                          <Checkbox
-                            name={item.name}
-                            checked={checkedRel === item.name}
-                            onChange={handleCheckboxRel}
-                          />
-                          <span>{item.name}</span>
-                          </label>
-                      </div>
-                    ))
-                  ) : (
-                    <span style={{width:"65vw", textAlign:"start", textTransform:'uppercase'}}> {data.behaviour} </span>
-                  )}
+            </div>
+            <hr />
+            <div className="personalInformation">
+              <h1>COLLECTOR DATA</h1>
+            </div>
+            <hr />
+            <div className='collector-type'>
+              <span >COLLECTOR TYPE/ </span>
+              {isEditMode ? (
+                <div className="behaviourCheck">
+                  {relCheckboxes.map((item, key) => (
+                    <>
+                      <input key={key}
+                        type="radio"
+                        id={key}
+                        name={item.name}
+                        onChange={handleCheckboxRel}
+                        checked={checkedRel === item.name}
+                      />
+                      <label key={key} htmlFor={key}>{item.name}</label>
+                      {/* <label htmlFor={key} key={item.key}>
+                          {item.name}
+                        </label>
+                        <Checkbox
+                          id={item.name}
+                          name={item.name}
+                          checked={checkedRel === item.name}
+                          onChange={handleCheckboxRel}
+                        /> */}
+                    </>
+                  ))}
                 </div>
-                <div>
-                  <div className="input-container-half budget">
-                    {/* should not display even in edit */}
-                    <span id="bugetLabel">
-                      I SPEND APPROXIMATELY (k€/Y) ON ART
+              ) : (
+                <span style={{ width: "65vw", textAlign: "start", textTransform: 'uppercase' }}> {data.behaviour} </span>
+              )}
+            </div>
+            <div>
+              <div className="input-container-half budget">
+                {/* should not display even in edit */}
+                <span id="bugetLabel">
+                  I SPEND APPROXIMATELY (k€/Y) ON ART
                     </span>
-                    {isEditMode ? (
-                      <input
-                        type="number"
-                        name="budget"
-                        onChange={onChange}
-                        value={data.budget}
-                        className="input-no-border"
-                        placeholder="5"
-                      ></input>
-                    ) : (
-                      <span>{data.budget} k€ per year</span>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div id="newsBool">
-                <span className="input-label">
-                  NEWSLETTER /
-                </span>
                 {isEditMode ? (
-                  <>
-                    <input
-                      type="radio"
-                      id="yes"
-                      name="newsletter"
-                      onChange={(e) => setNewsletter(true)}
-                      checked={newsletter}
-                    />
-                    <label htmlFor="yes">YES</label>
-                    <input
-                      type="radio"
-                      id="no"
-                      name="newsletter"
-                      onChange={(e) => setNewsletter(false)}
-                      checked={!newsletter}
-                    />
-                    <label htmlFor="no">NO</label>
-                  </>
-                ) : newsletter ? (
-                  "   YES"
+                  <input
+                    type="number"
+                    name="budget"
+                    onChange={onChange}
+                    value={data.budget}
+                    className="input-no-border"
+                    placeholder="5"
+                  ></input>
                 ) : (
-                  "   NO"
+                  <span>{data.budget} k€ per year</span>
                 )}
               </div>
-              {isEditMode ? (
-                <button
-                  id="saveButton"
-                  onClick={submitHandler}
-                >
-                  SAVE CHANGES
-                </button>
-              ) : null}
             </div>
+            <div id="newsBool">
+              <span className="input-label">
+                NEWSLETTER /
+                </span>
+              {isEditMode ? (
+                <>
+                  <input
+                    type="radio"
+                    id="yes"
+                    name="newsletter"
+                    onChange={(e) => setNewsletter(true)}
+                    checked={newsletter}
+                  />
+                  <label htmlFor="yes">YES</label>
+                  <input
+                    type="radio"
+                    id="no"
+                    name="newsletter"
+                    onChange={(e) => setNewsletter(false)}
+                    checked={!newsletter}
+                  />
+                  <label htmlFor="no">NO</label>
+                </>
+              ) : newsletter ? (
+                "   YES"
+              ) : (
+                "   NO"
+              )}
+            </div>
+            {isEditMode ? (
+              <button
+                id="saveButton"
+                onClick={submitHandler}
+              >
+                SAVE CHANGES
+              </button>
+            ) : null}
           </div>
         </div>
       </div>
+    </div>
   );
 };
 
