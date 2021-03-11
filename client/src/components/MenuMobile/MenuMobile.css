@@ -1,30 +1,94 @@
-.menuModal{
-  position:fixed;
+.menuModal {
+  position: fixed;
   background: #BDBDBD;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
+  z-index: 1;
+  opacity: 1;
+  animation: fadeEffect .3s;
+}
+.menuModal.open {
+  display: block;
+}
+.menuModal.close {
+  display: none;
 }
 
-a:-webkit-any-link {
-  color: black;
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.upperNavButtons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: 2rem .9rem;
+}
+
+.upperNavButtons button {
+  display: block;
+  border: 1px solid white;
+  background: none;
   cursor: pointer;
+  padding: 5px 10px;
+  color: white;
+}
+.upperNavButtons img {
+  width: 90px;
+  height: auto;
 }
 
-#menu{
+/* a:-webkit-any-link {
+  color: #FFF;
+  cursor: pointer;
+} */
+
+/* #menu {
   padding-top: 60px;
+} */
+
+#menu>ul {
+  padding-left: 1rem;
+  margin-top: 40px;
 }
 
-#menu > ul {
-  margin-top: 60px;
-}
-
-#menu > ul > li{
-  list-style: none; 
+#menu>ul>li {
+  list-style: none;
   font-size: 20px;
-  margin:20px 0;
+  margin: 20px 0;
   font-family: 'akzidenz-grotesk_probold';
 }
 
+#menu>ul>li>a {
+  color: #FFF;
+  cursor: pointer;
+}
 
+.mobile-submenu {
+  font-family: Akzidenz-Grotesk Pro;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-top: .5rem;
+}
+
+.mobile-submenu li {
+  padding: .5rem;
+}
+
+.mobile-submenu>li>a {
+  color: #FFF;
+  cursor: pointer;
+}
