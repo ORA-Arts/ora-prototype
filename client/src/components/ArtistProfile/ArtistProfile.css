@@ -69,7 +69,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-content: space-around;
     align-items: center;
     width: 100%;
@@ -80,6 +80,16 @@
     height: 60px;
     padding-left: 2rem;
 }
+.textkEur{
+margin-right: 20px;
+}
+
+ #artistImgC{
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+} 
+
 .medium-input {
     display: flex;
     flex-direction: row;

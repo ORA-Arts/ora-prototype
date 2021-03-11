@@ -285,7 +285,7 @@ const AddNewArtWork = (props) => {
                         </div>
                     </div>
                     <div className="artwork-detail-info-field">
-                        <div className="detail-info-label">Dimensions </div>
+                        <div className="detail-info-label">Dimensions <br/> (length x height x width in mm)</div>
                         <div className="detail-info-field detail-info-space-between">
                             {isEditMode ? 
                             <>
