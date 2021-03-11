@@ -9,10 +9,10 @@
 }
 
 .collector-container-request {
-    width: 1374px;
-    /* height: 1250px; */
-    padding: 0;
-    margin: 16px 32px;
+    margin-left:0px;
+    margin-right: 20px;
+    margin-top:15px;
+
 }
 
 .collector-header {
@@ -31,7 +31,7 @@
 }
 
 .btn-request {
-    width: 243px;
+    width: 300px;
     height: 60px;
     color: white;
     font-size: 12px;
@@ -48,14 +48,17 @@
 }
 
 .container-request-content {
-    width: 100%;
+    width: 96vw;
     display: flex;
+    justify-content: space-between;
     padding-bottom: 40px;
     border-bottom: 1px solid black;
 }
 
 .collector-request {
-    width: 1066px;
+    width: 80vw;
+    padding-left: 20px;
+    margin-top: 20px;
 }
 
 .collector-request-header {

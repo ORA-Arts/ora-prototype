@@ -5,8 +5,8 @@
 }
 
 .container-inventory {
-    width: 1374px;
-    height: 1190px;
+    width: 95vw;
+    height: auto;
     padding: 0;
     margin: 16px 32px;
 }
@@ -54,7 +54,7 @@
 
 
 .gallery-profile {
-    width: 1066px;
+    width: 85vw;
 }
 
 .gallery-content {
