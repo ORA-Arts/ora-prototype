@@ -34,16 +34,26 @@ const CollectorAcquisitions2 = (props) => {
   const openRequestDetails = (acquisition) => {
     toggleList(false);
     return requestDetails;
-  }
+  };
   const openRequestList = (status) => {
     toggleList(true)
     setStatus(status);
   };
 
+  const updateAcquisitionsAfterDecisionMade = (decision, requestId) => {
+    return [...acquisitions].map(acquisition => {
+      if (acquisition._id === requestId) {
+        acquisition.offerStatus = decision === "accept" ? "Accepted" : "Cancelled";
+      }
+      return acquisition;
+    });
+  };
+
   const decisionHandler = async (decision, requestId) => {
     console.log(decision, requestId);
     const resDataAPI = await makingCollectorDecision(decision, requestId);
-    console.log(resDataAPI);
+    if (resDataAPI.success) setAcquisitions(updateAcquisitionsAfterDecisionMade(decision, requestId));
+    return;
   };
 
   const timeRemain = (time) => {
@@ -71,12 +81,13 @@ const CollectorAcquisitions2 = (props) => {
   const checkOfferStatus = (offerStatus) => {
     if (offerStatus === "Sent") return <span className="status-in-progress-received">Offer Recieved</span>
     if (offerStatus === "Accepted") return <span className="status-in-progress-accepted">Offer Accepted</span>
-    // ["Sent", "Accepted", "Cancelled"]
-    const confirmedRequest = (offerStatus) => {
-      if (offerStatus === "Cancelled") return <span className="status-in-progress-cancelled">Offer Cancelled</span>
-      if (offerStatus === "Paid") return <span className="status-in-progress-accepted">Offer Paid</span>
     }
+    // ["Sent", "Accepted", "Cancelled"]
+  const checkConfirmedRequest = (offerStatus) => {
+    if (offerStatus === "Cancelled") return <span className="status-in-progress-cancelled">Offer Cancelled</span>
+    if (offerStatus === "Paid") return <span className="status-in-progress-accepted">Offer Paid</span>
   }
+  
   const inProgessRequest = acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "In Progress").map((acquisition, index) => {
     return (
       <tr key={index} className={trClass}>
@@ -97,7 +108,7 @@ const CollectorAcquisitions2 = (props) => {
   const confirmedRequest = acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "Confirmed").map((acquisition, index) => {
     return (
       <tr key={index} className={trClass}>
-        <td className={tdClass}>{confirmedRequest(acquisition.offerStatus)}</td>
+        <td className={tdClass}>{checkConfirmedRequest(acquisition.offerStatus)}</td>
         <td className={tdClass}>{acquisition.gallery.name}</td>
         <td className={tdClass}>{acquisition.offeredArtwork.artist.name}</td>
         <td className={tdClass}>{acquisition.offeredArtwork.title}</td>
