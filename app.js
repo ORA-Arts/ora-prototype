@@ -17,12 +17,12 @@ const hbs = require("hbs");
 const app = express();
 //NODEMAILER
 
-app.use(
-  cors({
-    // this could be multiple domains/origins, but we will allow just our React app
-    origin: ['http://localhost:3000']
-  })
-);
+// app.use(
+//   cors({
+//     // this could be multiple domains/origins, but we will allow just our React app
+//     origin: ['http://localhost:3000']
+//   })
+// );
 
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
 require("./config")(app);

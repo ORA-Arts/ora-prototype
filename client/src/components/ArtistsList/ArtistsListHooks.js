@@ -10,7 +10,7 @@ const ArtistListHooks = (props) => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:3000/api/gallery/artists')
+            .get('/api/gallery/artists')
             .then(res => {
                 console.log(res.data)
                 setArtists(res.data)
