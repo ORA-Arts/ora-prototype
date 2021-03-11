@@ -1,4 +1,3 @@
-
 #collectorProfile {
   margin-top: 5vh;
   margin-left:13px;
@@ -47,7 +46,6 @@
   align-items: flex-end;
 }
 
-
 .personalInformation .btn-edit {
   width: 117px;
   color: white;
@@ -58,6 +56,7 @@
   background-color: black;
   border: 2px solid black;
   text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
 .personalInformation .btn-edit:hover {
@@ -71,19 +70,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 5px;
+  /* margin-top: 5px; */
 }
 
-.personalInformation .btnContainer {
+/* .personalInformation .btnContainer {
 margin-bottom: 1vw;
-}
+} */
 
 .collectorType{
-  margin-top: 20px;
-  width: 80vw;;
+  width: 80vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: auto;
 }
 
 .budget {
@@ -103,53 +102,6 @@ margin-bottom: 1vw;
 }
  
 
-
-.behaviourCheck  label {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-align:center;
-  background-color:white;
-  padding: 5px 10px;
-  font-size: 12px;
-  border: 2px solid black; 
-  width: 13vw;
-  height: 30px;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 1s;
-}
-
-.behaviourCheck input[type="radio"]:checked {
-  background-color:rgb(153, 161, 153);
-  color: white;
-}
-
-.behaviourCheck input[type="radio"]:focus {
-  border: 2px solid black;
-}
-
-.behaviourCheck  label:hover {
-  background-color:black;
-  color: white;
-}
-
-.behaviourCheck input[type="radio"] {
-  opacity: 0;
-  position: fixed;
-  width: 0;
-}
-
-#newsBool input[type="radio"] {
-  opacity: 0;
-  position: fixed;
-  width: 0;
-}
-
 #newsBool label {
   display: inline-flex;
   justify-content: center;
@@ -164,13 +116,16 @@ input:-webkit-autofill:active {
   margin: 0 2vw;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
+#newsBool label:hover {
+  background-color:black;
+  color: white;
 }
 
+#newsBool input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
 
 #newsBool input[type="radio"]:checked + label {
   background-color: black;
@@ -181,10 +136,7 @@ input:-webkit-autofill:active {
   border: 2px solid black;
 }
 
-#newsBool label:hover {
-  background-color:black;
-  color: white;
-}
+
 
 #saveButton{
   width: 100% !important;
@@ -209,7 +161,53 @@ input:-webkit-autofill:active {
   background-color: black;
 }
 
-#bugetLabel{
+#bugetLabel {
   font-family: 'akzidenz-grotesk_probold';
   padding-left: 3px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* BEHAVIOUR CHECK INPUTS */
+.behaviourCheck {
+  height: 75px;
+}
+.behaviourCheck label {
+  text-transform: uppercase;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  background-color:white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 2px solid #444; 
+  width: 10vw;
+  height: 40px;
+  margin: 1rem;
+}
+
+.behaviourCheck label:hover {
+  background-color:black;
+  color: white;
+}
+
+.behaviourCheck input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.behaviourCheck input[type="radio"]:checked + label {
+  background-color: black;
+  color: white;
+}
+
+.behaviourCheck input[type="radio"]:focus + label {
+  border: 1px solid black;
 }
