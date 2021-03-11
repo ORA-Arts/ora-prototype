@@ -11,7 +11,6 @@ const passport = require('passport');
 
 // middleware
 function isAuthenticated(req, res, next) {
-  // console.log(req)
   if (req.isAuthenticated()) {
     next();
   } else {

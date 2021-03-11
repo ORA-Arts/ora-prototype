@@ -8,10 +8,10 @@ const CollectorSideBar = (props) => {
     return (
         <div className="collector-sidebar text-left">
             <div className="sidebar-box">
-                <div className={`collector-sidebar-text ${currentContent === enumPos[0] ? "sidebar-text-bold" : null }`}><Link to={'/gallery/profile'}>MY COLLECTOR PROFILE</Link></div>
-                <div className={`collector-sidebar-text ${currentContent === enumPos[1] ? "sidebar-text-bold" : null }`}>CREATE REQUEST</div>
-                <div className={`collector-sidebar-text ${currentContent === enumPos[2] ? "sidebar-text-bold" : null }`}>MY ACQUISITIONS</div>
-                <div className={`collector-sidebar-text ${currentContent === enumPos[3] ? "sidebar-text-bold" : null }`}><Link to={'/gallery/inventory'}>MY GALLERIES</Link></div>
+                <div className={`collector-sidebar-text ${currentContent === enumPos[0] ? "sidebar-text-bold" : null }`}><Link to={'/collector/profile'}>MY COLLECTOR PROFILE</Link></div>
+                <div className={`collector-sidebar-text ${currentContent === enumPos[1] ? "sidebar-text-bold" : null }`}><Link to={'/collector/request'}>CREATE REQUEST</Link></div>
+                <div className={`collector-sidebar-text ${currentContent === enumPos[2] ? "sidebar-text-bold" : null }`}><Link to={'/collector/acquisitions'}>MY ACQUISITIONS</Link></div>
+                {/* <div className={`collector-sidebar-text ${currentContent === enumPos[3] ? "sidebar-text-bold" : null }`}><Link to={'/gallery/profile'}>MY COLLECTOR PROFILE</Link><Link to={'/gallery/inventory'}>MY GALLERIES</Link></div> */}
                 <div className={`collector-sidebar-text ${currentContent === enumPos[4] ? "sidebar-text-bold" : null }`}>MY COLLECTION</div>
                 <div className={`collector-sidebar-text ${currentContent === enumPos[5] ? "sidebar-text-bold" : null }`}>MY CONTENT</div>
                 <div className={`collector-sidebar-text ${currentContent === enumPos[6] ? "sidebar-text-bold" : null }`}>CUSTOMER SUPPORT</div>

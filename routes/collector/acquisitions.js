@@ -3,12 +3,13 @@ const Gallery = require('../../models/Gallery');
 const Artist = require('../../models/Artist.model.js');
 const Message = require('../../models/Message');
 const Request = require('../../models/Request');
+const Collector = require('../../models/Collector');
+
 const { uploader } = require('../../config/cloudinary');
 const passport = require('passport');
 
 // middleware
 function isAuthenticated(req, res, next) {
-  console.log(req)
   if (req.isAuthenticated()) {
     next();
   } else {
@@ -28,18 +29,38 @@ router.get("/galleries", isAuthenticated, async (req, res, next) => {
 });
 
 router.get("/acquisitions", isAuthenticated, async (req, res, next) => {
-  const collector =  req.session.passport.user;
+  const userId =  req.session.passport.user;
+  let collector;
+  try {
+    collector = await Collector.findOne({user: userId});
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Error while attempting to access database' });
+  }
+  if (!collector) {
+    console.log("Unauthorized")
+    return res.status(403).json({message: "Unauthorized"});
+  }
   try {
     // avoid expose all gallery and artist info
-    const acquisitions = await Request.find({collector: collector}).populate("gallery").populate("preferredArtist");
-    const data = acquisitions.map(acquisition => {
-      if (acquisition.preferredArtist) {
-        acquisition.preferredArtist = acquisition.preferredArtist.name;
-      }
-      acquisition.gallery = acquisition.gallery.name;
-      return acquisition;
-    });
-    res.status(200).json(data);
+    const acquisitions = await Request.find({collector: collector._id})
+      .populate("gallery", {name: 1})
+      .populate("collector", {firstName: 1, lastName: 1})
+      .populate("preferredArtist", {name: 1})
+      .populate("messages", {message: 1, sender: 1, createdAt: 1})
+      .populate([
+        {
+          path: "offeredArtwork",
+          model: "Artwork",
+          populate: {
+            path: "artist",
+            model: "Artist",
+            select: "name"
+          }
+        }
+      ]);
+    console.log(acquisitions);
+    res.status(200).json(acquisitions);
   } catch(err) {
     res.status(500).json({ message: 'Error while attempting to access database' });
   }
@@ -47,7 +68,20 @@ router.get("/acquisitions", isAuthenticated, async (req, res, next) => {
 
 
 router.post("/request",  isAuthenticated,  async (req, res, next) => {
-  const collector =  req.session.passport.user;
+  const userId =  req.session.passport.user;
+  // console.log(userId)
+  let collector;
+  try {
+    collector = await Collector.findOne({user: userId});
+    console.log(collector);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Error while attempting to access database' });
+  }
+  if (!collector) {
+    console.log("Unauthorized")
+    return res.status(403).json({message: "Unauthorized"});
+  }
   const data = req.body;
   let preferredArtist;
   if (data.artist && !data.suggestion) {
@@ -63,9 +97,9 @@ router.post("/request",  isAuthenticated,  async (req, res, next) => {
   const message = data.requestMessage;
   // if the matchedArtists empty, just offer artwork from any artists in the gallery
   try {
-    const createdMessage = await Message.create({collector: collector, gallery: data.gallery, message: message});
+    const createdMessage = await Message.create({collector: collector._id, gallery: data.gallery, message: message, sender: "Collector"});
     const createdRequest = await Request.create({
-      ...data, collector: collector, preferredArtist: preferredArtist, messages: [createdMessage._id]
+      ...data, collector: collector._id, preferredArtist: preferredArtist, messages: [createdMessage._id]
     });
     console.log(createdRequest);
     if (createdRequest) {
@@ -77,5 +111,69 @@ router.post("/request",  isAuthenticated,  async (req, res, next) => {
   }
 });
 
+router.post("/decision", isAuthenticated,  async (req, res, next) => {
+  const userId =  req.session.passport.user;
+  let collector;
+  try {
+    collector = await Collector.findOne({user: userId});
+    console.log(collector);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Error while attempting to access database' });
+  }
+  if (!collector) {
+    console.log("Unauthorized")
+    return res.status(403).json({message: "Unauthorized"});
+  }
+
+  const {decision, requestId} = req.body;
+  try {
+    if (decision === "accept") {
+      const updatedRequest = await Request.findOneAndUpdate({_id: requestId, collector: collector._id }, {offerStatus: "Accepted"}, {new: true});
+      if (updatedRequest) return res.status(200).json({success: true, decision: "accept"});
+    }
+    if (decision === "cancel") {
+      const updatedRequest = await Request.findOneAndUpdate({_id: requestId, collector: collector._id }, {offerStatus: "Cancelled", status: "Confirmed"}, {new: true});
+      if (updatedRequest) return res.status(200).json({success: true, decision: "cancel"});
+    }
+    return;
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Error while attempting to access database' });
+  }
+});
+
+router.post("/message", isAuthenticated, async (req, res, next) => {
+  const userId =  req.session.passport.user;
+  let collector;
+  try {
+    collector = await Collector.findOne({user: userId});
+    console.log(collector);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Error while attempting to access database' });
+  }
+  if (!collector) {
+    console.log("Unauthorized")
+    return res.status(403).json({message: "Unauthorized"});
+  }
+
+  const {message, requestId, galleryId} = req.body;
+
+  try {
+    const createdMessage = await Message.create({collector: collector._id, gallery: galleryId, message: message, sender: "Collector"});
+    if (createdMessage) {
+      const updatedRequest = await Request.findOneAndUpdate({_id: requestId, collector: collector._id }, { $push: {messages: createdMessage._id}}, {new: true});
+      if (updatedRequest) {
+        return res.status(200).json(createdMessage);
+      }
+    }
+    return;
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Error while attempting to access database' });
+  }
+
+});
 
 module.exports = router;
