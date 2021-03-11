@@ -30,15 +30,15 @@ router.get("/", isAuthenticated, async (req, res, next) => {
   if (gallery) {
     try {
       const requests = await Request.find({gallery: gallery._id})
+        .populate("gallery", {name: 1})
         .populate("collector", {firstName: 1, lastName: 1, _id: 1})
-        .populate("preferredArtist")
-        .populate("messages")
+        .populate("preferredArtist", {name: 1})
+        .populate("messages", {message: 1, sender: 1})
         // .populate("offeredArtwork", {artist: 1})
         .populate([
           {
             path: "offeredArtwork",
             model: "Artwork",
-            select: "title, price",
             populate: {
               path: "artist",
               model: "Artist",

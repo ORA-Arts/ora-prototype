@@ -76,19 +76,23 @@ const GallerySale = (props) => {
         })
     : null;
 
-  // const confirmedRequest = acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "Pending").map((acquisition, index) => {
-  //     return (
-  //         <div className="sales-pending-item">
-  //             <span className="status">PENDING</span>
-  //             <span>{acquisition.gallery.name}</span>
-  //             <span>{acquisition.preferredArtist ? acquisition.preferredArtist : "No Preferred artist"}</span>
-  //             <span>{acquisition.medium}</span>
-  //             <span>{acquisition.budget}K</span>
-  //             <span>{Math.floor((Date.now() - (new Date(acquisition.createdAt)).getTime())/(100*60*60))} HOUR/S</span>
-  //             <button>OPEN</button>
-  //         </div>
-  //     )
-  // }) : null;
+const checkConfirmedRequest = (offerStatus) => {
+    if (offerStatus === "Cancelled") return <span className="status-confirmed-cancelled">Offer Cancelled</span>
+    if (offerStatus === "Paid") return <span className="status-confirmed-paid">Offer Paid</span>
+    }
+
+  const confirmedRequest =  requests.length ? requests.filter(request => request.status === "Confirmed").map((request, index) => {
+      return (
+          <div className="sales-pending-item">
+              {checkConfirmedRequest(request.offerStatus)}
+              <span>{`${request.collector.firstName} ${request.collector.lastName}`}</span>
+              <span>{request.offeredArtwork.artist.name}</span>
+              <span>{request.offeredArtwork.title}</span>
+              <span>{request.offeredArtwork.price}K€</span>
+              <button>VIEW</button>
+          </div>
+      )
+  }) : null;
 
   const dateConverter = (mongoDate) => {
     const date = new Date(mongoDate);
@@ -199,7 +203,7 @@ const GallerySale = (props) => {
               <div>
                 {status === "Pending" ? pendingRequest : null}
                 {status === "In Progress" ? inProgessRequest : null}
-                {/* {status === "Confirmed" && activeRequest ? confirmedRequest : null} */}
+                {status === "Confirmed" ? confirmedRequest : null}
               </div>
             ) : (
               activeRequestContainer

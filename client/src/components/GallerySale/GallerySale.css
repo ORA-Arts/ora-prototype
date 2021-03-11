@@ -400,3 +400,15 @@
     color: black;
     border: 1px solid black;
 }
+
+.status-confirmed-cancelled {
+    font-size: 16px;
+    font-weight: bold;
+    color: red;
+}
+
+.status-confirmed-paid {
+    font-size: 16px;
+    font-weight: bold;
+    color: green;
+}
