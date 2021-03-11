@@ -11,6 +11,11 @@
   width: 90vw;
 }
 
+#hr{
+  width: 90vw;
+  margin-left: 25px;
+}
+
 .gallery-name-artists {
   font-size: 34px;
   line-height: 50px;
