@@ -46,9 +46,9 @@ export default class Footer extends Component {
   render() {
     return (
       <div id='footerDiv'>
-
+<hr/>
       <footer id="footer">
- 
+
          <div className="footerElement" id="footerAbout">
             <h2>ABOUT</h2>
             <Link to="/what-is-ora">WHAT IS ORA</Link>
