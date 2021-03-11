@@ -211,7 +211,7 @@ const ArtistProfileHooks = (props) => {
                             </div>
                             <div className='right'>
 
-                                <div className="image-container">
+                                <div className="image-container" id='artistImgC'>
                                     <img className="artist-image" src={image ? URL.createObjectURL(image) : data.imageUrl ? data.imageUrl : imageDefault} alt={image ? data.name.split(".")[0] : 'artistImage'} />
                                     {isEditMode ?
                                     <>
@@ -268,21 +268,21 @@ const ArtistProfileHooks = (props) => {
                         <div className='topInfo'>
                             <div className='left'>
                                 <div className="artist-input">
-                                    <span className="inputLabel">UNIQUE ARTWORKS PRICE RANGE/ </span>
+                                    <span className="inputLabel">UNIQUE ARTWORKS PRICE RANGE <br/> (MIN MAX IN k€) / </span>
                                     {isEditMode ?
                                         <>
-                                            <input type="text" name="artwork_min" onChange={onChange} value={data.artwork_min} className="inputClear min" placeholder="3"></input>
-                                            <input type="text" name="artwork_max" onChange={onChange} value={data.artwork_max} className="inputClear min" placeholder="3"></input>
+                                            <input type="text" name="artwork_min" onChange={onChange} value={data.artwork_min} className="inputClear min" placeholder="3"></input><span>-</span>
+                                            <input type="text" name="artwork_max" onChange={onChange} value={data.artwork_max} className="inputClear min" placeholder="3"></input><span className='textkEur'>k€</span>
                                         </> : <span> {data.artwork_min} K - {data.artwork_max} K </span>}
                                 </div>
                             </div>
                             <div className='right'>
                                 <div className="artist-input">
-                                    <span className="inputLabel">EDITIONS AND MULTIPLIES/ </span>
+                                    <span className="inputLabel">EDITIONS AND MULTIPLIES <br/> (MIN MAX IN k€)/ </span>
                                     {isEditMode ?
                                         <>
-                                            <input type="text" name="editions_min" onChange={onChange} value={data.editions_min} className="inputClear min" placeholder="3"></input>
-                                            <input type="text" name="editions_max" onChange={onChange} value={data.editions_max} className="inputClear min" placeholder="3"></input>
+                                            <input type="text" name="editions_min" onChange={onChange} value={data.editions_min} className="inputClear min" placeholder="3"></input><span>-</span>
+                                            <input type="text" name="editions_max" onChange={onChange} value={data.editions_max} className="inputClear min" placeholder="3"></input><span className='textkEur'>k€</span>
                                         </> : <span> {data.editions_min} K - {data.editions_max} K </span>}
                                 </div>
                             </div>

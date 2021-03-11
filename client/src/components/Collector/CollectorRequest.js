@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./CollectorRequest.css";
 import CollectorSideBar from "../CollectorSideBar/CollectorSideBar";
 import { fetchAllGalleries, sendRequestToGallery } from '../../api/service';
+import { withRouter } from 'react-router-dom';
 
 const CollectorRequest = (props) => {
   const initialState = {
@@ -48,11 +49,11 @@ const CollectorRequest = (props) => {
     const resData = await sendRequestToGallery(data);
     if (resData.success) {
       setData({...initialState, gallery: galleries[0].id});
-      // redirect later
+      return props.history.push("/collector/acquisitions");
     } else {
       alert("Sometime when wrong with our server");
     }
-    // setData(initialState);
+    setData(initialState);
     
   };
 
@@ -168,7 +169,7 @@ const CollectorRequest = (props) => {
               <textarea onChange={onChange} value={data.requestMessage} name="requestMessage" id="request-message" rows="8" placeholder="your gallery biography"></textarea>
             </div>
           </div>
-          <button className='send-request-btn' onClick={submitHandler}> SAVE ARTIST </button>
+          <button className='send-request-btn' onClick={submitHandler}> SEND THE REQUEST </button>
         </div>
       </div>
     </div>
@@ -176,4 +177,4 @@ const CollectorRequest = (props) => {
   );
 };
 
-export default CollectorRequest;
+export default withRouter(CollectorRequest);

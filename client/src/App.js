@@ -106,8 +106,8 @@ export default class App extends Component {
 
           {/* Collector */}
           
-          <Route exact path='/collector/request' render={props => <CollectorRequest setUser={this.setUser} user={this.state.user} {...props} />} />
-          <Route exact path='/collector/acquisitions' render={props => <CollectorAcquisitions2 setUser={this.setUser} user={this.state.user} {...props} />} />
+          <Route exact path='/collector/request' render={props => <CollectorRequest setUser={this.setUser} collectorName={this.state.collectorName} user={this.state.user} {...props} />} />
+          <Route exact path='/collector/acquisitions' render={props => <CollectorAcquisitions2 setUser={this.setUser} user={this.state.user} collectorName={this.state.collectorName} {...props} />} />
           <Route exact path='/collector/profile' render={props => <CollectorProfile setUser={this.setUser} changeCollectorName={this.changeCollectorName} user={this.state.user} {...props} />} />
         </Switch>
         <Footer />

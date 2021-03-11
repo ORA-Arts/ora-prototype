@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const requestSchema = new Schema({
   collector: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'Collector'
   },
   // preferredArtists: [{
   //   type: Schema.Types.ObjectId,
@@ -21,6 +21,14 @@ const requestSchema = new Schema({
     type: String,
     enum: ["Pending", "In Progress", "Confirmed"],
     default: "Pending"
+  },
+  offeredArtwork: {
+    type: Schema.Types.ObjectId,
+    ref: "Artwork"
+  },
+  offerStatus: {
+    type: String,
+    enum: ["Sent", "Accepted", "Cancelled", "Paid"]
   },
   messages: [{
     type: Schema.Types.ObjectId,

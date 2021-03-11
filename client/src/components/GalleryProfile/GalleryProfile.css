@@ -18,10 +18,13 @@
 }
 
 .container-profile .edit-button {
+    margin-top: 10px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
+
+.edit-button:focus {outline:0 !important;}
 
 .container-profile .btn-edit {
     width: 117px;
@@ -37,6 +40,7 @@
 .container-profile .btn-edit:hover {
     color: black;
     background-color: white;
+    border: 1px solid black;
 }
 
 .container-profile-content {
@@ -88,11 +92,12 @@
 .input-container-half {
     width: 47%;
     border: 1px solid black;
-    padding: 6px 0;
+    padding: 6px 5px;
     flex-grow: 0;
     flex-shrink:0;
     margin-bottom: 16px;
     background-color: #FEFEFE;
+    text-align: left;
     /* display: flex;
     align-items: center;
     justify-content: center; */
@@ -102,16 +107,17 @@
 .input-container-full {
     width: 100%;
     border: 1px solid black;
-    padding: 6px 0;
+    padding: 6px 5px;
     margin-bottom: 16px;
     background-color: #FEFEFE;
+    text-align: left;
 }
 
 .input-label {
     font-size: 14px;
-
     max-width: 50%;
     padding-left: 3px;
+    text-align: left;
     font-family: 'akzidenz-grotesk_probold';
 }
 
@@ -128,6 +134,7 @@
     width: 50%;
     text-transform: uppercase;
     font-family: 'akzidenz-grotesk_proregular';
+    text-align: left;
     /* max-width: 50%; */
 }
 
@@ -144,7 +151,7 @@
 }
 
 .biography-box {
-    margin: 12px;
+    margin: 0px;
 }
 
 #biography {
@@ -153,6 +160,7 @@
     margin: 16px 0 0 0;
     border: none;
     resize: none;
+    height: 35vh;
 }
 
 
@@ -169,10 +177,11 @@
 }
 
 .gallery-image {
-    width: 311px;
+    width: 45vw;
     height: auto;
     min-height: 200px;
     max-height: 435px;
+    max-width: 470px;
 }
 
 .btn-image {
@@ -181,9 +190,13 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 46px;
+    margin-top: 10px;
     background-color: white;
     border: 0.25px solid black;
     box-sizing: border-box;
+    margin-bottom: 10px;
+    text-align: center;
+    align-self: center;
 }
 
 .btn-image:hover {
@@ -192,7 +205,7 @@
 }
 
 .website-box {
-    margin: 19px 13px;
+    margin: 0px 0px;
 }
 
 .shipping-info {
@@ -257,4 +270,11 @@
 
 #website {
     width: 100% !important;
+}
+
+#gallImage{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 50vh;
 }
