@@ -6,6 +6,7 @@ import {
   editCollector,
 } from "../../api/service";
 import CollectorSideBar from "../CollectorSideBar/CollectorSideBar";
+import { Link } from "react-router-dom";
 
 const CollectorProfile = (props) => {
   const initialState = {
@@ -99,7 +100,7 @@ const CollectorProfile = (props) => {
         <div className="collectorHeader">
           <div className="collector-name">
             <h1>{data.firstName}</h1>
-            <button className="btnPrivate">MAKE A PRIVATE SALES REQUEST</button>
+            <Link to='/collector/request'><button className="btnPrivate">MAKE A PRIVATE SALES REQUEST</button></Link>
           </div>
         </div>
         <hr />
@@ -108,13 +109,14 @@ const CollectorProfile = (props) => {
           <div id="formContainerField">
             <div className="personalInformation">
               <h1 className="title-text" >PERSONAL INFORMATION</h1>
+              <hr />
               <div className="btnContainer">
                 <button className="btn-edit" onClick={startEditing}>
                   Edit
                 </button>
               </div>
             </div>
-            <hr />
+            
             <div className="input-block">
               <div className="input-container-half">
                 <span className="input-label input-lable-right">
@@ -168,6 +170,7 @@ const CollectorProfile = (props) => {
                   <span>{data.email}</span>
                 )}
               </div>
+
               <div className="input-container-half">
                 {/* should not display even in edit */}
                 <span className="input-label input-lable-left">
@@ -187,28 +190,30 @@ const CollectorProfile = (props) => {
                 )}
               </div>
             </div>
-            <div className="input-container-full">
-              <span className="input-label">ADDRESS/ </span>
-              {isEditMode ? (
-                <input
-                  type="text"
-                  name="address"
-                  onChange={onChange}
-                  value={data.address}
-                  className="input-no-border"
-                  placeholder="YOUR ADDRESS"
-                ></input>
-              ) : (
-                <span>{data.address}</span>
-              )}
+            <div className="input-block">
+              <div className="input-container-full">
+                <span className="input-label">ADDRESS/ </span>
+                {isEditMode ? (
+                  <input
+                    type="text"
+                    name="address"
+                    onChange={onChange}
+                    value={data.address}
+                    className="input-no-border"
+                    placeholder="YOUR ADDRESS"
+                  ></input>
+                ) : (
+                  <span>{data.address}</span>
+                )}
+              </div>
             </div>
             <hr />
             <div className="personalInformation">
               <h1>COLLECTOR DATA</h1>
             </div>
             <hr />
-            <div className="collectorType">
-              <span>COLLECTOR TYPE/ </span>
+            <div className='collector-type'>
+              <span >COLLECTOR TYPE/ </span>
               {isEditMode ? (
                 <div className="behaviourCheck">
                   {relCheckboxes.map((item, key) => (

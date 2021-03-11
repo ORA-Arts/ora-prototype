@@ -2,6 +2,7 @@
   margin-top: 5vh;
   margin-left:13px;
   margin-right: 20px;
+  margin-bottom: 40px;
 }
 
 #formContainer{
@@ -39,7 +40,7 @@
   justify-content: space-between;
 }
 
-.personalInformation h1{
+.personalInformation h1 {
   margin: 0;
   font-family: 'akzidenz-grotesk_proregular';
   font-size: 20px;
@@ -65,24 +66,36 @@
 }
 
 .personalInformation {
-  width: 100%;
-  height: 5vh;
+  width: 80vw;
+  height: 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-top: 5px; */
+  margin-top: 5px;
+  border: 0;
 }
 
-/* .personalInformation .btnContainer {
-margin-bottom: 1vw;
-} */
+.btnContainer > .btn-edit {
+padding: 1rem;
+}
 
-.collectorType{
-  width: 80vw;
+.collector-type {
+  width: 100%;
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+  justify-items: center;
   height: auto;
+}
+.collector-type span {
+  font-size: 14px;
+  /* max-width: 50%; */
+  padding-left: 3px;
+  text-align: left;
+  font-family: 'akzidenz-grotesk_probold';
+  width: 10rem;
 }
 
 .budget {
@@ -110,10 +123,10 @@ margin-bottom: 1vw;
   background-color:white;
   padding: 5px 10px;
   font-size: 12px;
-  border: 2px solid #444; 
+  border: 1px solid black; 
   width: 120px;
   height: 30px;
-  margin: 0 2vw;
+  margin: 0 1rem;
 }
 
 #newsBool label:hover {
@@ -133,7 +146,7 @@ margin-bottom: 1vw;
 }
 
 #newsBool input[type="radio"]:focus + label {
-  border: 2px solid black;
+  border: 1px solid black;
 }
 
 
@@ -152,7 +165,7 @@ margin-bottom: 1vw;
   padding: 12px;
   cursor: pointer;
   background-color: white;
-  border: 2px solid black;
+  border: 1px solid black;
   text-transform: uppercase;
 }
 
@@ -172,23 +185,29 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
 }
-
+/* .collector-type {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+} */
 /* BEHAVIOUR CHECK INPUTS */
 .behaviourCheck {
-  height: 75px;
+  width: 100%;
 }
 .behaviourCheck label {
   text-transform: uppercase;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  text-align:center;
+  text-align: center;
   background-color:white;
   padding: 5px 10px;
   font-size: 12px;
-  border: 2px solid #444; 
-  width: 10vw;
-  height: 40px;
+  border: 1px solid #000; 
+  height: 45px;
   margin: 1rem;
 }
 

@@ -115,7 +115,7 @@
 
 .input-label {
     font-size: 14px;
-    max-width: 50%;
+    /* max-width: 50%; */
     padding-left: 3px;
     text-align: left;
     font-family: 'akzidenz-grotesk_probold';
