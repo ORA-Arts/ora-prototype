@@ -161,8 +161,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height:35vh;
-  max-height:50vh;
 }
 
 #btnCS:hover {

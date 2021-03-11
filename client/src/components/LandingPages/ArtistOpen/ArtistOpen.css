@@ -349,7 +349,7 @@
 
 #getInTouch > button {
   width: 270px;
-  align-self: flex-start;
+  align-self: center;
 }
 
 @media (max-width: 481px) {
