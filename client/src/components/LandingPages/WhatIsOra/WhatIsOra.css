@@ -17,7 +17,6 @@
   background-color: #BE0E1D;
   display: flex;
   justify-content: space-between;
-  padding-left: 13px;
   padding-right: 20px;
 }
 }
@@ -29,8 +28,8 @@
     justify-content: space-between;
     padding-left: 13px;
     padding-right: 20px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
   }
 
@@ -80,14 +79,44 @@
     color: white;
     font-family: 'editorial_newultralight';
     text-transform: uppercase;
-    height: 360px;
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     padding-bottom: 10px;
+  }
+
+  #textTopAbout h1 {
+    border-top: 1.2px solid white;
+    padding: 1.5rem 0;
+  }
+
+  #textTopAbout h2{
+    display:none;
   }
   }
 
+  @media (min-width: 481px) {
+    #textTopAbout h3 {
+      font-size:0;
+      padding:0;
+      margin:0;
+    }
+    }
+
+  @media (max-width: 480px) {
+    #textTopAbout h3:before {
+      content: "What is Ora";
+      font-family: "akzidenz-grotesk_proregular";
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 28px;
+      letter-spacing: 0em;
+      text-transform: uppercase;
+      padding-bottom: .5rem;
+    }
+  }
 
 #textTopAbout h1 {
   font-size: 26px;

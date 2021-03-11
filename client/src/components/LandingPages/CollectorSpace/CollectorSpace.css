@@ -385,6 +385,15 @@
   margin-bottom: 1rem;
 }
 
+@media (min-width: 481px) {
+  #headerText h3 {
+    font-size:0;
+    padding:0;
+    margin:0;
+  }
+  }
+
+
 @media (max-width: 480px) {
   #headerText h3:before {
     content: "Collector Space ";
@@ -396,8 +405,8 @@
     letter-spacing: 0em;
     text-transform: uppercase;
     padding-bottom: .5rem;
-
   }
+  
   #headerText h1 {
     border-bottom: 1.2px solid white;
     border-top: 1.2px solid white;

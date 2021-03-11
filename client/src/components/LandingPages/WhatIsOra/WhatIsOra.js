@@ -11,6 +11,7 @@ export default function WhatIsOra() {
       <div>
         <div id="zero">
           <div id="textTopAbout">
+          <h3>                                     </h3>
             <h1>
               {" "}
               ORA is the only platform connecting artists, curators,
@@ -25,6 +26,7 @@ export default function WhatIsOra() {
               Our vision is to build a circular economy for the art world, with
               artists at its center.
             </h2>
+            
           </div>
           <button className="btnBlack">GET IN TOUCH FOR MORE INFOS</button>
         </div>

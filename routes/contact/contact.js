@@ -3,8 +3,9 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.ethereal.email", //replace with your email provider
-  port: 587,
+  host: "smtp.office365.com",  
+  secureConnection: true,
+  port:587,
   auth: {
     user: process.env.EMAIL,
     pass: process.env.PASS,
@@ -21,8 +22,11 @@ transporter.verify(function (err, success) {
 
 router.post('/', (req, res) => {
   const { name, email, topic, body } = req.body
+  const name2 = `${name} <${email}>`
+  console.log(name2)
   const mail = {
     from: name,
+    replyTo: email,
     sender: email,
     to: process.env.EMAIL,
     subject: topic,

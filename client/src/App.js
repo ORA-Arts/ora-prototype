@@ -21,8 +21,9 @@ import CollectorProfile from './components/CollectorProfile/CollectorProfile';
 import { Loggedin } from './services/auth';
 import { fetchGalleryName, fetchCollectorName } from './api/service';
 import CollectorRequest from './components/Collector/CollectorRequest';
-import CollectorAcquisitions from './components/Collector/CollectorAcquisitions';
+import CollectorAcquisitions2 from './components/Collector/CollectorAcquisitions.2.js';
 import ContactFormHooks from './components/ContactForm/ContactFormHooks';
+import SupportArtist from './components/LandingPages/SupportArtist/SupportArtist'
 
 
 
@@ -92,7 +93,7 @@ export default class App extends Component {
           />
           <Route exact path='/artist-open-call' component={ArtistOpen} />
           <Route exact path='/collector-space' component={CollectorSpace} />
-
+          <Route exact path='/support-an-artist-project' component={SupportArtist}   />
           <Route exact path='/contact-us' component={ContactFormHooks} />
           <Route exact path='/gallery/profile' render={props => <GalleryProfileHooks setUser={this.setUser} changeGalleryName={this.changeGalleryName} user={this.state.user} {...props} />} />
           <Route exact path='/gallery/sales' render={props => <GallerySale setUser={this.setUser} galleryName={this.state.galleryName} user={this.state.user} {...props} />} />
@@ -106,7 +107,7 @@ export default class App extends Component {
           {/* Collector */}
           
           <Route exact path='/collector/request' render={props => <CollectorRequest setUser={this.setUser} user={this.state.user} {...props} />} />
-          <Route exact path='/collector/acquisitions' render={props => <CollectorAcquisitions setUser={this.setUser} user={this.state.user} {...props} />} />
+          <Route exact path='/collector/acquisitions' render={props => <CollectorAcquisitions2 setUser={this.setUser} user={this.state.user} {...props} />} />
           <Route exact path='/collector/profile' render={props => <CollectorProfile setUser={this.setUser} changeCollectorName={this.changeCollectorName} user={this.state.user} {...props} />} />
         </Switch>
         <Footer />
