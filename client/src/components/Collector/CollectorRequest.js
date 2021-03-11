@@ -33,14 +33,6 @@ const CollectorRequest = (props) => {
   }, []);
 
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     await props.setUser(props.user);
-  //     const resData = await fetchCollectorName();
-  //     resData ? setData(resData) : se
-  //   }
-  //   fetchData();
-  // }, []);
 
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -73,7 +65,7 @@ const CollectorRequest = (props) => {
     <div className="collector-container-request">
       <div className="collector-header">
         <div className="collector-name">
-          <h1>{data.name}</h1>
+          <h1>{props.collectorName}</h1>
         </div>
        
       </div>

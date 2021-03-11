@@ -336,7 +336,7 @@ const CollectorAcquisitions2 = (props) => {
     <div className="app-container-collector-acquisitions">
       <div className="collector-container-acquisitions">
         <div className="collector-acquisitions-header">
-          <div className="collector-acquisitions-name">{props.collectorName}</div>
+          <div className="collector-acquisitions-name"><h1>{props.collectorName}</h1></div>
           <div>
             <button className="btn-request">MAKE A PRIVATE SALE</button>
             <button className="btn-request">REQUEST A SPECIAL SOURCING</button>
