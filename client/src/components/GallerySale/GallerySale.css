@@ -6,12 +6,12 @@
     padding-bottom: 63px;
     border-bottom: 1px solid black;
     margin-bottom: 24px;
-    border-top: 1px solid black;
+
 }
 
 .gallery-container-sales {
-    width: 1374px;
-    /* height: 1250px; */
+    width: 95vw;
+    height: auto;
     padding: 0;
     margin: 16px 32px;
 }
