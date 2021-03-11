@@ -23,6 +23,7 @@
   #AOC, #CS, #SAAP{
     width: 100vw;
     padding-top: 5vw;
+    height: auto !important;
   }
   
   #AOC {
@@ -161,8 +162,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height:35vh;
-  max-height:50vh;
+  height: 300px;
 }
 
 #btnCS:hover {

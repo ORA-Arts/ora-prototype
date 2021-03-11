@@ -5,10 +5,11 @@
   padding-bottom: 60px;
 }
 
-h1 {
+@media (min-width: 480px) { h1 {
   font-family: "editorial_newultralight";
   font-size: 30px;
   margin: 0px;
+}
 }
 @media (max-width: 481px) {
   h1 {
@@ -88,6 +89,7 @@ h1 {
   padding-bottom: 10px;
   margin: 0;
   margin-right: 20px;
+  font-size: 26px;
 }
 
 @media (min-width: 480px) {
@@ -120,7 +122,10 @@ h1 {
   padding-top: 10px;
   padding-right: 5vw;
   padding-left: 5vw;
+}
 
+#artistAllSections h1{
+  font-size: 26px;
 }
 
 #artistSection1 {
@@ -197,6 +202,7 @@ h1 {
 #textSelection p {
   text-transform: uppercase;
   text-align: center;
+  padding-right: 15px;
 }
 
 @media (max-width: 481px) {
@@ -263,7 +269,7 @@ h1 {
 }
 
 .memberComity h1 {
-  font-size: 16px;
+  font-size: 16px !important;
   font-family: "akzidenz-grotesk_proregular";
   margin: 0px;
 }
@@ -293,9 +299,10 @@ h1 {
 }
 
 #postSelection > img {
-  display: block;
-  height: 40vh;
+  width: 45vw;
+  height: auto;
   margin-top: 7px;
+  max-height: 450px;
 }
 
 @media (max-width: 481px) {
@@ -342,7 +349,7 @@ h1 {
 
 #getInTouch > button {
   width: 270px;
-  align-self: flex-start;
+  align-self: center;
 }
 
 @media (max-width: 481px) {
@@ -354,7 +361,7 @@ h1 {
 
 @media (max-width: 481px) {
 #postSelection {
-padding-bottom: 850px;
+padding-bottom: 720px;
 
 }
 }
