@@ -169,7 +169,7 @@ const CollectorRequest = (props) => {
               <textarea onChange={onChange} value={data.requestMessage} name="requestMessage" id="request-message" rows="8" placeholder="your gallery biography"></textarea>
             </div>
           </div>
-          <button className='send-request-btn' onClick={submitHandler}> SAVE ARTIST </button>
+          <button className='send-request-btn' onClick={submitHandler}> SEND THE REQUEST </button>
         </div>
       </div>
     </div>
