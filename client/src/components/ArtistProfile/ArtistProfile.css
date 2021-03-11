@@ -152,43 +152,39 @@ justify-content: space-between;
 
 
 
- #ck-button {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+#ck-button label {
+    display: inline-flex;
     justify-content: center;
-    align-content: center;
-    align-items: stretch;
-     border:1px solid black;
-     text-align: center;
-     margin: .3rem;
- }
- 
- 
- #ck-button:hover {
-     background-color:#EFEFEF;
-     border:1px solid black;
-     color:black;
- }
- 
- #ck-button label {
-  text-align: center;
-  padding: .3rem;
-  line-height: 26px;
- }
- 
- #ck-button label span {
-     text-align:center;
- }
- 
- #ck-button label input {
-     display: none;
- }
- 
- #ck-button input:checked + span {
-     background-color:black;
-     color:#fff;
-}
+    align-items: center;
+    text-align:center;
+    background-color:white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border: 1px solid black; 
+    width: 120px;
+    height: 30px;
+    margin: 0 .5rem;
+  }
+  
+  #ck-button label:hover {
+    background-color:black;
+    color: white;
+  }
+  
+  #ck-button input[type="checkbox"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+  
+  #ck-button input[type="checkbox"]:checked + label {
+    background-color: black;
+    color: white;
+  }
+  
+  #ck-button input[type="checkbox"]:focus + label {
+    border: 1px solid black;
+  }
 
  .myArtists .btn-image {
      margin-left: 16px;

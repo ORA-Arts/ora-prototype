@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import ProfileSideBar from "../ProfileSideBar/ProfileSideBar";
 import { fetchArtist, addNewArtist, fetchArtistById, fetchGallery, editArtist } from '../../api/service';
 import imageDefault from './image-default.png';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
 // only allow when user create the profile, so if the gallery exist, else redirect to profile.
@@ -45,7 +45,7 @@ const ArtistProfileHooks = (props) => {
             <input type={type} name={name} checked={checked} onChange={onChange} />
         );
     };
-    
+
 
     const handleCheckboxChange = event => {
         //medium
@@ -57,17 +57,17 @@ const ArtistProfileHooks = (props) => {
         // console.log("checkedItems: ", checkedItems);
         selMediums = Object.keys(checkedItems)
         setData({ ...data, 'medium': selMediums })
-    
+
     }
 
     const handleCheckboxRel = event => {
-    //relationship
-    
-    let selRelationships = ''
-    setCheckedRel(event.target.name);
-    // console.log("checked Relationships: ", checkedRel);
-    
-    setData({ ...data, 'relationship': event.target.name })
+        //relationship
+
+        let selRelationships = ''
+        setCheckedRel(event.target.name);
+        // console.log("checked Relationships: ", checkedRel);
+
+        setData({ ...data, 'relationship': event.target.name })
     }
 
     // console.log(checkedRel)
@@ -122,7 +122,7 @@ const ArtistProfileHooks = (props) => {
         setIsEditMode(false);
         setImage(null);
         setArtistId(resData._id);
-        
+
     }
     const startEditing = () => {
         setIsEditMode(!isEditMode);
@@ -170,15 +170,15 @@ const ArtistProfileHooks = (props) => {
             <div className="gallery-name-artists">
                 {props.galleryName}
             </div>
-            <hr/>
+            <hr />
             <div className='myArtists'>
                 <ProfileSideBar content="my-artists" />
                 <div className='artistsContainer'>
-                        {isViewMode ?
+                    {isViewMode ?
                         <div className="edit-button">
                             <button className="btn-edit" onClick={startEditing}>Edit</button>
                         </div>
-                        : null }
+                        : null}
                     <div className='myArtistsHeader'>
                         <hr />
                         <span className='subtitle'>ARTIST INFORMATION</span>
@@ -214,11 +214,11 @@ const ArtistProfileHooks = (props) => {
                                 <div className="image-container" id='artistImgC'>
                                     <img className="artist-image" src={image ? URL.createObjectURL(image) : data.imageUrl ? data.imageUrl : imageDefault} alt={image ? data.name.split(".")[0] : 'artistImage'} />
                                     {isEditMode ?
-                                    <>
-                                    <input type={(isViewMode && !isEditMode) ? "hidden" : "file"} id="file" className="input-hidden" onChange={fileHandler} />
-                                    <label htmlFor="file" className="btn-image">CHANGE IMAGE</label>
-                                    </>
-                                    : null }   
+                                        <>
+                                            <input type={(isViewMode && !isEditMode) ? "hidden" : "file"} id="file" className="input-hidden" onChange={fileHandler} />
+                                            <label htmlFor="file" className="btn-image">CHANGE IMAGE</label>
+                                        </>
+                                        : null}
                                 </div>
                             </div>
                         </div>
@@ -226,16 +226,16 @@ const ArtistProfileHooks = (props) => {
                             <div className="medium-input">
                                 <span className="inputLabel">MEDIUM/ </span>
                                 {isEditMode ?
-                                    checkboxes.map(item => (
-                                        <div id="ck-button" className="inputClear">
-                                            <label key={item.key} >
-                                                <Checkbox
-                                                    name={item.name}
-                                                    checked={checkedItems[item.name]}
-                                                    onChange={handleCheckboxChange}
-                                                />
-                                                <span>{item.name}</span>
-                                            </label>
+                                    checkboxes.map((item, key) => (
+                                        <div key={key} id="ck-button" className="inputClear">
+                                            <input
+                                                type="checkbox"
+                                                id={item.name}
+                                                name={item.name}
+                                                checked={checkedItems[item.name]}
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <label htmlFor={item.name}>{item.name}</label>
                                         </div>
                                     )) :
                                     // <input type="text" name="medium" onChange={onChange} value={data.medium} className="inputClear medium" placeholder="Medium"></input> :
@@ -246,14 +246,14 @@ const ArtistProfileHooks = (props) => {
                                 {isEditMode ?
                                     relCheckboxes.map(item => (
                                         <div id="ck-button" className="inputClear">
-                                            <label key={item.key} >
-                                                <Checkbox
-                                                    name={item.name}
-                                                    checked={checkedRel === item.name}
-                                                    onChange={handleCheckboxRel}
-                                                />
-                                                <span>{item.name}</span>
-                                            </label>
+                                            <input
+                                                type="checkbox"
+                                                id={item.name}
+                                                name={item.name}
+                                                checked={checkedItems[item.name]}
+                                                onChange={handleCheckboxRel}
+                                            />
+                                            <label htmlFor={item.name}>{item.name}</label>
                                         </div>
                                     ))
                                     : <span> {data.relationship} </span>}
@@ -268,17 +268,17 @@ const ArtistProfileHooks = (props) => {
                         <div className='topInfo'>
                             <div className='left'>
                                 <div className="artist-input">
-                                    <span className="inputLabel">UNIQUE ARTWORKS PRICE RANGE <br/> (MIN MAX IN k€) / </span>
+                                    <span className="inputLabel">UNIQUE ARTWORKS PRICE RANGE <br /> (MIN MAX IN K€) / </span>
                                     {isEditMode ?
                                         <>
                                             <input type="text" name="artwork_min" onChange={onChange} value={data.artwork_min} className="inputClear min" placeholder="3"></input><span>-</span>
-                                            <input type="text" name="artwork_max" onChange={onChange} value={data.artwork_max} className="inputClear min" placeholder="3"></input><span className='textkEur'>k€</span>
+                                            <input type="text" name="artwork_max" onChange={onChange} value={data.artwork_max} className="inputClear min" placeholder="3"></input><span className='textkEur'>K/€</span>
                                         </> : <span> {data.artwork_min} K - {data.artwork_max} K </span>}
                                 </div>
                             </div>
                             <div className='right'>
                                 <div className="artist-input">
-                                    <span className="inputLabel">EDITIONS AND MULTIPLIES <br/> (MIN MAX IN k€)/ </span>
+                                    <span className="inputLabel">EDITIONS AND MULTIPLIES <br /> (MIN MAX IN k€)/ </span>
                                     {isEditMode ?
                                         <>
                                             <input type="text" name="editions_min" onChange={onChange} value={data.editions_min} className="inputClear min" placeholder="3"></input><span>-</span>
@@ -306,7 +306,7 @@ const ArtistProfileHooks = (props) => {
                             <textarea name="mainQuote" onChange={onChange} value={data.mainQuote} id="biography" className="biography-text" rows="5" placeholder="Your quote"></textarea> :
                             <span className="biography-text"> {data.mainQuote} </span>}
                     </div>
-                    {isEditMode ? <button className='btnBlack' onClick={submitHandler}> SAVE ARTIST </button> : null }
+                    {isEditMode ? <button className='btnBlack' onClick={submitHandler}> SAVE ARTIST </button> : null}
                 </div>
             </div>
         </>
