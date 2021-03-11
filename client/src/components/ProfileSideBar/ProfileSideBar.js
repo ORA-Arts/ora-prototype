@@ -9,7 +9,7 @@ const ProfileSideBar = (props) => {
         <div className="gallegy-sidebar text-left">
             <div className="sidebar-box">
                 <div className={`sidebar-text ${currentContent === enumPos[0] ? "sidebar-text-bold" : null }`}><Link to={'/gallery/profile'}>MY GALLERY PROFILE</Link></div>
-                <div className={`sidebar-text ${currentContent === enumPos[1] ? "sidebar-text-bold" : null }`}>MY SALES</div>
+                <div className={`sidebar-text ${currentContent === enumPos[1] ? "sidebar-text-bold" : null }`}><Link to={'/gallery/sales'}>MY SALES</Link></div>
                 <div className={`sidebar-text ${currentContent === enumPos[2] ? "sidebar-text-bold" : null }`}><Link to={'/gallery/artists'}>MY ARTISTS</Link></div>
                 <div className={`sidebar-text ${currentContent === enumPos[3] ? "sidebar-text-bold" : null }`}><Link to={'/gallery/inventory'}>MY INVENTORY</Link></div>
                 <div className={`sidebar-text ${currentContent === enumPos[4] ? "sidebar-text-bold" : null }`}>MY COLLECTIONS</div>
