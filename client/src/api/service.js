@@ -113,6 +113,12 @@ export const makingCollectorDecision = async (decision, requestId) => {
     return res.data;
 };
 
+
+export const sendMessageCollector = async (data) => {
+    const res = await axios.post("/api/collector/acquisitions/message", data);
+    return res.data;
+};
+
 // gallery sales
 export const fetchAllRequests = async () => {
     const res = await axios.get("/api/gallery/sales");
@@ -123,8 +129,6 @@ export const sendOffer = async (data) => {
     const res = await axios.post("/api/gallery/sales/offer", data);
     return res.data;
 };
-
-
 
 //collector profile
 export const fetchCollector = async () => {

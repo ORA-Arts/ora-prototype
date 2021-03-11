@@ -49,6 +49,9 @@ const ArtworkView = (props) => {
                 {generateThumbnails()}
               </div>
             </div>
+            <div className="inventory-btn-bottom">
+                <button onClick={props.closeArtworkView} className="btn-back-acquisitions">BACK</button>
+            </div>
           </div>
           <div className="artwork-detail-info">
             <div className="artwork-view-info-field">
@@ -154,9 +157,6 @@ const ArtworkView = (props) => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="inventory-btn-bottom">
-          <button onClick={props.closeArtworkView} className="btn-back-inventory">BACK TO MY INVENTORY</button>
         </div>
       </div>
     </div>

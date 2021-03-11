@@ -583,3 +583,35 @@ label:hover {
     font-size: 14px;
     font-weight: normal;
 }
+
+.btn-back-acquisitions {
+    width: 240px;
+    height: 60px;
+    margin-top: 32px;
+    color: black;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 12px;
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.btn-back-acquisitions:hover {
+    color: white;
+    background-color: black;
+}
+
+.accquisitions-message-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.accquisitions-message-container textarea {
+  width: 80%;
+  border: 1px solid black;
+  padding: 12px;
+  resize: none;
+  margin-bottom: 12px;
+}
