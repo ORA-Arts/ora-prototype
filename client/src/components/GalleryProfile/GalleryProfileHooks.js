@@ -158,7 +158,7 @@ const GalleryProfile = (props) => {
                   } 
               </div>
             </div>
-            <div className="input-block large-box">
+            <div className="input-block">
               <div className="input-container-half">
                   <div className="biography-box">
                       <div className="input-label input-lable-left">GALLERY BIOGRAPHY</div>
@@ -171,7 +171,7 @@ const GalleryProfile = (props) => {
                   </div>
               </div>
               <div className="input-container-half remove-border">
-                  <div className="image-container">
+                  <div className="" id='gallImage'>
                       <img className="gallery-image" src={image ? URL.createObjectURL(image) : data.imageUrl ? data.imageUrl : imageDefault} alt={image ? image.name.split(".")[0] : "default-image"} />
                       {isEditMode ? 
                       <>
@@ -181,9 +181,9 @@ const GalleryProfile = (props) => {
                       : null }
                       {/* <button className="btn-image">CHANGE IMAGE</button> */}
                   </div>
-                  <div className="input-container-half">
+                  <div className="input-container-full">
                       <div className="website-box">
-                          <div className="input-label input-lable-left">WEBSITE </div>
+                          <div className="input-label input-label-full">WEBSITE </div>
                           <div className="input-lable-left">
                               {isEditMode ? 
                                 <input type="text" name="website" id="website" onChange={onChange} value={data.website} className="input-no-border" placeholder="yourgallerywebsite@website.com"></input> :
