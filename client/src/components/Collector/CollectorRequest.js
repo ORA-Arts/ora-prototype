@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./CollectorRequest.css";
 import CollectorSideBar from "../CollectorSideBar/CollectorSideBar";
-import { fetchAllGalleries, sendRequestToGallery } from '../../api/service';
+import { fetchAllGalleries, fetchCollectorName, sendRequestToGallery } from '../../api/service';
 import { withRouter } from 'react-router-dom';
 
 const CollectorRequest = (props) => {
@@ -13,6 +13,7 @@ const CollectorRequest = (props) => {
     budget: 10,
     gallery: null,
     requestMessage: "",
+    name:""
   };
 
   const [data, setData] = useState(initialState);
@@ -30,6 +31,16 @@ const CollectorRequest = (props) => {
     }
     fetchData();
   }, []);
+
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     await props.setUser(props.user);
+  //     const resData = await fetchCollectorName();
+  //     resData ? setData(resData) : se
+  //   }
+  //   fetchData();
+  // }, []);
 
   const onChange = (event) => {
     const { name, value } = event.target;
@@ -62,9 +73,9 @@ const CollectorRequest = (props) => {
     <div className="collector-container-request">
       <div className="collector-header">
         <div className="collector-name">
-          LISA ABRAHAM
+          <h1>{data.name}</h1>
         </div>
-        <button className="btn-request">REQUEST A SPECIAL SOURCING</button>
+       
       </div>
       <div className="container-request-content">
         <CollectorSideBar content="create-request"/>
@@ -107,7 +118,7 @@ const CollectorRequest = (props) => {
             <label htmlFor="edition">
               <div>
                 <div className="artwork-type-title">AN EDITION</div>
-                <div className="artwork-type-remark">(please note editions for name of the artist approximately range from estimation basse - haute)</div>
+                <div className="artwork-type-remark">(please note editions for name of the artist approximately range from 1k to 5k€</div>
               </div>
             </label>
           </div>
@@ -121,13 +132,13 @@ const CollectorRequest = (props) => {
             <input type="radio" id="Sculpture" value="Sculpture" onChange={onChange} name="medium" />
             <label htmlFor="Sculpture">SCULPTURE</label>
             <input type="radio" id="Painting" value="Painting" onChange={onChange} name="medium" />
-            <label htmlFor="Painting">Painting</label>
+            <label htmlFor="Painting">PAINTING</label>
             <input type="radio" id="Photography" value="Photography" onChange={onChange} name="medium" />
-            <label htmlFor="Photography">Photography</label>
+            <label htmlFor="Photography">PHOTOGRAPHY</label>
             <input type="radio" id="Drawing" value="Drawing" onChange={onChange} name="medium" />
-            <label htmlFor="Drawing">Drawing</label>
+            <label htmlFor="Drawing">DRAWING</label>
             <input type="radio" id="Performance" value="Performance" onChange={onChange} name="medium" />
-            <label htmlFor="Performance">Performance</label>
+            <label htmlFor="Performance">PERFORMANCE</label>
           </div>
           <div className="collector-request-title">
             <hr />
@@ -164,9 +175,9 @@ const CollectorRequest = (props) => {
             </span>
           </div>
           <div className="collector-request-message">
-            <div className="collector-text-area">GALLERY BIOGRAPHY</div>
+            <div className="collector-text-area"></div>
             <div>
-              <textarea onChange={onChange} value={data.requestMessage} name="requestMessage" id="request-message" rows="8" placeholder="your gallery biography"></textarea>
+              <textarea onChange={onChange} value={data.requestMessage} name="requestMessage" id="request-message" rows="8" placeholder="Type your message here"></textarea>
             </div>
           </div>
           <button className='send-request-btn' onClick={submitHandler}> SEND THE REQUEST </button>
