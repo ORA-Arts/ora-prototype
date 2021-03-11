@@ -20,7 +20,7 @@ const app = express();
 app.use(
   cors({
     // this could be multiple domains/origins, but we will allow just our React app
-    origin: ['http://localhost:3000', 'https://ora-art-prototype.herokuapp.com']
+    origin: ['http://localhost:3000']
   })
 );
 
