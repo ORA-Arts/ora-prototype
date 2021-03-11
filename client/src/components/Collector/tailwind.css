@@ -440,17 +440,6 @@ a {
  * https://github.com/mozdevs/cssremedy/issues/14
  */
 
-img,
-svg,
-video,
-canvas,
-audio,
-iframe,
-embed,
-object {
-  display: block;
-  vertical-align: middle;
-}
 
 /**
  * Constrain images and videos to the parent width and preserve
@@ -459,11 +448,6 @@ object {
  * https://github.com/mozdevs/cssremedy/issues/14
  */
 
-/* img, */
-video {
-  max-width: 100%;
-  height: auto;
-}
 
 .container {
   width: 100%;

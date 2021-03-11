@@ -19,10 +19,14 @@
 
 .display-block {
   display: block;
+  opacity: 1;
 }
 
 .display-none {
   display: none;
+  -webkit-transition: opacity 0.35s ease;
+  -moz-transition: opacity 0.35s ease;
+  transition: opacity 1s ease;
 }
 
 #signUpContainer{
@@ -66,6 +70,7 @@
   font-size: 16px;
   line-height: 21px;
   text-align: center;
+  border: 1px solid black;
 }
 
 #selectUser {

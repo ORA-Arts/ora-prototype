@@ -1,15 +1,13 @@
 /* HOMEPAGE */
 /* Main container for images */
 
-
-
 #allImagesContainer {
   min-width: 96vw;
   display: flex;
   justify-content: space-between;
   text-decoration: none;
-  padding-bottom:25px;
-  margin-left:2vw;
+  padding-bottom: 25px;
+  margin-left: 2vw;
   padding-right: 20vw;
 }
 
@@ -17,64 +15,100 @@
   #allImagesContainer {
     display: flex;
     flex-direction: column;
-    padding-bottom: 250px;
+    padding-bottom: 260px;
   }
+}
+
+@media (max-width: 481px) {
+  #AOC, #CS, #SAAP{
+    width: 100vw;
+    padding-top: 5vw;
+    height: auto !important;
+  }
+  
+  #AOC {
+    background-color: #e75d82;
   }
 
-  @media (max-width: 481px) {
-    #AOC{
-      background-color:#E75D82;
-      width:100vw;
-    }
-  #AOC h3{
-  display: block;
+  #CS {
+    background-color: #d2d1ce;
+
+  }
+  #SAAP {
+    background-color: #a89570;
+
+  }
+
+  #AOC h3, #CS h3, #SAAP h3 {
+    display: block;
     border-top: 1.2px solid white;
-    font-family: 'editorial_newultralight';
+    font-family: "editorial_newultralight";
     font-size: 24px;
     color: white;
     margin-right: 15px;
     margin-left: 15px;
     width: 90vw;
-    margin-top: 0;
-    padding-top: 15px;
+    margin-top: 5px;
+    padding-top: 10px;
   }
-  
-  .blurEffectHP {
+  #btnAOC, #btnCS, #btnSAAP{
+    color: white;
+    border: none;
+    align-self: center;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  #btnAOC{
+    background-color: #e75d82;
+  }
+  #btnCS {
+    background-color: #d2d1ce;
+  }
+
+  #btnSAAP {
+    background-color: #a89570;
+  }
+
+  .blurEffectHP, .imageContainer {
+    height: 60vh;
     width: 100vw;
-    height: 70vh;
+  }
+
+  .blurEffectHP {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
   }
-  
-  #btnAOC {
-    background-color:#E75D82;
-    color: white;
-    border: none;
-    align-self: center;
-    font-size:14px;
-  }
-  .imageContainer h2{
-    display:none;
-  }
-  
-  #AOC p:before{
-    content: "ARTIST OPEN CALL ";
-    font-family: "akzidenz-grotesk_proregular";
-    font-size: 22px;
+
+  #AOC p:before, #CS p:before, #SAAP p:before {
+    font-family: "akzidenz-grotesk_probold";
+    font-size: 18px;
     color: white;
     font-style: normal;
-    font-weight: 700;
-    line-height: 28px;
-    letter-spacing: 0em;
     margin-left: 15px;
     text-transform: uppercase;
-    padding-bottom: .5rem;
-    }
-  
   }
 
-.blurEffectHP p{
+  #AOC p:before {
+    content: "ARTIST OPEN CALL ";
+  }
+
+  #CS p:before {
+    content: "COLLECTOR SPACE";
+  }
+
+  #SAAP p:before {
+    content: "SUPPORT AN ARTIST PROJECT";
+  }
+
+  .imageContainer h2 {
+    display: none;
+  }
+}
+
+.blurEffectHP p {
   font-size: 0;
   margin: 0;
   padding: 0;
@@ -114,115 +148,99 @@
 } */
 
 .blurEffectHP:hover #btnAOC {
-  background-color:#E75D82;
+  background-color: #e75d82;
   color: white;
   border: solid 1px white;
 }
 
-.blurEffectHP:hover #AOC{
-  background-color:#E75D82;
+.blurEffectHP:hover #AOC {
+  background-color: #e75d82;
   color: white;
 }
 
- #AOC{
+#AOC, #CS, #SAAP {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 300px;
 }
 
 #btnCS:hover {
-  background-color:#D2D1CE;
+  background-color: #d2d1ce;
   color: white;
   border: solid 1px white;
 }
 
 .blurEffectHP:hover #CS {
-  background-color:#D2D1CE;
+  background-color: #d2d1ce;
   color: white;
 }
 
-#CS{
-  display: flex;
-  flex-direction: column;
-}
 
 #btnSAAP:hover {
-  background-color:#A89570;
+  background-color: #a89570;
   color: white;
   border: solid 1px white;
 }
 
 .blurEffectHP:hover #SAAP {
-  background-color:#A89570;
+  background-color: #a89570;
   color: white;
 }
 
-#SAAP{
-  display: flex;
-  flex-direction: column;
+
+/* Position the text */
+.imageContainer h2 {
+  padding-top: 25px;
+  font-size: 16px;
+  text-decoration: none;
+  margin-left: 15px;
+}
+.blurEffectHP:hover h3 {
+  display: block;
+  font-family: "editorial_newultralight";
+  font-size: 24px;
+  color: white;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
+.imageContainer h3 {
+  display: none;
+}
 
-
-  /* Position the text */
-  .imageContainer h2 {
-    padding-top: 25px;
-    font-size: 16px;
-    text-decoration: none;
-    margin-left: 15px;
-    
-  }
-  .blurEffectHP:hover h3{
-    display: block;
-    font-family: 'editorial_newultralight';
-    font-size: 24px;
-    color: white;
-    margin-right: 15px;
-    margin-left:15px;
-  }
-
-  .imageContainer h3{
-    display: none;
-
-  }
-
-
-.btnHP{
+.btnHP {
   align-self: flex-end;
   margin-bottom: 15px;
   margin-right: 15px;
 }
 
-    
-  .textBlack {
+.textBlack {
+  text-decoration: none;
+}
+.textWhite {
+  text-decoration: none;
+}
 
-    text-decoration: none;
-  }
-  .textWhite {
+/* Handle the images */
 
-    text-decoration: none;
-  }
+.imageContainer {
+  display: block;
+  height: 85vh;
+  width: 31.1vw;
+  margin: 0 5px;
+}
 
-
-  /* Handle the images */
-
+@media (max-width: 481px) {
   .imageContainer{
-    display: block;
-    height: 85vh;
-    width: 31.1vw;
-    margin: 0 5px;;
-  }
-
-  @media (max-width: 481px) {
-    .imageContainer{
-      width: 100vw;
-      height: 70vh;
-    margin-bottom: 5vw; 
+    width: 100vw;
+    height: 60vh;
+    margin-bottom: 5vw;
     display: block;
     margin-left: -6px;
   }
-  }
-
+}
+@media (min-width: 480px) {
   .blurEffectHP {
     display: block;
     height: 85vh;
@@ -231,38 +249,37 @@
     flex-direction: column;
     justify-content: space-between;
   }
+}
 
-  .blurEffectHP:hover{
-    backdrop-filter: blur(0px);
-  }
+.blurEffectHP:hover {
+  backdrop-filter: blur(0px);
+}
 
-  .imageContainer h2{
-    visibility: visible;
-  }
-
+.imageContainer h2 {
+  visibility: visible;
+}
 
 #imageLeft {
-  background-image: url('../../../images/HOMEPAGE\ 1.png');
+  background-image: url("../../../images/HOMEPAGE\ 1.png");
   background-repeat: no-repeat;
   background-size: cover;
   display: block;
   background-position: center;
 }
 
-#imageMiddle{
+#imageMiddle {
   background-image: url("../../../images/HOMEPAGE\ 2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
 
-} 
-
-#imageRight{
+#imageRight {
   background-image: url("../../../images/HOMEPAGE\ 3.png");
   background-position: center;
   background-size: cover;
-} 
+}
 
-.textWhite{
+.textWhite {
   color: white;
 }
