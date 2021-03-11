@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { logout } from "../../services/auth";
 import "./Navbar.css";
 import logo from "../../images/LOGO_1.png"
@@ -68,16 +68,16 @@ handleLogout = () => {
      </a>
        <ul id="navtitles">
          <li>
-           <Link className="link" to="/what-is-ora">WHAT IS ORA?</Link>
+           <NavLink className="link" activeClassName='activeLink' to="/what-is-ora">WHAT IS ORA?</NavLink>
          </li>
          <li>
-           <Link className="link" to='/artist-open-call'>ARTIST OPEN CALL</Link>
+           <NavLink className="link" activeClassName='activeLink' to='/artist-open-call'>ARTIST OPEN CALL</NavLink>
          </li>
          <li> 
-           <Link className="link" to='/collector-space'>COLLECTOR SPACE</Link>
+           <NavLink className="link" activeClassName='activeLink' to='/collector-space'>COLLECTOR SPACE</NavLink>
          </li>
          <li>
-           <Link className="link"to='/support-an-artist-project'>SUPPORT AN ARTIST PROJECT</Link>
+           <NavLink className="link" activeClassName='activeLink' to='/support-an-artist-project'>SUPPORT AN ARTIST PROJECT</NavLink>
          </li>
          {this.state.user ? (
            <>
