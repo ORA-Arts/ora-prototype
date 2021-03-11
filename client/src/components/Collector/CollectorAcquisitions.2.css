@@ -104,7 +104,7 @@
   color: #68d390;
 }
 .openRequest {
-  width: 136px;
+  width: 145px;
   padding: 10px 0;
   color: white;
   background-color: #bebebe;
@@ -112,7 +112,7 @@
 }
 
 .openRequest-green {
-width: 136px;
+width: 145px;
   padding: 10px 0;
   color: white;
   background-color: green;
@@ -126,7 +126,7 @@ width: 136px;
 }
 
 .btnAccept {
-  width: 136px;
+  width: 145px;
   height: 37px;
   color: white;
   background-color: #228102;
@@ -138,6 +138,20 @@ width: 136px;
   background-color: white;
   border: 1px solid #228102;
 }
+
+.btnCancel {
+    width: 145px;
+    height: 37px;
+    color: white;
+    background-color: red;
+    border: none;
+  }
+  
+  .btnCancel:hover {
+    color: red;
+    background-color: white;
+    border: 1px solid red;
+  }
 
 .acquisitions-content-header {
   width: 100%;
@@ -445,7 +459,8 @@ label:hover {
 }
 
 .offerDetails article ul {
-  padding: 1rem;
+  /* padding: 1rem; */
+  padding-left: 1rem;
   list-style: none;
 }
 .offerDetails .actionButtons {
@@ -462,6 +477,12 @@ label:hover {
     font-size: 16px;
     font-weight: bold;
     color: #64b3ed;
+}
+
+.offerDetails img {
+    width: 135px;
+    height: 180px;
+    object-fit: cover;
 }
 
 .status-in-progress-accepted {

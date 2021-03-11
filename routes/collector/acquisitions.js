@@ -111,5 +111,37 @@ router.post("/request",  isAuthenticated,  async (req, res, next) => {
   }
 });
 
+router.post("/decision", isAuthenticated,  async (req, res, next) => {
+  const userId =  req.session.passport.user;
+  let collector;
+  try {
+    collector = await Collector.findOne({user: userId});
+    console.log(collector);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Error while attempting to access database' });
+  }
+  if (!collector) {
+    console.log("Unauthorized")
+    return res.status(403).json({message: "Unauthorized"});
+  }
+
+  const {decision, requestId} = req.body;
+  try {
+    if (decision === "accept") {
+      const updatedRequest = await Request.findOneAndUpdate({_id: requestId, collector: collector._id }, {offerStatus: "Accepted"}, {new: true});
+      if (updatedRequest) return res.status(200).json({success: true, decision: "accept"});
+    }
+    if (decision === "cancel") {
+      const updatedRequest = await Request.findOneAndUpdate({_id: requestId, collector: collector._id }, {offerStatus: "Cancelled", status: "Confirmed"}, {new: true});
+      if (updatedRequest) return res.status(200).json({success: true, decision: "cancel"});
+    }
+    return;
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Error while attempting to access database' });
+  }
+});
+
 
 module.exports = router;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./CollectorAcquisitions.2.css";
 import "./tailwind.css";
 import CollectorSideBar from "../CollectorSideBar/CollectorSideBar";
-import { fetchAllAcquisitions } from '../../api/service';
+import { fetchAllAcquisitions, makingCollectorDecision } from '../../api/service';
 import artworkImage from '../../images/artwork.jpg'
 
 const CollectorAcquisitions2 = (props) => {
@@ -32,13 +32,19 @@ const CollectorAcquisitions2 = (props) => {
   }, []);
 
   const openRequestDetails = (acquisition) => {
-    toggleList(false)
-    return requestDetails
+    toggleList(false);
+    return requestDetails;
   }
   const openRequestList = (status) => {
     toggleList(true)
     setStatus(status);
-  }
+  };
+
+  const decisionHandler = async (decision, requestId) => {
+    console.log(decision, requestId);
+    const resDataAPI = await makingCollectorDecision(decision, requestId);
+    console.log(resDataAPI);
+  };
 
   const timeRemain = (time) => {
     const pastHours = Math.floor(
@@ -101,56 +107,51 @@ const CollectorAcquisitions2 = (props) => {
     )
   }) : null;
 
+  const dateConverter = (mongoDate) => {
+    const date = new Date(mongoDate);
+    return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
+  };
 
   const requestDetails = activeAcquisition ?
     <>
       <tr className={trClassR}>
         <td className={tdClassR}>
-          <div>LISA ABRAHAM</div>
-          <div>15.02.21</div>
+          <div>{`${activeAcquisition.collector.firstName} ${activeAcquisition.collector.lastName}`}</div>
+          <div>{dateConverter(activeAcquisition.createdAt)}</div>
         </td>
         <td className={tdClassR}>
           <article>
-            Dear Neu Galerie,
-
-            My name is Lisa and I am based in New York.
-            I discovered Birgit Megerle’s work by accident and was immediately struck : I’d really like to find out about available works if there are any.
-
-            Looking forward to hearing from you and my best,
-            Lisa
+            {activeAcquisition.messages[0].message}
           </article>
         </td>
       </tr>
       <tr className={trClassR}>
         <td className={tdClassR}>
-          <span className='text-medium'>GALERIE NEU</span>
-          <span className='text-sm'>16.02.21</span>
+          <div className='text-medium'>{activeAcquisition.gallery.name}</div>
+          <div className='text-sm'>{dateConverter(activeAcquisition.offeredArtwork.createdAt)}</div>
         </td>
         <td className={tdClassR}>
           <article className='pb-5'>
-            Dear Lisa,
-
-            Thank you for reaching out, it’s a pleasure to meet !
-
-            And thank you for your interest in Birgit Megerle
-            We do have available paintings, I have attached an offer below for one of her paintings !
-            </article>
+            {activeAcquisition.messages[1].message}
+          </article>
           <div className="offerDetails">
             <article>
               <img src={artworkImage} alt="Artwork" />
               <ul>
-               <li>Brigit Megerle</li> 
-               <li>Title & Year</li>
-               <li>Signed, dated and numbered</li>  
-               <li>Material</li> 
-               <li>Dimension</li> 
-               <li>Stock number</li> 
-               <li>Price</li> 
-               <li>Location</li> 
+               <li className="offer-artist-name">{activeAcquisition.offeredArtwork.artist.name}</li> 
+               <li>Title & Year: {activeAcquisition.offeredArtwork.title} {activeAcquisition.offeredArtwork.realisationYear}</li>
+               <li>Signed: {activeAcquisition.offeredArtwork.signed ? "Yes" : "No" }</li>  
+               <li>Material: {activeAcquisition.offeredArtwork.materialsAndTechnique}</li> 
+               <li>Dimension: {`${activeAcquisition.offeredArtwork.height}mm x ${activeAcquisition.offeredArtwork.width}mm x ${activeAcquisition.offeredArtwork.length}mm`}</li> 
+               <li>Stock number: {activeAcquisition.offeredArtwork.stockNumber}</li> 
+               <li>Price: {activeAcquisition.offeredArtwork.price}</li> 
+               <li>Location: {activeAcquisition.offeredArtwork.location}</li>
+               <li><div><u style={{cursor: "pointer"}}>View More Photos</u></div></li> 
               </ul>
             </article>
             <div className="actionButtons">
-              <button className='btnAccept'>ACCEPT OFFER</button>
+              <button className='btnAccept' onClick={() => decisionHandler("accept", activeAcquisition._id)}>ACCEPT OFFER</button>
+              <button className='btnCancel' onClick={() => decisionHandler("cancel", activeAcquisition._id)}>CANCEL OFFER</button>
               <button className='openRequest'>REQUEST ANOTHER ARTWORK</button>
             </div>
           </div>
