@@ -18,6 +18,18 @@ const GallerySale = (props) => {
     fetchData();
   }, []);
 
+  const updateSalesItems = (offer) => {
+    const requestID = offer._id;
+    const UpdatedRequests = [...requests].map(request => {
+        if (request._id === requestID) return offer;
+        return request;
+    });
+    setRequests(UpdatedRequests);
+    setStatus("In Progress");
+    setIsOffering(false);
+    setActiveRequest(null);
+  };
+
   console.log(requests);
 
   const timeRemain = (time) => {
@@ -28,8 +40,7 @@ const GallerySale = (props) => {
     return leftHours < 0 ? "Outdated" : `${leftHours}h Left`;
   };
 
-  const pendingRequest = requests.length
-    ? requests
+  const pendingRequest = requests.length ? requests
         .filter((request) => request.status === "Pending")
         .map((request, index) => {
           return (
@@ -136,6 +147,7 @@ const checkConfirmedRequest = (offerStatus) => {
             <GalleryOffer
               request={activeRequest}
               collector={activeRequest.collector}
+              updateSalesItems={updateSalesItems}
             />
           ) : null}
         </div>

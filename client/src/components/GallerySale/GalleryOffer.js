@@ -38,10 +38,14 @@ const GalleryOffer = (props) => {
       setMessage(event.target.value);
   };
 
-  const submitHandler = () => {
+  const submitHandler = async () => {
       const reqData = {artwork: selectedArtwork._id, message, request: props.request._id, collector: props.collector.id};
       console.log(reqData);
-    sendOffer(reqData);
+      const response = await sendOffer(reqData);
+      if (response.success) {
+        return props.updateSalesItems(response.data);
+      }
+      return;
   };
 
   const mediumFilter = (list, regex) => {

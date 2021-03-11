@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./CollectorAcquisitions.2.css";
 import "./tailwind.css";
 import CollectorSideBar from "../CollectorSideBar/CollectorSideBar";
+import ArtworkView from './ArtworkView';
 import { fetchAllAcquisitions, makingCollectorDecision } from '../../api/service';
-import artworkImage from '../../images/artwork.jpg'
+import image from './image-default.png';
 
 const CollectorAcquisitions2 = (props) => {
   const thClass = "uppercase py-6 text-center text-black text-sm font-medium border-l-0 border-r-0";
@@ -17,8 +18,9 @@ const CollectorAcquisitions2 = (props) => {
   const [acquisitions, setAcquisitions] = useState([]);
   const [status, setStatus] = useState("Pending");
   const [list, toggleList] = useState(true);
-  // const [offer, setOffer] = useState(null);
   const [activeAcquisition, setActiveAcquisition] = useState(null);
+  const [isViewArtistDetails, setIsViewArtistDetails] = useState(false);
+
 
   console.log(activeAcquisition);
 
@@ -44,6 +46,9 @@ const CollectorAcquisitions2 = (props) => {
     return [...acquisitions].map(acquisition => {
       if (acquisition._id === requestId) {
         acquisition.offerStatus = decision === "accept" ? "Accepted" : "Cancelled";
+        if (decision === "cancel") {
+          acquisition.status = "Confirmed";
+        }
       }
       return acquisition;
     });
@@ -52,8 +57,15 @@ const CollectorAcquisitions2 = (props) => {
   const decisionHandler = async (decision, requestId) => {
     console.log(decision, requestId);
     const resDataAPI = await makingCollectorDecision(decision, requestId);
-    if (resDataAPI.success) setAcquisitions(updateAcquisitionsAfterDecisionMade(decision, requestId));
+    if (resDataAPI.success) {
+      setAcquisitions(updateAcquisitionsAfterDecisionMade(decision, requestId));
+      toggleList(true);
+    }
     return;
+  };
+
+  const closeArtworkView = () => {
+    setIsViewArtistDetails(false);
   };
 
   const timeRemain = (time) => {
@@ -147,7 +159,7 @@ const CollectorAcquisitions2 = (props) => {
           </article>
           <div className="offerDetails">
             <article>
-              <img src={artworkImage} alt="Artwork" />
+              <img src={activeAcquisition.offeredArtwork.images.length ? activeAcquisition.offeredArtwork.images[0].imageUrl : image} alt="Artwork" />
               <ul>
                <li className="offer-artist-name">{activeAcquisition.offeredArtwork.artist.name}</li> 
                <li>Title & Year: {activeAcquisition.offeredArtwork.title} {activeAcquisition.offeredArtwork.realisationYear}</li>
@@ -157,7 +169,7 @@ const CollectorAcquisitions2 = (props) => {
                <li>Stock number: {activeAcquisition.offeredArtwork.stockNumber}</li> 
                <li>Price: {activeAcquisition.offeredArtwork.price}</li> 
                <li>Location: {activeAcquisition.offeredArtwork.location}</li>
-               <li><div><u style={{cursor: "pointer"}}>View More Photos</u></div></li> 
+               <li><div><u style={{cursor: "pointer"}} onClick={() => setIsViewArtistDetails(true)}>View More Photos</u></div></li> 
               </ul>
             </article>
             <div className="actionButtons">
@@ -186,6 +198,7 @@ const CollectorAcquisitions2 = (props) => {
         </div>
         <div className="container-acquisitions-content">
           <CollectorSideBar content="my-acquisitions" />
+          {isViewArtistDetails ? <ArtworkView artwork={activeAcquisition.offeredArtwork} closeArtworkView={closeArtworkView} /> : null}
           <div className="collector-acquisitions">
             {/* ACQUISITIONS TABLE */}
             <table className="w-full table-fixed acquisitions-status-bar">

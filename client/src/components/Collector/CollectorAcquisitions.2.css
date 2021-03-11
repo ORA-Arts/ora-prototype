@@ -50,7 +50,7 @@
 }
 
 .container-acquisitions-content {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   padding-bottom: 40px;
   border-bottom: 1px solid black;
@@ -495,4 +495,91 @@ label:hover {
     font-size: 16px;
     font-weight: bold;
     color: red;
+}
+
+
+.offer-artwork-view {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+}
+
+.offer-artwork-view-container {
+    width: 900px;
+    height: 80%;
+    background-color: white;
+    margin-top:5%;
+    margin-bottom: 5%;
+    padding: 24px;
+}
+
+
+.offer-artwork-view-image-container {
+    width: 100%;
+    height: 490px;
+}
+
+.artwork-detail-image {
+    width: 100%;
+    height: 490px;
+    object-fit: cover;
+}
+
+.artwork-view-detail-footer {
+    display: flex;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.artwork-detail-thumbnails {
+    width: 276px;
+    height: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.existing-image {
+    cursor: pointer;
+}
+
+.artwork-detail-thumbnail {
+    width: 76px;
+    height: 97px;
+    object-fit: cover;
+    margin-right: 16px;
+}
+
+
+.artwork-detail-info {
+    margin-left: 45px;
+    width: 650px;
+    text-transform: uppercase;
+}
+
+.artwork-view-info-field {
+    display: flex;
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+.artwork-view-info-label {
+    width: 50%;
+}
+
+.artwork-view-info-field .inventory-artist {
+    font-size: 20px;
+}
+
+.artwork-view-info-field span {
+    font-size: 14px;
+    font-weight: normal;
 }

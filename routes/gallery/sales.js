@@ -84,8 +84,23 @@ router.post("/offer", isAuthenticated, async (req, res, next) => {
   }
   if (createdMessage) {
     try {
-      const resData = await Request.findByIdAndUpdate(request, {$push: {messages: createdMessage._id}, status: "In Progress", offeredArtwork: artwork, offerStatus: "Sent"}, {new: true});
-      return res.status(200).json(resData);
+      const data = await Request.findByIdAndUpdate(request, {$push: {messages: createdMessage._id}, status: "In Progress", offeredArtwork: artwork, offerStatus: "Sent"}, {new: true})
+        .populate("gallery", {name: 1})
+        .populate("collector", {firstName: 1, lastName: 1, _id: 1})
+        .populate("preferredArtist", {name: 1})
+        .populate("messages", {message: 1, sender: 1})
+        .populate([
+          {
+            path: "offeredArtwork",
+            model: "Artwork",
+            populate: {
+              path: "artist",
+              model: "Artist",
+              select: "name"
+            }
+          }
+        ]);
+      return res.status(200).json({data, success: true});
     } catch (error) {
       console.log(error);
       return res.status(500).json({success: false});
