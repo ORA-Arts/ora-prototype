@@ -306,8 +306,9 @@ const CollectorAcquisitions2 = (props) => {
           </div>
         </td>
       </tr>
-      {activeAcquisition.messages.length > 2 ? activeAcquisition.messages.map((message, index) => 
-        <tr className={trClassR}>
+      {activeAcquisition.messages.length > 2 ? activeAcquisition.messages.map((message, index) => {
+        if (index < 2) return null;
+        return <tr className={trClassR}>
           <td className={tdClassR}>
             <div>{message.sender === "Collector" ? `${activeAcquisition.collector.firstName} ${activeAcquisition.collector.lastName}` : activeAcquisition.gallery.name}</div>
             <div>{dateConverter(message.createdAt)}</div>
@@ -316,6 +317,7 @@ const CollectorAcquisitions2 = (props) => {
             <article>{message.message}</article>
           </td>
         </tr>
+      }
         ) : null}
       <tr>
         <td></td>
