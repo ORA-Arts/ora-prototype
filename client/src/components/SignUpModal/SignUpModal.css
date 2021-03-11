@@ -66,6 +66,7 @@
   font-size: 16px;
   line-height: 21px;
   text-align: center;
+  border: 1px solid black;
 }
 
 #selectUser {
