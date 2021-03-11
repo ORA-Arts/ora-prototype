@@ -43,15 +43,24 @@ router.get("/acquisitions", isAuthenticated, async (req, res, next) => {
   }
   try {
     // avoid expose all gallery and artist info
-    const acquisitions = await Request.find({collector: collector._id}).populate("gallery").populate("preferredArtist");
-    const data = acquisitions.map(acquisition => {
-      if (acquisition.preferredArtist) {
-        acquisition.preferredArtist = acquisition.preferredArtist.name;
-      }
-      acquisition.gallery = acquisition.gallery.name;
-      return acquisition;
-    });
-    res.status(200).json(data);
+    const acquisitions = await Request.find({collector: collector._id})
+      .populate("gallery", {name: 1})
+      .populate("collector", {firstName: 1, lastName: 1})
+      .populate("preferredArtist", {name: 1})
+      .populate("messages", {message: 1, sender: 1})
+      .populate([
+        {
+          path: "offeredArtwork",
+          model: "Artwork",
+          populate: {
+            path: "artist",
+            model: "Artist",
+            select: "name"
+          }
+        }
+      ]);
+    console.log(acquisitions);
+    res.status(200).json(acquisitions);
   } catch(err) {
     res.status(500).json({ message: 'Error while attempting to access database' });
   }
@@ -60,7 +69,7 @@ router.get("/acquisitions", isAuthenticated, async (req, res, next) => {
 
 router.post("/request",  isAuthenticated,  async (req, res, next) => {
   const userId =  req.session.passport.user;
-  console.log(userId)
+  // console.log(userId)
   let collector;
   try {
     collector = await Collector.findOne({user: userId});
@@ -88,7 +97,7 @@ router.post("/request",  isAuthenticated,  async (req, res, next) => {
   const message = data.requestMessage;
   // if the matchedArtists empty, just offer artwork from any artists in the gallery
   try {
-    const createdMessage = await Message.create({collector: collector._id, gallery: data.gallery, message: message});
+    const createdMessage = await Message.create({collector: collector._id, gallery: data.gallery, message: message, sender: "Collector"});
     const createdRequest = await Request.create({
       ...data, collector: collector._id, preferredArtist: preferredArtist, messages: [createdMessage._id]
     });

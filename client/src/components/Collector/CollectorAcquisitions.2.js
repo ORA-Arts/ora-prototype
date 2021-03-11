@@ -6,24 +6,108 @@ import { fetchAllAcquisitions } from '../../api/service';
 import artworkImage from '../../images/artwork.jpg'
 
 const CollectorAcquisitions2 = (props) => {
-  const thClass = "uppercase py-6 text-center text-black text-sm font-medium border-l-0 border-r-0"
-  const tdClass = "px-4 py-8 border-b uppercase border-gray-900 text-sm border-l-0 border-r-0"
+  const thClass = "uppercase py-6 text-center text-black text-sm font-medium border-l-0 border-r-0";
+  const tdClass = "px-4 py-8 border-b uppercase border-gray-900 text-sm border-l-0 border-r-0";
   const trClass = "border-black border-l-0 border-r-0"
 
-  const thClassR = " py-6 text-left text-black text-sm font-medium border-l-0 border-r-0"
-  const tdClassR = "text-left px-4 py-8 border-b border-gray-900 text-sm border-l-0 border-r-0"
-  const trClassR = "border-black border-l-0 border-r-0"
+  const thClassR = " py-6 text-left text-black text-sm font-medium border-l-0 border-r-0";
+  const tdClassR = "text-left px-4 py-8 border-b border-gray-900 text-sm border-l-0 border-r-0";
+  const trClassR = "border-black border-l-0 border-r-0";
 
   const [acquisitions, setAcquisitions] = useState([]);
   const [status, setStatus] = useState("Pending");
-  const [list, toggleList] = useState(true)
+  const [list, toggleList] = useState(true);
+  // const [offer, setOffer] = useState(null);
+  const [activeAcquisition, setActiveAcquisition] = useState(null);
 
-  const requestDetails =
+  console.log(activeAcquisition);
+
+  useEffect(() => {
+    async function fetchData() {
+      const resAcquisitions = await fetchAllAcquisitions();
+      console.log(resAcquisitions);
+      setAcquisitions(resAcquisitions);
+    }
+    fetchData();
+  }, []);
+
+  const openRequestDetails = (acquisition) => {
+    toggleList(false)
+    return requestDetails
+  }
+  const openRequestList = (status) => {
+    toggleList(true)
+    setStatus(status);
+  }
+
+  const timeRemain = (time) => {
+    const pastHours = Math.floor(
+      (Date.now() - new Date(time).getTime()) / (1000 * 60 * 60)
+    );
+    const leftHours = 92 - pastHours;
+    return leftHours < 0 ? "Outdated" : `${leftHours}h Left`;
+  };
+
+  const pendingRequest = acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "Pending").map((acquisition, index) => {
+    return (
+      <tr key={index} className={trClass}>
+        <td className={tdClass}><span className="status-pending">PENDING</span></td>
+        <td className={tdClass}>{acquisition.gallery.name}</td>
+        <td className={tdClass}>{acquisition.preferredArtist ? acquisition.preferredArtist.name : "No Preferred artist"}</td>
+        <td className={tdClass}>{acquisition.medium}</td>
+        <td className={tdClass}>{acquisition.budget}K€</td>
+        <td className={tdClass}>{timeRemain(acquisition.createdAt)}</td>
+        {/* <td className={tdClass}><button onClick={openRequestDetails('acquisition')} className='openRequest'>OPEN</button></td> */}
+      </tr>
+    )
+  }) : null;
+
+  const checkOfferStatus = (offerStatus) => {
+    if (offerStatus === "Sent") return <span className="status-in-progress-received">Offer Recieved</span>
+    if (offerStatus === "Accepted") return <span className="status-in-progress-accepted">Offer Accepted</span>
+    // ["Sent", "Accepted", "Cancelled"]
+    const confirmedRequest = (offerStatus) => {
+      if (offerStatus === "Cancelled") return <span className="status-in-progress-cancelled">Offer Cancelled</span>
+      if (offerStatus === "Paid") return <span className="status-in-progress-accepted">Offer Paid</span>
+    }
+  }
+  const inProgessRequest = acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "In Progress").map((acquisition, index) => {
+    return (
+      <tr key={index} className={trClass}>
+        <td className={tdClass}>{checkOfferStatus(acquisition.offerStatus)}</td>
+        <td className={tdClass}>{acquisition.gallery.name}</td>
+        <td className={tdClass}>{acquisition.offeredArtwork.artist.name}</td>
+        <td className={tdClass}>{acquisition.offeredArtwork.title}</td>
+        <td className={tdClass}>{acquisition.offeredArtwork.price}K€</td>
+        <td className={tdClass}>{timeRemain(acquisition.createdAt)}</td>
+        {acquisition.offerStatus === "Sent" ?
+        <td className={tdClass}><button onClick={() => (setActiveAcquisition(acquisition), openRequestDetails())} className='btnAccept'>ACCEPT/CANCEL</button></td>
+        : <td className={tdClass}><button className='openRequest-green'>PAY</button></td>
+        }
+      </tr>
+    )
+  }) : null;
+
+  const confirmedRequest = acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "Confirmed").map((acquisition, index) => {
+    return (
+      <tr key={index} className={trClass}>
+        <td className={tdClass}>{confirmedRequest(acquisition.offerStatus)}</td>
+        <td className={tdClass}>{acquisition.gallery.name}</td>
+        <td className={tdClass}>{acquisition.offeredArtwork.artist.name}</td>
+        <td className={tdClass}>{acquisition.offeredArtwork.title}</td>
+        <td className={tdClass}>{acquisition.offeredArtwork.price}K€</td>
+        <td className={tdClass}><button className='openRequest'>VIEW</button></td>
+      </tr>
+    )
+  }) : null;
+
+
+  const requestDetails = activeAcquisition ?
     <>
       <tr className={trClassR}>
         <td className={tdClassR}>
-          <span>LISA ABRAHAM</span>
-          <span>15.02.21</span>
+          <div>LISA ABRAHAM</div>
+          <div>15.02.21</div>
         </td>
         <td className={tdClassR}>
           <article>
@@ -73,93 +157,7 @@ const CollectorAcquisitions2 = (props) => {
 
         </td>
       </tr>
-    </>
-
-  const openRequestDetails = (acquisition) => {
-    toggleList(false)
-    return requestDetails
-  }
-  const openRequestList = (status) => {
-    toggleList(true)
-    setStatus(status)
-  }
-
-  useEffect(() => {
-    async function fetchData() {
-      const resAcquisitions = await fetchAllAcquisitions();
-      setAcquisitions(resAcquisitions);
-    }
-    fetchData();
-  }, []);
-
-  const pendingRequest = acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "Pending").map((acquisition, index) => {
-    return (
-      <tr className={trClass}>
-        <td className={tdClass}><span className="status-pending">PENDING</span></td>
-        <td className={tdClass}>{acquisition.gallery.name}</td>
-        <td className={tdClass}>{acquisition.preferredArtist ? acquisition.preferredArtist : "No Preferred artist"}</td>
-        <td className={tdClass}>{acquisition.medium}</td>
-        <td className={tdClass}>{acquisition.budget}K</td>
-        <td className={tdClass}>{Math.floor((Date.now() - (new Date(acquisition.createdAt)).getTime()) / (1000 * 60 * 60))} HOURS</td>
-        <td className={tdClass}><button onClick={openRequestDetails('acquisition')} className='openRequest'>OPEN</button></td>
-      </tr>
-    )
-  }) : (
-    <tr className={trClass}>
-      <td className={tdClass}><span className="status-pending">PENDING</span></td>
-      <td className={tdClass}>JAM'S GALLERY</td>
-      <td className={tdClass}>Annie Leibovitz</td>
-      <td className={tdClass}>Photography</td>
-      <td className={tdClass}>19K$</td>
-      <td className={tdClass}>1 HOUR/S</td>
-      <td className={tdClass}><button onClick={() => openRequestDetails('acquisition')} className='openRequest'>OPEN</button></td>
-    </tr>
-  )
-  const inProgessRequest = acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "In Progress").map((acquisition, index) => {
-    return (
-      <tr className={trClass}>
-        <td className={tdClass}><span className="status-in-progress">IN PROGRESS</span></td>
-        <td className={tdClass}>{acquisition.gallery.name}</td>
-        <td className={tdClass}>{acquisition.preferredArtist ? acquisition.preferredArtist : "No Preferred artist"}</td>
-        <td className={tdClass}>{acquisition.medium}</td>
-        <td className={tdClass}>{acquisition.budget}K</td>
-        <td className={tdClass}>{Math.floor((Date.now() - (new Date(acquisition.createdAt)).getTime()) / (1000 * 60 * 60))} HOURS</td>
-        <td className={tdClass}><button onClick={openRequestDetails} className='openRequest'>OPEN</button></td>
-      </tr>
-    )
-  }) :
-    (<tr className={trClass}>
-      <td className={tdClass}><span className="status-in-progress">IN PROGRESS</span></td>
-      <td className={tdClass}>JAM'S GALLERY</td>
-      <td className={tdClass}>Annie Leibovitz</td>
-      <td className={tdClass}>Photography</td>
-      <td className={tdClass}>19K$</td>
-      <td className={tdClass}>1 HOUR/S</td>
-      <td className={tdClass}><button onClick={() => openRequestDetails('acquisition')} className='openRequest'>OPEN</button></td>
-    </tr>)
-
-  const confirmedRequest = acquisitions.length ? acquisitions.filter(acquisition => acquisition.status === "Pending").map((acquisition, index) => {
-    return (
-      <tr className={trClass}>
-        <td className={tdClass}><span className="status-confirmed">CONFIRMED</span></td>
-        <td className={tdClass}>{acquisition.gallery.name}</td>
-        <td className={tdClass}>{acquisition.preferredArtist ? acquisition.preferredArtist : "No Preferred artist"}</td>
-        <td className={tdClass}>{acquisition.medium}</td>
-        <td className={tdClass}>{acquisition.budget}K</td>
-        <td className={tdClass}>{Math.floor((Date.now() - (new Date(acquisition.createdAt)).getTime()) / (1000 * 60 * 60))} HOURS</td>
-        <td className={tdClass}><button onClick={openRequestDetails(acquisition)} className='openRequest'>OPEN</button></td>
-      </tr>
-    )
-  }) :
-    (<tr className={trClass}>
-      <td className={tdClass}><span className="status-confirmed">CONFIRMED</span></td>
-      <td className={tdClass}>JAM'S GALLERY</td>
-      <td className={tdClass}>Annie Leibovitz</td>
-      <td className={tdClass}>Photography</td>
-      <td className={tdClass}>19K$</td>
-      <td className={tdClass}>1 HOUR/S</td>
-      <td className={tdClass}><button onClick={() => openRequestDetails('acquisition')} className='openRequest'>OPEN</button></td>
-    </tr>)
+    </> : null;
 
   return (
     <div className="app-container-collector-acquisitions">

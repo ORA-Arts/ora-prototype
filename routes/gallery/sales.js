@@ -77,7 +77,7 @@ router.post("/offer", isAuthenticated, async (req, res, next) => {
 
   let createdMessage;
   try {
-    createdMessage = await Message.create({collector, gallery: gallery._id, message});
+    createdMessage = await Message.create({collector, gallery: gallery._id, message, sender: "Gallery"});
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: 'Error while attempting to access database' });

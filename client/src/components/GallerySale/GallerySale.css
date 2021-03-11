@@ -151,6 +151,7 @@
 
 .detail-collector-left {
     width: 30%;
+    padding-left: 16px;
 }
 
 .detail-collector-right {
@@ -180,6 +181,10 @@
 
 .detail-request-footer div > button {
     margin-left: 36px;
+}
+
+.sales-btn-green {
+    background-color:#218100 !important;
 }
 
 

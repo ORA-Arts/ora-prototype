@@ -28,7 +28,7 @@ const requestSchema = new Schema({
   },
   offerStatus: {
     type: String,
-    enum: ["Sent", "Accepted"]
+    enum: ["Sent", "Accepted", "Cancelled", "Paid"]
   },
   messages: [{
     type: Schema.Types.ObjectId,

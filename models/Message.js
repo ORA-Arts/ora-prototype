@@ -9,6 +9,10 @@ const messageSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Gallery'
   },
+  sender: {
+    type: String,
+    enum: ["Collector", "Gallery"]
+  },
   message: {
     type: String,
     required: true
