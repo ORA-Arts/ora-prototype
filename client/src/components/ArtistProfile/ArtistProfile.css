@@ -84,11 +84,11 @@
 margin-right: 20px;
 }
 
-/* #artistImgC{
+ #artistImgC{
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-} */
+} 
 
 .medium-input {
     display: flex;
