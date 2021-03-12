@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.593fb4e8.chunk.css",
-    "main.js": "/static/js/main.1821dced.chunk.js",
-    "main.js.map": "/static/js/main.1821dced.chunk.js.map",
+    "main.css": "/static/css/main.22e39e32.chunk.css",
+    "main.js": "/static/js/main.4f885feb.chunk.js",
+    "main.js.map": "/static/js/main.4f885feb.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.d916e337.js",
     "runtime-main.js.map": "/static/js/runtime-main.d916e337.js.map",
     "static/js/2.e00b7877.chunk.js": "/static/js/2.e00b7877.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.79084937.chunk.js": "/static/js/3.79084937.chunk.js",
     "static/js/3.79084937.chunk.js.map": "/static/js/3.79084937.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.593fb4e8.chunk.css.map": "/static/css/main.593fb4e8.chunk.css.map",
+    "static/css/main.22e39e32.chunk.css.map": "/static/css/main.22e39e32.chunk.css.map",
     "static/js/2.e00b7877.chunk.js.LICENSE.txt": "/static/js/2.e00b7877.chunk.js.LICENSE.txt",
     "static/media/ARTIST OPEN CALL 2.da038b0e.jpg": "/static/media/ARTIST OPEN CALL 2.da038b0e.jpg",
     "static/media/ARTIST OPEN CALL.571ae1c5.jpg": "/static/media/ARTIST OPEN CALL.571ae1c5.jpg",
@@ -30,7 +30,7 @@
   "entrypoints": [
     "static/js/runtime-main.d916e337.js",
     "static/js/2.e00b7877.chunk.js",
-    "static/css/main.593fb4e8.chunk.css",
-    "static/js/main.1821dced.chunk.js"
+    "static/css/main.22e39e32.chunk.css",
+    "static/js/main.4f885feb.chunk.js"
   ]
 }
