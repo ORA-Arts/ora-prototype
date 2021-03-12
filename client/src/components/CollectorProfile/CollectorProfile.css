@@ -3,6 +3,7 @@
   margin-left:13px;
   margin-right: 20px;
   margin-bottom: 40px;
+  animation: fadeEffect .5s ease-out;
 }
 
 #formContainer{
@@ -27,6 +28,7 @@
   border: 2px solid black;
   text-transform: uppercase;
   margin-bottom: 1.5vw;
+  margin-left: 1rem;
 }
 
 .collectorHeader .btnPrivate:hover {
@@ -37,7 +39,8 @@
 .collector-name {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .personalInformation h1 {

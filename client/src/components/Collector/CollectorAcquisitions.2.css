@@ -8,11 +8,30 @@
   margin-bottom: 24px;
 }
 
+,collectorHeader: {
+  margin: .5rem;
+}
+.collectorHeader .btnPrivate {
+  width: 250px;
+  color: white;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 12px;
+  cursor: pointer;
+  background-color: black;
+  border: 2px solid black;
+  text-transform: uppercase;
+  margin-bottom: 1.5vw;
+  margin-right: .5rem;
+}
+
+.collectorHeader .btnPrivate:hover {
+  color: black;
+  background-color: white;
+}
 .collector-container-acquisitions {
-  width: 100%;
   /* height: 1250px; */
   padding: 0;
-  margin: 16px 32px;
 }
 
 .collector-acquisitions-header {
