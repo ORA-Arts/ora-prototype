@@ -101,6 +101,9 @@ footer a {
 #newsletter {
   min-width: 15vw;
 }
+#newsletter input{
+  border: 1px solid black;
+}
 
 #newsletter form{
   display: flex;
