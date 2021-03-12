@@ -21,8 +21,8 @@ const GallerySale = (props) => {
   const updateSalesItems = (offer) => {
     const requestID = offer._id;
     const UpdatedRequests = [...requests].map(request => {
-        if (request._id === requestID) return offer;
-        return request;
+      if (request._id === requestID) return offer;
+      return request;
     });
     setRequests(UpdatedRequests);
     setStatus("In Progress");
@@ -41,68 +41,68 @@ const GallerySale = (props) => {
   };
 
   const pendingRequest = requests.length ? requests
-        .filter((request) => request.status === "Pending")
-        .map((request, index) => {
-          return (
-            <div key={index} className="sales-pending-item">
-              {/* <span className="status">PENDING</span> */}
-              <span className="collector-request-name">{`${request.collector.firstName} ${request.collector.lastName}`}</span>
-              <span>
-                {request.preferredArtist
-                  ? request.preferredArtist
-                  : "No Preferred artist"}
-              </span>
-              <span>{request.medium}</span>
-              <span>{request.budget}K</span>
-              <span>{timeRemain(request.createdAt)}</span>
-              <button onClick={() => setActiveRequest(request)}>OPEN</button>
-            </div>
-          );
-        })
+    .filter((request) => request.status === "Pending")
+    .map((request, index) => {
+      return (
+        <div key={index} className="sales-pending-item">
+          {/* <span className="status">PENDING</span> */}
+          <span className="collector-request-name">{`${request.collector.firstName} ${request.collector.lastName}`}</span>
+          <span>
+            {request.preferredArtist
+              ? request.preferredArtist
+              : "No Preferred artist"}
+          </span>
+          <span>{request.medium}</span>
+          <span>{request.budget}K</span>
+          <span>{timeRemain(request.createdAt)}</span>
+          <button onClick={() => setActiveRequest(request)}>OPEN</button>
+        </div>
+      );
+    })
     : null;
 
   const inProgessRequest = requests.length
     ? requests
-        .filter((request) => request.status === "In Progress")
-        .map((request, index) => {
-          return (
-            <div key={index} className="sales-inProgress-item">
-              <span
-                className={
-                  request.offerStatus === "Sent"
-                    ? "inProgress-sent"
-                    : "inProgress-accepted"
-                }
-              >
-                {request.offerStatus}
-              </span>
-              <span className="collector-request-name">{`${request.collector.firstName} ${request.collector.lastName}`}</span>
-              <span>{request.offeredArtwork.artist.name}</span>
-              <span>{request.medium}</span>
-              <span>{request.offeredArtwork.price}K</span>
-              <span>{timeRemain(request.createdAt)}</span>
-              <button>VIEW</button>
-            </div>
-          );
-        })
+      .filter((request) => request.status === "In Progress")
+      .map((request, index) => {
+        return (
+          <div key={index} className="sales-inProgress-item">
+            <span
+              className={
+                request.offerStatus === "Sent"
+                  ? "inProgress-sent"
+                  : "inProgress-accepted"
+              }
+            >
+              {request.offerStatus}
+            </span>
+            <span className="collector-request-name">{`${request.collector.firstName} ${request.collector.lastName}`}</span>
+            <span>{request.offeredArtwork.artist.name}</span>
+            <span>{request.medium}</span>
+            <span>{request.offeredArtwork.price}K</span>
+            <span>{timeRemain(request.createdAt)}</span>
+            <button>VIEW</button>
+          </div>
+        );
+      })
     : null;
 
-const checkConfirmedRequest = (offerStatus) => {
+  const checkConfirmedRequest = (offerStatus) => {
     if (offerStatus === "Cancelled") return <span className="status-confirmed-cancelled">Offer Cancelled</span>
     if (offerStatus === "Paid") return <span className="status-confirmed-paid">Offer Paid</span>
-    }
+  }
 
-  const confirmedRequest =  requests.length ? requests.filter(request => request.status === "Confirmed").map((request, index) => {
-      return (
-          <div className="sales-pending-item">
-              {checkConfirmedRequest(request.offerStatus)}
-              <span>{`${request.collector.firstName} ${request.collector.lastName}`}</span>
-              <span>{request.offeredArtwork.artist.name}</span>
-              <span>{request.offeredArtwork.title}</span>
-              <span>{request.offeredArtwork.price}K€</span>
-              <button>VIEW</button>
-          </div>
-      )
+  const confirmedRequest = requests.length ? requests.filter(request => request.status === "Confirmed").map((request, index) => {
+    return (
+      <div className="sales-pending-item">
+        {checkConfirmedRequest(request.offerStatus)}
+        <span>{`${request.collector.firstName} ${request.collector.lastName}`}</span>
+        <span>{request.offeredArtwork.artist.name}</span>
+        <span>{request.offeredArtwork.title}</span>
+        <span>{request.offeredArtwork.price}K€</span>
+        <button>VIEW</button>
+      </div>
+    )
   }) : null;
 
   const dateConverter = (mongoDate) => {
@@ -169,14 +169,18 @@ const checkConfirmedRequest = (offerStatus) => {
   ) : null;
 
   return (
-    <div className="app-container-gallery-sales">
-      <div className="gallery-container-sales">
-        <div className="gallery-sales-header">
-          <div className="gallery-sales-name">{props.galleryName}</div>
-        </div>
-        <div className="container-sales-content">
-          <ProfileSideBar content="my-sales" />
-          <div className="gallery-sales">
+    <div >
+      <div className="gallery-name-artists">
+        {props.galleryName}
+      </div>
+      <hr />
+      <div className='myArtists'>
+        <ProfileSideBar content="sales" />
+        <div className='artistsContainer'>
+          <div className='myArtistsHeader'>
+            <hr /> <span className='subtitle'>MY SALES</span>
+          </div>
+          <div id="formContainerField">
             <div className="gallery-status-bar">
               <input
                 type="radio"
@@ -203,9 +207,9 @@ const checkConfirmedRequest = (offerStatus) => {
                 id="confirmed"
                 name="status"
                 onChange={() => (
-                    setStatus("Confirmed"),
-                    setIsOffering(false),
-                    setActiveRequest(null)
+                  setStatus("Confirmed"),
+                  setIsOffering(false),
+                  setActiveRequest(null)
                 )}
                 checked={status === "Confirmed"}
               />

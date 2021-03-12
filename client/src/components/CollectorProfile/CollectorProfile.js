@@ -100,11 +100,10 @@ const CollectorProfile = (props) => {
         <div className="collectorHeader">
           <div className="collector-name">
             <h1>{data.firstName}</h1>
-            <Link to='/collector/acquisitionst'><button className="btnPrivate">MAKE A PRIVATE SALES REQUEST</button></Link>
+            <Link to='/collector/acquisitions'><button className="btnPrivate">MAKE A PRIVATE SALES REQUEST</button></Link>
           </div>
           <hr />
         </div>
-        
         <div id="formContainer">
           <CollectorSideBar content="my-collector-profile" />
           <div id="formContainerField">
