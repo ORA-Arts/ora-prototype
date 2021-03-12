@@ -10,6 +10,8 @@ import {
 } from "../../api/service";
 import image from "./image-default.png";
 import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 const CollectorAcquisitions2 = (props) => {
   const thClass =
@@ -75,11 +77,11 @@ const CollectorAcquisitions2 = (props) => {
   };
 
   const sendingMessage = async () => {
-    const data = {message: message, requestId: activeAcquisition._id, galleryId: activeAcquisition.gallery._id};
+    const data = { message: message, requestId: activeAcquisition._id, galleryId: activeAcquisition.gallery._id };
     const resDataAPI = await sendMessageCollector(data);
     console.log(resDataAPI);
     if (resDataAPI) {
-      const newActiveAcquisition = {...activeAcquisition};
+      const newActiveAcquisition = { ...activeAcquisition };
       newActiveAcquisition.messages.push(resDataAPI);
       const updatedAcquisitions = [...acquisitions].map((acquisition) => {
         if (acquisition._id === activeAcquisition._id) {
@@ -107,26 +109,26 @@ const CollectorAcquisitions2 = (props) => {
 
   const pendingRequest = acquisitions.length
     ? acquisitions
-        .filter((acquisition) => acquisition.status === "Pending")
-        .map((acquisition, index) => {
-          return (
-            <tr key={index} className={trClass}>
-              <td className={tdClass}>
-                <span className="status-pending">PENDING</span>
-              </td>
-              <td className={tdClass}>{acquisition.gallery.name}</td>
-              <td className={tdClass}>
-                {acquisition.preferredArtist
-                  ? acquisition.preferredArtist.name
-                  : "No Preferred artist"}
-              </td>
-              <td className={tdClass}>{acquisition.medium}</td>
-              <td className={tdClass}>{acquisition.budget}K€</td>
-              <td className={tdClass}>{timeRemain(acquisition.createdAt)}</td>
-              {/* <td className={tdClass}><button onClick={openRequestDetails('acquisition')} className='openRequest'>OPEN</button></td> */}
-            </tr>
-          );
-        })
+      .filter((acquisition) => acquisition.status === "Pending")
+      .map((acquisition, index) => {
+        return (
+          <tr key={index} className={trClass}>
+            <td className={tdClass}>
+              <span className="status-pending">PENDING</span>
+            </td>
+            <td className={tdClass}>{acquisition.gallery.name}</td>
+            <td className={tdClass}>
+              {acquisition.preferredArtist
+                ? acquisition.preferredArtist.name
+                : "No Preferred artist"}
+            </td>
+            <td className={tdClass}>{acquisition.medium}</td>
+            <td className={tdClass}>{acquisition.budget}K€</td>
+            <td className={tdClass}>{timeRemain(acquisition.createdAt)}</td>
+            {/* <td className={tdClass}><button onClick={openRequestDetails('acquisition')} className='openRequest'>OPEN</button></td> */}
+          </tr>
+        );
+      })
     : null;
 
   const checkOfferStatus = (offerStatus) => {
@@ -151,62 +153,62 @@ const CollectorAcquisitions2 = (props) => {
 
   const inProgessRequest = acquisitions.length
     ? acquisitions
-        .filter((acquisition) => acquisition.status === "In Progress")
-        .map((acquisition, index) => {
-          return (
-            <tr key={index} className={trClass}>
+      .filter((acquisition) => acquisition.status === "In Progress")
+      .map((acquisition, index) => {
+        return (
+          <tr key={index} className={trClass}>
+            <td className={tdClass}>
+              {checkOfferStatus(acquisition.offerStatus)}
+            </td>
+            <td className={tdClass}>{acquisition.gallery.name}</td>
+            <td className={tdClass}>
+              {acquisition.offeredArtwork.artist.name}
+            </td>
+            <td className={tdClass}>{acquisition.offeredArtwork.title}</td>
+            <td className={tdClass}>{acquisition.offeredArtwork.price}K€</td>
+            <td className={tdClass}>{timeRemain(acquisition.createdAt)}</td>
+            {acquisition.offerStatus === "Sent" ? (
               <td className={tdClass}>
-                {checkOfferStatus(acquisition.offerStatus)}
-              </td>
-              <td className={tdClass}>{acquisition.gallery.name}</td>
-              <td className={tdClass}>
-                {acquisition.offeredArtwork.artist.name}
-              </td>
-              <td className={tdClass}>{acquisition.offeredArtwork.title}</td>
-              <td className={tdClass}>{acquisition.offeredArtwork.price}K€</td>
-              <td className={tdClass}>{timeRemain(acquisition.createdAt)}</td>
-              {acquisition.offerStatus === "Sent" ? (
-                <td className={tdClass}>
-                  <button
-                    onClick={() => (
-                      setActiveAcquisition(acquisition), openRequestDetails()
-                    )}
-                    className="btnAccept"
-                  >
-                    ACCEPT/CANCEL
+                <button
+                  onClick={() => (
+                    setActiveAcquisition(acquisition), openRequestDetails()
+                  )}
+                  className="btnAccept"
+                >
+                  ACCEPT/CANCEL
                   </button>
-                </td>
-              ) : (
-                <td className={tdClass}>
-                  <button className="openRequest-green">PAY</button>
-                </td>
-              )}
-            </tr>
-          );
-        })
+              </td>
+            ) : (
+              <td className={tdClass}>
+                <button className="openRequest-green">PAY</button>
+              </td>
+            )}
+          </tr>
+        );
+      })
     : null;
 
   const confirmedRequest = acquisitions.length
     ? acquisitions
-        .filter((acquisition) => acquisition.status === "Confirmed")
-        .map((acquisition, index) => {
-          return (
-            <tr key={index} className={trClass}>
-              <td className={tdClass}>
-                {checkConfirmedRequest(acquisition.offerStatus)}
-              </td>
-              <td className={tdClass}>{acquisition.gallery.name}</td>
-              <td className={tdClass}>
-                {acquisition.offeredArtwork.artist.name}
-              </td>
-              <td className={tdClass}>{acquisition.offeredArtwork.title}</td>
-              <td className={tdClass}>{acquisition.offeredArtwork.price}K€</td>
-              <td className={tdClass}>
-                <button className="openRequest">VIEW</button>
-              </td>
-            </tr>
-          );
-        })
+      .filter((acquisition) => acquisition.status === "Confirmed")
+      .map((acquisition, index) => {
+        return (
+          <tr key={index} className={trClass}>
+            <td className={tdClass}>
+              {checkConfirmedRequest(acquisition.offerStatus)}
+            </td>
+            <td className={tdClass}>{acquisition.gallery.name}</td>
+            <td className={tdClass}>
+              {acquisition.offeredArtwork.artist.name}
+            </td>
+            <td className={tdClass}>{acquisition.offeredArtwork.title}</td>
+            <td className={tdClass}>{acquisition.offeredArtwork.price}K€</td>
+            <td className={tdClass}>
+              <button className="openRequest">VIEW</button>
+            </td>
+          </tr>
+        );
+      })
     : null;
 
   const dateConverter = (mongoDate) => {
@@ -318,7 +320,7 @@ const CollectorAcquisitions2 = (props) => {
           </td>
         </tr>
       }
-        ) : null}
+      ) : null}
       <tr>
         <td></td>
         <td>
@@ -335,74 +337,86 @@ const CollectorAcquisitions2 = (props) => {
   ) : null;
 
   return (
-    <div className="app-container-collector-acquisitions">
-      <div className="collector-container-acquisitions">
-        <div className="collector-acquisitions-header">
-          <div className="collector-acquisitions-name"><h1>{props.collectorName}</h1></div>
-          <div>
-            <button className="btn-request">MAKE A PRIVATE SALE</button>
-            <button className="btn-request">REQUEST A SPECIAL SOURCING</button>
+    <div className="">
+      <div id="collectorProfile">
+        <div className="collectorHeader">
+          <div className="collector-name">
+            <Link to='/collector/request'>
+              <button className="btnPrivate">MAKE A PRIVATE SALE</button>
+            </Link>
+            <Link to='/collector/request'><button className="btnPrivate">REQUEST A SPECIAL SOURCING</button>
+            </Link>
           </div>
+          <hr />
         </div>
-        <div className="container-acquisitions-content">
+        <div id="formContainer">
           <CollectorSideBar content="my-acquisitions" />
-          {isViewArtistDetails ? (
-            <ArtworkView
-              artwork={activeAcquisition.offeredArtwork}
-              closeArtworkView={closeArtworkView}
-            />
-          ) : null}
-          <div className="collector-acquisitions">
-            {/* ACQUISITIONS TABLE */}
-            <table className="w-full table-fixed acquisitions-status-bar">
-              <thead>
-                <tr>
-                  <th className={thClass}>
-                    <input
-                      type="radio"
-                      id="pending"
-                      name="status"
-                      onChange={() => openRequestList("Pending")}
-                      checked={status === "Pending"}
-                    />
-                    <label htmlFor="pending">PENDING REQUESTS</label>
-                  </th>
-                  <th className={thClass}>
-                    <input
-                      type="radio"
-                      id="inProgress"
-                      name="status"
-                      onChange={() => openRequestList("In Progress")}
-                      checked={status === "In Progress"}
-                    />
-                    <label htmlFor="inProgress">IN PROGRESS</label>
-                  </th>
-                  <th className={thClass}>
-                    <input
-                      type="radio"
-                      id="confirmed"
-                      name="status"
-                      onChange={() => openRequestList("Confirmed")}
-                      checked={status === "Confirmed"}
-                    />
-                    <label htmlFor="confirmed">CONFIRMED</label>
-                  </th>
-                </tr>
-              </thead>
-            </table>
-            <table className="w-full table-auto">
-              <tbody>
-                {status === "Pending" && list
-                  ? pendingRequest
-                  : status === "Pending" && !list && requestDetails}
-                {status === "In Progress" && list
-                  ? inProgessRequest
-                  : status === "In Progress" && !list && requestDetails}
-                {status === "Confirmed" && list
-                  ? confirmedRequest
-                  : status === "Confirmed" && !list && requestDetails}
-              </tbody>
-            </table>
+          <div id="formContainerField">
+            <div className="personalInformation">
+              <h1 className="title-text" >ACQUISITIONS</h1>
+              <hr />
+              <div className="btnContainer">
+              </div>
+            </div>
+
+            {isViewArtistDetails ? (
+              <ArtworkView
+                artwork={activeAcquisition.offeredArtwork}
+                closeArtworkView={closeArtworkView}
+              />
+            ) : null}
+            <div className="collector-acquisitions">
+              {/* ACQUISITIONS TABLE */}
+              <table className="w-full table-fixed acquisitions-status-bar">
+                <thead>
+                  <tr>
+                    <th className={thClass}>
+                      <input
+                        type="radio"
+                        id="pending"
+                        name="status"
+                        onChange={() => openRequestList("Pending")}
+                        checked={status === "Pending"}
+                      />
+                      <label htmlFor="pending">PENDING REQUESTS</label>
+                    </th>
+                    <th className={thClass}>
+                      <input
+                        type="radio"
+                        id="inProgress"
+                        name="status"
+                        onChange={() => openRequestList("In Progress")}
+                        checked={status === "In Progress"}
+                      />
+                      <label htmlFor="inProgress">IN PROGRESS</label>
+                    </th>
+                    <th className={thClass}>
+                      <input
+                        type="radio"
+                        id="confirmed"
+                        name="status"
+                        onChange={() => openRequestList("Confirmed")}
+                        checked={status === "Confirmed"}
+                      />
+                      <label htmlFor="confirmed">CONFIRMED</label>
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+              <table className="w-full table-auto">
+                <tbody>
+                  {status === "Pending" && list
+                    ? pendingRequest
+                    : status === "Pending" && !list && requestDetails}
+                  {status === "In Progress" && list
+                    ? inProgessRequest
+                    : status === "In Progress" && !list && requestDetails}
+                  {status === "Confirmed" && list
+                    ? confirmedRequest
+                    : status === "Confirmed" && !list && requestDetails}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

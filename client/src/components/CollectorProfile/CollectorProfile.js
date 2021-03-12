@@ -100,10 +100,11 @@ const CollectorProfile = (props) => {
         <div className="collectorHeader">
           <div className="collector-name">
             <h1>{data.firstName}</h1>
-            <Link to='/collector/request'><button className="btnPrivate">MAKE A PRIVATE SALES REQUEST</button></Link>
+            <Link to='/collector/acquisitionst'><button className="btnPrivate">MAKE A PRIVATE SALES REQUEST</button></Link>
           </div>
+          <hr />
         </div>
-        <hr />
+        
         <div id="formContainer">
           <CollectorSideBar content="my-collector-profile" />
           <div id="formContainerField">
@@ -116,13 +117,13 @@ const CollectorProfile = (props) => {
                 </button>
               </div>
             </div>
-            
             <div className="input-block">
               <div className="input-container-half">
                 <span className="input-label input-lable-right">
                   FIRST NAME/{" "}
                 </span>
                 {isEditMode ? (
+                  // eslint-disable-next-line jsx-a11y/no-redundant-roles
                   <input
                     type="text"
                     name="firstName"
