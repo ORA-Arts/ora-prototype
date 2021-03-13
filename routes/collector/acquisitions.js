@@ -73,7 +73,6 @@ router.post("/request",  isAuthenticated,  async (req, res, next) => {
   let collector;
   try {
     collector = await Collector.findOne({user: userId});
-    console.log(collector);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: 'Error while attempting to access database' });
@@ -101,7 +100,6 @@ router.post("/request",  isAuthenticated,  async (req, res, next) => {
     const createdRequest = await Request.create({
       ...data, collector: collector._id, preferredArtist: preferredArtist, messages: [createdMessage._id]
     });
-    console.log(createdRequest);
     if (createdRequest) {
       return res.status(200).json({success: true});
     }
@@ -116,7 +114,6 @@ router.post("/decision", isAuthenticated,  async (req, res, next) => {
   let collector;
   try {
     collector = await Collector.findOne({user: userId});
-    console.log(collector);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: 'Error while attempting to access database' });
@@ -148,7 +145,6 @@ router.post("/message", isAuthenticated, async (req, res, next) => {
   let collector;
   try {
     collector = await Collector.findOne({user: userId});
-    console.log(collector);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: 'Error while attempting to access database' });

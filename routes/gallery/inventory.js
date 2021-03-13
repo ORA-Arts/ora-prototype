@@ -39,7 +39,6 @@ router.post('/', isAuthenticated, async (req, res, next) => {
   // add gallery id into find later
   const query = req.body.query;
   const sortByPrice = req.body.sortByPrice;
-  console.log(sortByPrice);
   
   let galleryArtworks = await Artwork.find({user: userId}).populate('artist');
 
@@ -78,7 +77,6 @@ router.post('/new', isAuthenticated, uploader.array('images[]'), async (req, res
   const images = req.files.map(image => ({imageUrl: image.path, imgPublicId: image.filename}));
   const data = req.body;
   data.images = images;
-  console.log(data);
 
 
   // delete later, this is just a fake artist - add the real artist
@@ -122,7 +120,6 @@ router.put('/:id', isAuthenticated, uploader.array('images[]'), async (req, res,
   let uploadedImages = [];
   if (req.files) {
     uploadedImages = req.files.map(file => ({imageUrl: file.path, imgPublicId: file.filename}));
-    console.log(uploadedImages);
   }
 
   try {

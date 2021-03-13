@@ -23,7 +23,6 @@ transporter.verify(function (err, success) {
 router.post('/', (req, res) => {
   const { name, email, topic, body } = req.body
   const name2 = `${name} <${email}>`
-  console.log(name2)
   const mail = {
     from: name,
     replyTo: email,

@@ -35,7 +35,6 @@ router.post('/', isAuthenticated, async(req,res,next) => {
 
   try {
     const existedCollector = await Collector.findOne({user: userId});
-    console.log(existedCollector)
     if (existedCollector) return res.status(500).json({message: "Please don't change the http method"});
   } catch (error) {
     console.log(error);
@@ -58,7 +57,6 @@ router.post('/', isAuthenticated, async(req,res,next) => {
 router.put('/', isAuthenticated, async(req, res, next) => {
   const userId =  req.session.passport.user;
   const data = req.body;
-  // console.log(data)
 try {
   const updatedCollector = await Collector.findOneAndUpdate({user: userId},{...data}, {new:true});
   res.status(200).json(updatedCollector);

@@ -21,7 +21,6 @@ router.post('/', (req,res,next) => {
         email: email
       })
       .then(email => {
-        console.log('this email was added to the DB', email)
         return res.status(200).json(email);
       })
     }
