@@ -58,7 +58,6 @@ router.post('/', isAuthenticated, uploader.single('image'), async (req, res, nex
 
 router.put("/", isAuthenticated, uploader.single('image'), async (req, res, next) => {
   const userId =  req.session.passport.user;
-  // const data = {...req.body.data};
   const data = {...req.body};
   console.log(data)
   if (req.file) {
