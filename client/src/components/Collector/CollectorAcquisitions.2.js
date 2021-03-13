@@ -341,11 +341,14 @@ const CollectorAcquisitions2 = (props) => {
       <div id="collectorProfile">
         <div className="collectorHeader">
           <div className="collector-name">
-            <Link to='/collector/request'>
-              <button className="btnPrivate">MAKE A PRIVATE SALE</button>
-            </Link>
-            <Link to='/collector/request'><button className="btnPrivate">REQUEST A SPECIAL SOURCING</button>
-            </Link>
+            <h1>{props.collectorName}</h1>
+            <div>
+              <Link to='/collector/request'>
+                <button className="btnPrivate">MAKE A PRIVATE SALE</button>
+              </Link>
+              <Link to='/collector/request'><button className="btnPrivate">REQUEST A SPECIAL SOURCING</button>
+              </Link>
+            </div>
           </div>
           <hr />
         </div>

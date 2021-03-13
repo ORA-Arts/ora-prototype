@@ -350,3 +350,8 @@ label:hover {
     color: black;
     
   }
+
+  .collector-request-btn-center {
+    display: flex;
+    justify-content: space-around;
+  }

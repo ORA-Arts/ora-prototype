@@ -99,7 +99,7 @@ const CollectorProfile = (props) => {
       <div id="collectorProfile">
         <div className="collectorHeader">
           <div className="collector-name">
-            <h1>{data.firstName}</h1>
+            <h1>{`${data.firstName} ${data.lastName}`}</h1>
             <Link to='/collector/acquisitions'><button className="btnPrivate">MAKE A PRIVATE SALES REQUEST</button></Link>
           </div>
           <hr />
