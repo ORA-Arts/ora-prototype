@@ -48,7 +48,6 @@ const AddNewArtWork = (props) => {
             setGallery(gallery);
             const resArtists = await fetchArtist();
             setArtists(resArtists);
-            console.log("data in useeffect", data)
             // if (!isViewMode) {
             //     setData({...data, artist: resArtists[0]._id});
             // }
@@ -63,8 +62,6 @@ const AddNewArtWork = (props) => {
         fetchData();
     }, []);
 
-    console.log(artists);
-
     useEffect(() => {
         async function fetchData() {
             if (artworkId) {
@@ -78,7 +75,6 @@ const AddNewArtWork = (props) => {
     }, [artworkId]);
     
     useEffect(() => {
-        console.log("run here");
         currentActiveImage();
     }, [uploadedImages, data.images]);
 
@@ -137,7 +133,6 @@ const AddNewArtWork = (props) => {
     setIsViewMode(true);
   };
 
-  console.log("data", data)
 
   const clickedImageHandler = (index) => {
     if (index > data.images.length-1) {

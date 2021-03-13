@@ -25,7 +25,6 @@ const GalleryOffer = (props) => {
   useEffect(() => {
     if (!artworks.length) return;
     let regex = new RegExp(query, 'i');
-    console.log("run here")
     const matchedArtworks = artworks.filter(artwork => {
         return artwork.title.match(regex) || mediumFilter(artwork.medium, regex) || artwork.artist.name.match(regex);
     });
@@ -34,13 +33,11 @@ const GalleryOffer = (props) => {
 
 
   const onChange = (event) => {
-      console.log(event.target.value);
       setMessage(event.target.value);
   };
 
   const submitHandler = async () => {
       const reqData = {artwork: selectedArtwork._id, message, request: props.request._id, collector: props.collector.id};
-      console.log(reqData);
       const response = await sendOffer(reqData);
       if (response.success) {
         return props.updateSalesItems(response.data);
@@ -63,8 +60,6 @@ const GalleryOffer = (props) => {
     setQuery(typedQuery);
   };
 
-  console.log(artworks);
-  console.log(searchResults);
 
   const myInventory = !isViewInventory ? null : (<>
         <div className="offer-my-inventory">

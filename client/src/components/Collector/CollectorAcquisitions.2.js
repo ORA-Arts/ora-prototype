@@ -33,12 +33,10 @@ const CollectorAcquisitions2 = (props) => {
   const [isViewArtistDetails, setIsViewArtistDetails] = useState(false);
   const [message, setMessage] = useState("");
 
-  console.log(activeAcquisition);
 
   useEffect(() => {
     async function fetchData() {
       const resAcquisitions = await fetchAllAcquisitions();
-      console.log(resAcquisitions);
       setAcquisitions(resAcquisitions);
     }
     fetchData();
@@ -67,7 +65,6 @@ const CollectorAcquisitions2 = (props) => {
   };
 
   const decisionHandler = async (decision, requestId) => {
-    console.log(decision, requestId);
     const resDataAPI = await makingCollectorDecision(decision, requestId);
     if (resDataAPI.success) {
       setAcquisitions(updateAcquisitionsAfterDecisionMade(decision, requestId));
@@ -79,7 +76,6 @@ const CollectorAcquisitions2 = (props) => {
   const sendingMessage = async () => {
     const data = { message: message, requestId: activeAcquisition._id, galleryId: activeAcquisition.gallery._id };
     const resDataAPI = await sendMessageCollector(data);
-    console.log(resDataAPI);
     if (resDataAPI) {
       const newActiveAcquisition = { ...activeAcquisition };
       newActiveAcquisition.messages.push(resDataAPI);

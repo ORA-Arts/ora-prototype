@@ -33,13 +33,11 @@ export default class Footer extends Component {
           } else {
             // the response from the server is a user object -> signup was successful
             // we want to put the user object in the state of NavBar.js
-            console.log('OK')
             this.setState({
                message: 'EMAIL ADDED TO THE NEWSLETTER'
                });
             // this.props.history.push('/'); // this need to be passed in the router app.js
           }
-          console.log(this.state.message)
         })
     }
 

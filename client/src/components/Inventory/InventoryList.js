@@ -23,7 +23,6 @@ const InventoryList = (props) => {
         }
       const resData = await fetchArtworks();
       if (!resData) {
-          console.log("No availabe artworks")
       } else {
         // find the way to refactor/reduce state momory later (still better than fetch new ones from database)
         setData(resData);

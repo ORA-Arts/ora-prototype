@@ -23,7 +23,6 @@ class GalleryProfile extends React.Component {
 
   onChangeHandler(event) {
     let { name, value } = event.target;
-    console.log(name, value);
     if (name === "convelio") {
       value = value === "YES";
     } else {
@@ -35,7 +34,6 @@ class GalleryProfile extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="app-container">
         <div className="container-profile">

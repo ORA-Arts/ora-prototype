@@ -20,7 +20,6 @@ class SignUpModal extends Component {
     this.setState({
       [name]: value
     })
-    console.log(this.state.userType)
   }
 
   handleSubmit = event => {
@@ -39,13 +38,10 @@ class SignUpModal extends Component {
         } else {
           // the response from the server is a user object -> signup was successful
           // we want to put the user object in the state of App.js
-          console.log(user)
-          console.log(history)
           this.props.setUser(user);
           localStorage.setItem('user',user)
           this.props.handleClose();
           if (this.state.userType == 'gallery') {
-            console.log(this.state.userType);
             this.props.history.push('/gallery/profile');
           }
           else if(this.state.userType == 'collector') {

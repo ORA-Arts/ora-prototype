@@ -49,19 +49,16 @@ export default class App extends Component {
   };
 
   changeGalleryName = (newName) => {
-    console.log(newName);
     this.setState({ galleryName: newName });
   }
 
 
   changeCollectorName = (newName) => {
-    console.log(newName);
     this.setState({ collectorName: newName });
   }
 
   componentDidMount() {
     this.Loggedin().then((user) => {
-      // console.log(user);
       this.setState({ user: user });
     });
     this.fetchGalleryName().then(galleryName => {
@@ -70,8 +67,6 @@ export default class App extends Component {
     this.fetchCollectorName().then(collectorName => {
       this.setState({ collectorName: collectorName });
     });
-    // console.log(currentUser);
-    // this.setState({user: currentUser});
   }
 
   render() {

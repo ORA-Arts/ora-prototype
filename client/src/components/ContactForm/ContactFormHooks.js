@@ -19,24 +19,21 @@ export default function ContactFormHooks(props) {
         const { value } = event.target;
         setData({ ...data, 'topic': value });
         setCheckedOption(value)
-        console.log('select topic ' + data.topic)
     };
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setData({ ...data, [name]: value });
-        console.log('data: ' + data)
     }
     const submitEmail = (event) => {
         event.preventDefault();
         axios.post('/api/contact', data)
             .then(res => {
-                console.log(res)
+                // console.log(res)
             })
             .catch((err) => {
                 console.log('Message not sent', err)
             })
         setSent(true)
-        console.log('sent: ', sent)
         resetForm()
     }
 

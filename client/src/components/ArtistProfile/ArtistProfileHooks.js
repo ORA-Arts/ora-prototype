@@ -34,13 +34,10 @@ const ArtistProfileHooks = (props) => {
     const [artistId, setArtistId] = useState(null);
     const [gallery, setGallery] = useState(null);
 
-    // console.log("data", data);
-
     const mediums = ['Painting', 'Sculpture', 'Photography', 'Video Art', 'Performance', 'Drawing', 'Mixed Media']
     const relationships = ['represented', 'works available']
 
     const Checkbox = ({ type = "checkbox", name, checked = false, onChange }) => {
-        // console.log("Checkbox: ", name, checked);
         return (
             <input type={type} name={name} checked={checked} onChange={onChange} />
         );
@@ -54,7 +51,6 @@ const ArtistProfileHooks = (props) => {
             ...checkedItems,
             [event.target.name]: event.target.checked
         });
-        // console.log("checkedItems: ", checkedItems);
         selMediums = Object.keys(checkedItems)
         setData({ ...data, 'medium': selMediums })
 
@@ -65,12 +61,10 @@ const ArtistProfileHooks = (props) => {
 
         let selRelationships = ''
         setCheckedRel(event.target.name);
-        // console.log("checked Relationships: ", checkedRel);
 
         setData({ ...data, 'relationship': event.target.name })
     }
 
-    // console.log(checkedRel)
 
     const checkboxes = mediums.map(medium => {
         return {
@@ -79,7 +73,6 @@ const ArtistProfileHooks = (props) => {
             label: medium.toUpperCase
         }
     })
-    // console.log(checkboxes)
 
     const relCheckboxes = relationships.map(rel => {
         return {
@@ -88,7 +81,6 @@ const ArtistProfileHooks = (props) => {
             label: rel.toUpperCase
         }
     })
-    // console.log(relCheckboxes)
 
     const onChange = (event) => {
         const { name, value } = event.target;
@@ -116,7 +108,6 @@ const ArtistProfileHooks = (props) => {
             resData = await addNewArtist(uploadData);
         }
         if (resData) props.history.push(`/gallery/artists/${resData._id}`);
-        // console.log('res data' + resData);
         setIsViewMode(true);
         setData(resData);
         setIsEditMode(false);
@@ -129,7 +120,6 @@ const ArtistProfileHooks = (props) => {
     };
 
     useEffect(() => {
-        console.log(props.match.params.id);
         if (!props.isViewMode) {
             setData(initialState);
             setIsViewMode(false);
@@ -150,12 +140,9 @@ const ArtistProfileHooks = (props) => {
     }, []);
 
     useEffect(() => {
-        console.log("run here");
-        console.log("artistID: ", artistId)
         async function fetchData() {
             if (artistId) {
                 const artist = await fetchArtistById(artistId);
-                console.log("artist data: ", artist);
                 setData(artist);
                 setIsEditMode(false);
                 setIsViewMode(true);

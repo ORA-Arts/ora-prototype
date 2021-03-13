@@ -12,7 +12,6 @@ const ArtistListHooks = (props) => {
         axios
             .get('/api/gallery/artists')
             .then(res => {
-                console.log(res.data)
                 setArtists(res.data)
             })
             .catch(err => {

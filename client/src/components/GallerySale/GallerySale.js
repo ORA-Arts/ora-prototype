@@ -30,7 +30,6 @@ const GallerySale = (props) => {
     setActiveRequest(null);
   };
 
-  console.log(requests);
 
   const timeRemain = (time) => {
     const pastHours = Math.floor(

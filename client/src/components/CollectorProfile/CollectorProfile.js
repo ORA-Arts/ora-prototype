@@ -38,7 +38,6 @@ const CollectorProfile = (props) => {
   };
 
   const Checkbox = ({ type = "radio", name, checked = false, onChange }) => {
-    // console.log("Checkbox: ", name, checked);
     return (
       <input type={type} name={name} checked={checked} onChange={onChange} />
     );
@@ -48,7 +47,6 @@ const CollectorProfile = (props) => {
     //behaviour
     setCheckedRel(event.target.name);
     setData({ ...data, behaviour: event.target.name });
-    console.log('button click')
   };
 
   const relCheckboxes = behaviours.map((rel) => {

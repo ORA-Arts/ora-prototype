@@ -5,7 +5,6 @@ import imageDefault from "./image-default.png";
 const ArtworkView = (props) => {
 
   const [activeImage, setActiveImage] = useState(props.artwork.images.length ? props.artwork.images[0].imageUrl : imageDefault);
-  console.log(props);
 
   const clickedImageHandler = (index) => {
     setActiveImage(props.artwork.images[index].imageUrl);

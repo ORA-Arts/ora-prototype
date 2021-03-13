@@ -19,7 +19,6 @@ const CollectorRequest = (props) => {
 
   const [data, setData] = useState(initialState);
   const [galleries, setGalleries] = useState([]);
-  console.log(data);
 
   useEffect(() => {
     async function fetchData() {
